@@ -14,6 +14,8 @@ public class BulletBehavior : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision collision) {
+
+		//If it hits a player don't disappear
 		if (collision.collider.tag != "Player") {
 			Destroy (gameObject);
 		}
