@@ -4,10 +4,13 @@ using System.Collections;
 public class PlayerMovement : MonoBehaviour {
 
 	Rigidbody playerRB;
+
+	public float baseSpeed = 8f;
+	public float speedModifier = 0f;
+
 	private string playerPrefix;
 	private float horizMov, vertMov;
 	private Vector3 playerMov;
-	public float baseSpeed = 30f;
 
 
 	// Use this for initialization
@@ -27,7 +30,7 @@ public class PlayerMovement : MonoBehaviour {
 		horizMov = Input.GetAxisRaw ("Horizontal" + playerPrefix);
 		vertMov = Input.GetAxisRaw ("Vertical" + playerPrefix);
 		playerMov = new Vector3 (horizMov, 0f, vertMov);
-		playerRB.AddForce (playerMov * (baseSpeed * 100) * Time.deltaTime);
+		playerRB.AddForce (playerMov * ((baseSpeed + speedModifier) * 10) * Time.deltaTime, ForceMode.Impulse);
 
 	}
 }
