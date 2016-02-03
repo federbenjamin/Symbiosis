@@ -6,6 +6,16 @@ public class StatsManager : MonoBehaviour {
 	public float playerSpeedModifier;
 	public float playerBulletSpeedModifier;
 	public float playerFireRateModifier;
+	public float invincibilityTime;
+
+	private HealthManager playersHealth;
+	private float nextHit = 0.0f;
+
+	void Awake () {
+
+		//Get the HealthManager Script
+		playersHealth = GameObject.Find("Health").GetComponent<HealthManager> ();
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -47,5 +57,13 @@ public class StatsManager : MonoBehaviour {
 	//Sets Player's BulletSpeed
 	public void SetBulletSpeed(float modifier) {
 		playerBulletSpeedModifier += modifier;
+	}
+
+	//Health
+	void OnCollisionStay(Collision collision) {
+		if (collision.collider.name == "Enemy1" && Time.time > nextHit) {
+			playersHealth.DamageHealth (1);
+			nextHit = Time.time + invincibilityTime;
+		}
 	}
 }
