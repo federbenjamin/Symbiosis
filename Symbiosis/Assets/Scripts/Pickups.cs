@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+
+
 public class Pickups : MonoBehaviour {
 
 	public float rotateSpeed;
-
 	private StatsManager playerStats;
 
 	// Use this for initialization
@@ -40,6 +42,14 @@ public class Pickups : MonoBehaviour {
 				break;
 			case "BulletSpeedUp":
 				playerStats.SetBulletSpeed (15f);
+				break;
+			case "BeepAugment":
+				Augment temp = new Augment ("Sounds/beep/beep_1");
+				Debug.Log (temp);
+				playerStats.SetAugment (temp);
+
+				Debug.Log (playerStats.GetAugment());
+				
 				break;
 			}
 

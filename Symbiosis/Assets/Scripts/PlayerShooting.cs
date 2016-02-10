@@ -1,11 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+
+
 public class PlayerShooting : MonoBehaviour {
 
 	public GameObject bullet;
 	public float baseBulletSpeed = 10f;
 	public float baseFireRate = 0.5f;
+
+	public iAugment aug = null;
 
 	private float nextFire = 0.0f;
 	private string playerPrefix;
@@ -55,11 +60,22 @@ public class PlayerShooting : MonoBehaviour {
 
 	void Shoot (Vector3 shootDir) {
 
+		aug = GetComponent<StatsManager> ().GetAugment ();
+
 		//Create the bullet and launch it
 		GameObject clone = Instantiate (bullet, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), transform.rotation) as GameObject;
 		clone.transform.rotation = Quaternion.LookRotation (shootDir);
+		
 		Physics.IgnoreCollision (clone.GetComponent<Collider> (), GetComponent<Collider> ());
 		clone.GetComponent<Rigidbody> ().AddForce (clone.transform.forward * ((baseBulletSpeed + bulletSpeedModifier) * 100));
+
+
+		Debug.Log ("Firing augged bullet");
+
+		if (aug != null) {
+			Debug.Log ("Applying on-hit effects");
+			clone.GetComponent<BulletBehavior> ().setAugment(aug);
+		}
 
 		//Set when the next bullet can be fired
 		nextFire = Time.time + (baseFireRate + fireRateModifier);
