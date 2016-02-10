@@ -1,6 +1,32 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public class Augment : iAugment{
+
+	public Augment(string a){
+		ac = (AudioClip) Resources.Load(a);
+	}
+
+	public AudioClip ac;
+
+	private string element = "TEST";
+	public string Element{ 
+		get{return element;}
+		set{ element = value;}
+	}
+
+	private int onHitChance;
+	public int OnHitChance{ 
+		get{return onHitChance;}
+		set{ onHitChance = value;}
+	}
+
+	public void onHitEffect(GameObject other){
+		other.GetComponent<AudioSource> ().PlayOneShot (ac);
+	}
+}
+
+
 public class Pickups : MonoBehaviour {
 
 	public float rotateSpeed;
@@ -40,6 +66,14 @@ public class Pickups : MonoBehaviour {
 				break;
 			case "BulletSpeedUp":
 				playerStats.SetBulletSpeed (15f);
+				break;
+			case "BeepAugment":
+				Augment temp = new Augment ("Sounds/beep/beep_1");
+				Debug.Log (temp);
+				playerStats.SetAugment (temp);
+
+				Debug.Log (playerStats.GetAugment());
+				
 				break;
 			}
 

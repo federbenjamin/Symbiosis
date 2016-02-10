@@ -6,12 +6,15 @@ public class StatsManager : MonoBehaviour {
 	public float playerSpeedModifier;
 	public float playerBulletSpeedModifier;
 	public float playerFireRateModifier;
+	public iAugment playerAugment;
+	public string augmentName;
 
 	// Use this for initialization
 	void Start () {
 		playerSpeedModifier = 0f;
 		playerBulletSpeedModifier = 0f;
 		playerFireRateModifier = 0f;
+		playerAugment = null;
 	}
 	
 	// Update is called once per frame
@@ -47,5 +50,14 @@ public class StatsManager : MonoBehaviour {
 	//Sets Player's BulletSpeed
 	public void SetBulletSpeed(float modifier) {
 		playerBulletSpeedModifier += modifier;
+	}
+
+	public iAugment GetAugment() {
+		return playerAugment;
+	}
+
+	public void SetAugment (iAugment augment){
+		playerAugment = augment;
+		augmentName = augment.Element;
 	}
 }
