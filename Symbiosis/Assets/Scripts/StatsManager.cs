@@ -9,6 +9,15 @@ public class StatsManager : MonoBehaviour {
 	public iAugment playerAugment;
 	public string augmentName;
 
+	public float invincibilityTime;
+	private HealthManager playersHealth;
+	private float nextHit = 0.0f;
+
+	void Awake () {
+		//Get the HealthManager Script
+		playersHealth = GameObject.Find("Health").GetComponent<HealthManager> ();
+	}
+
 	// Use this for initialization
 	void Start () {
 		playerSpeedModifier = 0f;
@@ -51,7 +60,7 @@ public class StatsManager : MonoBehaviour {
 	public void SetBulletSpeed(float modifier) {
 		playerBulletSpeedModifier += modifier;
 	}
-
+		
 	public iAugment GetAugment() {
 		return playerAugment;
 	}
@@ -59,5 +68,12 @@ public class StatsManager : MonoBehaviour {
 	public void SetAugment (iAugment augment){
 		playerAugment = augment;
 		augmentName = augment.Element;
+	}
+	//Health
+	void OnCollisionStay(Collision collision) {
+		if (collision.collider.name == "Enemy1" && Time.time > nextHit) {
+			playersHealth.DamageHealth (1);
+			nextHit = Time.time + invincibilityTime;
+		}
 	}
 }
