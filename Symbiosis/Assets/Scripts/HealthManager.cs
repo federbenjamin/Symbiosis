@@ -10,7 +10,6 @@ public class HealthManager : MonoBehaviour {
 
 	public Sprite fullHeart;
 	public Sprite halfHeart;
-	public Sprite emptyHeart;
 
 	private Transform heart1;
 	private Transform heart2;
@@ -41,7 +40,6 @@ public class HealthManager : MonoBehaviour {
 	}
 	void FixedUpdate() {
 		if (Input.GetButton ("Restart") && isGameOver) {
-			Debug.Log ("RESTART");
 			SceneManager.LoadScene("Main");
 		}
 	}
@@ -50,32 +48,32 @@ public class HealthManager : MonoBehaviour {
 	void Update () {
 		
 		if (currentHealth == 0) {
-			heart1.GetComponent<Image> ().sprite = emptyHeart;
+			heart1.GetComponent<Image> ().enabled = false;
 			GameOver ();
 		} if (currentHealth == 1) {
 			heart1.GetComponent<Image> ().sprite = halfHeart;
 		} if (currentHealth >= 2) {
 			heart1.GetComponent<Image> ().sprite = fullHeart;
 		} if (currentHealth < 3) {
-			heart2.GetComponent<Image> ().sprite = emptyHeart;
+			heart2.GetComponent<Image> ().enabled = false;
 		} if (currentHealth == 3) {
 			heart2.GetComponent<Image> ().sprite = halfHeart;
 		} if (currentHealth >= 4) {
 			heart2.GetComponent<Image> ().sprite = fullHeart;
 		} if (currentHealth < 5) {
-			heart3.GetComponent<Image> ().sprite = emptyHeart;
+			heart3.GetComponent<Image> ().enabled = false;
 		} if (currentHealth == 5) {
 			heart3.GetComponent<Image> ().sprite = halfHeart;
 		} if (currentHealth >= 6) {
 			heart3.GetComponent<Image> ().sprite = fullHeart;
 		} if (currentHealth < 7) {
-			heart4.GetComponent<Image> ().sprite = emptyHeart;
+			heart4.GetComponent<Image> ().enabled = false;
 		} if (currentHealth == 7) {
 			heart4.GetComponent<Image> ().sprite = halfHeart;
 		} if (currentHealth >= 8) {
 			heart4.GetComponent<Image> ().sprite = fullHeart;
 		} if (currentHealth < 9) {
-			heart5.GetComponent<Image> ().sprite = emptyHeart;
+			heart5.GetComponent<Image> ().enabled = false;
 		} if (currentHealth == 9) {
 			heart5.GetComponent<Image> ().sprite = halfHeart;
 		} if (currentHealth >= 10) {
