@@ -49,7 +49,15 @@ public class Pickups : MonoBehaviour {
 				playerStats.SetAugment (temp);
 
 				Debug.Log (playerStats.GetAugment());
-				
+
+				break;
+			case "GrowAugment":
+				GrowAugment g = new GrowAugment();
+				Debug.Log (g);
+				playerStats.SetAugment (g);
+
+				Debug.Log (playerStats.GetAugment());
+
 				break;
 			}
 
