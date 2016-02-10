@@ -1,36 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Augment : iAugment{
 
-	public Augment(string a){
-		ac = (AudioClip) Resources.Load(a);
-	}
-
-	public AudioClip ac;
-
-	private string element = "TEST";
-	public string Element{ 
-		get{return element;}
-		set{ element = value;}
-	}
-
-	private int onHitChance;
-	public int OnHitChance{ 
-		get{return onHitChance;}
-		set{ onHitChance = value;}
-	}
-
-	public void onHitEffect(GameObject other){
-		other.GetComponent<AudioSource> ().PlayOneShot (ac);
-	}
-}
 
 
 public class Pickups : MonoBehaviour {
 
 	public float rotateSpeed;
-
 	private StatsManager playerStats;
 
 	// Use this for initialization

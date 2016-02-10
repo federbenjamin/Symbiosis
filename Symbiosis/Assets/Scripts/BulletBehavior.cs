@@ -1,27 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
-
-// interface for Bullet Augments
-public interface iAugment {
-	// Name of bullet's element
-	string Element{ 
-		get; 
-		set;
-	}
-	// chance out of 100 of effect occuring
-	int OnHitChance{ 
-		get; 
-		set;
-	}
-	// effect to trigger on hit
-	void onHitEffect(GameObject other);
-}
 	
 public class BulletBehavior : MonoBehaviour {
 
 	public iAugment augment;
 
 	public void setAugment(iAugment aug){
+		Debug.Log ("On-hit effects set");
 		augment = aug;
 	}
 
@@ -43,6 +28,7 @@ public class BulletBehavior : MonoBehaviour {
 		}
 		if (collision.collider.tag == "Enemy") {
 			if (augment != null) {
+				Debug.Log ("");
 				//Destroy (collision.gameObject);
 				augment.onHitEffect (collision.gameObject);
 			}
