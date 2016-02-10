@@ -45,6 +45,30 @@ public class Augment : MonoBehaviour, iAugment{
 		Destroy (other);
 	}
 }
+public class GrowAugment : MonoBehaviour, iAugment{
+
+	public GrowAugment(){
+	}
+
+
+	private string element = "TEST";
+	public string Element{ 
+		get{return element;}
+		set{ element = value;}
+	}
+
+	private int onHitChance;
+	public int OnHitChance{ 
+		get{return onHitChance;}
+		set{ onHitChance = value;}
+	}
+
+	public void onHitEffect(GameObject other){
+		Debug.Log ("Effect occuring");
+		Vector3 a = other.transform.localScale;
+		other.transform.localScale += new Vector3 (0.5f, 0.5f, 0.5f);
+	}
+}
 
 public class Augments : MonoBehaviour {
 

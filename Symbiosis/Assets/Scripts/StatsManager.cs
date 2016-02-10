@@ -67,8 +67,13 @@ public class StatsManager : MonoBehaviour {
 
 	public void SetAugment (iAugment augment){
 		playerAugment = augment;
-		augmentName = augment.Element;
+		if (augment == null) {
+			augmentName = "No Augment";
+		} else {
+			augmentName = augment.Element;
+		}
 	}
+
 	//Health
 	void OnCollisionStay(Collision collision) {
 		if (collision.collider.name == "Enemy1" && Time.time > nextHit) {
