@@ -9,7 +9,7 @@ public class CameraController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		player = GameObject.Find ("P1");
+		player = GameObject.Find (gameObject.name.Substring(6));
 	}
 	
 	// Update is called once per frame

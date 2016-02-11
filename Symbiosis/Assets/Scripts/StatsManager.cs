@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class StatsManager : MonoBehaviour {
@@ -13,6 +14,17 @@ public class StatsManager : MonoBehaviour {
 	private HealthManager playersHealth;
 	private float nextHit = 0.0f;
 
+	private float swapTrigger;
+	private string playerPrefix;
+	private string otherPlayerPrefix;
+	private iAugment tempAug;
+	private StatsManager otherPlayerStats;
+	private GameObject playerAugSprite;
+	private GameObject otherPlayerAugSprite;
+	private Sprite tempSpr;
+	private float nextSwap = 0.0f;
+
+
 	void Awake () {
 		//Get the HealthManager Script
 		playersHealth = GameObject.Find("Health").GetComponent<HealthManager> ();
@@ -24,11 +36,39 @@ public class StatsManager : MonoBehaviour {
 		playerBulletSpeedModifier = 0f;
 		playerFireRateModifier = 0f;
 		playerAugment = null;
+		playerPrefix = gameObject.name;
+
+		if (playerPrefix == "P1") {
+			otherPlayerPrefix = "P2";
+		} else {
+			otherPlayerPrefix = "P1";
+		}
+
+		otherPlayerStats = GameObject.Find (otherPlayerPrefix).GetComponent<StatsManager> ();
+		playerAugSprite = GameObject.Find (playerPrefix + "Aug");
+		otherPlayerAugSprite = GameObject.Find (otherPlayerPrefix + "Aug");
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+	void FixedUpdate () {
+		swapTrigger = Input.GetAxisRaw ("SwapAug" + playerPrefix);
+
+		if (swapTrigger > 0 && Time.time > nextSwap) {
+			tempAug = GetAugment();
+			tempSpr = playerAugSprite.GetComponent<Image> ().sprite;
+
+			SetAugment(otherPlayerStats.GetAugment ());
+			playerAugSprite.GetComponent<Image>().sprite = otherPlayerAugSprite.GetComponent<Image>().sprite;
+
+			otherPlayerStats.SetAugment (tempAug);
+			otherPlayerAugSprite.GetComponent<Image>().sprite = tempSpr;
+
+			nextSwap = Time.time + 2;
+		}
 	}
 
 	//Gets Player's Speed
