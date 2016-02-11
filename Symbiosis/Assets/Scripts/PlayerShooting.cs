@@ -69,7 +69,6 @@ public class PlayerShooting : MonoBehaviour {
 		Physics.IgnoreCollision (clone.GetComponent<Collider> (), GetComponent<Collider> ());
 		clone.GetComponent<Rigidbody> ().AddForce (clone.transform.forward * ((baseBulletSpeed + bulletSpeedModifier) * 100));
 
-
 		Debug.Log ("Firing augged bullet");
 
 		if (aug != null) {
