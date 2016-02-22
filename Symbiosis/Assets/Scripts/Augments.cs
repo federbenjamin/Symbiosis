@@ -65,7 +65,6 @@ public class GrowAugment : MonoBehaviour, iAugment{
 
 	public void onHitEffect(GameObject other){
 		Debug.Log ("Effect occuring");
-		Vector3 a = other.transform.localScale;
 		other.transform.localScale += new Vector3 (0.5f, 0.5f, 0.5f);
 	}
 }
