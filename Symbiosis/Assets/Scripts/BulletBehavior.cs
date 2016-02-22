@@ -4,6 +4,7 @@ using System.Collections;
 public class BulletBehavior : MonoBehaviour {
 
 	public iAugment augment;
+	public int bulletDamage;
 
 	public void setAugment(iAugment aug){
 		Debug.Log ("On-hit effects set");
@@ -32,6 +33,8 @@ public class BulletBehavior : MonoBehaviour {
 				//Destroy (collision.gameObject);
 				augment.onHitEffect (collision.gameObject);
 			}
+			EnemyHealth enemyHP = collision.collider.GetComponent<EnemyHealth>();
+			enemyHP.TakeDamage (bulletDamage, "none");
 		}
 	}
 }
