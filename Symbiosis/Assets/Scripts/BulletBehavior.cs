@@ -13,7 +13,6 @@ public class BulletBehavior : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
 	}
 	
 	// Update is called once per frame
@@ -28,13 +27,15 @@ public class BulletBehavior : MonoBehaviour {
 			Destroy (gameObject);
 		}
 		if (collision.collider.tag == "Enemy") {
+			string damageType = "none";
 			if (augment != null) {
 				Debug.Log ("");
 				//Destroy (collision.gameObject);
 				augment.onHitEffect (collision.gameObject);
+				damageType = augment.Element;
 			}
 			EnemyHealth enemyHP = collision.collider.GetComponent<EnemyHealth>();
-			enemyHP.TakeDamage (bulletDamage, "none");
+			enemyHP.TakeDamage (bulletDamage, damageType);
 		}
 	}
 }
