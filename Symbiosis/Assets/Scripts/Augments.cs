@@ -68,6 +68,28 @@ public class GrowAugment : MonoBehaviour, iAugment{
 		other.transform.localScale += new Vector3 (0.5f, 0.5f, 0.5f);
 	}
 }
+public class FireAugment : MonoBehaviour, iAugment{
+
+	public FireAugment(){
+	}
+
+
+	private string element = "fire";
+	public string Element{ 
+		get{return element;}
+		set{ element = value;}
+	}
+
+	private int onHitChance;
+	public int OnHitChance{ 
+		get{return onHitChance;}
+		set{ onHitChance = value;}
+	}
+
+	public void onHitEffect(GameObject other){
+		Debug.Log ("Effect occuring");
+	}
+}
 
 public class Augments : MonoBehaviour {
 

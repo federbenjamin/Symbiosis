@@ -11,6 +11,7 @@ public class Pickups : MonoBehaviour {
 	private StatsManager playerStats;
 	private GameObject playerAugSprite;
 	private string playerPrefix;
+	public string powerup;
 
 	// Use this for initialization
 	void Start () {
@@ -60,6 +61,15 @@ public class Pickups : MonoBehaviour {
 				GrowAugment g = new GrowAugment();
 				Debug.Log (g);
 				playerStats.SetAugment (g);
+				playerAugSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("BulletSpeedUpSprite");
+
+				Debug.Log (playerStats.GetAugment());
+
+				break;
+			case "FireAugment":
+				FireAugment f = new FireAugment();
+				Debug.Log (f);
+				playerStats.SetAugment (f);
 				playerAugSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("BulletSpeedUpSprite");
 
 				Debug.Log (playerStats.GetAugment());
