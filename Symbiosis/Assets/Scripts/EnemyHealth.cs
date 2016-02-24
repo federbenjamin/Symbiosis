@@ -6,12 +6,15 @@ public class EnemyHealth : MonoBehaviour {
 	public int currentHP;
 	public int maxHP;
 	private bool onFire;
+	private bool frozen;
 	private int ongoingDamage;
 	private int ongoingTimer;
+
 
 	// Use this for initialization
 	void Start () {
 		onFire = false;
+		frozen = false;
 		currentHP = maxHP;
 		ongoingTimer = 30;
 	}
@@ -41,5 +44,14 @@ public class EnemyHealth : MonoBehaviour {
 			onFire = true;
 			ongoingDamage = 4;
 		}
+		if (damageType == "ice" && !frozen) {
+			Freeze ();
+		}
+	}
+
+	void Freeze(){
+		frozen = true;
+		EnemyMovement mover = GetComponent<EnemyMovement> ();
+		mover.moveSpeed = mover.moveSpeed / 2;
 	}
 }
