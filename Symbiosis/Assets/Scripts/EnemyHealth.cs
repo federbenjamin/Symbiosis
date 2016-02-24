@@ -37,9 +37,9 @@ public class EnemyHealth : MonoBehaviour {
 
 	public void TakeDamage(int incomingDamage, string damageType){
 		currentHP = currentHP - incomingDamage;
-		if (damageType == "fire") {
+		if (damageType == "fire" && !onFire) {
 			onFire = true;
-			ongoingDamage = 2;
+			ongoingDamage = 4;
 		}
 	}
 }
