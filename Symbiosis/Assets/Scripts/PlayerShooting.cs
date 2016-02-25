@@ -70,9 +70,8 @@ public class PlayerShooting : MonoBehaviour {
 		//Create the bullet and launch it
 		GameObject clone = Instantiate (bullet, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), transform.rotation) as GameObject;
 		clone.transform.rotation = Quaternion.LookRotation (shootDir);
-		
 		Physics.IgnoreCollision (clone.GetComponent<Collider> (), GetComponent<Collider> ());
-		clone.GetComponent<Rigidbody> ().AddForce (clone.transform.forward * ((baseBulletSpeed + bulletSpeedModifier) * 100));
+		clone.GetComponent<Rigidbody> ().velocity = (clone.transform.forward * ((baseBulletSpeed + bulletSpeedModifier)));
 
 		Debug.Log ("Firing augged bullet");
 
