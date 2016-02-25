@@ -7,6 +7,11 @@ using System.Collections;
 public class PlayerShooting : MonoBehaviour {
 
 	public GameObject bullet;
+
+	public Object fireEffect;
+	public Object iceEffect;
+	public Object earthEffect;
+
 	public float baseBulletSpeed = 10f;
 	public float baseFireRate = 0.5f;
 
@@ -74,6 +79,12 @@ public class PlayerShooting : MonoBehaviour {
 		if (aug != null) {
 			Debug.Log ("Applying on-hit effects");
 			clone.GetComponent<BulletBehavior> ().setAugment(aug);
+			GameObject augEffect;
+			if (aug.Element == "fire") {
+				Debug.Log ("Applying fire effects");
+				augEffect = Instantiate (fireEffect, clone.transform.position, Quaternion.identity) as GameObject;
+				augEffect.transform.parent = clone.transform;
+			}
 		}
 
 		//Set when the next bullet can be fired
