@@ -23,9 +23,13 @@ public class BulletBehavior : MonoBehaviour {
 	void OnCollisionEnter(Collision collision) {
 
 		//If it hits a player don't disappear
-		if (collision.collider.tag != "Player") {
+		if (collision.collider.tag != "Player" && collision.collider.tag != "Bullet") {
 			Destroy (gameObject);
 		}
+		if (collision.collider.tag == "Bullet") {
+			Physics.IgnoreCollision (collision.collider.GetComponent<Collider> (), GetComponent<Collider> ());
+		}
+
 		if (collision.collider.tag == "Enemy") {
 			string damageType = "none";
 			if (augment != null) {
