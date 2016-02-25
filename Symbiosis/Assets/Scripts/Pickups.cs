@@ -75,6 +75,15 @@ public class Pickups : MonoBehaviour {
 				Debug.Log (playerStats.GetAugment());
 
 				break;
+			case "IceAugment":
+				IceAugment i = new IceAugment();
+				Debug.Log (i);
+				playerStats.SetAugment (i);
+				playerAugSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("BulletSpeedUpSprite");
+
+				Debug.Log (playerStats.GetAugment());
+
+				break;
 			}
 
 			//Get rid of the pickup since it has been used
