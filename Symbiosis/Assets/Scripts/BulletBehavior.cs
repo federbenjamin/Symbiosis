@@ -20,21 +20,25 @@ public class BulletBehavior : MonoBehaviour {
 	
 	}
 
-	void OnCollisionEnter(Collision collision) {
-
+	void OnTriggerEnter(Collider c) {
+		GameObject other = c.gameObject;
 		//If it hits a player don't disappear
-		if (collision.collider.tag != "Player") {
+		if (other.tag != "Player" && other.tag != "Bullet") {
 			Destroy (gameObject);
 		}
-		if (collision.collider.tag == "Enemy") {
+		if (other.tag == "Bullet") {
+			Physics.IgnoreCollision (other.GetComponent<Collider> (), GetComponent<Collider> ());
+		}
+
+		if (other.tag == "Enemy") {
 			string damageType = "none";
 			if (augment != null) {
 				Debug.Log ("");
 				//Destroy (collision.gameObject);
-				augment.onHitEffect (collision.gameObject);
+				augment.onHitEffect (other);
 				damageType = augment.Element;
 			}
-			EnemyHealth enemyHP = collision.collider.GetComponent<EnemyHealth>();
+			EnemyHealth enemyHP = other.GetComponent<EnemyHealth>();
 			enemyHP.TakeDamage (bulletDamage, damageType);
 		}
 	}

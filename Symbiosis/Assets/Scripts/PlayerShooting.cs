@@ -7,6 +7,11 @@ using System.Collections;
 public class PlayerShooting : MonoBehaviour {
 
 	public GameObject bullet;
+
+	public Object fireEffect;
+	public Object iceEffect;
+	public Object earthEffect;
+
 	public float baseBulletSpeed = 10f;
 	public float baseFireRate = 0.5f;
 
@@ -65,15 +70,20 @@ public class PlayerShooting : MonoBehaviour {
 		//Create the bullet and launch it
 		GameObject clone = Instantiate (bullet, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), transform.rotation) as GameObject;
 		clone.transform.rotation = Quaternion.LookRotation (shootDir);
-		
 		Physics.IgnoreCollision (clone.GetComponent<Collider> (), GetComponent<Collider> ());
-		clone.GetComponent<Rigidbody> ().AddForce (clone.transform.forward * ((baseBulletSpeed + bulletSpeedModifier) * 100));
+		clone.GetComponent<Rigidbody> ().velocity = (clone.transform.forward * ((baseBulletSpeed + bulletSpeedModifier)));
 
 		Debug.Log ("Firing augged bullet");
 
 		if (aug != null) {
 			Debug.Log ("Applying on-hit effects");
 			clone.GetComponent<BulletBehavior> ().setAugment(aug);
+			GameObject augEffect;
+			if (aug.Element == "fire") {
+				Debug.Log ("Applying fire effects");
+				augEffect = Instantiate (fireEffect, clone.transform.position, Quaternion.identity) as GameObject;
+				augEffect.transform.parent = clone.transform;
+			}
 		}
 
 		//Set when the next bullet can be fired

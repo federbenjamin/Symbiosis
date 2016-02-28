@@ -90,6 +90,28 @@ public class FireAugment : MonoBehaviour, iAugment{
 		Debug.Log ("Effect occuring");
 	}
 }
+public class IceAugment : MonoBehaviour, iAugment{
+
+	public IceAugment(){
+	}
+
+
+	private string element = "ice";
+	public string Element{ 
+		get{return element;}
+		set{ element = value;}
+	}
+
+	private int onHitChance;
+	public int OnHitChance{ 
+		get{return onHitChance;}
+		set{ onHitChance = value;}
+	}
+
+	public void onHitEffect(GameObject other){
+		Debug.Log ("Effect occuring");
+	}
+}
 
 public class Augments : MonoBehaviour {
 
