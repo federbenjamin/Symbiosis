@@ -15,6 +15,8 @@ public class RoomController : MonoBehaviour {
 	private bool hasTriggered = false;
 	public bool roomCleared = false;
 
+	public int switchesActive = 0;
+
 	private CameraController cameraController;
 
 	// Use this for initialization
@@ -32,11 +34,17 @@ public class RoomController : MonoBehaviour {
 	void Update () {
 
 		//Check if player has enetered room and count enemies
-		if (hasTriggered == true) {
-			if (roomCleared == false) {
-				CheckIfEnemies ();
-				if (enemies.Count == 0) {
-					roomCleared = true;
+		if (transform.name == "Room11") {
+			if (switchesActive == 2) {
+				roomCleared = true;
+			}
+		} else {
+			if (hasTriggered == true) {
+				if (roomCleared == false) {
+					CheckIfEnemies ();
+					if (enemies.Count == 0) {
+						roomCleared = true;
+					}
 				}
 			}
 		}
