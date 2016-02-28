@@ -11,7 +11,7 @@ public class Pickups : MonoBehaviour {
 	private StatsManager playerStats;
 	private GameObject playerAugSprite;
 	private string playerPrefix;
-	public string powerup;
+	public string powerupType;
 
 	// Use this for initialization
 	void Start () {
@@ -37,7 +37,7 @@ public class Pickups : MonoBehaviour {
 			playerAugSprite = GameObject.Find (playerPrefix + "Aug");
 
 			//Check which pickup it is and apply effects
-			switch (gameObject.name) 
+			switch (powerupType) 
 			{
 			case "SpeedUp":
 				playerStats.SetSpeed (10f);
@@ -70,6 +70,15 @@ public class Pickups : MonoBehaviour {
 				FireAugment f = new FireAugment();
 				Debug.Log (f);
 				playerStats.SetAugment (f);
+				playerAugSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("BulletSpeedUpSprite");
+
+				Debug.Log (playerStats.GetAugment());
+
+				break;
+			case "IceAugment":
+				IceAugment i = new IceAugment();
+				Debug.Log (i);
+				playerStats.SetAugment (i);
 				playerAugSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("BulletSpeedUpSprite");
 
 				Debug.Log (playerStats.GetAugment());
