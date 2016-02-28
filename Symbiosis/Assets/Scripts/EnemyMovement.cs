@@ -8,8 +8,6 @@ public class EnemyMovement : MonoBehaviour {
 
 	public int moveSpeed;
 
-
-	private bool playerInRoom = true;
 	private Transform myTransform;
 
 	void Awake () {
@@ -18,7 +16,8 @@ public class EnemyMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		p1_Transform = GameObject.Find ("P1").transform;
+		p2_Transform = GameObject.Find ("P2").transform;
 	}
 	
 	// Update is called once per frame
@@ -27,8 +26,6 @@ public class EnemyMovement : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-		if (playerInRoom) {
-
 			float dist_1 = Vector3.Distance(myTransform.position, p1_Transform.position);
 			float dist_2 = Vector3.Distance(myTransform.position, p2_Transform.position);
 
@@ -44,6 +41,5 @@ public class EnemyMovement : MonoBehaviour {
 
 			//move towards the player
 			myTransform.position += myTransform.forward * moveSpeed * Time.deltaTime;
-		}
 	}
 }
