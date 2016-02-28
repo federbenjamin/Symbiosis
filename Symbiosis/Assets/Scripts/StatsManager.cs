@@ -116,7 +116,7 @@ public class StatsManager : MonoBehaviour {
 
 	//Health
 	void OnCollisionStay(Collision collision) {
-		if (collision.collider.name == "Enemy1" && Time.time > nextHit) {
+		if (collision.collider.tag == "Enemy" && Time.time > nextHit) {
 			playersHealth.DamageHealth (1);
 			nextHit = Time.time + invincibilityTime;
 		}
