@@ -48,6 +48,7 @@
      <Compile Include="Assets\Scripts\Augments.cs" />
      <Compile Include="Assets\Scripts\BulletBehavior.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
+     <Compile Include="Assets\Scripts\CameraShaker.cs" />
      <Compile Include="Assets\Scripts\DoorController.cs" />
      <Compile Include="Assets\Scripts\EnemyHealth.cs" />
      <Compile Include="Assets\Scripts\EnemyMovement.cs" />

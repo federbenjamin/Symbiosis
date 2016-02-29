@@ -7,6 +7,7 @@ using System.Collections;
 public class PlayerShooting : MonoBehaviour {
 
 	public GameObject bullet;
+	public AudioClip shootSound;
 
 	public Object fireEffect;
 	public Object iceEffect;
@@ -24,6 +25,7 @@ public class PlayerShooting : MonoBehaviour {
 	private float bulletSpeedModifier;
 	private float fireRateModifier;
 
+	public GameObject shakeCamera;
 
 	void Awake () {
 
@@ -39,6 +41,7 @@ public class PlayerShooting : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
 
 		//Get the stats for the player
 		bulletSpeedModifier = playerStats.GetBulletSpeed ();
@@ -64,6 +67,8 @@ public class PlayerShooting : MonoBehaviour {
 	}
 
 	void Shoot (Vector3 shootDir) {
+		shakeCamera.GetComponent<CameraShaker> ().shake = 0.1f;
+		AudioSource.PlayClipAtPoint (shootSound, transform.position);
 
 		aug = GetComponent<StatsManager> ().GetAugment ();
 
@@ -83,13 +88,11 @@ public class PlayerShooting : MonoBehaviour {
 				Debug.Log ("Applying fire effects");
 				augEffect = Instantiate (fireEffect, clone.transform.position, Quaternion.identity) as GameObject;
 				augEffect.transform.parent = clone.transform;
-			}
-			if (aug.Element == "ice") {
+			}else if (aug.Element == "ice") {
 				Debug.Log ("Applying ice effects");
 				augEffect = Instantiate (iceEffect, clone.transform.position, Quaternion.identity) as GameObject;
 				augEffect.transform.parent = clone.transform;
-			}
-			if (aug.Element == "earth") {
+			}else if (aug.Element == "earth") {
 				Debug.Log ("Applying earth effects");
 				augEffect = Instantiate (earthEffect, clone.transform.position, Quaternion.identity) as GameObject;
 				augEffect.transform.parent = clone.transform;

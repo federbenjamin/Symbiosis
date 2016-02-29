@@ -43,8 +43,7 @@ public class EnemyHealth : MonoBehaviour {
 		if (damageType == "fire" && !onFire) {
 			onFire = true;
 			ongoingDamage = 4;
-		}
-		if (damageType == "ice" && !frozen) {
+		}else if (damageType == "ice" && !frozen) {
 			Freeze ();
 		}
 	}
