@@ -10,7 +10,7 @@ public class RoomController : MonoBehaviour {
 	public List<GameObject> spawnpoints;
 	public List<GameObject> enemies;
 	public int players = 0;
-	public bool playersTogether = false;
+	public static bool playersTogether = false;
 
 	private bool hasTriggered = false;
 	public bool roomCleared = false;
@@ -86,5 +86,9 @@ public class RoomController : MonoBehaviour {
 				enemies.Add (child.gameObject);
 			}
 		}
+	}
+
+	public bool getPlayersTogether() {
+		return playersTogether;
 	}
 }
