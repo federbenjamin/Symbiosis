@@ -56,7 +56,9 @@
      <Compile Include="Assets\Scripts\Pickups.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\PlayerShooting.cs" />
+     <Compile Include="Assets\Scripts\RoomController.cs" />
      <Compile Include="Assets\Scripts\StatsManager.cs" />
+     <Compile Include="Assets\Scripts\SwitchesController.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

@@ -84,6 +84,16 @@ public class PlayerShooting : MonoBehaviour {
 				augEffect = Instantiate (fireEffect, clone.transform.position, Quaternion.identity) as GameObject;
 				augEffect.transform.parent = clone.transform;
 			}
+			if (aug.Element == "ice") {
+				Debug.Log ("Applying ice effects");
+				augEffect = Instantiate (iceEffect, clone.transform.position, Quaternion.identity) as GameObject;
+				augEffect.transform.parent = clone.transform;
+			}
+			if (aug.Element == "earth") {
+				Debug.Log ("Applying earth effects");
+				augEffect = Instantiate (earthEffect, clone.transform.position, Quaternion.identity) as GameObject;
+				augEffect.transform.parent = clone.transform;
+			}
 		}
 
 		//Set when the next bullet can be fired

@@ -32,12 +32,22 @@ public class BulletBehavior : MonoBehaviour {
 
 		if (other.tag == "Enemy") {
 			string damageType = "none";
+			float force = 500;
 			if (augment != null) {
 				Debug.Log ("");
 				//Destroy (collision.gameObject);
 				augment.onHitEffect (other);
 				damageType = augment.Element;
+				if (augment.Element == "earth") {
+					force = 1000;
+				}
 			}
+
+
+			Vector3 bulletDir = this.gameObject.transform.forward;
+			bulletDir.y = 0;
+			other.GetComponent<Rigidbody> ().AddForce (bulletDir.normalized * force);
+			
 			EnemyHealth enemyHP = other.GetComponent<EnemyHealth>();
 			enemyHP.TakeDamage (bulletDamage, damageType);
 		}

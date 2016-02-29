@@ -37,8 +37,7 @@ public class Pickups : MonoBehaviour {
 			playerAugSprite = GameObject.Find (playerPrefix + "Aug");
 
 			//Check which pickup it is and apply effects
-			switch (powerupType) 
-			{
+			switch (powerupType) {
 			case "SpeedUp":
 				playerStats.SetSpeed (10f);
 				break;
@@ -54,34 +53,43 @@ public class Pickups : MonoBehaviour {
 				playerStats.SetAugment (temp);
 				playerAugSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("SpeedUpSprite");
 
-				Debug.Log (playerStats.GetAugment());
+				Debug.Log (playerStats.GetAugment ());
 
 				break;
 			case "GrowAugment":
-				GrowAugment g = new GrowAugment();
+				GrowAugment g = new GrowAugment ();
 				Debug.Log (g);
 				playerStats.SetAugment (g);
 				playerAugSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("BulletSpeedUpSprite");
 
-				Debug.Log (playerStats.GetAugment());
+				Debug.Log (playerStats.GetAugment ());
 
 				break;
 			case "FireAugment":
-				FireAugment f = new FireAugment();
+				FireAugment f = new FireAugment ();
 				Debug.Log (f);
 				playerStats.SetAugment (f);
 				playerAugSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("BulletSpeedUpSprite");
 
-				Debug.Log (playerStats.GetAugment());
+				Debug.Log (playerStats.GetAugment ());
 
 				break;
 			case "IceAugment":
-				IceAugment i = new IceAugment();
+				IceAugment i = new IceAugment ();
 				Debug.Log (i);
 				playerStats.SetAugment (i);
 				playerAugSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("BulletSpeedUpSprite");
 
-				Debug.Log (playerStats.GetAugment());
+				Debug.Log (playerStats.GetAugment ());
+
+				break;
+			case "EarthAugment":
+				EarthAugment e = new EarthAugment ();
+				Debug.Log (e);
+				playerStats.SetAugment (e);
+				playerAugSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("BulletSpeedUpSprite");
+
+				Debug.Log (playerStats.GetAugment ());
 
 				break;
 			}
