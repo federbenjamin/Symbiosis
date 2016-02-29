@@ -24,6 +24,8 @@ public class StatsManager : MonoBehaviour {
 	private Sprite tempSpr;
 	private float nextSwap = 0.0f;
 
+	public string weaponType;
+
 
 	void Awake () {
 		//Get the HealthManager Script
