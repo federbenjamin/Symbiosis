@@ -35,14 +35,18 @@ public class RoomController : MonoBehaviour {
 
 		//Check if player has enetered room and count enemies
 		if (transform.name == "Room11") {
-			if (switchesActive == 2) {
-				roomCleared = true;
+			if (!hasTriggered && switchesActive == 2) {
+				hasTriggered = true;
+				SpawnEnemies();
+			} else if (hasTriggered && !roomCleared) {
+				if (CountEnemies() == 0) {
+					roomCleared = true;
+				}
 			}
 		} else {
 			if (hasTriggered == true) {
 				if (roomCleared == false) {
-					CheckIfEnemies ();
-					if (enemies.Count == 0) {
+					if (CountEnemies() == 0) {
 						roomCleared = true;
 					}
 				}
@@ -62,18 +66,9 @@ public class RoomController : MonoBehaviour {
 				cameraController.MergeCamera ();
 			}
 
-			if (hasTriggered == false) {
+			if (hasTriggered == false && transform.name != "Room11") {
 				hasTriggered = true;
-				foreach (GameObject spawnpoint in spawnpoints) {
-					char enemyType = spawnpoint.name[5];
-					GameObject enemyChild;
-					if (enemyType == '1') {
-						enemyChild = Instantiate (enemy1, spawnpoint.transform.position, spawnpoint.transform.rotation) as GameObject;
-					} else {
-						enemyChild = Instantiate (enemy2, spawnpoint.transform.position, spawnpoint.transform.rotation) as GameObject;
-					}
-					enemyChild.transform.parent = transform;
-				}
+				SpawnEnemies();
 			}
 		}
 	}
@@ -84,14 +79,29 @@ public class RoomController : MonoBehaviour {
 		}
 	}
 
+	void SpawnEnemies() {
+		foreach (GameObject spawnpoint in spawnpoints) {
+			char enemyType = spawnpoint.name[5];
+			GameObject enemyChild;
+			if (enemyType == '1') {
+				enemyChild = Instantiate (enemy1, spawnpoint.transform.position, spawnpoint.transform.rotation) as GameObject;
+			} else {
+				enemyChild = Instantiate (enemy2, spawnpoint.transform.position, spawnpoint.transform.rotation) as GameObject;
+			}
+			enemyChild.transform.parent = transform;
+		}
+	}
+
 	//Add enemies in the current room to the enemies List
-	void CheckIfEnemies() {
+	int CountEnemies() {
+		int total = 0;
 		enemies.Clear();
 		foreach (Transform child in transform) {
 			if (child.tag == "Enemy") {
-				enemies.Add (child.gameObject);
+				total++;
 			}
 		}
+		return total;
 	}
 
 	public bool getPlayersTogether() {
