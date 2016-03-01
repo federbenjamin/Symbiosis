@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class RoomController : MonoBehaviour {
 
 	public GameObject enemy1;
-
+	public GameObject enemy2;
 
 	public List<GameObject> spawnpoints;
 	public List<GameObject> enemies;
@@ -24,7 +24,7 @@ public class RoomController : MonoBehaviour {
 
 		//Add spawnPoints in the room to the array
 		foreach (Transform child in transform) {
-			if (child.tag == "Enemy1Spawn") {
+			if (child.tag == "EnemySpawn") {
 				spawnpoints.Add (child.gameObject);
 			}
 		}
@@ -65,7 +65,13 @@ public class RoomController : MonoBehaviour {
 			if (hasTriggered == false) {
 				hasTriggered = true;
 				foreach (GameObject spawnpoint in spawnpoints) {
-					GameObject enemyChild = Instantiate (enemy1, spawnpoint.transform.position, spawnpoint.transform.rotation) as GameObject;
+					char enemyType = spawnpoint.name[5];
+					GameObject enemyChild;
+					if (enemyType == '1') {
+						enemyChild = Instantiate (enemy1, spawnpoint.transform.position, spawnpoint.transform.rotation) as GameObject;
+					} else {
+						enemyChild = Instantiate (enemy2, spawnpoint.transform.position, spawnpoint.transform.rotation) as GameObject;
+					}
 					enemyChild.transform.parent = transform;
 				}
 			}
