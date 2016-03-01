@@ -38,7 +38,7 @@ public class BulletBehavior : MonoBehaviour {
 				augment.onHitEffect (other);
 				damageType = augment.Element;
 			}
-			EnemyHealth enemyHP = other.GetComponent<EnemyHealth>();
+			EnemyStats enemyHP = other.GetComponent<EnemyStats>();
 			enemyHP.TakeDamage (bulletDamage, damageType);
 		}
 	}

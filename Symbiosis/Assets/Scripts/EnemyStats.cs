@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemy2Health : MonoBehaviour {
+public class EnemyStats : MonoBehaviour {
 
 	public int currentHP;
 	public int maxHP;
+	public int moveSpeed;
 	private bool onFire;
 	private bool frozen;
 	private int ongoingDamage;
@@ -51,7 +52,7 @@ public class Enemy2Health : MonoBehaviour {
 
 	void Freeze(){
 		frozen = true;
-		Enemy2Movement mover = GetComponent<Enemy2Movement> ();
-		mover.moveSpeed = mover.moveSpeed / 2;
+		EnemyBehavior mover = GetComponent<EnemyBehavior> ();
+		mover.setMoveSpeed(moveSpeed / 2);
 	}
 }
