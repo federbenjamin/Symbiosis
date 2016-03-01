@@ -6,7 +6,8 @@ using System.Collections;
 
 public class PlayerShooting : MonoBehaviour {
 
-	public GameObject bullet;
+	public GameObject Reg_bullet;
+	public GameObject RayGun_bullet;
 
 	public Object fireEffect;
 	public Object iceEffect;
@@ -24,6 +25,8 @@ public class PlayerShooting : MonoBehaviour {
 	private float bulletSpeedModifier;
 	private float fireRateModifier;
 
+	public string weaponType;
+	private GameObject cur_bullet;
 
 	void Awake () {
 
@@ -34,6 +37,8 @@ public class PlayerShooting : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		playerPrefix = gameObject.name;
+		weaponType = "Pistol";
+		cur_bullet = Reg_bullet;
 	
 	}
 	
@@ -66,9 +71,24 @@ public class PlayerShooting : MonoBehaviour {
 	void Shoot (Vector3 shootDir) {
 
 		aug = GetComponent<StatsManager> ().GetAugment ();
+		weaponType = playerStats.weaponType;
 
+		switch (weaponType) {
+
+		case "Pistol":
+			baseBulletSpeed = 10f;
+			baseFireRate = 0.5f;
+			cur_bullet = Reg_bullet;
+			break;
+
+		case "RayGun":
+			baseBulletSpeed = 20f;
+			baseFireRate = 0.000000001f;
+			cur_bullet = RayGun_bullet;
+			break;
+		}
 		//Create the bullet and launch it
-		GameObject clone = Instantiate (bullet, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), transform.rotation) as GameObject;
+		GameObject clone = Instantiate (cur_bullet, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), transform.rotation) as GameObject;
 		clone.transform.rotation = Quaternion.LookRotation (shootDir);
 		Physics.IgnoreCollision (clone.GetComponent<Collider> (), GetComponent<Collider> ());
 		clone.GetComponent<Rigidbody> ().velocity = (clone.transform.forward * ((baseBulletSpeed + bulletSpeedModifier)));
