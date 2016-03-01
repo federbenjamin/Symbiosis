@@ -92,7 +92,11 @@ public class Pickups : MonoBehaviour {
 				Debug.Log (playerStats.GetAugment ());
 
 				break;
+			case "RayGun":
+				playerStats.weaponType = powerupType;
+				break;
 			}
+
 
 			//Get rid of the pickup since it has been used
 			Destroy (gameObject);
