@@ -3,6 +3,9 @@ using System.Collections;
 
 public class Enemy2Behavior : EnemyBehavior {
 
+	public GameObject bullet;
+	private float nextFire = 0.0f;
+
 	// Update is called once per frame
 	void Update () {
 	
@@ -36,8 +39,18 @@ public class Enemy2Behavior : EnemyBehavior {
 				moveDirection.x = (-0.5f * collisionNormal.x);
 			}
 			myTransform.position -= moveDirection * (moveSpeed + 2) * Time.deltaTime;
+		} else if (Time.time > nextFire) {
+			Shoot(myTransform.forward);
 		}
 
 	}
 
+	void Shoot(Vector3 shootDir) {
+		GameObject clone = Instantiate (bullet, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), transform.rotation) as GameObject;
+		clone.transform.rotation = Quaternion.LookRotation (shootDir);
+		Physics.IgnoreCollision (clone.GetComponent<Collider> (), GetComponent<Collider> ());
+		clone.GetComponent<Rigidbody> ().velocity = (clone.transform.forward * 20);
+
+		nextFire = Time.time + Random.Range(0.6f, 1.2f);
+	}
 }
