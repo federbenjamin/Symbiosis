@@ -13,7 +13,6 @@ public class Enemy1Behavior : EnemyBehavior {
 		float dist_2 = Vector3.Distance(myTransform.position, p2_Transform.position);
 
 		Transform target;
-
 		if (dist_1 < dist_2) {
 			target = p1_Transform;
 		} else {
