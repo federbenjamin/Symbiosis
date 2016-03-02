@@ -39,9 +39,7 @@ public class HealthManager : MonoBehaviour {
 
 	}
 	void FixedUpdate() {
-		if (Input.GetButton ("Restart") && isGameOver) {
-			SceneManager.LoadScene("Main");
-		}
+		
 	}
 
 	// Update is called once per frame
@@ -92,8 +90,7 @@ public class HealthManager : MonoBehaviour {
 	}
 
 	void GameOver() {
-		GameObject.Find ("GameOver").GetComponent<Image> ().enabled = true;
-		isGameOver = true;
+		SceneManager.LoadScene ("GameOver");
 	}
 }
 

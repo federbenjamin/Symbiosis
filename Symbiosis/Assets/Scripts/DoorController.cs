@@ -7,7 +7,7 @@ public class DoorController : MonoBehaviour {
 
 	private GameObject nextRoom;
 	private GameObject playerCamera;
-	private float cameraOffset = -7.2f;
+	private float cameraOffset = -3f;
 
 	private Vector3 nextRoomPos;
 	private GameObject player1;

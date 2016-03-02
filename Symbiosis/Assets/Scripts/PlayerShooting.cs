@@ -27,6 +27,8 @@ public class PlayerShooting : MonoBehaviour {
 
 	public string weaponType;
 	private GameObject cur_bullet;
+	public GameObject hand;
+	public GameObject RayGun;
 
 	void Awake () {
 
@@ -85,6 +87,8 @@ public class PlayerShooting : MonoBehaviour {
 			baseBulletSpeed = 20f;
 			baseFireRate = 0.000000001f;
 			cur_bullet = RayGun_bullet;
+			GameObject rayGun = Instantiate (RayGun, hand.transform.position, hand.transform.rotation) as GameObject;
+			rayGun.transform.parent = transform;
 			break;
 		}
 		//Create the bullet and launch it

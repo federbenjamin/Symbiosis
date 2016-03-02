@@ -9,6 +9,9 @@ public class RoomController : MonoBehaviour {
 
 	public List<GameObject> spawnpoints;
 	public List<GameObject> enemies;
+	public List<GameObject> doors;
+	public List<GameObject> switches;
+
 	public int players = 0;
 	public bool playersTogether = false;
 
@@ -19,6 +22,9 @@ public class RoomController : MonoBehaviour {
 
 	private CameraController cameraController;
 
+	private Transform doorLeft;
+	private Transform doorRight;
+
 	// Use this for initialization
 	void Start () {
 
@@ -26,6 +32,10 @@ public class RoomController : MonoBehaviour {
 		foreach (Transform child in transform) {
 			if (child.tag == "Enemy1Spawn") {
 				spawnpoints.Add (child.gameObject);
+			} else if (child.tag == "Door") {
+				doors.Add (child.gameObject);
+			} else if (child.tag == "Switch") {
+				switches.Add (child.gameObject);
 			}
 		}
 	}
@@ -37,6 +47,16 @@ public class RoomController : MonoBehaviour {
 		if (transform.name == "Room11") {
 			if (switchesActive == 2) {
 				roomCleared = true;
+				foreach (GameObject door in doors) {
+					doorLeft = door.transform.Find ("LeftDoor");
+					doorLeft.transform.Rotate (0, 0, 120);
+					doorRight = door.transform.Find ("RightDoor");
+					doorRight.transform.Rotate (0, 0, -120);
+				}
+				foreach (GameObject button in switches) {
+					Destroy (button);
+					switchesActive = 0;
+				}
 			}
 		} else {
 			if (hasTriggered == true) {
@@ -44,6 +64,14 @@ public class RoomController : MonoBehaviour {
 					CheckIfEnemies ();
 					if (enemies.Count == 0) {
 						roomCleared = true;
+
+						//Leftdoor +, RightDoor - Rotations in Y
+						foreach (GameObject door in doors) {
+							doorLeft = door.transform.Find ("LeftDoor");
+							doorLeft.transform.Rotate (0, 0, 120);
+							doorRight = door.transform.Find ("RightDoor");
+							doorRight.transform.Rotate (0, 0, -120);
+						}
 					}
 				}
 			}
