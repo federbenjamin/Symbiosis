@@ -29,6 +29,7 @@ GameObject:
   - 54: {fileID: 5483200}
   - 114: {fileID: 11452028}
   - 114: {fileID: 11486170}
+  - 136: {fileID: 13612478}
   m_Layer: 0
   m_Name: Enemy1
   m_TagString: Enemy
@@ -114,8 +115,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 132820}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -114.1, y: 0.68, z: 440}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -52.81667, y: 1.1, z: 432.18085}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children:
   - {fileID: 413478}
   m_Father: {fileID: 0}
@@ -208,8 +209,8 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 8
+  m_Interpolate: 1
+  m_Constraints: 84
   m_CollisionDetection: 0
 --- !u!64 &6452334
 MeshCollider:
@@ -231,10 +232,10 @@ BoxCollider:
   m_GameObject: {fileID: 132820}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 2, z: 1.5}
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Size: {x: 1.3373284, y: 2.2279494, z: 0.74672496}
+  m_Center: {x: -0.007991791, y: 0.58864224, z: -0.37663776}
 --- !u!114 &11452028
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -248,7 +249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHP: 10
   maxHP: 10
-  moveSpeed: 6
+  moveSpeed: 4
 --- !u!114 &11486170
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -260,6 +261,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42b89ba0795454d74b30c91163b3982b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &13612478
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 132820}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.4666341
+  m_Height: 2.22
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.6, z: -0.4}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -269,7 +283,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: currentHP
@@ -281,7 +295,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: moveSpeed
-      value: 6
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Constraints
+      value: 84
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.z
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Interpolate
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

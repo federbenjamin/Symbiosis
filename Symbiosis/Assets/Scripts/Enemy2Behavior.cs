@@ -41,6 +41,10 @@ public class Enemy2Behavior : EnemyBehavior {
 				moveDirection.x = 0;//(-0.5f * collisionNormal.x);
 			}
 			myTransform.position -= moveDirection * (moveSpeed - 1) * Time.deltaTime;
+			
+			if (timer > nextFire) {
+				Shoot(myTransform.forward);
+			}
 		} else if (timer > nextFire) {
 			Shoot(myTransform.forward);
 		}
