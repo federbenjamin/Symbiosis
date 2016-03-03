@@ -12,19 +12,24 @@ public class StatsManager : MonoBehaviour {
 
 	public float invincibilityTime;
 	private HealthManager playersHealth;
+	private PlayerShooting playerShooting;
 	private float nextHit = 0.0f;
 
-	private float swapTrigger;
+	private float AugTrigger;
+	private float WeapTrigger;
 	private string playerPrefix;
 	private string otherPlayerPrefix;
 	private iAugment tempAug;
+	private string tempWeap;
 	private StatsManager otherPlayerStats;
+	private PlayerShooting otherPlayerShooting;
 	private GameObject playerAugSprite;
+	private GameObject playerWeapSprite;
 	private GameObject otherPlayerAugSprite;
+	private GameObject otherPlayerWeapSprite;
 	private Sprite tempSpr;
+	private Sprite tempWeapSpr;
 	private float nextSwap = 0.0f;
-
-	public string weaponType;
 
 
 	void Awake () {
@@ -50,7 +55,10 @@ public class StatsManager : MonoBehaviour {
 		playerAugSprite = GameObject.Find (playerPrefix + "Aug");
 		otherPlayerAugSprite = GameObject.Find (otherPlayerPrefix + "Aug");
 	
-		weaponType = "Pistol";
+		playerShooting = GetComponent<PlayerShooting> ();
+		otherPlayerShooting = GameObject.Find (otherPlayerPrefix).GetComponent<PlayerShooting> ();
+		playerWeapSprite = GameObject.Find (playerPrefix + "Weap");;
+		otherPlayerWeapSprite = GameObject.Find (otherPlayerPrefix + "Weap");;
 	}
 	
 	// Update is called once per frame
@@ -59,9 +67,10 @@ public class StatsManager : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-		swapTrigger = Input.GetAxisRaw ("SwapAug" + playerPrefix);
+		AugTrigger = Input.GetAxisRaw ("SwapAug" + playerPrefix);
+		WeapTrigger = Input.GetAxisRaw ("SwapWeapon" + playerPrefix);
 
-		if (swapTrigger > 0 && Time.time > nextSwap) {
+		if (AugTrigger > 0 && Time.time > nextSwap) {
 			tempAug = GetAugment();
 			tempSpr = playerAugSprite.GetComponent<Image> ().sprite;
 
@@ -70,6 +79,19 @@ public class StatsManager : MonoBehaviour {
 
 			otherPlayerStats.SetAugment (tempAug);
 			otherPlayerAugSprite.GetComponent<Image>().sprite = tempSpr;
+
+			nextSwap = Time.time + 2;
+		}
+
+		if (WeapTrigger > 0 && Time.time > nextSwap) {
+			tempWeap = playerShooting.curWeap;
+			tempWeapSpr = playerWeapSprite.GetComponent<Image> ().sprite;
+
+			playerShooting.ChangeWeapon (otherPlayerShooting.curWeap);
+			playerWeapSprite.GetComponent<Image> ().sprite = otherPlayerWeapSprite.GetComponent<Image> ().sprite;
+		
+			otherPlayerShooting.ChangeWeapon (tempWeap);
+			otherPlayerWeapSprite.GetComponent<Image> ().sprite = tempWeapSpr;
 
 			nextSwap = Time.time + 2;
 		}

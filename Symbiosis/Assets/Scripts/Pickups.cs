@@ -9,6 +9,7 @@ public class Pickups : MonoBehaviour {
 
 	public float rotateSpeed;
 	private StatsManager playerStats;
+	private PlayerShooting playerShooting;
 	private GameObject playerAugSprite;
 	private GameObject playerWeapSprite;
 	private string playerPrefix;
@@ -38,6 +39,7 @@ public class Pickups : MonoBehaviour {
 		//Check if it is the player
 		if (other.tag == "Player") {
 			playerStats = other.GetComponent<StatsManager> ();
+			playerShooting = other.GetComponent<PlayerShooting> ();
 			playerPrefix = other.name;
 			playerAugSprite = GameObject.Find (playerPrefix + "Aug");
 			playerWeapSprite = GameObject.Find (playerPrefix + "Weap");
@@ -92,7 +94,7 @@ public class Pickups : MonoBehaviour {
 
 				break;
 			case "RayGun":
-				playerStats.weaponType = powerupType;
+				playerShooting.ChangeWeapon(powerupType);
 				playerWeapSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("raygunsprite");
 				break;
 			}

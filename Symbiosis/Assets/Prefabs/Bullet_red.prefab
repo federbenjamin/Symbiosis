@@ -122,7 +122,7 @@ CapsuleCollider:
   m_Radius: 1.1
   m_Height: 23
   m_Direction: 2
-  m_Center: {x: 0.045165002, y: 0.064464524, z: 8.513801}
+  m_Center: {x: 0, y: 0, z: 8.513801}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -145,6 +145,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Center.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

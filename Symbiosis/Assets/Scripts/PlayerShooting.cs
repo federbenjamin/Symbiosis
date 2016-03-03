@@ -27,11 +27,11 @@ public class PlayerShooting : MonoBehaviour {
 	private float bulletSpeedModifier;
 	private float fireRateModifier;
 
-	public string weaponType;
 	private GameObject cur_bullet;
 	public GameObject hand;
 	public GameObject RayGun;
 	public GameObject Pistol;
+	public string curWeap;
 
 	void Awake () {
 
@@ -43,6 +43,8 @@ public class PlayerShooting : MonoBehaviour {
 	void Start () {
 		playerPrefix = gameObject.name;
 		cur_bullet = Reg_bullet;
+		ChangeWeapon ("Pistol");
+		curWeap = "Pistol";
 	
 	}
 	
@@ -56,18 +58,22 @@ public class PlayerShooting : MonoBehaviour {
 		//Player Shooting
 		if (Input.GetButton("FireRight" + playerPrefix) && Time.time > nextFire) 
 		{
+			transform.rotation = Quaternion.LookRotation (Vector3.left);
 			Shoot(Vector3.right);
 		}
 		else if (Input.GetButton("FireDown" + playerPrefix) && Time.time > nextFire)
 		{
+			transform.rotation = Quaternion.LookRotation (Vector3.forward);
 			Shoot(Vector3.back);
 		}
 		else if (Input.GetButton("FireUp" + playerPrefix) && Time.time > nextFire) 
 		{
+			transform.rotation = Quaternion.LookRotation (Vector3.back);
 			Shoot(Vector3.forward);
 		}
 		else if (Input.GetButton("FireLeft" + playerPrefix) && Time.time > nextFire) 
 		{
+			transform.rotation = Quaternion.LookRotation (Vector3.right);
 			Shoot(Vector3.left);
 		}
 	}
@@ -75,26 +81,6 @@ public class PlayerShooting : MonoBehaviour {
 	void Shoot (Vector3 shootDir) {
 
 		aug = GetComponent<StatsManager> ().GetAugment ();
-		weaponType = playerStats.weaponType;
-
-		switch (weaponType) {
-
-		case "Pistol":
-			baseBulletSpeed = 10f;
-			baseFireRate = 0.5f;
-			cur_bullet = Reg_bullet;
-			GameObject pistol = Instantiate (Pistol, hand.transform.position, Pistol.transform.rotation) as GameObject;
-			pistol.transform.parent = transform;
-			break;
-
-		case "RayGun":
-			baseBulletSpeed = 20f;
-			baseFireRate = 0.000000001f;
-			cur_bullet = RayGun_bullet;
-			GameObject rayGun = Instantiate (RayGun, hand.transform.position, hand.transform.rotation) as GameObject;
-			rayGun.transform.parent = transform;
-			break;
-		}
 
 		if (aug != null) {
 			if (aug.Element == "fire") {
@@ -105,7 +91,7 @@ public class PlayerShooting : MonoBehaviour {
 		}
 
 		//Create the bullet and launch it
-		GameObject clone = Instantiate (cur_bullet, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), transform.rotation) as GameObject;
+		GameObject clone = Instantiate (cur_bullet, hand.transform.position, hand.transform.rotation) as GameObject;
 		clone.transform.rotation = Quaternion.LookRotation (shootDir);
 		Physics.IgnoreCollision (clone.GetComponent<Collider> (), GetComponent<Collider> ());
 		clone.GetComponent<Rigidbody> ().velocity = (clone.transform.forward * ((baseBulletSpeed + bulletSpeedModifier)));
@@ -125,5 +111,31 @@ public class PlayerShooting : MonoBehaviour {
 
 		//Set when the next bullet can be fired
 		nextFire = Time.time + (baseFireRate + fireRateModifier);
+	}
+
+	public void ChangeWeapon(string weapon) {
+		curWeap = weapon;
+		foreach (Transform child in hand.transform) {
+			Destroy (child.gameObject);
+		}
+			
+		switch (weapon) {
+
+		case "Pistol":
+			baseBulletSpeed = 10f;
+			baseFireRate = 0.5f;
+			cur_bullet = Reg_bullet;
+			GameObject pistol = Instantiate (Pistol, hand.transform.position, hand.transform.rotation) as GameObject;
+			pistol.transform.parent = hand.transform;
+			break;
+
+		case "RayGun":
+			baseBulletSpeed = 20f;
+			baseFireRate = 0.1f;
+			//cur_bullet = RayGun_bullet;
+			GameObject rayGun = Instantiate (RayGun, hand.transform.position, hand.transform.rotation) as GameObject;
+			rayGun.transform.parent = hand.transform;
+			break;
+		}
 	}
 }
