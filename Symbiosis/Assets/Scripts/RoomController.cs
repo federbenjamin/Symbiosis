@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class RoomController : MonoBehaviour {
 
 	public GameObject enemy1;
 	public GameObject enemy2;
+	public GameObject boss;
 
 	public List<GameObject> spawnpoints;
 	public List<GameObject> enemies;
@@ -27,6 +29,7 @@ public class RoomController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		playersTogether = false;
 
 		//Add spawnPoints in the room to the array
 		foreach (Transform child in transform) {
@@ -48,7 +51,13 @@ public class RoomController : MonoBehaviour {
 			if (!hasTriggered && switchesActive == 2) {
 				hasTriggered = true;
 				SpawnEnemies();
-			} else if (hasTriggered && !roomCleared) {
+				foreach (GameObject button in switches) {
+					Destroy (button);
+					switchesActive = 0;
+				}
+			}
+
+			if (hasTriggered && !roomCleared) {
 				if (CountEnemies() == 0) {
 					roomCleared = true;
 					foreach (GameObject door in doors) {
@@ -57,10 +66,7 @@ public class RoomController : MonoBehaviour {
 						doorRight = door.transform.Find ("RightDoor");
 						doorRight.transform.Rotate (0, 0, -120);
 					}
-					foreach (GameObject button in switches) {
-						Destroy (button);
-						switchesActive = 0;
-					}
+					SceneManager.LoadScene ("WinScreen");
 				}
 			}
 		} else {
@@ -113,9 +119,11 @@ public class RoomController : MonoBehaviour {
 			GameObject enemyChild;
 			if (enemyType == '1') {
 				enemyChild = Instantiate (enemy1, spawnpoint.transform.position, spawnpoint.transform.rotation) as GameObject;
-			} else {
+			} else if (enemyType == '2') {
 				enemyChild = Instantiate (enemy2, spawnpoint.transform.position, spawnpoint.transform.rotation) as GameObject;
-				enemyChild.GetComponent<Enemy2Behavior>().addShootingOffset(100);
+				enemyChild.GetComponent<Enemy2Behavior> ().addShootingOffset (100);
+			} else {
+				enemyChild = Instantiate (boss, spawnpoint.transform.position, spawnpoint.transform.rotation) as GameObject;
 			}
 			enemyChild.transform.parent = transform;
 		}

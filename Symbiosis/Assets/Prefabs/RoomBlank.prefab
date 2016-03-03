@@ -4783,12 +4783,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy1: {fileID: 132820, guid: 5ac200f146f126a47847e75dc7a686e9, type: 2}
+  enemy2: {fileID: 132820, guid: 07640413f4b994cdaaaeca679c76a58a, type: 2}
+  boss: {fileID: 158470, guid: eb25818b5225b45819ce3179baba1add, type: 2}
   spawnpoints: []
   enemies: []
   doors: []
   switches: []
   players: 0
-  playersTogether: 0
   roomCleared: 0
   switchesActive: 0
 --- !u!1001 &100100000
@@ -4806,6 +4807,14 @@ Prefab:
       propertyPath: enemy1
       value: 
       objectReference: {fileID: 132820, guid: 5ac200f146f126a47847e75dc7a686e9, type: 2}
+    - target: {fileID: 0}
+      propertyPath: enemy2
+      value: 
+      objectReference: {fileID: 132820, guid: 07640413f4b994cdaaaeca679c76a58a, type: 2}
+    - target: {fileID: 0}
+      propertyPath: boss
+      value: 
+      objectReference: {fileID: 158470, guid: eb25818b5225b45819ce3179baba1add, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 144240}

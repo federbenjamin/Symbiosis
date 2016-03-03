@@ -1,19 +1,29 @@
 fileFormatVersion: 2
-guid: f8686922498cd42dd8a16ff69fa3f4e8
-timeCreated: 1456868291
+guid: 4852b4e7c40d648c583b8128ba79201f
+timeCreated: 1457004075
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: Camera
-    100002: Cube.072
+    100000: bottom
+    100002: fanblades
     100004: //RootNode
-    400000: Camera
-    400002: Cube.072
+    100006: grate
+    400000: bottom
+    400002: fanblades
     400004: //RootNode
-    2300000: Cube.072
-    3300000: Cube.072
-    4300000: Cube.072
+    400006: grate
+    2300000: bottom
+    2300002: fanblades
+    2300004: grate
+    3300000: bottom
+    3300002: fanblades
+    3300004: grate
+    4300000: bottom
+    4300002: fanblades
+    4300004: grate
+    7400000: Default Take
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -72,7 +82,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
