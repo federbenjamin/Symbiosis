@@ -9,9 +9,10 @@ TagManager:
   - Door
   - Bullet
   - Room
-  - Enemy1Spawn
   - Weapon
   - Switch
+  - EnemySpawn
+  - Wall
   layers:
   - Default
   - TransparentFX
