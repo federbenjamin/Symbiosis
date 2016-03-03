@@ -141,10 +141,10 @@ public class StatsManager : MonoBehaviour {
 	}
 
 	//Health
-	void OnCollisionStay(Collision collision) {
-		if (collision.collider.tag == "Enemy" && Time.time > nextHit) {
-			playersHealth.DamageHealth (1);
-			nextHit = Time.time + invincibilityTime;
-		}
-	}
+	// void OnCollisionStay(Collision collision) {
+	// 	if (collision.collider.tag == "Enemy" && Time.time > nextHit) {
+	// 		playersHealth.DamageHealth (1);
+	// 		nextHit = Time.time + invincibilityTime;
+	// 	}
+	// }
 }
