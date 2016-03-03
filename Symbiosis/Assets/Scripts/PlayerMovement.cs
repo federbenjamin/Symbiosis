@@ -43,15 +43,15 @@ public class PlayerMovement : MonoBehaviour {
 		playerMov = new Vector3 (horizMov, 0f, vertMov);
 
 		if (horizMov != 0) {
-			if (horizMov == 1) {
+			if (horizMov > 0) {
 				playerTransform.LookAt(room.transform.Find("LeftSeperator").transform);
-			} else {
+			} else if (horizMov < 0) {
 				playerTransform.LookAt(room.transform.Find("RightSeperator").transform);
 			}
 		} else if (vertMov != 0) {
-			if (vertMov == 1) {
+			if (vertMov > 0) {
 				playerTransform.LookAt(room.transform.Find("BottonSeperator").transform);
-			} else {
+			} else if (vertMov < 0) {
 				playerTransform.LookAt(room.transform.Find("TopSeperator").transform);
 			}
 		}
