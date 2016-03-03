@@ -3,11 +3,14 @@ using System.Collections;
 
 public class Enemy1Behavior : EnemyBehavior {
 
+	private int nextHit = 60;
+
 	// Update is called once per frame
 	void Update () {
 	}
 
 	void FixedUpdate () {
+		timer++;
 		float dist_1 = Vector3.Distance(myTransform.position, p1_Transform.position);
 		float dist_2 = Vector3.Distance(myTransform.position, p2_Transform.position);
 
@@ -22,12 +25,19 @@ public class Enemy1Behavior : EnemyBehavior {
 		}
 		//rotate to look at the player
 		myTransform.LookAt(target);
-		if (targetDist > 0.8f) {
+		if (targetDist > 0.9f) {
 			Vector3 moveDirection = myTransform.forward;
 			moveDirection.y = 0;
 			//move towards the player
 			myTransform.position += moveDirection * moveSpeed * Time.deltaTime;
+		} else if (timer > nextHit) {
+			DamagePlayer();
 		}
 	}
 
+	void DamagePlayer() {
+		playersHealth.DamageHealth (1);
+		timer = 0;
+		nextHit = 60;
+	}
 }

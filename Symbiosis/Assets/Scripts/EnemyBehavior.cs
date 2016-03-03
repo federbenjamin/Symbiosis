@@ -11,6 +11,8 @@ public class EnemyBehavior : MonoBehaviour {
 	protected Transform myTransform;
 	protected Vector3 collisionNormal;
 
+	protected HealthManager playersHealth;
+
 	void Awake () {
 		myTransform = transform;
 	}
@@ -21,6 +23,7 @@ public class EnemyBehavior : MonoBehaviour {
 	}
 
 	protected void setStartVariables() {
+		playersHealth = GameObject.Find("Health").GetComponent<HealthManager> ();
 		moveSpeed = GetComponent<EnemyStats>().moveSpeed;
 		p1_Transform = GameObject.Find ("P1").transform;
 		p2_Transform = GameObject.Find ("P2").transform;
