@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 	
-public class BulletBehavior : MonoBehaviour {
+public class EnemyBulletBehavior : MonoBehaviour {
 
 	public iAugment augment;
 	public int bulletDamage;
@@ -23,14 +23,13 @@ public class BulletBehavior : MonoBehaviour {
 	void OnTriggerEnter(Collider c) {
 		GameObject other = c.gameObject;
 		//If it hits a player don't disappear
-	if (other.tag != "Player" && other.tag != "Bullet" && other.tag != "Room") {
+		if (other.tag != "Enemy" && other.tag != "Bullet" && other.tag != "Room") {
 			Destroy (gameObject);
 		}
 		if (other.tag == "Bullet") {
 			Physics.IgnoreCollision (other.GetComponent<Collider> (), GetComponent<Collider> ());
 		}
-
-		if (other.tag == "Enemy") {
+		if (other.tag == "Player") {
 			string damageType = "none";
 			if (augment != null) {
 				Debug.Log ("");
@@ -38,8 +37,8 @@ public class BulletBehavior : MonoBehaviour {
 				augment.onHitEffect (other);
 				damageType = augment.Element;
 			}
-			EnemyStats enemyHP = other.GetComponent<EnemyStats>();
-			enemyHP.TakeDamage (bulletDamage, damageType);
+			HealthManager playerHP = GameObject.Find ("Health").GetComponent<HealthManager>();
+			playerHP.DamageHealth (bulletDamage);
 		}
 	}
 }

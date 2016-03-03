@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class RoomController : MonoBehaviour {
 
 	public GameObject enemy1;
-
+	public GameObject enemy2;
 
 	public List<GameObject> spawnpoints;
 	public List<GameObject> enemies;
@@ -13,7 +13,7 @@ public class RoomController : MonoBehaviour {
 	public List<GameObject> switches;
 
 	public int players = 0;
-	public bool playersTogether = false;
+	public static bool playersTogether = false;
 
 	private bool hasTriggered = false;
 	public bool roomCleared = false;
@@ -30,7 +30,7 @@ public class RoomController : MonoBehaviour {
 
 		//Add spawnPoints in the room to the array
 		foreach (Transform child in transform) {
-			if (child.tag == "Enemy1Spawn") {
+			if (child.tag == "EnemySpawn") {
 				spawnpoints.Add (child.gameObject);
 			} else if (child.tag == "Door") {
 				doors.Add (child.gameObject);
@@ -45,24 +45,28 @@ public class RoomController : MonoBehaviour {
 
 		//Check if player has enetered room and count enemies
 		if (transform.name == "Room11") {
-			if (switchesActive == 2) {
-				roomCleared = true;
-				foreach (GameObject door in doors) {
-					doorLeft = door.transform.Find ("LeftDoor");
-					doorLeft.transform.Rotate (0, 0, 120);
-					doorRight = door.transform.Find ("RightDoor");
-					doorRight.transform.Rotate (0, 0, -120);
-				}
-				foreach (GameObject button in switches) {
-					Destroy (button);
-					switchesActive = 0;
+			if (!hasTriggered && switchesActive == 2) {
+				hasTriggered = true;
+				SpawnEnemies();
+			} else if (hasTriggered && !roomCleared) {
+				if (CountEnemies() == 0) {
+					roomCleared = true;
+					foreach (GameObject door in doors) {
+						doorLeft = door.transform.Find ("LeftDoor");
+						doorLeft.transform.Rotate (0, 0, 120);
+						doorRight = door.transform.Find ("RightDoor");
+						doorRight.transform.Rotate (0, 0, -120);
+					}
+					foreach (GameObject button in switches) {
+						Destroy (button);
+						switchesActive = 0;
+					}
 				}
 			}
 		} else {
 			if (hasTriggered == true) {
 				if (roomCleared == false) {
-					CheckIfEnemies ();
-					if (enemies.Count == 0) {
+					if (CountEnemies() == 0) {
 						roomCleared = true;
 
 						//Leftdoor +, RightDoor - Rotations in Y
@@ -90,12 +94,9 @@ public class RoomController : MonoBehaviour {
 				cameraController.MergeCamera ();
 			}
 
-			if (hasTriggered == false) {
+			if (hasTriggered == false && transform.name != "Room11") {
 				hasTriggered = true;
-				foreach (GameObject spawnpoint in spawnpoints) {
-					GameObject enemyChild = Instantiate (enemy1, spawnpoint.transform.position, spawnpoint.transform.rotation) as GameObject;
-					enemyChild.transform.parent = transform;
-				}
+				SpawnEnemies();
 			}
 		}
 	}
@@ -106,13 +107,32 @@ public class RoomController : MonoBehaviour {
 		}
 	}
 
+	void SpawnEnemies() {
+		foreach (GameObject spawnpoint in spawnpoints) {
+			char enemyType = spawnpoint.name[5];
+			GameObject enemyChild;
+			if (enemyType == '1') {
+				enemyChild = Instantiate (enemy1, spawnpoint.transform.position, spawnpoint.transform.rotation) as GameObject;
+			} else {
+				enemyChild = Instantiate (enemy2, spawnpoint.transform.position, spawnpoint.transform.rotation) as GameObject;
+			}
+			enemyChild.transform.parent = transform;
+		}
+	}
+
 	//Add enemies in the current room to the enemies List
-	void CheckIfEnemies() {
+	int CountEnemies() {
+		int total = 0;
 		enemies.Clear();
 		foreach (Transform child in transform) {
 			if (child.tag == "Enemy") {
-				enemies.Add (child.gameObject);
+				total++;
 			}
 		}
+		return total;
+	}
+
+	public bool getPlayersTogether() {
+		return playersTogether;
 	}
 }

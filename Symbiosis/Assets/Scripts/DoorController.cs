@@ -34,7 +34,7 @@ public class DoorController : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
 		if (roomController.roomCleared == true) {
 			if (other.tag == "Player") {
-				if (roomController.playersTogether == true) {
+				if (roomController.getPlayersTogether() == true) {
 					player1.transform.position = new Vector3 (nextRoomPos.x - 1, player1.transform.position.y, nextRoomPos.z);
 					player2.transform.position = new Vector3 (nextRoomPos.x + 1, player2.transform.position.y, nextRoomPos.z);
 					playersCamera.transform.position = new Vector3 (nextRoomPos.x, playersCamera.transform.position.y, nextRoomPos.z + cameraOffset); 
