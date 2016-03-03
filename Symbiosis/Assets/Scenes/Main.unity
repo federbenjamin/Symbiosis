@@ -12757,7 +12757,6 @@ Prefab:
       propertyPath: baseSpeed
       value: 5
       objectReference: {fileID: 0}
-<<<<<<< HEAD
     - target: {fileID: 11475880, guid: ab4ae1d60ee954231a42438718256e1b, type: 2}
       propertyPath: Pistol
       value: 
@@ -12770,7 +12769,6 @@ Prefab:
       propertyPath: Red_bullet
       value: 
       objectReference: {fileID: 154562, guid: 4719a506d9a8549afa33863dac9004bc, type: 2}
-=======
     - target: {fileID: 5476600, guid: ab4ae1d60ee954231a42438718256e1b, type: 2}
       propertyPath: m_Constraints
       value: 116
@@ -12779,7 +12777,6 @@ Prefab:
       propertyPath: m_Interpolate
       value: 1
       objectReference: {fileID: 0}
->>>>>>> a8671342ce1aefa362eb8d695709f4e366364b9b
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab4ae1d60ee954231a42438718256e1b, type: 2}
   m_IsPrefabParent: 0
