@@ -10,6 +10,7 @@ public class Pickups : MonoBehaviour {
 	public float rotateSpeed;
 	private StatsManager playerStats;
 	private GameObject playerAugSprite;
+	private GameObject playerWeapSprite;
 	private string playerPrefix;
 	public string powerupType;
 
@@ -35,6 +36,8 @@ public class Pickups : MonoBehaviour {
 			playerStats = other.GetComponent<StatsManager> ();
 			playerPrefix = other.name;
 			playerAugSprite = GameObject.Find (playerPrefix + "Aug");
+			playerWeapSprite = GameObject.Find (playerPrefix + "Weap");
+
 
 			//Check which pickup it is and apply effects
 			switch (powerupType) 
@@ -70,7 +73,7 @@ public class Pickups : MonoBehaviour {
 				FireAugment f = new FireAugment();
 				Debug.Log (f);
 				playerStats.SetAugment (f);
-				playerAugSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("BulletSpeedUpSprite");
+				playerAugSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("redaugmentsprite");
 
 				Debug.Log (playerStats.GetAugment());
 
@@ -79,13 +82,14 @@ public class Pickups : MonoBehaviour {
 				IceAugment i = new IceAugment();
 				Debug.Log (i);
 				playerStats.SetAugment (i);
-				playerAugSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("BulletSpeedUpSprite");
+				playerAugSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("blueaugmentsprite");
 
 				Debug.Log (playerStats.GetAugment());
 
 				break;
 			case "RayGun":
 				playerStats.weaponType = powerupType;
+				playerWeapSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("raygunsprite");
 				break;
 			}
 
