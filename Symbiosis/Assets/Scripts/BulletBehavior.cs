@@ -23,7 +23,7 @@ public class BulletBehavior : MonoBehaviour {
 	void OnTriggerEnter(Collider c) {
 		GameObject other = c.gameObject;
 		//If it hits a player don't disappear
-	if (other.tag != "Player" && other.tag != "Bullet" && other.tag != "Room") {
+		if (other.tag != "Player" && other.tag != "Bullet" && other.tag != "Room") {
 			Destroy (gameObject);
 		}
 		if (other.tag == "Bullet") {
