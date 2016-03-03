@@ -93,6 +93,15 @@ public class Pickups : MonoBehaviour {
 				Debug.Log (playerStats.GetAugment());
 
 				break;
+			case "EarthAugment":
+				EarthAugment e = new EarthAugment ();
+				Debug.Log (e);
+				playerStats.SetAugment (e);
+				playerAugSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("BulletSpeedUpSprite");
+
+				Debug.Log (playerStats.GetAugment ());
+
+				break;
 			case "RayGun":
 				playerShooting.ChangeWeapon(powerupType);
 				playerWeapSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("raygunsprite");
