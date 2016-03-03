@@ -4,7 +4,8 @@ using System.Collections;
 public class Enemy2Behavior : EnemyBehavior {
 
 	public GameObject bullet;
-	private float nextFire = 3.0f;
+	public int bulletVelocity;
+	private int nextFire;
 
 	// Update is called once per frame
 	void Update () {
@@ -12,6 +13,7 @@ public class Enemy2Behavior : EnemyBehavior {
 	}
 
 	void FixedUpdate () {
+		timer++;
 		float dist_1 = Vector3.Distance(myTransform.position, p1_Transform.position);
 		float dist_2 = Vector3.Distance(myTransform.position, p2_Transform.position);
 
@@ -30,16 +32,16 @@ public class Enemy2Behavior : EnemyBehavior {
 		Vector3 moveDirection = myTransform.forward;
 		moveDirection.y = 0;
 		//move towards the player
-		if (targetDist > 6) {
+		if (targetDist > 5) {
 			myTransform.position += moveDirection * moveSpeed * Time.deltaTime;
 		} else if (targetDist < 3) {
 			if (collisionNormal.z == -1 || collisionNormal.z == 1) {
-				moveDirection.z = (-0.5f * collisionNormal.z);
+				moveDirection.z = 0;//(-0.5f * collisionNormal.z);
 			} else if (collisionNormal.x == -1 || collisionNormal.x == 1) {
-				moveDirection.x = (-0.5f * collisionNormal.x);
+				moveDirection.x = 0;//(-0.5f * collisionNormal.x);
 			}
-			myTransform.position -= moveDirection * (moveSpeed - 2) * Time.deltaTime;
-		} else if (Time.time > nextFire) {
+			myTransform.position -= moveDirection * (moveSpeed - 1) * Time.deltaTime;
+		} else if (timer > nextFire) {
 			Shoot(myTransform.forward);
 		}
 
@@ -49,8 +51,13 @@ public class Enemy2Behavior : EnemyBehavior {
 		GameObject clone = Instantiate (bullet, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), transform.rotation) as GameObject;
 		clone.transform.rotation = Quaternion.LookRotation (shootDir);
 		Physics.IgnoreCollision (clone.GetComponent<Collider> (), GetComponent<Collider> ());
-		clone.GetComponent<Rigidbody> ().velocity = (clone.transform.forward * 20);
+		clone.GetComponent<Rigidbody> ().velocity = (clone.transform.forward * bulletVelocity);
 
-		nextFire = Time.time + Random.Range(0.6f, 1.2f);
+		timer = 0;
+		nextFire = Random.Range(50, 60);
+	}
+
+	public void addShootingOffset (int offset) {
+		nextFire = offset;
 	}
 }

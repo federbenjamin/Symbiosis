@@ -7,7 +7,7 @@ public class EnemyBehavior : MonoBehaviour {
 	protected Transform p2_Transform;
 
 	protected int moveSpeed;
-
+	protected int timer;
 	protected Transform myTransform;
 	protected Vector3 collisionNormal;
 
@@ -24,6 +24,7 @@ public class EnemyBehavior : MonoBehaviour {
 		moveSpeed = GetComponent<EnemyStats>().moveSpeed;
 		p1_Transform = GameObject.Find ("P1").transform;
 		p2_Transform = GameObject.Find ("P2").transform;
+		timer = 0;
 	}
 
 	public int getMoveSpeed () {
@@ -35,7 +36,7 @@ public class EnemyBehavior : MonoBehaviour {
 	}
 	
 	void OnCollisionEnter (Collision col) {
-        if (col.gameObject.tag == "Wall" || col.gameObject.tag == "Door") {
+        if (col.gameObject.tag == "Wall" || col.gameObject.tag == "Door" || col.gameObject.tag == "Enemy" || col.gameObject.tag == "Player") {
        		collisionNormal = col.contacts[0].normal;
        	} 
     }

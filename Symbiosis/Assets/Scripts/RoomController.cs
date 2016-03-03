@@ -115,6 +115,7 @@ public class RoomController : MonoBehaviour {
 				enemyChild = Instantiate (enemy1, spawnpoint.transform.position, spawnpoint.transform.rotation) as GameObject;
 			} else {
 				enemyChild = Instantiate (enemy2, spawnpoint.transform.position, spawnpoint.transform.rotation) as GameObject;
+				enemyChild.GetComponent<Enemy2Behavior>().addShootingOffset(100);
 			}
 			enemyChild.transform.parent = transform;
 		}
