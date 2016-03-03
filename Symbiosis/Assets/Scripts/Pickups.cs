@@ -26,7 +26,11 @@ public class Pickups : MonoBehaviour {
 	void FixedUpdate() {
 
 		//Spin the Pickup
-		transform.Rotate(Vector3.up, rotateSpeed * Time.deltaTime);
+		if (powerupType == "SpeedUp" || powerupType == "FireRateUp") {
+			transform.Rotate (0,0,rotateSpeed);
+		} else {
+			transform.Rotate (Vector3.up, rotateSpeed * Time.deltaTime);
+		}
 	}
 
 	void OnTriggerEnter(Collider other) {

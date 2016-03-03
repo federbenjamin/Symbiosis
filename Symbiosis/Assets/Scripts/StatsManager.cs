@@ -49,6 +49,8 @@ public class StatsManager : MonoBehaviour {
 		otherPlayerStats = GameObject.Find (otherPlayerPrefix).GetComponent<StatsManager> ();
 		playerAugSprite = GameObject.Find (playerPrefix + "Aug");
 		otherPlayerAugSprite = GameObject.Find (otherPlayerPrefix + "Aug");
+	
+		weaponType = "Pistol";
 	}
 	
 	// Update is called once per frame

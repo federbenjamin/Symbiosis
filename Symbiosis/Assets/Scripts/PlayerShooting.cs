@@ -8,6 +8,8 @@ public class PlayerShooting : MonoBehaviour {
 
 	public GameObject Reg_bullet;
 	public GameObject RayGun_bullet;
+	public GameObject Red_bullet;
+	public GameObject Blue_bullet;
 
 	public Object fireEffect;
 	public Object iceEffect;
@@ -29,6 +31,7 @@ public class PlayerShooting : MonoBehaviour {
 	private GameObject cur_bullet;
 	public GameObject hand;
 	public GameObject RayGun;
+	public GameObject Pistol;
 
 	void Awake () {
 
@@ -39,7 +42,6 @@ public class PlayerShooting : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		playerPrefix = gameObject.name;
-		weaponType = "Pistol";
 		cur_bullet = Reg_bullet;
 	
 	}
@@ -81,6 +83,8 @@ public class PlayerShooting : MonoBehaviour {
 			baseBulletSpeed = 10f;
 			baseFireRate = 0.5f;
 			cur_bullet = Reg_bullet;
+			GameObject pistol = Instantiate (Pistol, hand.transform.position, Pistol.transform.rotation) as GameObject;
+			pistol.transform.parent = transform;
 			break;
 
 		case "RayGun":
@@ -91,6 +95,15 @@ public class PlayerShooting : MonoBehaviour {
 			rayGun.transform.parent = transform;
 			break;
 		}
+
+		if (aug != null) {
+			if (aug.Element == "fire") {
+				cur_bullet = Red_bullet;
+			} else if (aug.Element == "ice") {
+				cur_bullet = Blue_bullet;
+			}
+		}
+
 		//Create the bullet and launch it
 		GameObject clone = Instantiate (cur_bullet, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), transform.rotation) as GameObject;
 		clone.transform.rotation = Quaternion.LookRotation (shootDir);
@@ -99,16 +112,16 @@ public class PlayerShooting : MonoBehaviour {
 
 		Debug.Log ("Firing augged bullet");
 
-		if (aug != null) {
-			Debug.Log ("Applying on-hit effects");
-			clone.GetComponent<BulletBehavior> ().setAugment(aug);
-			GameObject augEffect;
-			if (aug.Element == "fire") {
-				Debug.Log ("Applying fire effects");
-				augEffect = Instantiate (fireEffect, clone.transform.position, Quaternion.identity) as GameObject;
-				augEffect.transform.parent = clone.transform;
-			}
-		}
+		//if (aug != null) {
+		//	Debug.Log ("Applying on-hit effects");
+		//	clone.GetComponent<BulletBehavior> ().setAugment(aug);
+		//	GameObject augEffect;
+		//	if (aug.Element == "fire") {
+		//		Debug.Log ("Applying fire effects");
+		//		augEffect = Instantiate (fireEffect, clone.transform.position, Quaternion.identity) as GameObject;
+		//		augEffect.transform.parent = clone.transform;
+		//	}
+		//}
 
 		//Set when the next bullet can be fired
 		nextFire = Time.time + (baseFireRate + fireRateModifier);

@@ -331,6 +331,18 @@ Prefab:
       propertyPath: m_Constraints
       value: 116
       objectReference: {fileID: 0}
+    - target: {fileID: 11418008, guid: f2e3b56b04ff240b3a2ca4d444680002, type: 2}
+      propertyPath: Pistol
+      value: 
+      objectReference: {fileID: 192680, guid: 11b0f4ca397664568b40ca5b774de589, type: 2}
+    - target: {fileID: 11418008, guid: f2e3b56b04ff240b3a2ca4d444680002, type: 2}
+      propertyPath: Blue_bullet
+      value: 
+      objectReference: {fileID: 175508, guid: 31fbea12d44e647969792441798b1636, type: 2}
+    - target: {fileID: 11418008, guid: f2e3b56b04ff240b3a2ca4d444680002, type: 2}
+      propertyPath: Red_bullet
+      value: 
+      objectReference: {fileID: 154562, guid: 4719a506d9a8549afa33863dac9004bc, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f2e3b56b04ff240b3a2ca4d444680002, type: 2}
   m_IsPrefabParent: 0
@@ -1506,6 +1518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5271718f702c498cb1e5f0ebb37883f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invincible: 0
   totalHealth: 0
   currentHealth: 0
   fullHeart: {fileID: 21300000, guid: 0ba118e97b6674de3ad516ef766b96e6, type: 3}
@@ -8205,7 +8218,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 414438, guid: e3d8bc79b11ea4271af456f418ac613b, type: 2}
       propertyPath: m_RootOrder
-      value: 20
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 144240, guid: e3d8bc79b11ea4271af456f418ac613b, type: 2}
       propertyPath: m_Name
@@ -12686,6 +12699,18 @@ Prefab:
       propertyPath: baseSpeed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 11475880, guid: ab4ae1d60ee954231a42438718256e1b, type: 2}
+      propertyPath: Pistol
+      value: 
+      objectReference: {fileID: 192680, guid: 11b0f4ca397664568b40ca5b774de589, type: 2}
+    - target: {fileID: 11475880, guid: ab4ae1d60ee954231a42438718256e1b, type: 2}
+      propertyPath: Blue_bullet
+      value: 
+      objectReference: {fileID: 175508, guid: 31fbea12d44e647969792441798b1636, type: 2}
+    - target: {fileID: 11475880, guid: ab4ae1d60ee954231a42438718256e1b, type: 2}
+      propertyPath: Red_bullet
+      value: 
+      objectReference: {fileID: 154562, guid: 4719a506d9a8549afa33863dac9004bc, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab4ae1d60ee954231a42438718256e1b, type: 2}
   m_IsPrefabParent: 0
