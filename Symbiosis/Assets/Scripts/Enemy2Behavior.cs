@@ -4,7 +4,7 @@ using System.Collections;
 public class Enemy2Behavior : EnemyBehavior {
 
 	public GameObject bullet;
-	private float nextFire = 0.0f;
+	private float nextFire = 3.0f;
 
 	// Update is called once per frame
 	void Update () {
