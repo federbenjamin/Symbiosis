@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class HealthManager : MonoBehaviour {
 
+	public bool invincible;
 	public int totalHealth;
 	public int currentHealth;
 
@@ -86,7 +87,9 @@ public class HealthManager : MonoBehaviour {
 
 	//Decrease health of players
 	public void DamageHealth(int damage) {
-		currentHealth -= damage;
+		if (!invincible) {
+			currentHealth -= damage;
+		}
 	}
 
 	void GameOver() {
