@@ -97,7 +97,7 @@ public class Pickups : MonoBehaviour {
 				EarthAugment e = new EarthAugment ();
 				Debug.Log (e);
 				playerStats.SetAugment (e);
-				playerAugSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("BulletSpeedUpSprite");
+				playerAugSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("greenaugmentsprite");
 
 				Debug.Log (playerStats.GetAugment ());
 

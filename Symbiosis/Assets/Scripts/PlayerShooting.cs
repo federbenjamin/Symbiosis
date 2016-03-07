@@ -10,6 +10,7 @@ public class PlayerShooting : MonoBehaviour {
 	public GameObject RayGun_bullet;
 	public GameObject Red_bullet;
 	public GameObject Blue_bullet;
+	public GameObject Green_bullet;
 
 	public Object fireEffect;
 	public Object iceEffect;
@@ -45,7 +46,6 @@ public class PlayerShooting : MonoBehaviour {
 		cur_bullet = Reg_bullet;
 		ChangeWeapon ("Pistol");
 		curWeap = "Pistol";
-	
 	}
 	
 	// Update is called once per frame
@@ -87,6 +87,8 @@ public class PlayerShooting : MonoBehaviour {
 				cur_bullet = Red_bullet;
 			} else if (aug.Element == "ice") {
 				cur_bullet = Blue_bullet;
+			} else if (aug.Element == "earth") {
+				cur_bullet = Green_bullet;
 			}
 		}
 
@@ -98,16 +100,17 @@ public class PlayerShooting : MonoBehaviour {
 
 		Debug.Log ("Firing augged bullet");
 
-		//if (aug != null) {
-		//	Debug.Log ("Applying on-hit effects");
-		//	clone.GetComponent<BulletBehavior> ().setAugment(aug);
-		//	GameObject augEffect;
-		//	if (aug.Element == "fire") {
-		//		Debug.Log ("Applying fire effects");
-		//		augEffect = Instantiate (fireEffect, clone.transform.position, Quaternion.identity) as GameObject;
-		//		augEffect.transform.parent = clone.transform;
-		//	}
-		//}
+
+		if (aug != null) {
+			Debug.Log ("Applying on-hit effects");
+			clone.GetComponent<BulletBehavior> ().setAugment(aug);
+			GameObject augEffect;
+			if (aug.Element == "fire") {
+				Debug.Log ("Applying fire effects");
+				augEffect = Instantiate (fireEffect, clone.transform.position, Quaternion.identity) as GameObject;
+				augEffect.transform.parent = clone.transform;
+			}
+		}
 
 		//Set when the next bullet can be fired
 		nextFire = Time.time + (baseFireRate + fireRateModifier);
