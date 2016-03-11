@@ -31,12 +31,15 @@ public class CameraController : MonoBehaviour {
 			playersMiddle = (player.transform.position.x + player2.transform.position.x) * 0.5f;
 			if ((playersMiddle - transform.position.x >= 1) || (playersMiddle - transform.position.x <= -1)) {
 				newCameraPos = new Vector3 (playersMiddle, transform.position.y, transform.position.z);
-				transform.position = Vector3.Lerp (transform.position, newCameraPos, 4.5f * Time.deltaTime);
+				transform.position = Vector3.Lerp (transform.position, newCameraPos, 1f * Time.deltaTime);
 			}
 		} else {
-			if ((player.transform.position.x - transform.position.x >= 1) || (player.transform.position.x - transform.position.x <= -1)) {
+			if ((player.transform.position.x - transform.position.x >= 2) || (player.transform.position.x - transform.position.x <= -2)) {
 				newCameraPos = new Vector3 (player.transform.position.x, transform.position.y, transform.position.z);
-				transform.position = Vector3.Lerp (transform.position, newCameraPos, 4.5f * Time.deltaTime);
+				transform.position = Vector3.Lerp (transform.position, newCameraPos, 2f * Time.deltaTime);
+			} else if ((player.transform.position.x - transform.position.x >= 1) || (player.transform.position.x - transform.position.x <= -1)) {
+				newCameraPos = new Vector3 (player.transform.position.x, transform.position.y, transform.position.z);
+				transform.position = Vector3.Lerp (transform.position, newCameraPos, 1f * Time.deltaTime);
 			} 
 		}
 	}

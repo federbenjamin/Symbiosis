@@ -24,7 +24,9 @@ public class Enemy1Behavior : EnemyBehavior {
 			targetDist = dist_2;
 		}
 		//rotate to look at the player
-		myTransform.LookAt(target);
+		Vector3 point = target.position;
+		point.y = myTransform.position.y;
+		myTransform.LookAt(point);
 		if (targetDist > 0.9f) {
 			enemyAnimator.SetTrigger ("Walking");
 			Vector3 moveDirection = myTransform.forward;

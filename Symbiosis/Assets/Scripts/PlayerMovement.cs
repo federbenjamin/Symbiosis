@@ -91,7 +91,7 @@ public class PlayerMovement : MonoBehaviour {
 		speedModifier = playerStats.GetSpeed ();
 
 		//Apply Movement
-		playerRB.AddForce (playerMov * ((baseSpeed + speedModifier) * 10) * Time.deltaTime, ForceMode.Impulse);
+		playerRB.AddForce (playerMov * ((baseSpeed + speedModifier) * 10) * Time.deltaTime, ForceMode.VelocityChange);
 
 	}
 

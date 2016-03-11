@@ -27,7 +27,9 @@ public class Enemy2Behavior : EnemyBehavior {
 			targetDist = dist_2;
 		}
 		//rotate to look at the player
-		myTransform.LookAt(target);
+		Vector3 point = target.position;
+		point.y = myTransform.position.y;
+		myTransform.LookAt(point);
 
 		Vector3 moveDirection = myTransform.forward;
 		moveDirection.y = 0;

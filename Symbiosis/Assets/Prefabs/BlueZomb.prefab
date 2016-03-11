@@ -588,7 +588,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 84
   m_CollisionDetection: 0
 --- !u!95 &9505284
 Animator:
@@ -621,6 +621,7 @@ MonoBehaviour:
   currentHP: 10
   maxHP: 10
   moveSpeed: 4
+  enemyAnimator: {fileID: 0}
 --- !u!114 &11467938
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -632,6 +633,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42b89ba0795454d74b30c91163b3982b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyAnimator: {fileID: 0}
 --- !u!136 &13600494
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -1130,7 +1132,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Constraints
+      value: 84
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 152012}
