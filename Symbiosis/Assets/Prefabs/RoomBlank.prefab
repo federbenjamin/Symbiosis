@@ -4788,6 +4788,7 @@ MonoBehaviour:
   greenZomb: {fileID: 153214, guid: f12a0cc9eae224901b5552f54c515036, type: 2}
   redZomb: {fileID: 156500, guid: c2dc0b28ef434463a80b2fc059674cf3, type: 2}
   blueZomb: {fileID: 152012, guid: bc42400eb5a4d421590601d7b6677ce9, type: 2}
+  blueSpecial: {fileID: 174620, guid: bdc6f8944f0404921bf486bf24110123, type: 2}
   spawnpoints: []
   enemies: []
   doors: []
@@ -4830,6 +4831,10 @@ Prefab:
       propertyPath: blueZomb
       value: 
       objectReference: {fileID: 152012, guid: bc42400eb5a4d421590601d7b6677ce9, type: 2}
+    - target: {fileID: 0}
+      propertyPath: blueSpecial
+      value: 
+      objectReference: {fileID: 174620, guid: bdc6f8944f0404921bf486bf24110123, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 144240}

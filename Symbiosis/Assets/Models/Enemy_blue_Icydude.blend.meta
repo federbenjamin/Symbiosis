@@ -1,0 +1,646 @@
+fileFormatVersion: 2
+guid: 5b729550942884cca925a9a34ca99da3
+timeCreated: 1457733021
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Arm_True_L
+    100002: Arm_True_R
+    100004: Armature_001
+    100006: BlueLogo
+    100008: Body
+    100010: Bone
+    100012: Bone_001
+    100014: Bone_002
+    100016: Bone_003
+    100018: Bone_004
+    100020: Bone_005
+    100022: Cube
+    100024: Cube_001
+    100026: Cube_002
+    100028: Cube_003
+    100030: Cube_004
+    100032: Cylinder_001
+    100034: //RootNode
+    100036: Eyes
+    100038: Head
+    100040: Jacket1
+    100042: Leg_L
+    100044: Leg_R
+    100046: Mouth
+    100048: Mouth_001
+    100050: TrueJacket
+    400000: Arm_True_L
+    400002: Arm_True_R
+    400004: Armature_001
+    400006: BlueLogo
+    400008: Body
+    400010: Bone
+    400012: Bone_001
+    400014: Bone_002
+    400016: Bone_003
+    400018: Bone_004
+    400020: Bone_005
+    400022: Cube
+    400024: Cube_001
+    400026: Cube_002
+    400028: Cube_003
+    400030: Cube_004
+    400032: Cylinder_001
+    400034: //RootNode
+    400036: Eyes
+    400038: Head
+    400040: Jacket1
+    400042: Leg_L
+    400044: Leg_R
+    400046: Mouth
+    400048: Mouth_001
+    400050: TrueJacket
+    4300000: Cube
+    4300002: Cube_003
+    4300004: Cylinder_001
+    4300006: Cube_001
+    4300008: Cube_002
+    4300010: Cube_004
+    4300012: Mouth_001
+    4300014: Leg_R
+    4300016: Jacket1
+    4300018: Body
+    4300020: Eyes
+    4300022: Mouth
+    4300024: Head
+    4300026: Leg_L
+    4300028: BlueLogo
+    4300030: Arm_True_L
+    4300032: Arm_True_R
+    4300034: TrueJacket
+    7400000: Default Take
+    7400002: Player_Death
+    7400004: Player_Shoot1
+    7400006: Player_Shoot2
+    7400008: Player_Walk
+    7400010: Player_Walk2
+    9500000: //RootNode
+    13700000: Arm_True_L
+    13700002: Arm_True_R
+    13700004: BlueLogo
+    13700006: Body
+    13700008: Cube
+    13700010: Cube_001
+    13700012: Cube_002
+    13700014: Cube_003
+    13700016: Cube_004
+    13700018: Cylinder_001
+    13700020: Eyes
+    13700022: Head
+    13700024: Jacket1
+    13700026: Leg_L
+    13700028: Leg_R
+    13700030: Mouth
+    13700032: Mouth_001
+    13700034: TrueJacket
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Default Take
+      takeName: Default Take
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arm_True_L
+        weight: 1
+      - path: Arm_True_R
+        weight: 1
+      - path: Armature_001
+        weight: 1
+      - path: Armature_001/Bone
+        weight: 1
+      - path: Armature_001/Bone_001
+        weight: 1
+      - path: Armature_001/Bone_002
+        weight: 1
+      - path: Armature_001/Bone_003
+        weight: 1
+      - path: Armature_001/Bone_004
+        weight: 1
+      - path: Armature_001/Bone_005
+        weight: 1
+      - path: BlueLogo
+        weight: 1
+      - path: Body
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Cube_001
+        weight: 1
+      - path: Cube_002
+        weight: 1
+      - path: Cube_003
+        weight: 1
+      - path: Cube_004
+        weight: 1
+      - path: Cylinder_001
+        weight: 1
+      - path: Eyes
+        weight: 1
+      - path: Head
+        weight: 1
+      - path: Jacket1
+        weight: 1
+      - path: Leg_L
+        weight: 1
+      - path: Leg_R
+        weight: 1
+      - path: Mouth
+        weight: 1
+      - path: Mouth_001
+        weight: 1
+      - path: TrueJacket
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Death
+      takeName: Player_Death
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arm_True_L
+        weight: 1
+      - path: Arm_True_R
+        weight: 1
+      - path: Armature_001
+        weight: 1
+      - path: Armature_001/Bone
+        weight: 1
+      - path: Armature_001/Bone_001
+        weight: 1
+      - path: Armature_001/Bone_002
+        weight: 1
+      - path: Armature_001/Bone_003
+        weight: 1
+      - path: Armature_001/Bone_004
+        weight: 1
+      - path: Armature_001/Bone_005
+        weight: 1
+      - path: BlueLogo
+        weight: 1
+      - path: Body
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Cube_001
+        weight: 1
+      - path: Cube_002
+        weight: 1
+      - path: Cube_003
+        weight: 1
+      - path: Cube_004
+        weight: 1
+      - path: Cylinder_001
+        weight: 1
+      - path: Eyes
+        weight: 1
+      - path: Head
+        weight: 1
+      - path: Jacket1
+        weight: 1
+      - path: Leg_L
+        weight: 1
+      - path: Leg_R
+        weight: 1
+      - path: Mouth
+        weight: 1
+      - path: Mouth_001
+        weight: 1
+      - path: TrueJacket
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Shoot1
+      takeName: Player_Shoot1
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arm_True_L
+        weight: 1
+      - path: Arm_True_R
+        weight: 1
+      - path: Armature_001
+        weight: 1
+      - path: Armature_001/Bone
+        weight: 1
+      - path: Armature_001/Bone_001
+        weight: 1
+      - path: Armature_001/Bone_002
+        weight: 1
+      - path: Armature_001/Bone_003
+        weight: 1
+      - path: Armature_001/Bone_004
+        weight: 1
+      - path: Armature_001/Bone_005
+        weight: 1
+      - path: BlueLogo
+        weight: 1
+      - path: Body
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Cube_001
+        weight: 1
+      - path: Cube_002
+        weight: 1
+      - path: Cube_003
+        weight: 1
+      - path: Cube_004
+        weight: 1
+      - path: Cylinder_001
+        weight: 1
+      - path: Eyes
+        weight: 1
+      - path: Head
+        weight: 1
+      - path: Jacket1
+        weight: 1
+      - path: Leg_L
+        weight: 1
+      - path: Leg_R
+        weight: 1
+      - path: Mouth
+        weight: 1
+      - path: Mouth_001
+        weight: 1
+      - path: TrueJacket
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Shoot2
+      takeName: Player_Shoot2
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arm_True_L
+        weight: 1
+      - path: Arm_True_R
+        weight: 1
+      - path: Armature_001
+        weight: 1
+      - path: Armature_001/Bone
+        weight: 1
+      - path: Armature_001/Bone_001
+        weight: 1
+      - path: Armature_001/Bone_002
+        weight: 1
+      - path: Armature_001/Bone_003
+        weight: 1
+      - path: Armature_001/Bone_004
+        weight: 1
+      - path: Armature_001/Bone_005
+        weight: 1
+      - path: BlueLogo
+        weight: 1
+      - path: Body
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Cube_001
+        weight: 1
+      - path: Cube_002
+        weight: 1
+      - path: Cube_003
+        weight: 1
+      - path: Cube_004
+        weight: 1
+      - path: Cylinder_001
+        weight: 1
+      - path: Eyes
+        weight: 1
+      - path: Head
+        weight: 1
+      - path: Jacket1
+        weight: 1
+      - path: Leg_L
+        weight: 1
+      - path: Leg_R
+        weight: 1
+      - path: Mouth
+        weight: 1
+      - path: Mouth_001
+        weight: 1
+      - path: TrueJacket
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Walk
+      takeName: Player_Walk
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arm_True_L
+        weight: 1
+      - path: Arm_True_R
+        weight: 1
+      - path: Armature_001
+        weight: 1
+      - path: Armature_001/Bone
+        weight: 1
+      - path: Armature_001/Bone_001
+        weight: 1
+      - path: Armature_001/Bone_002
+        weight: 1
+      - path: Armature_001/Bone_003
+        weight: 1
+      - path: Armature_001/Bone_004
+        weight: 1
+      - path: Armature_001/Bone_005
+        weight: 1
+      - path: BlueLogo
+        weight: 1
+      - path: Body
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Cube_001
+        weight: 1
+      - path: Cube_002
+        weight: 1
+      - path: Cube_003
+        weight: 1
+      - path: Cube_004
+        weight: 1
+      - path: Cylinder_001
+        weight: 1
+      - path: Eyes
+        weight: 1
+      - path: Head
+        weight: 1
+      - path: Jacket1
+        weight: 1
+      - path: Leg_L
+        weight: 1
+      - path: Leg_R
+        weight: 1
+      - path: Mouth
+        weight: 1
+      - path: Mouth_001
+        weight: 1
+      - path: TrueJacket
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Walk2
+      takeName: Player_Walk2
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arm_True_L
+        weight: 1
+      - path: Arm_True_R
+        weight: 1
+      - path: Armature_001
+        weight: 1
+      - path: Armature_001/Bone
+        weight: 1
+      - path: Armature_001/Bone_001
+        weight: 1
+      - path: Armature_001/Bone_002
+        weight: 1
+      - path: Armature_001/Bone_003
+        weight: 1
+      - path: Armature_001/Bone_004
+        weight: 1
+      - path: Armature_001/Bone_005
+        weight: 1
+      - path: BlueLogo
+        weight: 1
+      - path: Body
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Cube_001
+        weight: 1
+      - path: Cube_002
+        weight: 1
+      - path: Cube_003
+        weight: 1
+      - path: Cube_004
+        weight: 1
+      - path: Cylinder_001
+        weight: 1
+      - path: Eyes
+        weight: 1
+      - path: Head
+        weight: 1
+      - path: Jacket1
+        weight: 1
+      - path: Leg_L
+        weight: 1
+      - path: Leg_R
+        weight: 1
+      - path: Mouth
+        weight: 1
+      - path: Mouth_001
+        weight: 1
+      - path: TrueJacket
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
