@@ -12,6 +12,9 @@ public class PlayerShooting : MonoBehaviour {
 	public GameObject Blue_bullet;
 	public GameObject Green_bullet;
 
+	public GameObject rayGunTip;
+	public LineRenderer line;
+
 	public Object fireEffect;
 	public Object iceEffect;
 	public Object earthEffect;
@@ -61,25 +64,38 @@ public class PlayerShooting : MonoBehaviour {
 			Input.GetButton ("FireLeft" + playerPrefix));
 		
 		//Player Shooting
-		if (Input.GetButton("FireRight" + playerPrefix) && Time.time > nextFire) 
-		{
-			transform.rotation = Quaternion.LookRotation (Vector3.left);
-			Shoot(Vector3.right);
-		}
-		else if (Input.GetButton("FireDown" + playerPrefix) && Time.time > nextFire)
-		{
-			transform.rotation = Quaternion.LookRotation (Vector3.forward);
-			Shoot(Vector3.back);
-		}
-		else if (Input.GetButton("FireUp" + playerPrefix) && Time.time > nextFire) 
-		{
-			transform.rotation = Quaternion.LookRotation (Vector3.back);
-			Shoot(Vector3.forward);
-		}
-		else if (Input.GetButton("FireLeft" + playerPrefix) && Time.time > nextFire) 
-		{
-			transform.rotation = Quaternion.LookRotation (Vector3.right);
-			Shoot(Vector3.left);
+		if (curWeap == "RayGun") {
+			if (Input.GetButton ("FireRight" + playerPrefix)) {
+				transform.rotation = Quaternion.LookRotation (Vector3.left);
+				StopCoroutine ("FireLaser");
+				StartCoroutine ("FireLaser");
+			} else if (Input.GetButton ("FireDown" + playerPrefix)) {
+				transform.rotation = Quaternion.LookRotation (Vector3.forward);
+				StopCoroutine ("FireLaser");
+				StartCoroutine ("FireLaser");
+			} else if (Input.GetButton ("FireUp" + playerPrefix)) {
+				transform.rotation = Quaternion.LookRotation (Vector3.back);
+				StopCoroutine ("FireLaser");
+				StartCoroutine ("FireLaser");
+			} else if (Input.GetButton ("FireLeft" + playerPrefix)) {
+				transform.rotation = Quaternion.LookRotation (Vector3.right);
+				StopCoroutine ("FireLaser");
+				StartCoroutine ("FireLaser");
+			}
+		} else {
+			if (Input.GetButton ("FireRight" + playerPrefix) && Time.time > nextFire) {
+				transform.rotation = Quaternion.LookRotation (Vector3.left);
+				Shoot (Vector3.right);
+			} else if (Input.GetButton ("FireDown" + playerPrefix) && Time.time > nextFire) {
+				transform.rotation = Quaternion.LookRotation (Vector3.forward);
+				Shoot (Vector3.back);
+			} else if (Input.GetButton ("FireUp" + playerPrefix) && Time.time > nextFire) {
+				transform.rotation = Quaternion.LookRotation (Vector3.back);
+				Shoot (Vector3.forward);
+			} else if (Input.GetButton ("FireLeft" + playerPrefix) && Time.time > nextFire) {
+				transform.rotation = Quaternion.LookRotation (Vector3.right);
+				Shoot (Vector3.left);
+			}
 		}
 	}
 
@@ -103,19 +119,19 @@ public class PlayerShooting : MonoBehaviour {
 		Physics.IgnoreCollision (clone.GetComponent<Collider> (), GetComponent<Collider> ());
 		clone.GetComponent<Rigidbody> ().velocity = (clone.transform.forward * ((baseBulletSpeed + bulletSpeedModifier)));
 
-		Debug.Log ("Firing augged bullet");
-
-
-		if (aug != null) {
-			Debug.Log ("Applying on-hit effects");
-			clone.GetComponent<BulletBehavior> ().setAugment(aug);
-			GameObject augEffect;
-			if (aug.Element == "fire") {
-				Debug.Log ("Applying fire effects");
-				augEffect = Instantiate (fireEffect, clone.transform.position, Quaternion.identity) as GameObject;
-				augEffect.transform.parent = clone.transform;
-			}
-		}
+//		Debug.Log ("Firing augged bullet");
+//
+//
+//		if (aug != null) {
+//			Debug.Log ("Applying on-hit effects");
+//			clone.GetComponent<BulletBehavior> ().setAugment(aug);
+//			GameObject augEffect;
+//			if (aug.Element == "fire") {
+//				Debug.Log ("Applying fire effects");
+//				augEffect = Instantiate (fireEffect, clone.transform.position, Quaternion.identity) as GameObject;
+//				augEffect.transform.parent = clone.transform;
+//			}
+//		}
 
 		//Set when the next bullet can be fired
 		nextFire = Time.time + (baseFireRate + fireRateModifier);
@@ -140,10 +156,52 @@ public class PlayerShooting : MonoBehaviour {
 		case "RayGun":
 			baseBulletSpeed = 20f;
 			baseFireRate = 0.1f;
-			//cur_bullet = RayGun_bullet;
 			GameObject rayGun = Instantiate (RayGun, hand.transform.position, hand.transform.rotation) as GameObject;
 			rayGun.transform.parent = hand.transform;
+			rayGunTip = rayGun.transform.GetChild (0).gameObject;
+			line = rayGunTip.GetComponent<LineRenderer>();
+			line.enabled = false;
 			break;
 		}
+	}
+
+	IEnumerator FireLaser() {
+		line.enabled = true;
+
+		while ((Input.GetButton ("FireRight" + playerPrefix)) ||
+		      (Input.GetButton ("FireDown" + playerPrefix)) ||
+		      (Input.GetButton ("FireUp" + playerPrefix)) ||
+		      (Input.GetButton ("FireLeft" + playerPrefix))) 
+		{
+			Ray ray = new Ray (rayGunTip.transform.position, transform.forward * -1);
+			RaycastHit hit;
+
+			line.SetPosition (0, ray.origin);
+
+			if (Physics.Raycast(ray, out hit, 50)) {
+				line.SetPosition(1, hit.point);
+				if (hit.transform.tag == "Enemy") {
+					string damageType = "none";
+					float force = 50;
+					if (aug != null) {
+						aug.onHitEffect (hit.transform.gameObject);
+						damageType = aug.Element;
+						if (aug.Element == "earth") {
+							force = 100;
+						}
+					}
+
+					//Add force to enemy
+					hit.rigidbody.AddForceAtPosition(transform.forward * force * -1, hit.point);
+					EnemyStats enemyHP = hit.transform.GetComponent<EnemyStats> ();
+					enemyHP.TakeDamage (1, damageType);
+				}
+			} else {
+				line.SetPosition (1, ray.GetPoint (50));
+			}
+
+			yield return null;
+		}
+		line.enabled = false;
 	}
 }

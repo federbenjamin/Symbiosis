@@ -66,10 +66,6 @@ public class RoomController : MonoBehaviour {
 					foreach (GameObject door in doors) {
 						Animator doorAnimator = door.GetComponent<Animator> ();
 						doorAnimator.SetTrigger ("Open");
-					//	doorLeft = door.transform.Find ("LeftDoor");
-					//	doorLeft.transform.Rotate (0, 0, 120);
-					//	doorRight = door.transform.Find ("RightDoor");
-					//	doorRight.transform.Rotate (0, 0, -120);
 					}
 					SceneManager.LoadScene ("WinScreen");
 				}
@@ -84,10 +80,6 @@ public class RoomController : MonoBehaviour {
 						foreach (GameObject door in doors) {
 							Animator doorAnimator = door.GetComponent<Animator> ();
 							doorAnimator.SetTrigger ("Open");
-						//	doorLeft = door.transform.Find ("LeftDoor");
-						//	doorLeft.transform.Rotate (0, 0, 120);
-						//	doorRight = door.transform.Find ("RightDoor");
-						//	doorRight.transform.Rotate (0, 0, -120);
 						}
 					}
 				}
