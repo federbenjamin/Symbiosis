@@ -64,10 +64,12 @@ public class RoomController : MonoBehaviour {
 				if (CountEnemies() == 0) {
 					roomCleared = true;
 					foreach (GameObject door in doors) {
-						doorLeft = door.transform.Find ("LeftDoor");
-						doorLeft.transform.Rotate (0, 0, 120);
-						doorRight = door.transform.Find ("RightDoor");
-						doorRight.transform.Rotate (0, 0, -120);
+						Animator doorAnimator = door.GetComponent<Animator> ();
+						doorAnimator.SetTrigger ("Open");
+					//	doorLeft = door.transform.Find ("LeftDoor");
+					//	doorLeft.transform.Rotate (0, 0, 120);
+					//	doorRight = door.transform.Find ("RightDoor");
+					//	doorRight.transform.Rotate (0, 0, -120);
 					}
 					SceneManager.LoadScene ("WinScreen");
 				}
@@ -80,10 +82,12 @@ public class RoomController : MonoBehaviour {
 
 						//Leftdoor +, RightDoor - Rotations in Y
 						foreach (GameObject door in doors) {
-							doorLeft = door.transform.Find ("LeftDoor");
-							doorLeft.transform.Rotate (0, 0, 120);
-							doorRight = door.transform.Find ("RightDoor");
-							doorRight.transform.Rotate (0, 0, -120);
+							Animator doorAnimator = door.GetComponent<Animator> ();
+							doorAnimator.SetTrigger ("Open");
+						//	doorLeft = door.transform.Find ("LeftDoor");
+						//	doorLeft.transform.Rotate (0, 0, 120);
+						//	doorRight = door.transform.Find ("RightDoor");
+						//	doorRight.transform.Rotate (0, 0, -120);
 						}
 					}
 				}
