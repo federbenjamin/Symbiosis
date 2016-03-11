@@ -1,0 +1,502 @@
+fileFormatVersion: 2
+guid: 7f14e6d9bf65343108312875b209ebda
+timeCreated: 1457664308
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Arm_True_L
+    100002: Arm_True_R
+    100004: Armature_001
+    100006: Body
+    100008: Bone
+    100010: Bone_001
+    100012: Bone_002
+    100014: Bone_003
+    100016: Bone_004
+    100018: Bone_005
+    100020: Eyes
+    100022: Head
+    100024: Jacket_True
+    100026: Leg_L
+    100028: Leg_R
+    100030: Mouth
+    100032: //RootNode
+    400000: Arm_True_L
+    400002: Arm_True_R
+    400004: Armature_001
+    400006: Body
+    400008: Bone
+    400010: Bone_001
+    400012: Bone_002
+    400014: Bone_003
+    400016: Bone_004
+    400018: Bone_005
+    400020: Eyes
+    400022: Head
+    400024: Jacket_True
+    400026: Leg_L
+    400028: Leg_R
+    400030: Mouth
+    400032: //RootNode
+    4300000: Arm_True_R
+    4300002: Arm_True_L
+    4300004: Leg_R
+    4300006: Jacket_True
+    4300008: Body
+    4300010: Eyes
+    4300012: Mouth
+    4300014: Head
+    4300016: Leg_L
+    7400000: Default Take
+    7400002: Player_Death
+    7400004: Player_Idle
+    7400006: Player_Shoot
+    7400008: Player_Walk
+    7400010: Player_Walk2
+    9500000: //RootNode
+    13700000: Arm_True_L
+    13700002: Arm_True_R
+    13700004: Body
+    13700006: Eyes
+    13700008: Head
+    13700010: Jacket_True
+    13700012: Leg_L
+    13700014: Leg_R
+    13700016: Mouth
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Default Take
+      takeName: Default Take
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arm_True_L
+        weight: 1
+      - path: Arm_True_R
+        weight: 1
+      - path: Armature_001
+        weight: 1
+      - path: Armature_001/Bone
+        weight: 1
+      - path: Armature_001/Bone_001
+        weight: 1
+      - path: Armature_001/Bone_002
+        weight: 1
+      - path: Armature_001/Bone_003
+        weight: 1
+      - path: Armature_001/Bone_004
+        weight: 1
+      - path: Armature_001/Bone_005
+        weight: 1
+      - path: Body
+        weight: 1
+      - path: Eyes
+        weight: 1
+      - path: Head
+        weight: 1
+      - path: Jacket_True
+        weight: 1
+      - path: Leg_L
+        weight: 1
+      - path: Leg_R
+        weight: 1
+      - path: Mouth
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Death
+      takeName: Player_Death
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arm_True_L
+        weight: 1
+      - path: Arm_True_R
+        weight: 1
+      - path: Armature_001
+        weight: 1
+      - path: Armature_001/Bone
+        weight: 1
+      - path: Armature_001/Bone_001
+        weight: 1
+      - path: Armature_001/Bone_002
+        weight: 1
+      - path: Armature_001/Bone_003
+        weight: 1
+      - path: Armature_001/Bone_004
+        weight: 1
+      - path: Armature_001/Bone_005
+        weight: 1
+      - path: Body
+        weight: 1
+      - path: Eyes
+        weight: 1
+      - path: Head
+        weight: 1
+      - path: Jacket_True
+        weight: 1
+      - path: Leg_L
+        weight: 1
+      - path: Leg_R
+        weight: 1
+      - path: Mouth
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Idle
+      takeName: Player_Idle
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arm_True_L
+        weight: 1
+      - path: Arm_True_R
+        weight: 1
+      - path: Armature_001
+        weight: 1
+      - path: Armature_001/Bone
+        weight: 1
+      - path: Armature_001/Bone_001
+        weight: 1
+      - path: Armature_001/Bone_002
+        weight: 1
+      - path: Armature_001/Bone_003
+        weight: 1
+      - path: Armature_001/Bone_004
+        weight: 1
+      - path: Armature_001/Bone_005
+        weight: 1
+      - path: Body
+        weight: 1
+      - path: Eyes
+        weight: 1
+      - path: Head
+        weight: 1
+      - path: Jacket_True
+        weight: 1
+      - path: Leg_L
+        weight: 1
+      - path: Leg_R
+        weight: 1
+      - path: Mouth
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Shoot
+      takeName: Player_Shoot
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arm_True_L
+        weight: 1
+      - path: Arm_True_R
+        weight: 1
+      - path: Armature_001
+        weight: 1
+      - path: Armature_001/Bone
+        weight: 1
+      - path: Armature_001/Bone_001
+        weight: 1
+      - path: Armature_001/Bone_002
+        weight: 1
+      - path: Armature_001/Bone_003
+        weight: 1
+      - path: Armature_001/Bone_004
+        weight: 1
+      - path: Armature_001/Bone_005
+        weight: 1
+      - path: Body
+        weight: 1
+      - path: Eyes
+        weight: 1
+      - path: Head
+        weight: 1
+      - path: Jacket_True
+        weight: 1
+      - path: Leg_L
+        weight: 1
+      - path: Leg_R
+        weight: 1
+      - path: Mouth
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Walk
+      takeName: Player_Walk
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arm_True_L
+        weight: 1
+      - path: Arm_True_R
+        weight: 1
+      - path: Armature_001
+        weight: 1
+      - path: Armature_001/Bone
+        weight: 1
+      - path: Armature_001/Bone_001
+        weight: 1
+      - path: Armature_001/Bone_002
+        weight: 1
+      - path: Armature_001/Bone_003
+        weight: 1
+      - path: Armature_001/Bone_004
+        weight: 1
+      - path: Armature_001/Bone_005
+        weight: 1
+      - path: Body
+        weight: 1
+      - path: Eyes
+        weight: 1
+      - path: Head
+        weight: 1
+      - path: Jacket_True
+        weight: 1
+      - path: Leg_L
+        weight: 1
+      - path: Leg_R
+        weight: 1
+      - path: Mouth
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Walk2
+      takeName: Player_Walk2
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arm_True_L
+        weight: 1
+      - path: Arm_True_R
+        weight: 1
+      - path: Armature_001
+        weight: 1
+      - path: Armature_001/Bone
+        weight: 1
+      - path: Armature_001/Bone_001
+        weight: 1
+      - path: Armature_001/Bone_002
+        weight: 1
+      - path: Armature_001/Bone_003
+        weight: 1
+      - path: Armature_001/Bone_004
+        weight: 1
+      - path: Armature_001/Bone_005
+        weight: 1
+      - path: Body
+        weight: 1
+      - path: Eyes
+        weight: 1
+      - path: Head
+        weight: 1
+      - path: Jacket_True
+        weight: 1
+      - path: Leg_L
+        weight: 1
+      - path: Leg_R
+        weight: 1
+      - path: Mouth
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

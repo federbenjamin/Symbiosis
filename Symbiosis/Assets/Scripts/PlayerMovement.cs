@@ -5,6 +5,9 @@ public class PlayerMovement : MonoBehaviour {
 
 	Rigidbody playerRB;
 	Transform playerTransform;
+	public Animator animatorBody;
+	public Animator animatorSlime;
+	public GameObject playerBody;
 
 	public GameObject room;
 	public float baseSpeed = 8f;
@@ -12,8 +15,11 @@ public class PlayerMovement : MonoBehaviour {
 	private string playerPrefix;
 	private float horizMov, vertMov;
 	private Vector3 playerMov;
+	public bool isMoving;
 
 	private StatsManager playerStats;
+	private PlayerShooting playerShooting;
+
 	private float speedModifier;
 
 
@@ -21,6 +27,7 @@ public class PlayerMovement : MonoBehaviour {
 
 		//Get the StatsManager Script
 		playerStats = GetComponent<StatsManager> ();
+		playerShooting = GetComponent<PlayerShooting> ();
 	}
 
 	// Use this for initialization
@@ -28,6 +35,18 @@ public class PlayerMovement : MonoBehaviour {
 		playerRB = GetComponent<Rigidbody> ();
 		playerTransform = GetComponent<Transform> ();
 		playerPrefix = gameObject.name;
+
+		foreach (Transform child in transform) {
+			if (child.name == "Player_animated") {
+				foreach (Transform bodypart in child) {
+					if (bodypart.name == "Player_scientistonly") {
+						animatorBody = bodypart.GetComponent<Animator> ();
+					} else {
+						animatorSlime = bodypart.GetComponent<Animator> ();
+					}
+				}
+			}
+		}
 	}
 	
 	// Update is called once per frame
@@ -42,17 +61,29 @@ public class PlayerMovement : MonoBehaviour {
 		vertMov = Input.GetAxisRaw ("Vertical" + playerPrefix);
 		playerMov = new Vector3 (horizMov, 0f, vertMov);
 
+		isMoving = (horizMov != 0 || vertMov != 0);
+		animatorBody.SetBool ("moving", isMoving);
+		animatorSlime.SetBool ("moving", isMoving);
+
 		if (horizMov != 0) {
 			if (horizMov > 0) {
-				playerTransform.LookAt(room.transform.Find("LeftSeperator").transform);
+				if (!playerShooting.playerShooting) {
+					playerTransform.LookAt (room.transform.Find ("LeftSeperator").transform);
+				}
 			} else if (horizMov < 0) {
-				playerTransform.LookAt(room.transform.Find("RightSeperator").transform);
+				if (!playerShooting.playerShooting) {
+					playerTransform.LookAt (room.transform.Find ("RightSeperator").transform);
+				}
 			}
 		} else if (vertMov != 0) {
 			if (vertMov > 0) {
-				playerTransform.LookAt(room.transform.Find("BottonSeperator").transform);
+				if (!playerShooting.playerShooting) {
+					playerTransform.LookAt (room.transform.Find ("BottonSeperator").transform);
+				}
 			} else if (vertMov < 0) {
-				playerTransform.LookAt(room.transform.Find("TopSeperator").transform);
+				if (!playerShooting.playerShooting) {
+					playerTransform.LookAt (room.transform.Find ("TopSeperator").transform);
+				}
 			}
 		}
 

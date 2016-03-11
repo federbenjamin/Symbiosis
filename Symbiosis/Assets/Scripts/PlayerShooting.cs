@@ -27,6 +27,7 @@ public class PlayerShooting : MonoBehaviour {
 	private StatsManager playerStats;
 	private float bulletSpeedModifier;
 	private float fireRateModifier;
+	public bool playerShooting;
 
 	private GameObject cur_bullet;
 	public GameObject hand;
@@ -54,7 +55,11 @@ public class PlayerShooting : MonoBehaviour {
 		//Get the stats for the player
 		bulletSpeedModifier = playerStats.GetBulletSpeed ();
 		fireRateModifier = playerStats.GetFireRate ();
-	
+		playerShooting = (Input.GetButton ("FireRight" + playerPrefix) ||
+			Input.GetButton ("FireDown" + playerPrefix) ||
+			Input.GetButton ("FireUp" + playerPrefix) ||
+			Input.GetButton ("FireLeft" + playerPrefix));
+		
 		//Player Shooting
 		if (Input.GetButton("FireRight" + playerPrefix) && Time.time > nextFire) 
 		{

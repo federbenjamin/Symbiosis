@@ -5,6 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class HealthManager : MonoBehaviour {
 
+	private PlayerMovement playerMovementP1;
+	private PlayerMovement playerMovementP2;
+
+	Animator animatorP1Body;
+	Animator animatorP1Slime;
+	Animator animatorP2Body;
+	Animator animatorP2Slime;
+
 	public bool invincible;
 	public int totalHealth;
 	public int currentHealth;
@@ -38,6 +46,32 @@ public class HealthManager : MonoBehaviour {
 		heart4 = transform.FindChild ("7,8");
 		heart5 = transform.FindChild ("9,10");
 
+		GameObject playerP1 = GameObject.Find ("P1");
+		GameObject playerP2 = GameObject.Find ("P2");
+
+		foreach (Transform child in playerP1.transform) {
+			if (child.name == "Player_animated") {
+				foreach (Transform bodypart in child) {
+					if (bodypart.name == "Player_scientistonly") {
+						animatorP1Body = bodypart.GetComponent<Animator> ();
+					} else {
+						animatorP1Slime = bodypart.GetComponent<Animator> ();
+					}
+				}
+			}
+		}
+
+		foreach (Transform child in playerP2.transform) {
+			if (child.name == "Player_animated") {
+				foreach (Transform bodypart in child) {
+					if (bodypart.name == "Player_scientistonly") {
+						animatorP2Body = bodypart.GetComponent<Animator> ();
+					} else {
+						animatorP2Slime = bodypart.GetComponent<Animator> ();
+					}
+				}
+			}
+		}
 	}
 	void FixedUpdate() {
 		
@@ -92,7 +126,18 @@ public class HealthManager : MonoBehaviour {
 		}
 	}
 
-	void GameOver() {
+	public void GameOver() {
+		//TODO: destroy weapon model
+
+		animatorP1Body.SetTrigger ("gameOver");
+		animatorP1Slime.SetTrigger ("gameOver");
+		animatorP2Body.SetTrigger ("gameOver");
+		animatorP2Slime.SetTrigger ("gameOver");
+		StartCoroutine ("Wait");
+	}
+
+	IEnumerator Wait() {
+		yield return new WaitForSeconds (3f);
 		SceneManager.LoadScene ("GameOver");
 	}
 }
