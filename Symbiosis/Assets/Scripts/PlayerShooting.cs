@@ -167,6 +167,19 @@ public class PlayerShooting : MonoBehaviour {
 
 	IEnumerator FireLaser() {
 		line.enabled = true;
+		aug = GetComponent<StatsManager> ().GetAugment ();
+
+		if (aug != null) {
+			if (aug.Element == "fire") {
+				rayGunTip.GetComponent<Renderer> ().material = Resources.Load<Material> ("LaserRed");
+			} else if (aug.Element == "ice") {
+				rayGunTip.GetComponent<Renderer> ().material = Resources.Load<Material> ("LaserBlue");
+			} else if (aug.Element == "earth") {
+				rayGunTip.GetComponent<Renderer> ().material = Resources.Load<Material> ("LaserGreen");
+			}
+		} else {
+			rayGunTip.GetComponent<Renderer> ().material = Resources.Load<Material> ("LaserDefault");
+		}
 
 		while ((Input.GetButton ("FireRight" + playerPrefix)) ||
 		      (Input.GetButton ("FireDown" + playerPrefix)) ||
@@ -183,11 +196,14 @@ public class PlayerShooting : MonoBehaviour {
 				if (hit.transform.tag == "Enemy") {
 					string damageType = "none";
 					float force = 50;
+
 					if (aug != null) {
 						aug.onHitEffect (hit.transform.gameObject);
 						damageType = aug.Element;
+
 						if (aug.Element == "earth") {
 							force = 100;
+
 						}
 					}
 
