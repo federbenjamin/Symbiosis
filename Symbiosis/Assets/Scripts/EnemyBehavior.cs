@@ -11,6 +11,8 @@ public class EnemyBehavior : MonoBehaviour {
 	protected Transform myTransform;
 	protected Vector3 collisionNormal;
 
+	public Animator enemyAnimator;
+
 	protected HealthManager playersHealth;
 
 	void Awake () {
@@ -28,6 +30,10 @@ public class EnemyBehavior : MonoBehaviour {
 		p1_Transform = GameObject.Find ("P1").transform;
 		p2_Transform = GameObject.Find ("P2").transform;
 		timer = 0;
+
+		foreach (Transform child in transform) {
+			enemyAnimator = child.GetComponent<Animator> ();
+		}
 	}
 
 	public int getMoveSpeed () {

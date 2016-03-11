@@ -26,12 +26,15 @@ public class Enemy1Behavior : EnemyBehavior {
 		//rotate to look at the player
 		myTransform.LookAt(target);
 		if (targetDist > 0.9f) {
+			enemyAnimator.SetTrigger ("Walking");
 			Vector3 moveDirection = myTransform.forward;
 			moveDirection.y = 0;
 			//move towards the player
 			myTransform.position += moveDirection * moveSpeed * Time.deltaTime;
 		} else if (timer > nextHit) {
-			DamagePlayer();
+			DamagePlayer ();
+		} else {
+			enemyAnimator.SetTrigger ("Stopped");
 		}
 	}
 

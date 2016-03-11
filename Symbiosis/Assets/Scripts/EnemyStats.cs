@@ -10,6 +10,7 @@ public class EnemyStats : MonoBehaviour {
 	private bool frozen;
 	private int ongoingDamage;
 	private int ongoingTimer;
+	public Animator enemyAnimator;
 
 
 	// Use this for initialization
@@ -18,6 +19,10 @@ public class EnemyStats : MonoBehaviour {
 		frozen = false;
 		currentHP = maxHP;
 		ongoingTimer = 30;
+
+		foreach (Transform child in transform) {
+			enemyAnimator = child.GetComponent<Animator> ();
+		}
 	}
 	
 	// Update is called once per frame
@@ -36,7 +41,9 @@ public class EnemyStats : MonoBehaviour {
 	}
 
 	void Die(){
-		Destroy (gameObject);
+		//Play dying animation, and destroy
+		enemyAnimator.SetTrigger("Dead");
+		StartCoroutine ("Wait");
 	}
 
 	public void TakeDamage(int incomingDamage, string damageType){
@@ -54,5 +61,11 @@ public class EnemyStats : MonoBehaviour {
 		frozen = true;
 		EnemyBehavior mover = GetComponent<EnemyBehavior> ();
 		mover.setMoveSpeed(moveSpeed / 2);
+	}
+
+
+	IEnumerator Wait() {
+		yield return new WaitForSeconds (1f);
+		Destroy (gameObject);
 	}
 }

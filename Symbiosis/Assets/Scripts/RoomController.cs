@@ -8,6 +8,9 @@ public class RoomController : MonoBehaviour {
 	public GameObject enemy1;
 	public GameObject enemy2;
 	public GameObject boss;
+	public GameObject greenZomb;
+	public GameObject redZomb;
+	public GameObject blueZomb;
 
 	public List<GameObject> spawnpoints;
 	public List<GameObject> enemies;
@@ -114,14 +117,30 @@ public class RoomController : MonoBehaviour {
 	}
 
 	void SpawnEnemies() {
+		/*
+		 * 10's digits are Green Enemies
+		 * 20's digits are Red Enemies
+		 * 30's digits are Blue Enemies
+		 *
+		 * _0 is walking zombie
+		 * _1 is walking with shooting scientist
+		 * _2 is special lab enemy
+		 */
+
 		foreach (GameObject spawnpoint in spawnpoints) {
-			char enemyType = spawnpoint.name[5];
+			string enemyType = spawnpoint.name.Substring(10);
 			GameObject enemyChild;
-			if (enemyType == '1') {
+			if (enemyType == "1") {
 				enemyChild = Instantiate (enemy1, spawnpoint.transform.position, spawnpoint.transform.rotation) as GameObject;
-			} else if (enemyType == '2') {
+			} else if (enemyType == "2") {
 				enemyChild = Instantiate (enemy2, spawnpoint.transform.position, spawnpoint.transform.rotation) as GameObject;
 				enemyChild.GetComponent<Enemy2Behavior> ().addShootingOffset (100);
+			} else if (enemyType == "10") {
+				enemyChild = Instantiate (greenZomb, spawnpoint.transform.position, spawnpoint.transform.rotation) as GameObject;
+			} else if (enemyType == "20") {
+				enemyChild = Instantiate (redZomb, spawnpoint.transform.position, spawnpoint.transform.rotation) as GameObject;
+			} else if (enemyType == "30") {
+				enemyChild = Instantiate (blueZomb, spawnpoint.transform.position, spawnpoint.transform.rotation) as GameObject;
 			} else {
 				enemyChild = Instantiate (boss, spawnpoint.transform.position, spawnpoint.transform.rotation) as GameObject;
 			}
