@@ -106,6 +106,11 @@ public class Pickups : MonoBehaviour {
 				playerShooting.ChangeWeapon(powerupType);
 				playerWeapSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("raygunsprite");
 				break;
+
+			case "Sword":
+				playerShooting.ChangeWeapon (powerupType);
+				playerWeapSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("swordsprite");
+				break;
 			}
 
 

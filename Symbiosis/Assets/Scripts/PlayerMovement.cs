@@ -65,23 +65,25 @@ public class PlayerMovement : MonoBehaviour {
 		animatorBody.SetBool ("moving", isMoving);
 		animatorSlime.SetBool ("moving", isMoving);
 
+		bool playerBusy = (playerShooting.playerShooting || playerShooting.playerSwinging);
+
 		if (horizMov != 0) {
 			if (horizMov > 0) {
-				if (!playerShooting.playerShooting) {
+				if (!playerBusy) {
 					playerTransform.LookAt (room.transform.Find ("LeftSeperator").transform);
 				}
 			} else if (horizMov < 0) {
-				if (!playerShooting.playerShooting) {
+				if (!playerBusy) {
 					playerTransform.LookAt (room.transform.Find ("RightSeperator").transform);
 				}
 			}
 		} else if (vertMov != 0) {
 			if (vertMov > 0) {
-				if (!playerShooting.playerShooting) {
+				if (!playerBusy) {
 					playerTransform.LookAt (room.transform.Find ("BottonSeperator").transform);
 				}
 			} else if (vertMov < 0) {
-				if (!playerShooting.playerShooting) {
+				if (!playerBusy) {
 					playerTransform.LookAt (room.transform.Find ("TopSeperator").transform);
 				}
 			}

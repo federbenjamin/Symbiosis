@@ -36,7 +36,11 @@ public class PlayerShooting : MonoBehaviour {
 	public GameObject hand;
 	public GameObject RayGun;
 	public GameObject Pistol;
+	public GameObject Sword;
 	public string curWeap;
+
+	private GameObject sword;
+	public bool playerSwinging;
 
 	void Awake () {
 
@@ -62,6 +66,10 @@ public class PlayerShooting : MonoBehaviour {
 			Input.GetButton ("FireDown" + playerPrefix) ||
 			Input.GetButton ("FireUp" + playerPrefix) ||
 			Input.GetButton ("FireLeft" + playerPrefix));
+
+		if (curWeap == "Sword") {
+			playerSwinging = sword.GetComponent<PlayerSword> ().isSwinging;
+		}
 		
 		//Player Shooting
 		if (curWeap == "RayGun") {
@@ -113,15 +121,24 @@ public class PlayerShooting : MonoBehaviour {
 			}
 		}
 
-		//Create the bullet and launch it
-		GameObject clone = Instantiate (cur_bullet, hand.transform.position, hand.transform.rotation) as GameObject;
-		clone.transform.rotation = Quaternion.LookRotation (shootDir);
-		Physics.IgnoreCollision (clone.GetComponent<Collider> (), GetComponent<Collider> ());
-		clone.GetComponent<Rigidbody> ().velocity = (clone.transform.forward * ((baseBulletSpeed + bulletSpeedModifier)));
+		if (curWeap == "Pistol") {
+			//Create the bullet and launch it
+			GameObject clone = Instantiate (cur_bullet, hand.transform.position, hand.transform.rotation) as GameObject;
+			clone.transform.rotation = Quaternion.LookRotation (shootDir);
+			Physics.IgnoreCollision (clone.GetComponent<Collider> (), GetComponent<Collider> ());
+			clone.GetComponent<Rigidbody> ().velocity = (clone.transform.forward * ((baseBulletSpeed + bulletSpeedModifier)));
+		
+			if (aug != null) {
+				Debug.Log ("Applying on-hit effects");
+				clone.GetComponent<BulletBehavior> ().setAugment (aug);
+			}
 
-//		Debug.Log ("Firing augged bullet");
-//
-//
+		} else if (curWeap == "Sword") {
+			sword.GetComponent<PlayerSword> ().Swing ();
+		}
+		Debug.Log ("Firing augged bullet");
+
+
 //		if (aug != null) {
 //			Debug.Log ("Applying on-hit effects");
 //			clone.GetComponent<BulletBehavior> ().setAugment(aug);
@@ -156,11 +173,19 @@ public class PlayerShooting : MonoBehaviour {
 		case "RayGun":
 			baseBulletSpeed = 20f;
 			baseFireRate = 0.1f;
+			cur_bullet = null;
 			GameObject rayGun = Instantiate (RayGun, hand.transform.position, hand.transform.rotation) as GameObject;
 			rayGun.transform.parent = hand.transform;
 			rayGunTip = rayGun.transform.GetChild (0).gameObject;
 			line = rayGunTip.GetComponent<LineRenderer>();
 			line.enabled = false;
+			break;
+
+		case "Sword":
+			baseFireRate = 0.8f;
+			cur_bullet = null;
+			sword = Instantiate (Sword, hand.transform.position, Sword.transform.rotation) as GameObject;
+			sword.transform.parent = hand.transform;
 			break;
 		}
 	}
