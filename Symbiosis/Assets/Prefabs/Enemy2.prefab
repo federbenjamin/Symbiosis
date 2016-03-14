@@ -235,6 +235,8 @@ MonoBehaviour:
   currentHP: 10
   maxHP: 20
   moveSpeed: 6
+  enemyAnimator: {fileID: 0}
+  fireEmitter: {fileID: 158930, guid: 6a0ab4f77b8c4c440849916cacb4437a, type: 2}
 --- !u!114 &11417080
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -246,7 +248,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2997c7f17e52743ca8d81e785a72c28f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyAnimator: {fileID: 0}
   bullet: {fileID: 152638, guid: 165aeffb8065249a89f637d761a2cdb5, type: 2}
+  bulletOrigin: {fileID: 0}
   bulletVelocity: 10
 --- !u!1001 &100100000
 Prefab:
@@ -323,6 +327,10 @@ Prefab:
       propertyPath: m_Interpolate
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: fireEmitter
+      value: 
+      objectReference: {fileID: 158930, guid: 6a0ab4f77b8c4c440849916cacb4437a, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 132820}

@@ -622,6 +622,7 @@ MonoBehaviour:
   maxHP: 10
   moveSpeed: 4
   enemyAnimator: {fileID: 0}
+  fireEmitter: {fileID: 158930, guid: 6a0ab4f77b8c4c440849916cacb4437a, type: 2}
 --- !u!114 &11467938
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1137,6 +1138,10 @@ Prefab:
       propertyPath: m_Constraints
       value: 84
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: fireEmitter
+      value: 
+      objectReference: {fileID: 158930, guid: 6a0ab4f77b8c4c440849916cacb4437a, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 152012}
