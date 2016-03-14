@@ -28,6 +28,8 @@ public class PlayerShooting : MonoBehaviour {
 	private string playerPrefix;
 
 	private StatsManager playerStats;
+	private HealthManager playersHealth;
+	
 	private float bulletSpeedModifier;
 	private float fireRateModifier;
 	public bool playerShooting;
@@ -45,6 +47,7 @@ public class PlayerShooting : MonoBehaviour {
 	void Awake () {
 
 		//Get the StatsManager Script
+		playersHealth = GameObject.Find("Health").GetComponent<HealthManager> ();
 		playerStats = GetComponent<StatsManager> ();
 	}
 
@@ -59,50 +62,52 @@ public class PlayerShooting : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		//Get the stats for the player
-		bulletSpeedModifier = playerStats.GetBulletSpeed ();
-		fireRateModifier = playerStats.GetFireRate ();
-		playerShooting = (Input.GetButton ("FireRight" + playerPrefix) ||
-			Input.GetButton ("FireDown" + playerPrefix) ||
-			Input.GetButton ("FireUp" + playerPrefix) ||
-			Input.GetButton ("FireLeft" + playerPrefix));
+	if (playersHealth.currentHealth > 0) {
+			//Get the stats for the player
+			bulletSpeedModifier = playerStats.GetBulletSpeed ();
+			fireRateModifier = playerStats.GetFireRate ();
+			playerShooting = (Input.GetButton ("FireRight" + playerPrefix) ||
+				Input.GetButton ("FireDown" + playerPrefix) ||
+				Input.GetButton ("FireUp" + playerPrefix) ||
+				Input.GetButton ("FireLeft" + playerPrefix));
 
-		if (curWeap == "Sword") {
-			playerSwinging = sword.GetComponent<PlayerSword> ().isSwinging;
-		}
-		
-		//Player Shooting
-		if (curWeap == "RayGun") {
-			if (Input.GetButton ("FireRight" + playerPrefix)) {
-				transform.rotation = Quaternion.LookRotation (Vector3.left);
-				StopCoroutine ("FireLaser");
-				StartCoroutine ("FireLaser");
-			} else if (Input.GetButton ("FireDown" + playerPrefix)) {
-				transform.rotation = Quaternion.LookRotation (Vector3.forward);
-				StopCoroutine ("FireLaser");
-				StartCoroutine ("FireLaser");
-			} else if (Input.GetButton ("FireUp" + playerPrefix)) {
-				transform.rotation = Quaternion.LookRotation (Vector3.back);
-				StopCoroutine ("FireLaser");
-				StartCoroutine ("FireLaser");
-			} else if (Input.GetButton ("FireLeft" + playerPrefix)) {
-				transform.rotation = Quaternion.LookRotation (Vector3.right);
-				StopCoroutine ("FireLaser");
-				StartCoroutine ("FireLaser");
+			if (curWeap == "Sword") {
+				playerSwinging = sword.GetComponent<PlayerSword> ().isSwinging;
 			}
-		} else {
-			if (Input.GetButton ("FireRight" + playerPrefix) && Time.time > nextFire) {
-				transform.rotation = Quaternion.LookRotation (Vector3.left);
-				Shoot (Vector3.right);
-			} else if (Input.GetButton ("FireDown" + playerPrefix) && Time.time > nextFire) {
-				transform.rotation = Quaternion.LookRotation (Vector3.forward);
-				Shoot (Vector3.back);
-			} else if (Input.GetButton ("FireUp" + playerPrefix) && Time.time > nextFire) {
-				transform.rotation = Quaternion.LookRotation (Vector3.back);
-				Shoot (Vector3.forward);
-			} else if (Input.GetButton ("FireLeft" + playerPrefix) && Time.time > nextFire) {
-				transform.rotation = Quaternion.LookRotation (Vector3.right);
-				Shoot (Vector3.left);
+			
+			//Player Shooting
+			if (curWeap == "RayGun") {
+				if (Input.GetButton ("FireRight" + playerPrefix)) {
+					transform.rotation = Quaternion.LookRotation (Vector3.left);
+					StopCoroutine ("FireLaser");
+					StartCoroutine ("FireLaser");
+				} else if (Input.GetButton ("FireDown" + playerPrefix)) {
+					transform.rotation = Quaternion.LookRotation (Vector3.forward);
+					StopCoroutine ("FireLaser");
+					StartCoroutine ("FireLaser");
+				} else if (Input.GetButton ("FireUp" + playerPrefix)) {
+					transform.rotation = Quaternion.LookRotation (Vector3.back);
+					StopCoroutine ("FireLaser");
+					StartCoroutine ("FireLaser");
+				} else if (Input.GetButton ("FireLeft" + playerPrefix)) {
+					transform.rotation = Quaternion.LookRotation (Vector3.right);
+					StopCoroutine ("FireLaser");
+					StartCoroutine ("FireLaser");
+				}
+			} else {
+				if (Input.GetButton ("FireRight" + playerPrefix) && Time.time > nextFire) {
+					transform.rotation = Quaternion.LookRotation (Vector3.left);
+					Shoot (Vector3.right);
+				} else if (Input.GetButton ("FireDown" + playerPrefix) && Time.time > nextFire) {
+					transform.rotation = Quaternion.LookRotation (Vector3.forward);
+					Shoot (Vector3.back);
+				} else if (Input.GetButton ("FireUp" + playerPrefix) && Time.time > nextFire) {
+					transform.rotation = Quaternion.LookRotation (Vector3.back);
+					Shoot (Vector3.forward);
+				} else if (Input.GetButton ("FireLeft" + playerPrefix) && Time.time > nextFire) {
+					transform.rotation = Quaternion.LookRotation (Vector3.right);
+					Shoot (Vector3.left);
+				}
 			}
 		}
 	}
@@ -246,3 +251,5 @@ public class PlayerShooting : MonoBehaviour {
 		line.enabled = false;
 	}
 }
+
+
