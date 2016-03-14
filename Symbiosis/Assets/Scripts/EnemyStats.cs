@@ -11,6 +11,7 @@ public class EnemyStats : MonoBehaviour {
 	private int ongoingDamage;
 	private int ongoingTimer;
 	public Animator enemyAnimator;
+	public Object fireEmitter;
 
 
 	// Use this for initialization
@@ -49,8 +50,7 @@ public class EnemyStats : MonoBehaviour {
 	public void TakeDamage(int incomingDamage, string damageType){
 		currentHP = currentHP - incomingDamage;
 		if (damageType == "fire" && !onFire) {
-			onFire = true;
-			ongoingDamage = 4;
+			Ignite ();
 		}
 		if (damageType == "ice" && !frozen) {
 			Freeze ();
@@ -61,6 +61,13 @@ public class EnemyStats : MonoBehaviour {
 		frozen = true;
 		EnemyBehavior mover = GetComponent<EnemyBehavior> ();
 		mover.setMoveSpeed(moveSpeed / 2);
+	}
+
+	void Ignite(){
+		onFire = true;
+		GameObject fire = Instantiate (fireEmitter, this.transform.position, Quaternion.identity) as GameObject;
+		fire.transform.parent = this.transform;
+		ongoingDamage = 4;
 	}
 
 

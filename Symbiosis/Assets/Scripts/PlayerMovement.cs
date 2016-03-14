@@ -67,25 +67,31 @@ public class PlayerMovement : MonoBehaviour {
 
 		bool playerBusy = (playerShooting.playerShooting || playerShooting.playerSwinging);
 
-		if (horizMov != 0) {
-			if (horizMov > 0) {
-				if (!playerBusy) {
-					playerTransform.LookAt (room.transform.Find ("LeftSeperator").transform);
+		if (!playerBusy) {
+			if (horizMov != 0) {
+				if (horizMov > 0) {
+					if (vertMov > 0) {
+						playerTransform.rotation = Quaternion.Euler (0, -135, 0);
+					} else if (vertMov < 0) {
+						playerTransform.rotation = Quaternion.Euler (0, -45, 0);
+					} else {
+						playerTransform.rotation = Quaternion.Euler (0, -90, 0);
+					}
+				} else if (horizMov < 0) {
+					if (vertMov > 0) {
+						playerTransform.rotation = Quaternion.Euler (0, 135, 0);
+					} else if (vertMov < 0) {
+						playerTransform.rotation = Quaternion.Euler (0, 45, 0);
+					} else {
+						playerTransform.rotation = Quaternion.Euler (0, 90, 0);
+					}
 				}
-			} else if (horizMov < 0) {
-				if (!playerBusy) {
-					playerTransform.LookAt (room.transform.Find ("RightSeperator").transform);
-				}
-			}
-		} else if (vertMov != 0) {
-			if (vertMov > 0) {
-				if (!playerBusy) {
-					playerTransform.LookAt (room.transform.Find ("BottonSeperator").transform);
+			} else if (vertMov != 0) {
+				if (vertMov > 0) {
+					playerTransform.rotation = Quaternion.Euler (0, -180, 0);
 				}
 			} else if (vertMov < 0) {
-				if (!playerBusy) {
-					playerTransform.LookAt (room.transform.Find ("TopSeperator").transform);
-				}
+				playerTransform.rotation = Quaternion.Euler (0, 0, 0);
 			}
 		}
 
