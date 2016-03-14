@@ -89,9 +89,9 @@ public class PlayerMovement : MonoBehaviour {
 			} else if (vertMov != 0) {
 				if (vertMov > 0) {
 					playerTransform.rotation = Quaternion.Euler (0, -180, 0);
+				} else if (vertMov < 0) {
+					playerTransform.rotation = Quaternion.Euler (0, 0, 0);
 				}
-			} else if (vertMov < 0) {
-				playerTransform.rotation = Quaternion.Euler (0, 0, 0);
 			}
 		}
 
