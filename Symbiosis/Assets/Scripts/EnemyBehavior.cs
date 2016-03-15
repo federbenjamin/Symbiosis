@@ -59,6 +59,12 @@ public class EnemyBehavior : MonoBehaviour {
        	}
     }
 
+    void OnCollisionExit (Collision col) {
+        if (col.gameObject.tag == "Player") {
+			nextHit = 40;
+		}
+    }
+
     protected void ActivateEnemies() {
     	roomController.EnemiesActive = true;
     }
@@ -69,7 +75,7 @@ public class EnemyBehavior : MonoBehaviour {
     	}
     }
 
-    protected bool EnemyAlive() {
+    protected bool IsEnemyAlive() {
     	return transform.GetComponent<EnemyStats>().currentHP > 0;
     }
 

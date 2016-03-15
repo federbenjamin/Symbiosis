@@ -21,7 +21,7 @@ public class Enemy2Behavior : EnemyBehavior {
 			enemyOriented = true;
 		}
 
-		if (EnemyAlive()) {
+		if (IsEnemyAlive()) {
 			UpdateTargetPlayer(false);
 
 			if (roomController.EnemiesActive) {

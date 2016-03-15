@@ -109,8 +109,6 @@ public class RoomController : MonoBehaviour {
 				hasTriggered = true;
 				SpawnEnemies();
 			}
-		} else if (other.tag == "Bullet") {
-			EnemiesActive = true;
 		}
 	}
 

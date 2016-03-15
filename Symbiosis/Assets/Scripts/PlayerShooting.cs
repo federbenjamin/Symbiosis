@@ -29,6 +29,7 @@ public class PlayerShooting : MonoBehaviour {
 
 	private StatsManager playerStats;
 	private HealthManager playersHealth;
+	private PlayerMovement playerMovement;
 	
 	private float bulletSpeedModifier;
 	private float fireRateModifier;
@@ -57,6 +58,7 @@ public class PlayerShooting : MonoBehaviour {
 		cur_bullet = Reg_bullet;
 		ChangeWeapon ("Pistol");
 		curWeap = "Pistol";
+		playerMovement = transform.GetComponent<PlayerMovement>();
 	}
 	
 	// Update is called once per frame
@@ -76,6 +78,11 @@ public class PlayerShooting : MonoBehaviour {
 				Input.GetButton ("FireDown" + playerPrefix) ||
 				Input.GetButton ("FireUp" + playerPrefix) ||
 				Input.GetButton ("FireLeft" + playerPrefix));
+
+			if (playerShooting && curWeap != "Sword") {
+				RoomController roomController = playerMovement.room.GetComponent<RoomController>();
+				roomController.EnemiesActive = true;
+			}
 
 			if (curWeap == "Sword") {
 				playerSwinging = sword.GetComponent<PlayerSword> ().isSwinging;
