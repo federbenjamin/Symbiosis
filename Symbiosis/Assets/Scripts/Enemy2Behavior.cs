@@ -39,7 +39,7 @@ public class Enemy2Behavior : EnemyBehavior {
 				Vector3 moveDirection = myTransform.forward;
 				moveDirection.y = 0;
 				//move towards the player
-				if (targetPlayer.Distance > 4) {
+				if (targetPlayer.Distance > 4.5) {
 					enemyAnimator.SetTrigger ("Walking");
 					myTransform.position += moveDirection * moveSpeed * Time.deltaTime;
 				} else if (targetPlayer.Distance < 3) {
@@ -77,7 +77,7 @@ public class Enemy2Behavior : EnemyBehavior {
 			clone.GetComponent<Rigidbody> ().velocity = (clone.transform.forward * bulletVelocity);
 
 			timer = 0;
-			nextFire = Random.Range (50, 60);
+			nextFire = Random.Range (35, 60);
 		}
 	}
 

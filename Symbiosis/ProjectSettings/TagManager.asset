@@ -13,6 +13,7 @@ TagManager:
   - Switch
   - EnemySpawn
   - Wall
+  - RoomObject
   layers:
   - Default
   - TransparentFX
