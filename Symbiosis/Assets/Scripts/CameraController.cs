@@ -34,11 +34,11 @@ public class CameraController : MonoBehaviour {
 				transform.position = Vector3.Lerp (transform.position, newCameraPos, 1f * Time.deltaTime);
 			}
 		} else {
-			if ((player.transform.position.x - transform.position.x >= 1) || (player.transform.position.x - transform.position.x <= -1)) {
-				float camMoveSpeed = 1f;
+			if ((player.transform.position.x - transform.position.x >= 0.75f) || (player.transform.position.x - transform.position.x <= -0.75f)) {
+				float camMoveSpeed = 2f;
 
-				if ((player.transform.position.x - transform.position.x >= 2) || (player.transform.position.x - transform.position.x <= -2)) {
-					camMoveSpeed = 2f;
+				if ((player.transform.position.x - transform.position.x >= 1.25f) || (player.transform.position.x - transform.position.x <= -1.25f)) {
+					camMoveSpeed = 2.5f;
 				}
 
 				newCameraPos = new Vector3 (player.transform.position.x, transform.position.y, transform.position.z);

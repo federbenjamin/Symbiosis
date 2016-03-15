@@ -7,6 +7,8 @@ public class Enemy2Behavior : EnemyBehavior {
 	public GameObject bulletOrigin;
 	public int bulletVelocity;
 	private int nextFire;
+	private bool enemyOriented = false;
+	private bool setShootingOffset = false;
 
 	// Update is called once per frame
 	void Update () {
@@ -14,50 +16,54 @@ public class Enemy2Behavior : EnemyBehavior {
 	}
 
 	void FixedUpdate () {
-		if (transform.GetComponent<EnemyStats>().currentHP > 0) {
-			timer++;
-			float dist_1 = Vector3.Distance(myTransform.position, p1_Transform.position);
-			float dist_2 = Vector3.Distance(myTransform.position, p2_Transform.position);
+		if (!enemyOriented) {
+			IgnorePlayer();
+			enemyOriented = true;
+		}
 
-			Transform target;
-			float targetDist;
-			if (dist_1 < dist_2) {
-				target = p1_Transform;
-				targetDist = dist_1;
-			} else {
-				target = p2_Transform;
-				targetDist = dist_2;
-			}
+		if (EnemyAlive()) {
+			UpdateTargetPlayer(false);
 
-			//rotate to look at the player
-			Vector3 point = target.position;
-			point.y = myTransform.position.y;
-			myTransform.LookAt(point);
-
-			Vector3 moveDirection = myTransform.forward;
-			moveDirection.y = 0;
-			//move towards the player
-			if (targetDist > 5) {
-				enemyAnimator.SetTrigger ("Walking");
-				myTransform.position += moveDirection * moveSpeed * Time.deltaTime;
-			} else if (targetDist < 3) {
-				if (collisionNormal.z == -1 || collisionNormal.z == 1) {
-					moveDirection.z = 0;//(-0.5f * collisionNormal.z);
-				} else if (collisionNormal.x == -1 || collisionNormal.x == 1) {
-					moveDirection.x = 0;//(-0.5f * collisionNormal.x);
+			if (roomController.EnemiesActive) {
+				if (!setShootingOffset) {
+					addShootingOffset(100);
+					setShootingOffset = true;
 				}
-				enemyAnimator.SetTrigger ("Walking");
-				myTransform.position -= moveDirection * (moveSpeed - 1) * Time.deltaTime;
+				timer++;
 
-				if (timer > nextFire) {
+				//rotate to look at the player
+				Vector3 point = targetPlayer.Transform.position;
+				point.y = myTransform.position.y;
+				myTransform.LookAt(point);
+
+				Vector3 moveDirection = myTransform.forward;
+				moveDirection.y = 0;
+				//move towards the player
+				if (targetPlayer.Distance > 4) {
+					enemyAnimator.SetTrigger ("Walking");
+					myTransform.position += moveDirection * moveSpeed * Time.deltaTime;
+				} else if (targetPlayer.Distance < 3) {
+					if (collisionNormal.z == -1 || collisionNormal.z == 1) {
+						moveDirection.z = 0;//(-0.5f * collisionNormal.z);
+					} else if (collisionNormal.x == -1 || collisionNormal.x == 1) {
+						moveDirection.x = 0;//(-0.5f * collisionNormal.x);
+					}
+					enemyAnimator.SetTrigger ("Walking");
+					myTransform.position -= moveDirection * (moveSpeed - 1) * Time.deltaTime;
+
+					if (timer > nextFire) {
+						enemyAnimator.SetTrigger ("Shoot");
+						Shoot (myTransform.forward);
+					}
+				} else if (timer > nextFire) {
 					enemyAnimator.SetTrigger ("Shoot");
 					Shoot (myTransform.forward);
+				} else {
+					enemyAnimator.SetTrigger ("Stopped");
 				}
-			} else if (timer > nextFire) {
-				enemyAnimator.SetTrigger ("Shoot");
-				Shoot (myTransform.forward);
+
 			} else {
-				enemyAnimator.SetTrigger ("Stopped");
+				ActivateEnemiesOnProximity(2.5f);
 			}
 		}
 
@@ -75,7 +81,7 @@ public class Enemy2Behavior : EnemyBehavior {
 		}
 	}
 
-	public void addShootingOffset (int offset) {
+	void addShootingOffset (int offset) {
 		nextFire = offset;
 	}
 }
