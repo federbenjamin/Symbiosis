@@ -17,10 +17,13 @@ public class HealthManager : MonoBehaviour {
 	public int totalHealth;
 	public int currentHealth;
 
+	public Sprite BarHit;
+	public Sprite BarNormal;
 	public Sprite fullHeart;
 	public Sprite halfHeart;
 	public Sprite emptyHeart;
 
+	private Transform healthBar;
 	private Transform heart1;
 	private Transform heart2;
 	private Transform heart3;
@@ -41,6 +44,7 @@ public class HealthManager : MonoBehaviour {
 		 */
 
 
+		healthBar = transform.FindChild("HealthBar");
 		heart1 = transform.FindChild ("0,1,2");
 		heart2 = transform.FindChild ("3,4");
 		heart3 = transform.FindChild ("5,6");
@@ -125,9 +129,12 @@ public class HealthManager : MonoBehaviour {
 
 	//Decrease health of players
 	public void DamageHealth(int damage) {
+		healthBar.GetComponent<Image>().sprite = BarHit;
+		healthBar.GetComponent<RectTransform>().sizeDelta = new Vector2(505, 125);
 		if (!invincible) {
 			currentHealth -= damage;
 		}
+		StartCoroutine ("ChangeHealthBar");
 	}
 
 	public void GameOver() {
@@ -143,6 +150,12 @@ public class HealthManager : MonoBehaviour {
 	IEnumerator Wait() {
 		yield return new WaitForSeconds (3f);
 		SceneManager.LoadScene ("GameOver");
+	}
+
+	IEnumerator ChangeHealthBar() {
+		yield return new WaitForSeconds (0.75f);
+		healthBar.GetComponent<Image>().sprite = BarNormal;
+		healthBar.GetComponent<RectTransform>().sizeDelta = new Vector2(500, 100);
 	}
 }
 
