@@ -30,7 +30,7 @@ public class Pickups : MonoBehaviour {
 		if (powerupType == "SpeedUp" || powerupType == "FireRateUp") {
 			transform.Rotate (0,0,rotateSpeed);
 		} else {
-			transform.Rotate (Vector3.up, rotateSpeed * Time.deltaTime);
+			transform.Rotate (Vector3.up, rotateSpeed * Time.deltaTime, Space.World);
 		}
 	}
 
