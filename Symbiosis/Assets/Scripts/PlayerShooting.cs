@@ -62,7 +62,10 @@ public class PlayerShooting : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-	if (playersHealth.currentHealth > 0) {
+		aug = GetComponent<StatsManager> ().GetAugment ();
+		sword.GetComponent<PlayerSword> ().setAugment (aug);
+
+		if (playersHealth.currentHealth > 0) {
 			//Get the stats for the player
 			bulletSpeedModifier = playerStats.GetBulletSpeed ();
 			fireRateModifier = playerStats.GetFireRate ();
