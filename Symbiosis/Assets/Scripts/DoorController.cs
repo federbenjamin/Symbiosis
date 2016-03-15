@@ -48,12 +48,9 @@ public class DoorController : MonoBehaviour {
 					Vector3 newPlayerPosition = new Vector3 (nextRoomPos.x, other.transform.position.y, nextRoomPos.z);
 					newPlayerPosition = newPlayerPosition + OutPlacer (outDoor);
 					other.transform.position = newPlayerPosition;
+
 					playerCamera = GameObject.Find ("Camera" + other.name);
-					float cameraZPos = newPlayerPosition.z;
-					if (outDoor == 'e' | outDoor == 'w') {
-						cameraZPos = cameraZPos + cameraOffset;
-					}
-					playerCamera.transform.position = new Vector3 (newPlayerPosition.x, playerCamera.transform.position.y, cameraZPos); 
+					playerCamera.transform.position = new Vector3 (newPlayerPosition.x, playerCamera.transform.position.y, nextRoomPos.z + cameraOffset); 
 				}
 			}
 		}

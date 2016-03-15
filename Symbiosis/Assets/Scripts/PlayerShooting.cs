@@ -63,7 +63,10 @@ public class PlayerShooting : MonoBehaviour {
 	void Update () {
 
 		aug = GetComponent<StatsManager> ().GetAugment ();
-		sword.GetComponent<PlayerSword> ().setAugment (aug);
+
+		if (curWeap == "Sword") {
+			sword.GetComponent<PlayerSword> ().setAugment (aug);
+		};
 
 		if (playersHealth.currentHealth > 0) {
 			//Get the stats for the player
