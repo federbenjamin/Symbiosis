@@ -11,7 +11,7 @@ public class StatsManager : MonoBehaviour {
 	public string augmentName;
 
 	public float invincibilityTime;
-	private HealthManager playersHealth;
+	public HealthManager playersHealth;
 	private PlayerShooting playerShooting;
 	private float nextHit = 0.0f;
 

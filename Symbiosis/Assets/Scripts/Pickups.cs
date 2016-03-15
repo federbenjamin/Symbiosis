@@ -111,6 +111,14 @@ public class Pickups : MonoBehaviour {
 				playerShooting.ChangeWeapon (powerupType);
 				playerWeapSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("swordsprite");
 				break;
+
+			case "FullHealth":
+				playerStats.playersHealth.HealHealth (2);
+				break;
+			
+			case "HalfHealth":
+				playerStats.playersHealth.HealHealth (1);
+				break;
 			}
 
 
