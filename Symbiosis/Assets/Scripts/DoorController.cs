@@ -34,7 +34,7 @@ public class DoorController : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
 		if (roomController.roomCleared == true) {
 			if (other.tag == "Player") {
-				if (roomController.getPlayersTogether() == true) {
+				if (roomController.getPlayersTogether()) {
 					Vector3 outPosition_1 = new Vector3 (nextRoomPos.x - 1, player1.transform.position.y, nextRoomPos.z);
 					outPosition_1 = outPosition_1 + OutPlacer (outDoor) + Offsetter(outDoor, true);
 					player1.transform.position = outPosition_1;
@@ -45,11 +45,15 @@ public class DoorController : MonoBehaviour {
 
 					playersCamera.transform.position = new Vector3 (nextRoomPos.x, playersCamera.transform.position.y, nextRoomPos.z + cameraOffset); 
 				} else {
-					Vector3 outPosition = new Vector3 (nextRoomPos.x, other.transform.position.y, nextRoomPos.z);
-					outPosition = outPosition + OutPlacer (outDoor);
-					other.transform.position = outPosition;
+					Vector3 newPlayerPosition = new Vector3 (nextRoomPos.x, other.transform.position.y, nextRoomPos.z);
+					newPlayerPosition = newPlayerPosition + OutPlacer (outDoor);
+					other.transform.position = newPlayerPosition;
 					playerCamera = GameObject.Find ("Camera" + other.name);
-					playerCamera.transform.position = new Vector3 (nextRoomPos.x, playerCamera.transform.position.y, nextRoomPos.z + cameraOffset); 
+					float cameraZPos = newPlayerPosition.z;
+					if (outDoor == 'e' | outDoor == 'w') {
+						cameraZPos = cameraZPos + cameraOffset;
+					}
+					playerCamera.transform.position = new Vector3 (newPlayerPosition.x, playerCamera.transform.position.y, cameraZPos); 
 				}
 			}
 		}

@@ -34,12 +34,15 @@ public class CameraController : MonoBehaviour {
 				transform.position = Vector3.Lerp (transform.position, newCameraPos, 1f * Time.deltaTime);
 			}
 		} else {
-			if ((player.transform.position.x - transform.position.x >= 2) || (player.transform.position.x - transform.position.x <= -2)) {
+			if ((player.transform.position.x - transform.position.x >= 1) || (player.transform.position.x - transform.position.x <= -1)) {
+				float camMoveSpeed = 1f;
+
+				if ((player.transform.position.x - transform.position.x >= 2) || (player.transform.position.x - transform.position.x <= -2)) {
+					camMoveSpeed = 2f;
+				}
+
 				newCameraPos = new Vector3 (player.transform.position.x, transform.position.y, transform.position.z);
-				transform.position = Vector3.Lerp (transform.position, newCameraPos, 2f * Time.deltaTime);
-			} else if ((player.transform.position.x - transform.position.x >= 1) || (player.transform.position.x - transform.position.x <= -1)) {
-				newCameraPos = new Vector3 (player.transform.position.x, transform.position.y, transform.position.z);
-				transform.position = Vector3.Lerp (transform.position, newCameraPos, 1f * Time.deltaTime);
+				transform.position = Vector3.Lerp (transform.position, newCameraPos, camMoveSpeed * Time.deltaTime);
 			} 
 		}
 	}
