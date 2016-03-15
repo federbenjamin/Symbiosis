@@ -141,6 +141,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.12678503
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
   m_IsPrefabParent: 0
@@ -202,6 +206,10 @@ Prefab:
     - target: {fileID: 400000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.50000036
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
@@ -343,6 +351,10 @@ Prefab:
       propertyPath: m_Name
       value: 3D garbage can (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
   m_IsPrefabParent: 0
@@ -401,6 +413,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.60689574
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 12c54846d664ea54897f263289521153, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12c54846d664ea54897f263289521153, type: 3}
   m_IsPrefabParent: 0
@@ -451,6 +467,10 @@ Prefab:
       propertyPath: m_Name
       value: 3D beaker (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
   m_IsPrefabParent: 0
@@ -496,6 +516,10 @@ Prefab:
     - target: {fileID: 400000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
@@ -792,6 +816,10 @@ Prefab:
     - target: {fileID: 400000, guid: 12c54846d664ea54897f263289521153, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.60689574
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 12c54846d664ea54897f263289521153, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12c54846d664ea54897f263289521153, type: 3}
@@ -1174,6 +1202,10 @@ Prefab:
       propertyPath: m_Name
       value: 3D garbage can (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
   m_IsPrefabParent: 0
@@ -1231,6 +1263,10 @@ Prefab:
     - target: {fileID: 400000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.12678505
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
@@ -1474,6 +1510,10 @@ Prefab:
     - target: {fileID: 400000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
@@ -1876,6 +1916,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
   m_IsPrefabParent: 0
@@ -2114,7 +2158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5271718f702c498cb1e5f0ebb37883f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invincible: 0
+  invincible: 1
   totalHealth: 0
   currentHealth: 0
   BarHit: {fileID: 21300000, guid: 0d870679a09bb41198ff284639fec16b, type: 3}
@@ -2316,6 +2360,10 @@ Prefab:
     - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
       propertyPath: m_Name
       value: 3D crate (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
@@ -2961,6 +3009,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.5000001
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
   m_IsPrefabParent: 0
@@ -3023,6 +3075,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.12678505
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
   m_IsPrefabParent: 0
@@ -3068,6 +3124,10 @@ Prefab:
     - target: {fileID: 400000, guid: 12c54846d664ea54897f263289521153, type: 3}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 12c54846d664ea54897f263289521153, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12c54846d664ea54897f263289521153, type: 3}
@@ -3205,6 +3265,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
   m_IsPrefabParent: 0
@@ -3266,6 +3330,10 @@ Prefab:
     - target: {fileID: 400000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
@@ -3395,6 +3463,10 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 0.78
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 6378dd0ac339b400884760d3065fd611, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6378dd0ac339b400884760d3065fd611, type: 3}
   m_IsPrefabParent: 0
@@ -3440,6 +3512,10 @@ Prefab:
     - target: {fileID: 400000, guid: 12c54846d664ea54897f263289521153, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.47563952
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 12c54846d664ea54897f263289521153, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12c54846d664ea54897f263289521153, type: 3}
@@ -4092,6 +4168,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.5000005
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
   m_IsPrefabParent: 0
@@ -4153,6 +4233,10 @@ Prefab:
     - target: {fileID: 100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
       propertyPath: m_Name
       value: 3D garbage can (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
@@ -4281,6 +4365,10 @@ Prefab:
     - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
       propertyPath: m_Name
       value: 3D beaker (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
@@ -4499,6 +4587,10 @@ Prefab:
     - target: {fileID: 400000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
@@ -4780,6 +4872,10 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: f7dee5772d74745a9bd4a746548ea85f, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f7dee5772d74745a9bd4a746548ea85f, type: 3}
   m_IsPrefabParent: 0
@@ -4837,6 +4933,10 @@ Prefab:
     - target: {fileID: 400000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
@@ -4899,6 +4999,10 @@ Prefab:
     - target: {fileID: 400000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
@@ -5605,6 +5709,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.12678505
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
   m_IsPrefabParent: 0
@@ -5654,6 +5762,10 @@ Prefab:
     - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
       propertyPath: m_Name
       value: 3D beaker (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
@@ -5713,6 +5825,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.12678503
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
   m_IsPrefabParent: 0
@@ -5770,6 +5886,10 @@ Prefab:
     - target: {fileID: 400000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
@@ -5893,6 +6013,10 @@ Prefab:
     - target: {fileID: 400000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
@@ -6041,6 +6165,10 @@ Prefab:
     - target: {fileID: 100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
       propertyPath: m_Name
       value: 3D garbage can (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
@@ -6387,6 +6515,10 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 0.47563952
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 12c54846d664ea54897f263289521153, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12c54846d664ea54897f263289521153, type: 3}
   m_IsPrefabParent: 0
@@ -6526,6 +6658,10 @@ Prefab:
     - target: {fileID: 400000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.50000036
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
@@ -6745,6 +6881,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.5000001
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
   m_IsPrefabParent: 0
@@ -6864,6 +7004,10 @@ Prefab:
     - target: {fileID: 400000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
@@ -7137,6 +7281,10 @@ Prefab:
       propertyPath: m_Name
       value: 3D beaker (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
   m_IsPrefabParent: 0
@@ -7368,6 +7516,10 @@ Prefab:
     - target: {fileID: 400000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
@@ -7699,6 +7851,10 @@ Prefab:
     - target: {fileID: 400000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.50000024
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
@@ -8306,6 +8462,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.5000001
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
   m_IsPrefabParent: 0
@@ -8492,6 +8652,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.12678503
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
   m_IsPrefabParent: 0
@@ -8632,6 +8796,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
   m_IsPrefabParent: 0
@@ -8752,6 +8920,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.5000005
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
   m_IsPrefabParent: 0
@@ -8813,6 +8985,10 @@ Prefab:
     - target: {fileID: 100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
       propertyPath: m_Name
       value: 3D garbage can (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
@@ -9182,6 +9358,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.5000001
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
   m_IsPrefabParent: 0
@@ -9326,6 +9506,10 @@ Prefab:
       propertyPath: m_Name
       value: 3D garbage can (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
   m_IsPrefabParent: 0
@@ -9461,6 +9645,10 @@ Prefab:
     - target: {fileID: 400000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
@@ -9886,6 +10074,10 @@ Prefab:
       propertyPath: m_Name
       value: 3D garbage can (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
   m_IsPrefabParent: 0
@@ -10022,6 +10214,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.12678503
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
   m_IsPrefabParent: 0
@@ -10084,6 +10280,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.50000036
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
   m_IsPrefabParent: 0
@@ -10141,6 +10341,10 @@ Prefab:
     - target: {fileID: 400000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.12678503
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
@@ -10327,6 +10531,10 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 0.47563952
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 12c54846d664ea54897f263289521153, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12c54846d664ea54897f263289521153, type: 3}
   m_IsPrefabParent: 0
@@ -10384,6 +10592,10 @@ Prefab:
     - target: {fileID: 400000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.12678503
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
@@ -10762,6 +10974,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.5000001
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
   m_IsPrefabParent: 0
@@ -10819,6 +11035,10 @@ Prefab:
     - target: {fileID: 400000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
@@ -11014,6 +11234,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
   m_IsPrefabParent: 0
@@ -11154,6 +11378,10 @@ Prefab:
       propertyPath: m_Name
       value: 3D beaker (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
   m_IsPrefabParent: 0
@@ -11211,6 +11439,10 @@ Prefab:
     - target: {fileID: 400000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
@@ -11351,6 +11583,10 @@ Prefab:
     - target: {fileID: 400000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
@@ -11627,6 +11863,10 @@ Prefab:
     - target: {fileID: 400000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
@@ -12160,6 +12400,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
   m_IsPrefabParent: 0
@@ -12276,6 +12520,10 @@ Prefab:
       propertyPath: m_Name
       value: 3D garbage can (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
   m_IsPrefabParent: 0
@@ -12337,6 +12585,10 @@ Prefab:
     - target: {fileID: 400000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.50000036
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
@@ -12715,6 +12967,10 @@ Prefab:
     - target: {fileID: 400000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
@@ -13938,6 +14194,10 @@ Prefab:
       propertyPath: m_Name
       value: 3D beaker (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
   m_IsPrefabParent: 0
@@ -14410,6 +14670,10 @@ Prefab:
       propertyPath: m_Name
       value: 3D radioactive barrel (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 12c54846d664ea54897f263289521153, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12c54846d664ea54897f263289521153, type: 3}
   m_IsPrefabParent: 0
@@ -14471,6 +14735,10 @@ Prefab:
     - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
       propertyPath: m_Name
       value: 3D crate (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
@@ -14870,6 +15138,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 12c54846d664ea54897f263289521153, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12c54846d664ea54897f263289521153, type: 3}
   m_IsPrefabParent: 0
@@ -14931,6 +15203,10 @@ Prefab:
     - target: {fileID: 100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
       propertyPath: m_Name
       value: 3D garbage can (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
@@ -15110,6 +15386,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.5000005
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
   m_IsPrefabParent: 0
@@ -15241,6 +15521,10 @@ Prefab:
     - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
       propertyPath: m_Name
       value: 3D beaker (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
@@ -15381,6 +15665,10 @@ Prefab:
     - target: {fileID: 400000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
@@ -15749,6 +16037,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.6068955
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 12c54846d664ea54897f263289521153, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12c54846d664ea54897f263289521153, type: 3}
   m_IsPrefabParent: 0
@@ -15810,6 +16102,10 @@ Prefab:
     - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
       propertyPath: m_Name
       value: 3D crate (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
@@ -15915,6 +16211,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.60689574
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 12c54846d664ea54897f263289521153, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12c54846d664ea54897f263289521153, type: 3}
   m_IsPrefabParent: 0
@@ -15972,6 +16272,10 @@ Prefab:
     - target: {fileID: 400000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.126785
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
@@ -16084,6 +16388,10 @@ Prefab:
     - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
       propertyPath: m_Name
       value: 3D crate (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
@@ -16224,6 +16532,10 @@ Prefab:
     - target: {fileID: 400000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
@@ -16568,6 +16880,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
   m_IsPrefabParent: 0
@@ -16617,6 +16933,10 @@ Prefab:
     - target: {fileID: 400000, guid: 12c54846d664ea54897f263289521153, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.47563952
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 12c54846d664ea54897f263289521153, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12c54846d664ea54897f263289521153, type: 3}
@@ -16680,6 +17000,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.5000001
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
   m_IsPrefabParent: 0
@@ -16729,6 +17053,10 @@ Prefab:
     - target: {fileID: 400000, guid: 12c54846d664ea54897f263289521153, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.47563952
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 12c54846d664ea54897f263289521153, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12c54846d664ea54897f263289521153, type: 3}
@@ -16829,6 +17157,10 @@ Prefab:
     - target: {fileID: 100000, guid: 12c54846d664ea54897f263289521153, type: 3}
       propertyPath: m_Name
       value: 3D radioactive barrel (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 12c54846d664ea54897f263289521153, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12c54846d664ea54897f263289521153, type: 3}
@@ -16955,6 +17287,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.60689574
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 12c54846d664ea54897f263289521153, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12c54846d664ea54897f263289521153, type: 3}
   m_IsPrefabParent: 0
@@ -17000,6 +17336,10 @@ Prefab:
     - target: {fileID: 400000, guid: 12c54846d664ea54897f263289521153, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.47563952
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 12c54846d664ea54897f263289521153, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12c54846d664ea54897f263289521153, type: 3}
@@ -17280,6 +17620,10 @@ Prefab:
     - target: {fileID: 400000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
@@ -18560,6 +18904,10 @@ Prefab:
       propertyPath: m_Name
       value: 3D crate (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
   m_IsPrefabParent: 0
@@ -18749,6 +19097,10 @@ Prefab:
     - target: {fileID: 100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
       propertyPath: m_Name
       value: 3D garbage can (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
@@ -18961,6 +19313,10 @@ Prefab:
     - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
       propertyPath: m_Name
       value: 3D crate (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
@@ -19395,6 +19751,10 @@ Prefab:
     - target: {fileID: 400000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.126785
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
@@ -20056,6 +20416,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.12678503
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
   m_IsPrefabParent: 0
@@ -20164,6 +20528,10 @@ Prefab:
       propertyPath: m_Name
       value: 3D garbage can (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
   m_IsPrefabParent: 0
@@ -20221,6 +20589,10 @@ Prefab:
     - target: {fileID: 400000, guid: 12c54846d664ea54897f263289521153, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.6068955
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 12c54846d664ea54897f263289521153, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12c54846d664ea54897f263289521153, type: 3}
@@ -20745,6 +21117,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
   m_IsPrefabParent: 0
@@ -20891,6 +21267,10 @@ Prefab:
       propertyPath: m_Name
       value: 3D beaker (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
   m_IsPrefabParent: 0
@@ -21022,6 +21402,10 @@ Prefab:
     - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
       propertyPath: m_Name
       value: 3D beaker (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
@@ -21232,6 +21616,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.5000001
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
   m_IsPrefabParent: 0
@@ -21294,6 +21682,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
   m_IsPrefabParent: 0
@@ -21355,6 +21747,10 @@ Prefab:
     - target: {fileID: 400000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
@@ -21545,6 +21941,10 @@ Prefab:
     - target: {fileID: 400000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
@@ -21764,6 +22164,10 @@ Prefab:
       propertyPath: m_Name
       value: 3D garbage can (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
   m_IsPrefabParent: 0
@@ -21904,6 +22308,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.5000001
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
   m_IsPrefabParent: 0
@@ -21949,6 +22357,10 @@ Prefab:
     - target: {fileID: 400000, guid: 12c54846d664ea54897f263289521153, type: 3}
       propertyPath: m_RootOrder
       value: 67
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 12c54846d664ea54897f263289521153, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12c54846d664ea54897f263289521153, type: 3}
@@ -22069,6 +22481,10 @@ Prefab:
     - target: {fileID: 400000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
@@ -22197,6 +22613,10 @@ Prefab:
     - target: {fileID: 400000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.126785
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
@@ -22494,6 +22914,10 @@ Prefab:
       propertyPath: m_Name
       value: 3D garbage can (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
   m_IsPrefabParent: 0
@@ -22601,6 +23025,10 @@ Prefab:
     - target: {fileID: 100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
       propertyPath: m_Name
       value: 3D garbage can (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d53607b742580c48bbca527d4acb9cf, type: 3}
@@ -22944,6 +23372,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.5000001
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
   m_IsPrefabParent: 0
@@ -23051,6 +23483,10 @@ Prefab:
     - target: {fileID: 400000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
@@ -23342,6 +23778,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.5000001
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
   m_IsPrefabParent: 0
@@ -23569,6 +24009,10 @@ Prefab:
     - target: {fileID: 100000, guid: 12c54846d664ea54897f263289521153, type: 3}
       propertyPath: m_Name
       value: 3D radioactive barrel (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 12c54846d664ea54897f263289521153, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12c54846d664ea54897f263289521153, type: 3}
@@ -24022,6 +24466,10 @@ Prefab:
       propertyPath: m_Name
       value: 3D radioactive barrel (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 12c54846d664ea54897f263289521153, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12c54846d664ea54897f263289521153, type: 3}
   m_IsPrefabParent: 0
@@ -24330,6 +24778,10 @@ Prefab:
     - target: {fileID: 400000, guid: 12c54846d664ea54897f263289521153, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.60689574
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 12c54846d664ea54897f263289521153, type: 3}
+      propertyPath: m_TagString
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12c54846d664ea54897f263289521153, type: 3}

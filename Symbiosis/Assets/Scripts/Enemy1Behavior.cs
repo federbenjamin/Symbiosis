@@ -6,7 +6,7 @@ public class Enemy1Behavior : EnemyBehavior {
 	private bool enemyOriented = false;
 
 	void Awake () {
-		nextHit = 60;
+		nextHit = 0;
 	}
 
 	// Update is called once per frame
@@ -19,7 +19,7 @@ public class Enemy1Behavior : EnemyBehavior {
 			enemyOriented = true;
 		}
 
-		if (EnemyAlive()) {
+		if (IsEnemyAlive()) {
 			UpdateTargetPlayer(false);
 
 			if (roomController.EnemiesActive) {
