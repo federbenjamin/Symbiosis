@@ -14,9 +14,11 @@ public class Pickups : MonoBehaviour {
 	private GameObject playerWeapSprite;
 	private string playerPrefix;
 	public string powerupType;
+	public bool notUsed;
 
 	// Use this for initialization
 	void Start () {
+		notUsed = false;
 	}
 	
 	// Update is called once per frame
@@ -113,17 +115,30 @@ public class Pickups : MonoBehaviour {
 				break;
 
 			case "FullHealth":
-				playerStats.playersHealth.HealHealth (2);
+				if (playerStats.playersHealth.currentHealth < 10) {
+					playerStats.playersHealth.HealHealth (2);
+				} else {
+					notUsed = true;
+				}
 				break;
 			
 			case "HalfHealth":
-				playerStats.playersHealth.HealHealth (1);
+				if (playerStats.playersHealth.currentHealth < 10) {
+					playerStats.playersHealth.HealHealth (1);
+				} else {
+					notUsed = true;
+				}
 				break;
 			}
 
 
-			//Get rid of the pickup since it has been used
-			Destroy (gameObject);
+			//Get rid of the pickup if it has been used
+			if (!notUsed){
+				Destroy (gameObject);
+			}
+			
+			//Reset the variable for next switch statement
+			notUsed = false;
 		}
 	}
 }
