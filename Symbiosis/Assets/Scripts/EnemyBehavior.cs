@@ -38,7 +38,9 @@ public class EnemyBehavior : MonoBehaviour {
 		timer = 0;
 
 		foreach (Transform child in transform) {
-			enemyAnimator = child.GetComponent<Animator> ();
+			if (child.name != "SpawnParticles") {
+				enemyAnimator = child.GetComponent<Animator> ();
+			}
 		}
 	}
 

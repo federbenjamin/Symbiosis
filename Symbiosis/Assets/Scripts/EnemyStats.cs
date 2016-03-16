@@ -11,7 +11,7 @@ public class EnemyStats : MonoBehaviour {
 	private int ongoingDamage;
 	private int ongoingTimer;
 	public Animator enemyAnimator;
-	public Object fireEmitter;
+	public GameObject spawnParticles;
 
 
 	// Use this for initialization
@@ -22,7 +22,11 @@ public class EnemyStats : MonoBehaviour {
 		ongoingTimer = 30;
 
 		foreach (Transform child in transform) {
-			enemyAnimator = child.GetComponent<Animator> ();
+			if (child.name == "SpawnParticles") {
+				spawnParticles = child.gameObject;
+			} else {
+				enemyAnimator = child.GetComponent<Animator> ();
+			}
 		}
 	}
 	
@@ -59,14 +63,18 @@ public class EnemyStats : MonoBehaviour {
 
 	void Freeze(){
 		frozen = true;
+		spawnParticles.SetActive(true);
+		spawnParticles.GetComponent<Renderer>().material.mainTexture = Resources.Load<Texture>("particle-blue");
 		EnemyBehavior mover = GetComponent<EnemyBehavior> ();
 		mover.setMoveSpeed(moveSpeed / 2);
 	}
 
 	void Ignite(){
 		onFire = true;
-		GameObject fire = Instantiate (fireEmitter, this.transform.position, Quaternion.identity) as GameObject;
-		fire.transform.parent = this.transform;
+		spawnParticles.SetActive(true);
+		spawnParticles.GetComponent<Renderer>().material.mainTexture = Resources.Load<Texture>("particle-red");
+		//GameObject fire = Instantiate (fireEmitter, this.transform.position, Quaternion.identity) as GameObject;
+		//fire.transform.parent = this.transform;
 		ongoingDamage = 4;
 	}
 
