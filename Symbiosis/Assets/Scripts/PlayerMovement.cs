@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	private StatsManager playerStats;
 	private PlayerShooting playerShooting;
+	private HealthManager playersHealth;
 
 	private float speedModifier;
 
@@ -28,6 +29,7 @@ public class PlayerMovement : MonoBehaviour {
 		//Get the StatsManager Script
 		playerStats = GetComponent<StatsManager> ();
 		playerShooting = GetComponent<PlayerShooting> ();
+		playersHealth = GameObject.Find("Health").GetComponent<HealthManager> ();
 	}
 
 	// Use this for initialization
@@ -55,52 +57,52 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
+		if (playersHealth.currentHealth > 0){
+			//Player Movement
+			horizMov = Input.GetAxisRaw ("Horizontal" + playerPrefix);
+			vertMov = Input.GetAxisRaw ("Vertical" + playerPrefix);
+			playerMov = new Vector3 (horizMov, 0f, vertMov);
 
-		//Player Movement
-		horizMov = Input.GetAxisRaw ("Horizontal" + playerPrefix);
-		vertMov = Input.GetAxisRaw ("Vertical" + playerPrefix);
-		playerMov = new Vector3 (horizMov, 0f, vertMov);
+			isMoving = (horizMov != 0 || vertMov != 0);
+			animatorBody.SetBool ("moving", isMoving);
+			animatorSlime.SetBool ("moving", isMoving);
 
-		isMoving = (horizMov != 0 || vertMov != 0);
-		animatorBody.SetBool ("moving", isMoving);
-		animatorSlime.SetBool ("moving", isMoving);
+			bool playerBusy = (playerShooting.playerShooting || playerShooting.playerSwinging);
 
-		bool playerBusy = (playerShooting.playerShooting || playerShooting.playerSwinging);
-
-		if (!playerBusy) {
-			if (horizMov != 0) {
-				if (horizMov > 0) {
-					if (vertMov > 0) {
-						playerTransform.rotation = Quaternion.Euler (0, -135, 0);
-					} else if (vertMov < 0) {
-						playerTransform.rotation = Quaternion.Euler (0, -45, 0);
-					} else {
-						playerTransform.rotation = Quaternion.Euler (0, -90, 0);
+			if (!playerBusy) {
+				if (horizMov != 0) {
+					if (horizMov > 0) {
+						if (vertMov > 0) {
+							playerTransform.rotation = Quaternion.Euler (0, -135, 0);
+						} else if (vertMov < 0) {
+							playerTransform.rotation = Quaternion.Euler (0, -45, 0);
+						} else {
+							playerTransform.rotation = Quaternion.Euler (0, -90, 0);
+						}
+					} else if (horizMov < 0) {
+						if (vertMov > 0) {
+							playerTransform.rotation = Quaternion.Euler (0, 135, 0);
+						} else if (vertMov < 0) {
+							playerTransform.rotation = Quaternion.Euler (0, 45, 0);
+						} else {
+							playerTransform.rotation = Quaternion.Euler (0, 90, 0);
+						}
 					}
-				} else if (horizMov < 0) {
+				} else if (vertMov != 0) {
 					if (vertMov > 0) {
-						playerTransform.rotation = Quaternion.Euler (0, 135, 0);
+						playerTransform.rotation = Quaternion.Euler (0, -180, 0);
 					} else if (vertMov < 0) {
-						playerTransform.rotation = Quaternion.Euler (0, 45, 0);
-					} else {
-						playerTransform.rotation = Quaternion.Euler (0, 90, 0);
+						playerTransform.rotation = Quaternion.Euler (0, 0, 0);
 					}
 				}
-			} else if (vertMov != 0) {
-				if (vertMov > 0) {
-					playerTransform.rotation = Quaternion.Euler (0, -180, 0);
-				}
-			} else if (vertMov < 0) {
-				playerTransform.rotation = Quaternion.Euler (0, 0, 0);
 			}
+
+			//Get the speed stat for the player
+			speedModifier = playerStats.GetSpeed ();
+
+			//Apply Movement
+			playerRB.AddForce (playerMov * ((baseSpeed + speedModifier) * 10) * Time.deltaTime, ForceMode.VelocityChange);
 		}
-
-		//Get the speed stat for the player
-		speedModifier = playerStats.GetSpeed ();
-
-		//Apply Movement
-		playerRB.AddForce (playerMov * ((baseSpeed + speedModifier) * 10) * Time.deltaTime, ForceMode.VelocityChange);
-
 	}
 
 	void OnTriggerEnter(Collider col) {

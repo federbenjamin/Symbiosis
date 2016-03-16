@@ -22,6 +22,11 @@ public class RoomController : MonoBehaviour {
 	public static bool playersTogether = false;
 
 	private bool hasTriggered = false;
+	private bool enemiesActive = false;
+	public bool EnemiesActive {
+		get;
+		set;
+	}
 	public bool roomCleared = false;
 
 	public int switchesActive = 0;
@@ -127,13 +132,14 @@ public class RoomController : MonoBehaviour {
 		foreach (GameObject spawnpoint in spawnpoints) {
 			string enemyType = spawnpoint.name.Substring(10);
 			GameObject enemyChild;
+
 			Vector3 spawnVector = spawnpoint.transform.position;
 			spawnVector.y = 0.055f;
+
 			if (enemyType == "1") {
 				enemyChild = Instantiate (enemy1, spawnVector, spawnpoint.transform.rotation) as GameObject;
 			} else if (enemyType == "2") {
 				enemyChild = Instantiate (enemy2, spawnVector, spawnpoint.transform.rotation) as GameObject;
-				enemyChild.GetComponent<Enemy2Behavior> ().addShootingOffset (100);
 			} else if (enemyType == "10") {
 				enemyChild = Instantiate (greenZomb, spawnVector, spawnpoint.transform.rotation) as GameObject;
 			} else if (enemyType == "20") {
@@ -164,4 +170,5 @@ public class RoomController : MonoBehaviour {
 	public bool getPlayersTogether() {
 		return playersTogether;
 	}
+
 }

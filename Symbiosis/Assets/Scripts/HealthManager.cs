@@ -17,9 +17,13 @@ public class HealthManager : MonoBehaviour {
 	public int totalHealth;
 	public int currentHealth;
 
+	public Sprite BarHit;
+	public Sprite BarNormal;
 	public Sprite fullHeart;
 	public Sprite halfHeart;
+	public Sprite emptyHeart;
 
+	private Transform healthBar;
 	private Transform heart1;
 	private Transform heart2;
 	private Transform heart3;
@@ -40,6 +44,7 @@ public class HealthManager : MonoBehaviour {
 		 */
 
 
+		healthBar = transform.FindChild("HealthBar");
 		heart1 = transform.FindChild ("0,1,2");
 		heart2 = transform.FindChild ("3,4");
 		heart3 = transform.FindChild ("5,6");
@@ -81,32 +86,32 @@ public class HealthManager : MonoBehaviour {
 	void Update () {
 		
 		if (currentHealth == 0) {
-			heart1.GetComponent<Image> ().enabled = false;
+			heart1.GetComponent<Image> ().sprite = emptyHeart;
 			GameOver ();
 		} if (currentHealth == 1) {
 			heart1.GetComponent<Image> ().sprite = halfHeart;
 		} if (currentHealth >= 2) {
 			heart1.GetComponent<Image> ().sprite = fullHeart;
 		} if (currentHealth < 3) {
-			heart2.GetComponent<Image> ().enabled = false;
+			heart2.GetComponent<Image> ().sprite = emptyHeart;
 		} if (currentHealth == 3) {
 			heart2.GetComponent<Image> ().sprite = halfHeart;
 		} if (currentHealth >= 4) {
 			heart2.GetComponent<Image> ().sprite = fullHeart;
 		} if (currentHealth < 5) {
-			heart3.GetComponent<Image> ().enabled = false;
+			heart3.GetComponent<Image> ().sprite = emptyHeart;
 		} if (currentHealth == 5) {
 			heart3.GetComponent<Image> ().sprite = halfHeart;
 		} if (currentHealth >= 6) {
 			heart3.GetComponent<Image> ().sprite = fullHeart;
 		} if (currentHealth < 7) {
-			heart4.GetComponent<Image> ().enabled = false;
+			heart4.GetComponent<Image> ().sprite = emptyHeart;
 		} if (currentHealth == 7) {
 			heart4.GetComponent<Image> ().sprite = halfHeart;
 		} if (currentHealth >= 8) {
 			heart4.GetComponent<Image> ().sprite = fullHeart;
 		} if (currentHealth < 9) {
-			heart5.GetComponent<Image> ().enabled = false;
+			heart5.GetComponent<Image> ().sprite = emptyHeart;
 		} if (currentHealth == 9) {
 			heart5.GetComponent<Image> ().sprite = halfHeart;
 		} if (currentHealth >= 10) {
@@ -116,14 +121,20 @@ public class HealthManager : MonoBehaviour {
 
 	//Increase health of players
 	public void HealHealth(int heal) {
-		currentHealth += heal;
+		
+		if ((currentHealth += heal) > totalHealth) {
+			currentHealth = totalHealth;
+		}
 	}
 
 	//Decrease health of players
 	public void DamageHealth(int damage) {
+		healthBar.GetComponent<Image>().sprite = BarHit;
+		healthBar.GetComponent<RectTransform>().sizeDelta = new Vector2(505, 125);
 		if (!invincible) {
 			currentHealth -= damage;
 		}
+		StartCoroutine ("ChangeHealthBar");
 	}
 
 	public void GameOver() {
@@ -139,6 +150,12 @@ public class HealthManager : MonoBehaviour {
 	IEnumerator Wait() {
 		yield return new WaitForSeconds (3f);
 		SceneManager.LoadScene ("GameOver");
+	}
+
+	IEnumerator ChangeHealthBar() {
+		yield return new WaitForSeconds (0.75f);
+		healthBar.GetComponent<Image>().sprite = BarNormal;
+		healthBar.GetComponent<RectTransform>().sizeDelta = new Vector2(500, 100);
 	}
 }
 

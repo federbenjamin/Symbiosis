@@ -14,9 +14,11 @@ public class Pickups : MonoBehaviour {
 	private GameObject playerWeapSprite;
 	private string playerPrefix;
 	public string powerupType;
+	public bool notUsed;
 
 	// Use this for initialization
 	void Start () {
+		notUsed = false;
 	}
 	
 	// Update is called once per frame
@@ -30,7 +32,7 @@ public class Pickups : MonoBehaviour {
 		if (powerupType == "SpeedUp" || powerupType == "FireRateUp") {
 			transform.Rotate (0,0,rotateSpeed);
 		} else {
-			transform.Rotate (Vector3.up, rotateSpeed * Time.deltaTime);
+			transform.Rotate (Vector3.up, rotateSpeed * Time.deltaTime, Space.World);
 		}
 	}
 
@@ -111,11 +113,32 @@ public class Pickups : MonoBehaviour {
 				playerShooting.ChangeWeapon (powerupType);
 				playerWeapSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("swordsprite");
 				break;
+
+			case "FullHealth":
+				if (playerStats.playersHealth.currentHealth < 10) {
+					playerStats.playersHealth.HealHealth (2);
+				} else {
+					notUsed = true;
+				}
+				break;
+			
+			case "HalfHealth":
+				if (playerStats.playersHealth.currentHealth < 10) {
+					playerStats.playersHealth.HealHealth (1);
+				} else {
+					notUsed = true;
+				}
+				break;
 			}
 
 
-			//Get rid of the pickup since it has been used
-			Destroy (gameObject);
+			//Get rid of the pickup if it has been used
+			if (!notUsed){
+				Destroy (gameObject);
+			}
+			
+			//Reset the variable for next switch statement
+			notUsed = false;
 		}
 	}
 }
