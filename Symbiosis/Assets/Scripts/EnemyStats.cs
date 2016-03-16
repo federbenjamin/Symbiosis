@@ -73,8 +73,6 @@ public class EnemyStats : MonoBehaviour {
 		onFire = true;
 		spawnParticles.SetActive(true);
 		spawnParticles.GetComponent<Renderer>().material.mainTexture = Resources.Load<Texture>("particle-red");
-		//GameObject fire = Instantiate (fireEmitter, this.transform.position, Quaternion.identity) as GameObject;
-		//fire.transform.parent = this.transform;
 		ongoingDamage = 4;
 	}
 
