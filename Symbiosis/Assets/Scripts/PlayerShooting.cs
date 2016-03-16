@@ -200,7 +200,7 @@ public class PlayerShooting : MonoBehaviour {
 			break;
 
 		case "Sword":
-			baseFireRate = 0.4f;
+			baseFireRate = 0.6f;
 			cur_bullet = null;
 			sword = Instantiate (Sword, hand.transform.position, Sword.transform.rotation) as GameObject;
 			sword.transform.parent = hand.transform;
