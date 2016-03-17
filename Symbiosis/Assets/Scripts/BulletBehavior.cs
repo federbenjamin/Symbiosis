@@ -35,14 +35,14 @@ public class BulletBehavior : MonoBehaviour {
 
 		if (other.tag == "Enemy") {
 			string damageType = "none";
-			float force = 400;
+			float force = 100;
 			if (augment != null) {
 				Debug.Log ("");
 				//Destroy (collision.gameObject);
 				augment.onHitEffect (other);
 				damageType = augment.Element;
 				if (augment.Element == "earth") {
-					force = 800;
+					force = 400;
 				}
 			}
 

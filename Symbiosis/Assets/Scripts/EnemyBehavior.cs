@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class EnemyBehavior : MonoBehaviour {
 
@@ -12,7 +13,9 @@ public class EnemyBehavior : MonoBehaviour {
 	protected int timer;
 	protected int nextHit;
 	protected Transform myTransform;
-	protected Vector3 collisionNormal;
+	protected Rigidbody myRigidBody;
+	//protected Vector3 collisionNormal;
+	protected Vector3 collisionPosition;
 
 	public Animator enemyAnimator;
 
@@ -29,6 +32,7 @@ public class EnemyBehavior : MonoBehaviour {
 
 	protected void setStartVariables() {
 		myTransform = transform;
+		myRigidBody = GetComponent<Rigidbody>();
 		playersHealth = GameObject.Find("Health").GetComponent<HealthManager> ();
 		roomController = transform.parent.GetComponent<RoomController> ();
 		moveSpeed = GetComponent<EnemyStats>().moveSpeed;
@@ -54,15 +58,17 @@ public class EnemyBehavior : MonoBehaviour {
 	
 	void OnCollisionEnter (Collision col) {
         if (col.gameObject.tag == "Wall" || col.gameObject.tag == "Door" || col.gameObject.tag == "Enemy" || col.gameObject.tag == "RoomObject") {
-       		collisionNormal = col.contacts[0].normal;
-       	}  else if (col.gameObject.tag == "Player") {
-       		collisionNormal = col.contacts[0].normal;
+       		//collisionNormal = col.contacts[0].normal;
+        	collisionPosition = col.transform.position;
+       	} else if (col.gameObject.tag == "Player") {
+       		//collisionNormal = col.contacts[0].normal;
+       		collisionPosition = col.transform.position;
        		ActivateEnemies();
        	}
     }
 
     void OnCollisionExit (Collision col) {
-        if (col.gameObject.tag == "Player") {
+		if (col.gameObject.tag == "Player") {
 			nextHit = 40;
 		}
     }
