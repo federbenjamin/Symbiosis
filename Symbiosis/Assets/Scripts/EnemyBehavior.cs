@@ -9,7 +9,7 @@ public class EnemyBehavior : MonoBehaviour {
 	protected TargetPlayer targetPlayer;
 	protected bool ignorePlayer;
 
-	protected int moveSpeed;
+	protected float moveSpeed;
 	protected int timer;
 	protected int nextHit;
 	protected Transform myTransform;
@@ -48,11 +48,11 @@ public class EnemyBehavior : MonoBehaviour {
 		}
 	}
 
-	public int getMoveSpeed () {
+	public float getMoveSpeed () {
 		return moveSpeed;
 	}
 
-	public void setMoveSpeed (int newSpeed) {
+	public void setMoveSpeed (float newSpeed) {
 		moveSpeed = newSpeed;
 	}
 	
@@ -62,7 +62,7 @@ public class EnemyBehavior : MonoBehaviour {
         	collisionPosition = col.transform.position;
        	} else if (col.gameObject.tag == "Player") {
        		//collisionNormal = col.contacts[0].normal;
-       		collisionPosition = col.transform.position;
+       		//collisionPosition = col.transform.position;
        		ActivateEnemies();
        	}
     }

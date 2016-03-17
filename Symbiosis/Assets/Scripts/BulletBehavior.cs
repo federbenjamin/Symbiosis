@@ -25,11 +25,11 @@ public class BulletBehavior : MonoBehaviour {
 	void OnTriggerEnter(Collider c) {
 		GameObject other = c.gameObject;
 		//If it hits a player don't disappear
-		if (other.tag != "Player" && other.tag != "Bullet" && other.tag != "Room") {
+		if (other.tag != "Player" && other.tag != "Bullet" && other.tag != "Room" && other.tag != "Pickups") {
 			AudioSource.PlayClipAtPoint (sound, transform.position);
 			Destroy (gameObject);
 		}
-		if (other.tag == "Bullet") {
+		if (other.tag == "Bullet" || other.tag == "Pickups") {
 			Physics.IgnoreCollision (other.GetComponent<Collider> (), GetComponent<Collider> ());
 		}
 
