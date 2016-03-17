@@ -33,6 +33,7 @@ public class Enemy1Behavior : EnemyBehavior {
 
 				//rotate to look at the player
 				Vector3 direction = targetPlayer.Transform.position - myRigidBody.position;
+				direction.y = 0;
 				Quaternion angleTowardsPlayer = Quaternion.Slerp(myTransform.rotation, Quaternion.LookRotation(direction), turnSpeed * Time.deltaTime);
 				myRigidBody.MoveRotation(angleTowardsPlayer);
 

@@ -121,7 +121,8 @@ public class Enemy2Behavior : EnemyBehavior {
 	}
 
 	void CheckTimeUntilMovement() {
-		readyToWalk = (timer % 40 == 0);
+		int randModulus = Random.Range(30, 50);
+		readyToWalk = (timer % randModulus == 0);
 	}
 
 	void CheckTimeUntilRotation() {

@@ -39,7 +39,7 @@ public class EnemyBehavior : MonoBehaviour {
 		p1_Object = GameObject.Find ("P1");
 		p2_Object = GameObject.Find ("P2");
 		UpdateTargetPlayer(true);
-		timer = 0;
+		timer = Random.Range(1, 50);
 
 		foreach (Transform child in transform) {
 			if (child.name != "SpawnParticles") {
