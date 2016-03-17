@@ -5,7 +5,7 @@ public class EnemyBehavior : MonoBehaviour {
 
 	protected Transform p1_Transform;
 	protected Transform p2_Transform;
-	protected Target targetPlayer;
+	protected TargetPlayer targetPlayer;
 	protected bool ignorePlayer;
 
 	protected int moveSpeed;
@@ -102,14 +102,14 @@ public class EnemyBehavior : MonoBehaviour {
 
 		if (dist_1 < dist_2) {
 			if (isInit) {
-				targetPlayer = new Target(p1_Transform, dist_1);
+				targetPlayer = new TargetPlayer(p1_Transform, dist_1);
 			} else {
 				targetPlayer.Transform = p1_Transform;
 				targetPlayer.Distance = dist_1;
 			}
 		} else {
 			if (isInit) {
-				targetPlayer = new Target(p2_Transform, dist_2);
+				targetPlayer = new TargetPlayer(p2_Transform, dist_2);
 			} else {
 				targetPlayer.Transform = p2_Transform;
 				targetPlayer.Distance = dist_2;
@@ -126,7 +126,7 @@ public class EnemyBehavior : MonoBehaviour {
 	}
 }
 
-public class Target {
+public class TargetPlayer {
     private Transform transform;
     public Transform Transform {
      	get;
@@ -138,7 +138,7 @@ public class Target {
      	set;
     }
 
-    public Target(Transform targetTransform, float targetDistance) {
+    public TargetPlayer(Transform targetTransform, float targetDistance) {
         Transform = targetTransform;
         Distance = targetDistance;
     }

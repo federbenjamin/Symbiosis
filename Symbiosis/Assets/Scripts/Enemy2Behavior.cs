@@ -9,6 +9,7 @@ public class Enemy2Behavior : EnemyBehavior {
 	private int nextFire;
 	private bool enemyOriented = false;
 	private bool setShootingOffset = false;
+	private bool readyToWalk = false;
 
 	// Update is called once per frame
 	void Update () {
@@ -39,26 +40,32 @@ public class Enemy2Behavior : EnemyBehavior {
 				Vector3 moveDirection = myTransform.forward;
 				moveDirection.y = 0;
 				//move towards the player
-				if (targetPlayer.Distance > 4.5) {
+				if ((targetPlayer.Distance > 4.5 || targetPlayer.Distance < 3) && !readyToWalk) {
+					CheckTimeUntilMovement();
+				} else if (targetPlayer.Distance > 4.5) {
+					readyToWalk = true;
 					enemyAnimator.SetTrigger ("Walking");
 					myTransform.position += moveDirection * moveSpeed * Time.deltaTime;
 				} else if (targetPlayer.Distance < 3) {
+					readyToWalk = true;
 					if (collisionNormal.z == -1 || collisionNormal.z == 1) {
 						moveDirection.z = 0;//(-0.5f * collisionNormal.z);
 					} else if (collisionNormal.x == -1 || collisionNormal.x == 1) {
 						moveDirection.x = 0;//(-0.5f * collisionNormal.x);
 					}
 					enemyAnimator.SetTrigger ("Walking");
-					myTransform.position -= moveDirection * (moveSpeed - 1) * Time.deltaTime;
+					myTransform.position -= moveDirection * (moveSpeed - 2) * Time.deltaTime;
 
 					if (timer > nextFire) {
 						enemyAnimator.SetTrigger ("Shoot");
 						Shoot (myTransform.forward);
 					}
 				} else if (timer > nextFire) {
+					readyToWalk = false;
 					enemyAnimator.SetTrigger ("Shoot");
 					Shoot (myTransform.forward);
 				} else {
+					readyToWalk = false;
 					enemyAnimator.SetTrigger ("Stopped");
 				}
 
@@ -81,7 +88,11 @@ public class Enemy2Behavior : EnemyBehavior {
 		}
 	}
 
-	void addShootingOffset (int offset) {
+	void addShootingOffset(int offset) {
 		nextFire = offset;
+	}
+
+	void CheckTimeUntilMovement() {
+		readyToWalk = (timer % 30 == 0);
 	}
 }
