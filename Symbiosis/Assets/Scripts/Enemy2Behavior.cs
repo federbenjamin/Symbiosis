@@ -36,7 +36,8 @@ public class Enemy2Behavior : EnemyBehavior {
 				//rotate to look at the player
 				CheckTimeUntilRotation();
 				if (!freezeRotation) {
-					Vector3 direction = targetPlayer.Transform.position - myRigidBody.position;
+					Vector3 predictedPlayerPos = targetPlayer.Transform.position + targetPlayer.PlayerObject.GetComponent<Rigidbody>().velocity * Time.deltaTime * 2;
+					Vector3 direction = predictedPlayerPos - myRigidBody.position;
 					Quaternion angleTowardsPlayer = Quaternion.Slerp(myTransform.rotation, Quaternion.LookRotation(direction), 4 * Time.deltaTime);
 					myRigidBody.MoveRotation(angleTowardsPlayer);
 				}
