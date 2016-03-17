@@ -64,6 +64,8 @@ public class EnemyBehavior : MonoBehaviour {
        		//collisionNormal = col.contacts[0].normal;
        		//collisionPosition = col.transform.position;
        		ActivateEnemies();
+       	} else if (col.gameObject.tag == "Decoration") {
+       		Physics.IgnoreCollision (col.gameObject.GetComponent<Collider> (), GetComponent<Collider> ());
        	}
     }
 

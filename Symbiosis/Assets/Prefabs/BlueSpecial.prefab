@@ -1053,8 +1053,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e7a559fc6fc462191e9c4f74a073b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHP: 10
-  maxHP: 20
+  currentHP: 40
+  maxHP: 40
   moveSpeed: 6
   enemyAnimator: {fileID: 0}
   spawnParticles: {fileID: 0}
@@ -1072,6 +1072,7 @@ MonoBehaviour:
   enemyAnimator: {fileID: 0}
   bullet: {fileID: 194644, guid: 857887b6b8c504212ab9138860c99568, type: 2}
   bulletOrigin: {fileID: 176972}
+  fireRate: 0
   bulletVelocity: 8
 --- !u!136 &13643880
 CapsuleCollider:
@@ -3454,6 +3455,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Mass
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxHP
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: currentHP
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

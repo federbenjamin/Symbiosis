@@ -5,12 +5,14 @@ public class Enemy2Behavior : EnemyBehavior {
 
 	public GameObject bullet;
 	public GameObject bulletOrigin;
+	public float fireRate = 1;
 	public int bulletVelocity;
 	private float nextFire;
 	private bool enemyOriented = false;
 	private bool setShootingOffset = false;
 	private bool readyToWalk = false;
 	private bool freezeRotation = true;
+	private bool nearDeath = false;
 
 	// Update is called once per frame
 	void Update () {
@@ -22,9 +24,10 @@ public class Enemy2Behavior : EnemyBehavior {
 			IgnorePlayer();
 			enemyOriented = true;
 		}
-
+		Debug.Log(nextFire);
 		if (IsEnemyAlive()) {
 			UpdateTargetPlayer(false);
+			CheckNearDeath();
 
 			if (roomController.EnemiesActive) {
 				if (!setShootingOffset) {
@@ -111,8 +114,8 @@ public class Enemy2Behavior : EnemyBehavior {
 			clone.transform.rotation = Quaternion.LookRotation (shootDir);
 			Physics.IgnoreCollision (clone.GetComponent<Collider> (), GetComponent<Collider> ());
 			clone.GetComponent<Rigidbody> ().velocity = (clone.transform.forward * bulletVelocity);
-
-			nextFire = Time.time + Random.Range (0.5f, 1.5f);
+			nextFire = Time.time + Random.Range (0.8f - (fireRate * 0.25f), 1.5f - (fireRate * 0.47f)); //- (fireRate * 0.1f);
+			//nextFire = Time.time + (Random.Range (0.5f, 1.5f) * (1 / fireRate));
 		}
 	}
 
@@ -121,11 +124,19 @@ public class Enemy2Behavior : EnemyBehavior {
 	}
 
 	void CheckTimeUntilMovement() {
-		int randModulus = Random.Range(30, 50);
+		int randModulus = Random.Range(25, 40);
 		readyToWalk = (timer % randModulus == 0);
 	}
 
 	void CheckTimeUntilRotation() {
 		freezeRotation = (Random.Range(1, 50) % 10 == 0);
+	}
+
+	void CheckNearDeath() {
+		if (!nearDeath && (GetComponent<EnemyStats>().currentHP <= (GetComponent<EnemyStats>().maxHP / 3))) {
+			Debug.Log("TRU");
+			nearDeath = true;
+			fireRate = fireRate * 3;
+		}
 	}
 }
