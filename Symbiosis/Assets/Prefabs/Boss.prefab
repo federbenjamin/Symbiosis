@@ -59,7 +59,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 158470}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -47.81, y: 0.21, z: 434.28}
+  m_LocalPosition: {x: -85.77, y: 11.85, z: 429.7479}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children:
   - {fileID: 450698}
@@ -147,8 +147,8 @@ Rigidbody:
   m_GameObject: {fileID: 158470}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 10
+  m_AngularDrag: 10
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
@@ -195,6 +195,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyAnimator: {fileID: 0}
+  slowMoveSpeed: 2
+  fastMoveSpeed: 4
 --- !u!114 &11469320
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -207,10 +209,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHP: 20
-  maxHP: 40
+  maxHP: 100
   moveSpeed: 4
   enemyAnimator: {fileID: 0}
-  fireEmitter: {fileID: 158930, guid: 6a0ab4f77b8c4c440849916cacb4437a, type: 2}
+  spawnParticles: {fileID: 0}
 --- !u!136 &13695908
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -220,10 +222,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 1.2
+  m_Radius: 0.8
   m_Height: 3
   m_Direction: 1
-  m_Center: {x: 0.2, y: 1.2, z: 0}
+  m_Center: {x: 0, y: 1.2, z: 0.3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -255,6 +257,26 @@ Prefab:
       propertyPath: fireEmitter
       value: 
       objectReference: {fileID: 158930, guid: 6a0ab4f77b8c4c440849916cacb4437a, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Drag
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_AngularDrag
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: fastMoveSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: moveSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxHP
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 158470}

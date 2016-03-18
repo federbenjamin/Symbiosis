@@ -25,24 +25,24 @@ public class BulletBehavior : MonoBehaviour {
 	void OnTriggerEnter(Collider c) {
 		GameObject other = c.gameObject;
 		//If it hits a player don't disappear
-		if (other.tag != "Player" && other.tag != "Bullet" && other.tag != "Room") {
+		if (other.tag != "Player" && other.tag != "Bullet" && other.tag != "Room" && other.tag != "Pickups") {
 			AudioSource.PlayClipAtPoint (sound, transform.position);
 			Destroy (gameObject);
 		}
-		if (other.tag == "Bullet") {
+		if (other.tag == "Bullet" || other.tag == "Pickups") {
 			Physics.IgnoreCollision (other.GetComponent<Collider> (), GetComponent<Collider> ());
 		}
 
 		if (other.tag == "Enemy") {
 			string damageType = "none";
-			float force = 400;
+			float force = 100;
 			if (augment != null) {
 				Debug.Log ("");
 				//Destroy (collision.gameObject);
 				augment.onHitEffect (other);
 				damageType = augment.Element;
 				if (augment.Element == "earth") {
-					force = 800;
+					force = 400;
 				}
 			}
 
