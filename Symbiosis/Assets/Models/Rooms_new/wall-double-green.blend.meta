@@ -20,6 +20,7 @@ ModelImporter:
     4300000: Wall_001
     4300002: Bar_001
     4300004: Wall
+    6400000: //RootNode
     7400000: Default Take
     9500000: //RootNode
   materials:
@@ -48,7 +49,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0

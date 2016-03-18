@@ -227,6 +227,50 @@ ModelImporter:
     4300082: Floor_030
     4300084: Floor_031
     4300086: Floor_032
+    6400000: Corner_001
+    6400002: Corner_002
+    6400004: Corner_003
+    6400006: Corner_004
+    6400008: Floor_001
+    6400010: Floor_002
+    6400012: Floor_003
+    6400014: Floor_004
+    6400016: Floor_005
+    6400018: Floor_006
+    6400020: Floor_007
+    6400022: Floor_008
+    6400024: Floor_009
+    6400026: Floor_010
+    6400028: Floor_011
+    6400030: Floor_012
+    6400032: Floor_013
+    6400034: Floor_014
+    6400036: Floor_015
+    6400038: Floor_016
+    6400040: Floor_017
+    6400042: Floor_018
+    6400044: Floor_019
+    6400046: Floor_020
+    6400048: Floor_021
+    6400050: Floor_022
+    6400052: Floor_023
+    6400054: Floor_024
+    6400056: Floor_025
+    6400058: Floor_026
+    6400060: Floor_027
+    6400062: Floor_028
+    6400064: Floor_029
+    6400066: Floor_030
+    6400068: Floor_031
+    6400070: Floor_032
+    6400072: Wall_001
+    6400074: Wall_002
+    6400076: Wall_003
+    6400078: Wall_004
+    6400080: Wall_005
+    6400082: Wall_006
+    6400084: Wall_007
+    6400086: Wall_008
     7400000: Default Take
     9500000: //RootNode
   materials:
@@ -255,7 +299,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0

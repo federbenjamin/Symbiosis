@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &118062
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 487336}
+  - 95: {fileID: 9521042}
+  - 65: {fileID: 6530558}
+  - 114: {fileID: 11483630}
+  m_Layer: 0
+  m_Name: RoomSkeleton
+  m_TagString: Room
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &487336
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 118062}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!65 &6530558
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 118062}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 20, y: 6, z: 10}
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!95 &9521042
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 118062}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: db0fb9d15626d4b5a8c01e6f64548473, type: 3}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11483630
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 118062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cd3e97e598354c489796446e8afbfbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy1: {fileID: 132820, guid: 5ac200f146f126a47847e75dc7a686e9, type: 2}
+  enemy2: {fileID: 132820, guid: 07640413f4b994cdaaaeca679c76a58a, type: 2}
+  boss: {fileID: 158470, guid: eb25818b5225b45819ce3179baba1add, type: 2}
+  greenZomb: {fileID: 153214, guid: f12a0cc9eae224901b5552f54c515036, type: 2}
+  redZomb: {fileID: 156500, guid: c2dc0b28ef434463a80b2fc059674cf3, type: 2}
+  blueZomb: {fileID: 152012, guid: bc42400eb5a4d421590601d7b6677ce9, type: 2}
+  blueSpecial: {fileID: 174620, guid: bdc6f8944f0404921bf486bf24110123, type: 2}
+  spawnpoints: []
+  enemies: []
+  doors: []
+  switches: []
+  players: 0
+  roomCleared: 0
+  switchesActive: 0
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 118062}
+  m_IsPrefabParent: 1
