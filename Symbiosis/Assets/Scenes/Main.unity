@@ -139,7 +139,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
       propertyPath: m_TagString
-      value: Decoration
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
@@ -325,7 +325,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
       propertyPath: m_TagString
-      value: Decoration
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
@@ -375,7 +375,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
       propertyPath: m_TagString
-      value: Decoration
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
@@ -1023,7 +1023,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
       propertyPath: m_TagString
-      value: Decoration
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
@@ -1593,7 +1593,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
       propertyPath: m_TagString
-      value: Decoration
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
@@ -2519,7 +2519,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: acafa284692a14014b1e9060efd4bc78, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.17
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: acafa284692a14014b1e9060efd4bc78, type: 3}
       propertyPath: m_LocalRotation.x
@@ -4196,7 +4196,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
       propertyPath: m_TagString
-      value: Decoration
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
@@ -4941,7 +4941,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
       propertyPath: m_TagString
-      value: Decoration
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
@@ -5003,7 +5003,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
       propertyPath: m_TagString
-      value: Decoration
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
@@ -6013,7 +6013,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
       propertyPath: m_TagString
-      value: Decoration
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
@@ -7526,7 +7526,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
       propertyPath: m_TagString
-      value: Decoration
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
@@ -7729,7 +7729,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.22
+      value: 1.04
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
       propertyPath: m_LocalPosition.y
@@ -9576,7 +9576,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 415184, guid: 5dd091d9fa7744f41aa0ace32dc2fb09, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -0.27
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 415184, guid: 5dd091d9fa7744f41aa0ace32dc2fb09, type: 2}
       propertyPath: m_LocalRotation.x
@@ -9959,7 +9959,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
       propertyPath: m_TagString
-      value: Decoration
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
@@ -13634,7 +13634,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 12c54846d664ea54897f263289521153, type: 3}
       propertyPath: m_TagString
-      value: Decoration
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12c54846d664ea54897f263289521153, type: 3}
@@ -14185,7 +14185,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 12c54846d664ea54897f263289521153, type: 3}
       propertyPath: m_TagString
-      value: Decoration
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12c54846d664ea54897f263289521153, type: 3}
@@ -16251,7 +16251,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
       propertyPath: m_TagString
-      value: Decoration
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 808ab967634e3384ba3cb8c8a40fdc25, type: 3}
@@ -18683,7 +18683,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}
       propertyPath: m_TagString
-      value: Decoration
+      value: RoomObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 023dc12c93922264b90f2eb736586727, type: 3}

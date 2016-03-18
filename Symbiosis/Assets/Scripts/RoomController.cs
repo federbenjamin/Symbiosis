@@ -148,8 +148,7 @@ public class RoomController : MonoBehaviour {
 				enemyChild = Instantiate (blueZomb, spawnVector, spawnpoint.transform.rotation) as GameObject;
 			} else if (enemyType == "32") {
 				enemyChild = Instantiate (blueSpecial, spawnVector, spawnpoint.transform.rotation) as GameObject;
-			} else {
-				spawnVector.y = 0.74f;
+			}else {
 				enemyChild = Instantiate (boss, spawnVector, spawnpoint.transform.rotation) as GameObject;
 			}
 			enemyChild.transform.parent = transform;
