@@ -57,15 +57,15 @@ public class EnemyBehavior : MonoBehaviour {
 	}
 	
 	void OnCollisionEnter (Collision col) {
-        if (col.gameObject.tag == "Wall" || col.gameObject.tag == "Door" || col.gameObject.tag == "Enemy" || col.gameObject.tag == "RoomObject") {
+        if (col.gameObject.tag == "Decoration") {
+       		Physics.IgnoreCollision (col.gameObject.GetComponent<Collider> (), GetComponent<Collider> ());
+       	} else if (col.gameObject.tag == "Wall" || col.gameObject.tag == "Door" || col.gameObject.tag == "Enemy" || col.gameObject.tag == "RoomObject") {
        		//collisionNormal = col.contacts[0].normal;
         	collisionPosition = col.transform.position;
        	} else if (col.gameObject.tag == "Player") {
        		//collisionNormal = col.contacts[0].normal;
        		//collisionPosition = col.transform.position;
        		ActivateEnemies();
-       	} else if (col.gameObject.tag == "Decoration") {
-       		Physics.IgnoreCollision (col.gameObject.GetComponent<Collider> (), GetComponent<Collider> ());
        	}
     }
 
