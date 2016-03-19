@@ -2806,11 +2806,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 2079812, guid: 26cd02f05971d42459068faa633da447, type: 2}
       propertyPath: m_RenderingPath
-      value: 3
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 2079812, guid: 26cd02f05971d42459068faa633da447, type: 2}
       propertyPath: m_HDR
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 26cd02f05971d42459068faa633da447, type: 2}
@@ -12485,6 +12485,10 @@ Prefab:
       propertyPath: rayGunTip
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 11475880, guid: ab4ae1d60ee954231a42438718256e1b, type: 2}
+      propertyPath: Reg_bullet
+      value: 
+      objectReference: {fileID: 108390, guid: cd47827fa4f014f94a101f796919cbbf, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab4ae1d60ee954231a42438718256e1b, type: 2}
   m_IsPrefabParent: 0
@@ -16042,14 +16046,6 @@ Prefab:
       propertyPath: otherPlayer
       value: 
       objectReference: {fileID: 1484224603}
-    - target: {fileID: 11418008, guid: f2e3b56b04ff240b3a2ca4d444680002, type: 2}
-      propertyPath: Sword
-      value: 
-      objectReference: {fileID: 188674, guid: d348c8d1e662f4a56af2967418bbb46a, type: 2}
-    - target: {fileID: 5464538, guid: f2e3b56b04ff240b3a2ca4d444680002, type: 2}
-      propertyPath: m_Constraints
-      value: 116
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f2e3b56b04ff240b3a2ca4d444680002, type: 2}
   m_IsPrefabParent: 0

@@ -1353,11 +1353,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7216e0b7dc988496f88844f8f7a957f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Reg_bullet: {fileID: 152638, guid: 17d336badb29b4bebb288f16be44ef74, type: 2}
+  Reg_bullet: {fileID: 108390, guid: cd47827fa4f014f94a101f796919cbbf, type: 2}
   RayGun_bullet: {fileID: 180152, guid: e1c57c77c006346958e399e54f8d29d4, type: 2}
   Red_bullet: {fileID: 154562, guid: 4719a506d9a8549afa33863dac9004bc, type: 2}
   Blue_bullet: {fileID: 175508, guid: 31fbea12d44e647969792441798b1636, type: 2}
   Green_bullet: {fileID: 104442, guid: 069f04cd6a8584e23bd2cb3db3141977, type: 2}
+  rayGunTip: {fileID: 0}
+  line: {fileID: 0}
   fireEffect: {fileID: 111740, guid: 0a4c4cbe7f88f23458e66ea2eb85991c, type: 2}
   iceEffect: {fileID: 0}
   earthEffect: {fileID: 0}
@@ -1367,7 +1369,9 @@ MonoBehaviour:
   hand: {fileID: 110580}
   RayGun: {fileID: 193202, guid: 428dbe0d3fff246f08ef0344b2891d70, type: 2}
   Pistol: {fileID: 192680, guid: 11b0f4ca397664568b40ca5b774de589, type: 2}
+  Sword: {fileID: 188674, guid: d348c8d1e662f4a56af2967418bbb46a, type: 2}
   curWeap: 
+  playerSwinging: 0
 --- !u!114 &11419628
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1401,6 +1405,7 @@ MonoBehaviour:
   playerFireRateModifier: 0
   augmentName: 
   invincibilityTime: 0.3
+  playersHealth: {fileID: 0}
 --- !u!114 &11487576
 MonoBehaviour:
   m_ObjectHideFlags: 1
