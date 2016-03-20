@@ -93,7 +93,9 @@ public class PlayerSword : MonoBehaviour {
 			//TODO: Add enemy Knockback
 
 			EnemyStats enemyHP = other.GetComponent<EnemyStats> ();
-			enemyHP.TakeDamage (swordDamage, damageType);
+			if (isSwinging) {
+				enemyHP.TakeDamage (swordDamage, damageType);
+			}
 		}
 	}
 }
