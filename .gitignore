@@ -1,6 +1,6 @@
-Symbiosis/Library/*
-Symbiosis/Temp/*
+Symbiosis/Library/
+Symbiosis/Temp/
 *.csproj
-Symbiosis/obj/*
+Symbiosis/obj/
 Symbiosis/Symbiosis.userprefs
 
