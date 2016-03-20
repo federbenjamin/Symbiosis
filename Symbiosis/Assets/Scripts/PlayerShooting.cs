@@ -33,6 +33,11 @@ public class PlayerShooting : MonoBehaviour {
 	
 	private float bulletSpeedModifier;
 	private float fireRateModifier;
+
+	int shootHoriz;
+	int shootVert;
+	string shootButtonHoriz;
+	string shootButtonVert;
 	public bool playerShooting;
 
 	private GameObject cur_bullet;
@@ -59,13 +64,22 @@ public class PlayerShooting : MonoBehaviour {
 		ChangeWeapon ("Pistol");
 		curWeap = "Pistol";
 		playerMovement = transform.GetComponent<PlayerMovement>();
+
+		//Determine shooting buttons for OS and Player
+		if ((Application.platform == RuntimePlatform.OSXEditor) || (Application.platform == RuntimePlatform.OSXPlayer)) {
+			shootButtonHoriz = "FireHorizMac" + playerPrefix;
+			shootButtonVert = "FireVertMac" + playerPrefix;
+		} else if ((Application.platform == RuntimePlatform.WindowsEditor) || (Application.platform == RuntimePlatform.WindowsPlayer)) {
+			shootButtonHoriz = "FireHorizPC" + playerPrefix;
+			shootButtonVert = "FireVertPC" + playerPrefix;
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		//Joystick Shooting	
-		int shootVert = (int)Input.GetAxisRaw("FireVert" + playerPrefix);
-		int shootHoriz  = (int)Input.GetAxisRaw("FireHoriz" + playerPrefix);
+		int shootVert = (int)Input.GetAxisRaw(shootButtonVert);
+		int shootHoriz  = (int)Input.GetAxisRaw(shootButtonHoriz);
 
 		aug = GetComponent<StatsManager> ().GetAugment ();
 
@@ -216,8 +230,6 @@ public class PlayerShooting : MonoBehaviour {
 	IEnumerator FireLaser() {
 		line.enabled = true;
 		aug = GetComponent<StatsManager> ().GetAugment ();
-		int shootVert = (int)Input.GetAxisRaw("FireVert" + playerPrefix);
-		int shootHoriz  = (int)Input.GetAxisRaw("FireHoriz" + playerPrefix);
 
 		if (aug != null) {
 			if (aug.Element == "fire") {

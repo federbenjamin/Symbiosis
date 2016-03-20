@@ -17,6 +17,8 @@ public class StatsManager : MonoBehaviour {
 
 	private float AugTrigger;
 	private float WeapTrigger;
+	string swapButtonWeap;
+	string swapButtonAug;
 	private string playerPrefix;
 	private string otherPlayerPrefix;
 	private iAugment tempAug;
@@ -51,6 +53,14 @@ public class StatsManager : MonoBehaviour {
 			otherPlayerPrefix = "P1";
 		}
 
+		if ((Application.platform == RuntimePlatform.OSXEditor) || (Application.platform == RuntimePlatform.OSXPlayer)) {
+			swapButtonAug = "SwapAugMac" + playerPrefix;
+			swapButtonWeap = "SwapWeaponMac" + playerPrefix;
+		} else if ((Application.platform == RuntimePlatform.WindowsEditor) || (Application.platform == RuntimePlatform.WindowsPlayer)) {
+			swapButtonAug = "SwapAugPC" + playerPrefix;
+			swapButtonWeap = "SwapWeaponPC" + playerPrefix;
+		}
+
 		otherPlayerStats = GameObject.Find (otherPlayerPrefix).GetComponent<StatsManager> ();
 		playerAugSprite = GameObject.Find (playerPrefix + "Aug");
 		otherPlayerAugSprite = GameObject.Find (otherPlayerPrefix + "Aug");
@@ -67,8 +77,8 @@ public class StatsManager : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-		AugTrigger = Input.GetAxisRaw ("SwapAug" + playerPrefix);
-		WeapTrigger = Input.GetAxisRaw ("SwapWeapon" + playerPrefix);
+		AugTrigger = Input.GetAxisRaw (swapButtonAug);
+		WeapTrigger = Input.GetAxisRaw (swapButtonWeap);
 
 		if (AugTrigger > 0 && Time.time > nextSwap) {
 			tempAug = GetAugment();
