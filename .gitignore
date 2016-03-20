@@ -3,4 +3,4 @@ Symbiosis/Temp/
 *.csproj
 Symbiosis/obj/
 Symbiosis/Symbiosis.userprefs
-
+*Thumbs.db*
