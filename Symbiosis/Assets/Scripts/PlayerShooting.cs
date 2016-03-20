@@ -164,7 +164,6 @@ public class PlayerShooting : MonoBehaviour {
 			clone.transform.rotation = Quaternion.LookRotation (shootDir);
 			Physics.IgnoreCollision (clone.GetComponent<Collider> (), GetComponent<Collider> ());
 			clone.GetComponent<Rigidbody> ().velocity = (clone.transform.forward * ((baseBulletSpeed + bulletSpeedModifier)));
-			GameObject.Find ("Camera"+ this.gameObject.name).GetComponent<CameraShaker> ().shake = 0.25f;
 			if (aug != null) {
 				Debug.Log ("Applying on-hit effects");
 				clone.GetComponent<BulletBehavior> ().setAugment (aug);

@@ -31,6 +31,7 @@ public class EnemyBulletBehavior : MonoBehaviour {
 		}
 		if (other.tag == "Player") {
 			string damageType = "none";
+			GameObject.Find ("Camera"+ other.name).GetComponent<CameraShaker> ().shake = 0.1f;
 			if (augment != null) {
 				Debug.Log ("");
 				//Destroy (collision.gameObject);

@@ -45,6 +45,8 @@ public class Enemy1Behavior : EnemyBehavior {
 					myRigidBody.AddForce (moveDirection * (moveSpeed * 10) * Time.deltaTime, ForceMode.VelocityChange);
 					//myTransform.position += moveDirection * moveSpeed * Time.deltaTime;
 				} else if (timer > nextHit) {
+
+					GameObject.Find ("Camera"+ targetPlayer.PlayerObject.name).GetComponent<CameraShaker> ().shake = 0.25f;
 					DamagePlayer(1);
 				} else {
 					enemyAnimator.SetTrigger ("Stopped");
