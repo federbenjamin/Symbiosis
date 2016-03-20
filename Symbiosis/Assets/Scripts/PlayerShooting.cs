@@ -63,6 +63,9 @@ public class PlayerShooting : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		//Joystick Shooting	
+		int shootVert = (int)Input.GetAxisRaw("FireVert" + playerPrefix);
+		int shootHoriz  = (int)Input.GetAxisRaw("FireHoriz" + playerPrefix);
 
 		aug = GetComponent<StatsManager> ().GetAugment ();
 
@@ -77,7 +80,9 @@ public class PlayerShooting : MonoBehaviour {
 			playerShooting = (Input.GetButton ("FireRight" + playerPrefix) ||
 				Input.GetButton ("FireDown" + playerPrefix) ||
 				Input.GetButton ("FireUp" + playerPrefix) ||
-				Input.GetButton ("FireLeft" + playerPrefix));
+				Input.GetButton ("FireLeft" + playerPrefix) ||
+				(shootVert != 0) ||
+				(shootHoriz != 0));
 
 			if (playerShooting && curWeap != "Sword") {
 				RoomController roomController = playerMovement.room.GetComponent<RoomController>();
@@ -90,34 +95,34 @@ public class PlayerShooting : MonoBehaviour {
 			
 			//Player Shooting
 			if (curWeap == "RayGun") {
-				if (Input.GetButton ("FireRight" + playerPrefix)) {
+				if (Input.GetButton ("FireRight" + playerPrefix) || ((shootHoriz >= Mathf.Abs(shootVert)) && shootHoriz != 0)) {
 					transform.rotation = Quaternion.LookRotation (Vector3.left);
 					StopCoroutine ("FireLaser");
 					StartCoroutine ("FireLaser");
-				} else if (Input.GetButton ("FireDown" + playerPrefix)) {
+				} else if (Input.GetButton ("FireDown" + playerPrefix) || ((shootVert <= Mathf.Abs(shootHoriz)) && shootVert != 0)) {
 					transform.rotation = Quaternion.LookRotation (Vector3.forward);
 					StopCoroutine ("FireLaser");
 					StartCoroutine ("FireLaser");
-				} else if (Input.GetButton ("FireUp" + playerPrefix)) {
+				} else if (Input.GetButton ("FireUp" + playerPrefix) || ((shootVert >= Mathf.Abs(shootHoriz)) && shootVert != 0)) {
 					transform.rotation = Quaternion.LookRotation (Vector3.back);
 					StopCoroutine ("FireLaser");
 					StartCoroutine ("FireLaser");
-				} else if (Input.GetButton ("FireLeft" + playerPrefix)) {
+				} else if (Input.GetButton ("FireLeft" + playerPrefix) || ((shootHoriz <= Mathf.Abs(shootVert)) && shootHoriz != 0)) {
 					transform.rotation = Quaternion.LookRotation (Vector3.right);
 					StopCoroutine ("FireLaser");
 					StartCoroutine ("FireLaser");
 				}
 			} else {
-				if (Input.GetButton ("FireRight" + playerPrefix) && Time.time > nextFire) {
+				if ((Input.GetButton ("FireRight" + playerPrefix) || ((shootHoriz >= Mathf.Abs(shootVert)) && shootHoriz != 0)) && Time.time > nextFire) {
 					transform.rotation = Quaternion.LookRotation (Vector3.left);
 					Shoot (Vector3.right);
-				} else if (Input.GetButton ("FireDown" + playerPrefix) && Time.time > nextFire) {
+				} else if ((Input.GetButton ("FireDown" + playerPrefix) || ((shootVert <= Mathf.Abs(shootHoriz)) && shootVert != 0)) && Time.time > nextFire) {
 					transform.rotation = Quaternion.LookRotation (Vector3.forward);
 					Shoot (Vector3.back);
-				} else if (Input.GetButton ("FireUp" + playerPrefix) && Time.time > nextFire) {
+				} else if ((Input.GetButton ("FireUp" + playerPrefix) || ((shootVert >= Mathf.Abs(shootHoriz)) && shootVert != 0)) && Time.time > nextFire) {
 					transform.rotation = Quaternion.LookRotation (Vector3.back);
 					Shoot (Vector3.forward);
-				} else if (Input.GetButton ("FireLeft" + playerPrefix) && Time.time > nextFire) {
+				} else if ((Input.GetButton ("FireLeft" + playerPrefix) || ((shootHoriz <= Mathf.Abs(shootVert)) && shootHoriz != 0)) && Time.time > nextFire) {
 					transform.rotation = Quaternion.LookRotation (Vector3.right);
 					Shoot (Vector3.left);
 				}
@@ -211,6 +216,8 @@ public class PlayerShooting : MonoBehaviour {
 	IEnumerator FireLaser() {
 		line.enabled = true;
 		aug = GetComponent<StatsManager> ().GetAugment ();
+		int shootVert = (int)Input.GetAxisRaw("FireVert" + playerPrefix);
+		int shootHoriz  = (int)Input.GetAxisRaw("FireHoriz" + playerPrefix);
 
 		if (aug != null) {
 			if (aug.Element == "fire") {
@@ -224,10 +231,7 @@ public class PlayerShooting : MonoBehaviour {
 			rayGunTip.GetComponent<Renderer> ().material = Resources.Load<Material> ("LaserDefault");
 		}
 
-		while ((Input.GetButton ("FireRight" + playerPrefix)) ||
-		      (Input.GetButton ("FireDown" + playerPrefix)) ||
-		      (Input.GetButton ("FireUp" + playerPrefix)) ||
-		      (Input.GetButton ("FireLeft" + playerPrefix))) 
+		while (playerShooting) 
 		{
 			Ray ray = new Ray (rayGunTip.transform.position, transform.forward * -1);
 			RaycastHit hit;
