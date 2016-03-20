@@ -15244,6 +15244,10 @@ Prefab:
       propertyPath: outDoor
       value: 110
       objectReference: {fileID: 0}
+    - target: {fileID: 11411400, guid: 6a0dd15a942444f4fa70580562adb5da, type: 2}
+      propertyPath: outDoor
+      value: 110
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a0dd15a942444f4fa70580562adb5da, type: 2}
   m_IsPrefabParent: 0
