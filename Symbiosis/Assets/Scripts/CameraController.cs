@@ -16,7 +16,7 @@ public class CameraController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		camera = GetComponent<Camera> ();
+		camera = GameObject.Find ("CameraP2").GetComponent<Camera> ();
 		player2 = GameObject.Find ("P2");
 	}
 	
@@ -50,8 +50,8 @@ public class CameraController : MonoBehaviour {
 	public void MergeCamera () {
 		//Turn off P2 Camera and Divider, and extend P1 Camera to cover the screen
 		playersTogether = true;
-		camera.rect = new Rect (0, 0, 1, 1);
-		GameObject.Find ("CameraP2").SetActive(false);
+		GameObject.Find ("CameraParentP2").SetActive(false);
 		GameObject.Find ("Divider").SetActive(false);
+		GameObject.Find ("CameraP1").GetComponent<Camera> ().rect = new Rect (0, 0, 1, 1);
 	}
 }

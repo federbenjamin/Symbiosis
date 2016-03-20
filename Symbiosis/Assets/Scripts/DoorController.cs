@@ -23,7 +23,7 @@ public class DoorController : MonoBehaviour {
 		roomController = transform.parent.GetComponent<RoomController> ();
 		player1 = GameObject.Find ("P1");
 		player2 = GameObject.Find ("P2");
-		playersCamera = GameObject.Find ("CameraP1");
+		playersCamera = GameObject.Find ("CameraParentP1");
 	}
 	
 	// Update is called once per frame
@@ -49,7 +49,7 @@ public class DoorController : MonoBehaviour {
 					newPlayerPosition = newPlayerPosition + OutPlacer (outDoor);
 					other.transform.position = newPlayerPosition;
 
-					playerCamera = GameObject.Find ("Camera" + other.name);
+					playerCamera = GameObject.Find ("CameraParent" + other.name);
 					playerCamera.transform.position = new Vector3 (newPlayerPosition.x, playerCamera.transform.position.y, nextRoomPos.z + cameraOffset); 
 				}
 			}

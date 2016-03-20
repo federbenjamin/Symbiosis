@@ -164,7 +164,7 @@ public class PlayerShooting : MonoBehaviour {
 			clone.transform.rotation = Quaternion.LookRotation (shootDir);
 			Physics.IgnoreCollision (clone.GetComponent<Collider> (), GetComponent<Collider> ());
 			clone.GetComponent<Rigidbody> ().velocity = (clone.transform.forward * ((baseBulletSpeed + bulletSpeedModifier)));
-		
+			GameObject.Find ("Camera"+ this.gameObject.name).GetComponent<CameraShaker> ().shake = 0.25f;
 			if (aug != null) {
 				Debug.Log ("Applying on-hit effects");
 				clone.GetComponent<BulletBehavior> ().setAugment (aug);
@@ -269,7 +269,7 @@ public class PlayerShooting : MonoBehaviour {
 					//Add force to enemy
 					hit.rigidbody.AddForceAtPosition(transform.forward * force * -1, hit.point);
 					EnemyStats enemyHP = hit.transform.GetComponent<EnemyStats> ();
-					enemyHP.TakeDamage (1, damageType);
+					enemyHP.TakeDamage (100, damageType);
 				}
 			} else {
 				line.SetPosition (1, ray.GetPoint (50));

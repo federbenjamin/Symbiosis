@@ -101,7 +101,7 @@ public class RoomController : MonoBehaviour {
 
 			if (players == 2 && playersTogether == false) {
 				playersTogether = true;
-				cameraController = GameObject.Find ("CameraP1").GetComponent<CameraController> ();
+				cameraController = GameObject.Find ("CameraParentP1").GetComponent<CameraController> ();
 				cameraController.MergeCamera ();
 			}
 
