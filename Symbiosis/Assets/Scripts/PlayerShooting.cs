@@ -244,6 +244,7 @@ public class PlayerShooting : MonoBehaviour {
 
 		while (playerShooting) 
 		{
+			GetComponent<AudioSource> ().Play();
 			Ray ray = new Ray (rayGunTip.transform.position, transform.forward * -1);
 			RaycastHit hit;
 
