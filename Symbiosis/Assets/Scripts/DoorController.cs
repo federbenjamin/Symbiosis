@@ -35,12 +35,12 @@ public class DoorController : MonoBehaviour {
 		if (roomController.roomCleared == true) {
 			if (other.tag == "Player") {
 				if (roomController.getPlayersTogether()) {
-					Vector3 outPosition_1 = new Vector3 (nextRoomPos.x - 1, player1.transform.position.y, nextRoomPos.z);
-					outPosition_1 = outPosition_1 + OutPlacer (outDoor) + Offsetter(outDoor, true);
-					player1.transform.position = outPosition_1;
+					Vector3 baseSpawnPoint = new Vector3 (nextRoomPos.x, player1.transform.position.y, nextRoomPos.z);
+					baseSpawnPoint = baseSpawnPoint + OutPlacer(outDoor);
 
-					Vector3 outPosition_2 = new Vector3 (nextRoomPos.x - 1, player2.transform.position.y, nextRoomPos.z);
-					outPosition_2 = outPosition_2 + OutPlacer (outDoor) + Offsetter(outDoor, false);
+					Vector3 outPosition_1 = baseSpawnPoint + Offsetter(outDoor, true);
+					player1.transform.position = outPosition_1;
+					Vector3 outPosition_2 = baseSpawnPoint + Offsetter(outDoor, false);
 					player2.transform.position = outPosition_2;
 
 					playersCamera.transform.position = new Vector3 (nextRoomPos.x, playersCamera.transform.position.y, nextRoomPos.z + cameraOffset); 
@@ -59,27 +59,25 @@ public class DoorController : MonoBehaviour {
 	Vector3 OutPlacer(char dirChar){
 		Vector3 retval;
 		if (dirChar == 'n'){
-			retval = new Vector3 ( 0, 0, 3);
+			retval = new Vector3 (0, 0, 3.2f);
 		}else if (dirChar == 's'){
-			retval = new Vector3 ( 0, 0,-3);
+			retval = new Vector3 (0, 0, -3.2f);
 		}else if (dirChar == 'e'){
-			retval = new Vector3 ( 7, 0,0);
+			retval = new Vector3 (7.2f, 0,0);
 		}else{
-			retval = new Vector3 (-7, 0,0);
+			retval = new Vector3 (-7.2f, 0,0);
 		}
 		return retval;
 	}
 	Vector3 Offsetter(char dirChar, bool isPlayer_1){
 		Vector3 retval;
-		float x = 0.5f;
-		if (isPlayer_1){
-			x = x*-1;
-		}
-		if (dirChar == 'n' || dirChar == 's'){
-			retval = new Vector3 ( x, 0, 0);
-		}else {
+		float x = 0.4f;
+		x = (isPlayer_1 ? -x : x);
 
-			retval = new Vector3 ( 0, 0, 2*x);
+		if (dirChar == 'n' || dirChar == 's'){
+			retval = new Vector3 (x, 0, 0);
+		} else {
+			retval = new Vector3 (0, 0, 2 * x);
 		}
 		return retval;
 	}
