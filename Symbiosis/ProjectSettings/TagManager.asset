@@ -16,6 +16,7 @@ TagManager:
   - RoomObject
   - Decoration
   - Canvas
+  - Health
   layers:
   - Default
   - TransparentFX

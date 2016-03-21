@@ -31,6 +31,9 @@ public class HealthManager : MonoBehaviour {
 	private Transform heart5;
 
 	private bool isGameOver = false;
+	public bool IsGameOver {
+		get{return isGameOver;}
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -138,6 +141,7 @@ public class HealthManager : MonoBehaviour {
 	}
 
 	public void GameOver() {
+		isGameOver = true;
 		//TODO: destroy weapon model
 
 		animatorP1Body.SetTrigger ("gameOver");

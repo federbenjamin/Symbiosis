@@ -23,7 +23,7 @@ public class Enemy1Behavior : EnemyBehavior {
 			enemyOriented = true;
 		}
 
-		if (IsEnemyAlive()) {
+		if (IsEnemyAlive() && !playersHealth.IsGameOver) {
 			UpdateTargetPlayer(false);
 			UpdateTurnSpeed();
 			ResetAlignTimer();
@@ -62,6 +62,8 @@ public class Enemy1Behavior : EnemyBehavior {
 				ActivateEnemiesOnProximity(2f);
 			}
 			collisionPosition = Vector3.zero;
+		} else {
+			enemyAnimator.SetTrigger ("Stopped");
 		}
 	}
 

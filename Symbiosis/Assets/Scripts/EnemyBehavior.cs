@@ -33,11 +33,12 @@ public class EnemyBehavior : MonoBehaviour {
 	protected void setStartVariables() {
 		myTransform = transform;
 		myRigidBody = GetComponent<Rigidbody>();
-		playersHealth = GameObject.Find("Health").GetComponent<HealthManager> ();
+		playersHealth = GameObject.FindWithTag("Health").GetComponent<HealthManager> ();
 		roomController = transform.parent.GetComponent<RoomController> ();
 		moveSpeed = GetComponent<EnemyStats>().moveSpeed;
 		p1_Object = GameObject.Find ("P1");
 		p2_Object = GameObject.Find ("P2");
+
 		UpdateTargetPlayer(true);
 		timer = Random.Range(1, 50);
 

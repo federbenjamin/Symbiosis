@@ -25,7 +25,7 @@ public class Enemy2Behavior : EnemyBehavior {
 			enemyOriented = true;
 		}
 
-		if (IsEnemyAlive()) {
+		if (IsEnemyAlive() && !playersHealth.IsGameOver) {
 			UpdateTargetPlayer(false);
 			CheckNearDeath();
 
@@ -78,6 +78,8 @@ public class Enemy2Behavior : EnemyBehavior {
 				ActivateEnemiesOnProximity(2.5f);
 			}
 			collisionPosition = Vector3.zero;
+		} else {
+			enemyAnimator.SetTrigger ("Stopped");
 		}
 
 	}
