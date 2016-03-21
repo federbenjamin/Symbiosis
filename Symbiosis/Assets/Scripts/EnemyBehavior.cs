@@ -146,23 +146,23 @@ public class EnemyBehavior : MonoBehaviour {
 public class TargetPlayer {
 	private GameObject playerObject;
     public GameObject PlayerObject {
-     	get;
-     	set;
+     	get{return playerObject;}
+     	set{playerObject = value;}
     }
     private Transform transform;
     public Transform Transform {
-     	get;
-     	set;
+     	get{return transform;}
+     	set{transform = value;}
     }
     private float distance;
     public float Distance {
-		get;
-     	set;
+		get{return distance;}
+     	set{distance = value;}
     }
 
     public TargetPlayer(GameObject pObject, Transform targetTransform, float targetDistance) {
-    	PlayerObject = pObject;
-        Transform = targetTransform;
-        Distance = targetDistance;
+    	playerObject = pObject;
+        transform = targetTransform;
+        distance = targetDistance;
     }
  }
