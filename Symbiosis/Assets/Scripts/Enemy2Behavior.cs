@@ -24,7 +24,7 @@ public class Enemy2Behavior : EnemyBehavior {
 			IgnorePlayer();
 			enemyOriented = true;
 		}
-		Debug.Log(nextFire);
+
 		if (IsEnemyAlive()) {
 			UpdateTargetPlayer(false);
 			CheckNearDeath();

@@ -2,9 +2,16 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class InitialOpenDoors : MonoBehaviour {
+public class GameStats : MonoBehaviour {
+
+	private bool playersTogether;
+	public bool PlayersTogether {
+		get{return playersTogether;}
+		set{playersTogether = value;}
+	}
 
 	void Start () {
+		playersTogether = false;
 		GameObject[] roomsList = GameObject.FindGameObjectsWithTag("Room");
 		foreach (GameObject room in roomsList) {
 			OpenDoors(room);
@@ -14,7 +21,6 @@ public class InitialOpenDoors : MonoBehaviour {
 	void OpenDoors(GameObject room) {
 		RoomController roomController = room.GetComponent<RoomController> ();
 		bool enemies = roomController.ContainsEnemySpawn();
-		Debug.Log(room.name + " : " + enemies);
 
 		if (!enemies && room.name != "Room100") {
 			foreach (Transform child in room.transform) {

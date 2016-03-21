@@ -6791,9 +6791,10 @@ GameObject:
   - 223: {fileID: 1224639405}
   - 114: {fileID: 1224639404}
   - 114: {fileID: 1224639403}
+  - 114: {fileID: 1224639407}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6873,6 +6874,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1224639407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1224639402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 423462f5aa8dc489d985b5d7fb0f4a25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1232472816
 GameObject:
   m_ObjectHideFlags: 0
@@ -9833,7 +9845,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1811525773}
-  - 114: {fileID: 1811525774}
   m_Layer: 0
   m_Name: Rooms
   m_TagString: Untagged
@@ -9865,17 +9876,6 @@ Transform:
   - {fileID: 1063467260}
   m_Father: {fileID: 0}
   m_RootOrder: 4
---- !u!114 &1811525774
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1811525772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9373dbabe14e54cbdaecadd5689373f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1822006659
 GameObject:
   m_ObjectHideFlags: 0

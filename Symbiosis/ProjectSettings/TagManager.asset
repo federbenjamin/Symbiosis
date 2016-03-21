@@ -15,6 +15,7 @@ TagManager:
   - Wall
   - RoomObject
   - Decoration
+  - Canvas
   layers:
   - Default
   - TransparentFX

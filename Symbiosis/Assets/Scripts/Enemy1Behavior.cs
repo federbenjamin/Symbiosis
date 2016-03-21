@@ -46,7 +46,13 @@ public class Enemy1Behavior : EnemyBehavior {
 					//myTransform.position += moveDirection * moveSpeed * Time.deltaTime;
 				} else if (timer > nextHit) {
 
-					GameObject.Find ("Camera"+ targetPlayer.PlayerObject.name).GetComponent<CameraShaker> ().shake = 0.25f;
+					bool playersTogether = GameObject.FindWithTag("Canvas").GetComponent<GameStats>().PlayersTogether;
+					if (!playersTogether) {
+						GameObject.Find ("Camera"+ targetPlayer.PlayerObject.name).GetComponent<CameraShaker> ().shake = 0.25f;
+					} else {
+						GameObject.Find ("CameraP1").GetComponent<CameraShaker> ().shake = 0.25f;
+					}
+
 					DamagePlayer(1);
 				} else {
 					enemyAnimator.SetTrigger ("Stopped");

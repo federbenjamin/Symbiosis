@@ -31,7 +31,14 @@ public class EnemyBulletBehavior : MonoBehaviour {
 		}
 		if (other.tag == "Player") {
 			string damageType = "none";
-			GameObject.Find ("Camera"+ other.name).GetComponent<CameraShaker> ().shake = 0.1f;
+
+			bool playersTogether = GameObject.FindWithTag("Canvas").GetComponent<GameStats>().PlayersTogether;
+			if (!playersTogether) {
+				GameObject.Find ("Camera"+ other.name).GetComponent<CameraShaker> ().shake = 0.1f;
+			} else {
+				GameObject.Find ("CameraP1").GetComponent<CameraShaker> ().shake = 0.1f;
+			}
+
 			if (augment != null) {
 				Debug.Log ("");
 				//Destroy (collision.gameObject);

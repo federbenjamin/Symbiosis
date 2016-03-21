@@ -19,13 +19,13 @@ public class RoomController : MonoBehaviour {
 	public List<GameObject> switches;
 
 	public int players = 0;
-	public static bool playersTogether = false;
+	public static bool playersTogether;
 
 	private bool hasTriggered = false;
 	private bool enemiesActive = false;
 	public bool EnemiesActive {
-		get;
-		set;
+		get{return enemiesActive;}
+		set{enemiesActive = value;}
 	}
 	public bool roomCleared = false;
 
@@ -47,7 +47,7 @@ public class RoomController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		playersTogether = false;
+		playersTogether = GameObject.FindWithTag("Canvas").GetComponent<GameStats>().PlayersTogether;
 
 		//Add spawnPoints in the room to the array
 		foreach (Transform child in transform) {
@@ -109,6 +109,7 @@ public class RoomController : MonoBehaviour {
 
 			if (players == 2 && playersTogether == false) {
 				playersTogether = true;
+				GameObject.FindWithTag("Canvas").GetComponent<GameStats>().PlayersTogether = true;
 				cameraController = GameObject.Find ("CameraParentP1").GetComponent<CameraController> ();
 				cameraController.MergeCamera ();
 			}
