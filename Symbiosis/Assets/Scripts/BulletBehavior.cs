@@ -16,7 +16,7 @@ public class BulletBehavior : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		AudioSource.PlayClipAtPoint (sound2, transform.position);
+		GameObject.Find("AudioListener").GetComponent<AudioPlacement> ().PlayClip (sound2);
 	}
 	
 	// Update is called once per frame
@@ -28,7 +28,7 @@ public class BulletBehavior : MonoBehaviour {
 		GameObject other = c.gameObject;
 		//If it hits a player don't disappear
 		if (other.tag != "Player" && other.tag != "Bullet" && other.tag != "Room" && other.tag != "Pickups") {
-			AudioSource.PlayClipAtPoint (sound, transform.position);
+			GameObject.Find("AudioListener").GetComponent<AudioPlacement> ().PlayClip (sound);
 			Destroy (gameObject);
 		}
 		if (other.tag == "Bullet" || other.tag == "Pickups") {

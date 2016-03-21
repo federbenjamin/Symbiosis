@@ -55,9 +55,12 @@ public class StatsManager : MonoBehaviour {
 	private bool nextWeapSwapFailedSound = true;
 	private bool nextAugSwapFailedSound = true;
 
+	private AudioPlacement audioPlacement;
+
 	void Awake () {
 		//Get the HealthManager Script
 		playersHealth = GameObject.Find("Health").GetComponent<HealthManager> ();
+		audioPlacement = GameObject.Find("AudioListener").GetComponent<AudioPlacement> ();
 	}
 
 	// Use this for initialization
@@ -131,7 +134,7 @@ public class StatsManager : MonoBehaviour {
 		if (AugTrigger > 0 && Time.time > nextAugSwap) {
 			requestSwapAugments();
 		} else if (AugTrigger > 0 && nextAugSwapFailedSound) {
-			AudioSource.PlayClipAtPoint (swapCooldownSound, transform.position);
+			audioPlacement.PlayClip (swapCooldownSound);
 			nextAugSwapFailedSound = false;
 		} else if (WeapTrigger == 0) {
 			nextAugSwapFailedSound = true;
@@ -139,7 +142,7 @@ public class StatsManager : MonoBehaviour {
 		if (WeapTrigger > 0 && Time.time > nextWeapSwap) {
 			requestSwapWeapons();
 		} else if (WeapTrigger > 0 && nextWeapSwapFailedSound) {
-			AudioSource.PlayClipAtPoint (swapCooldownSound, transform.position);
+			audioPlacement.PlayClip (swapCooldownSound);
 			nextWeapSwapFailedSound = false;
 		} else if (WeapTrigger == 0) {
 			nextWeapSwapFailedSound = true;
