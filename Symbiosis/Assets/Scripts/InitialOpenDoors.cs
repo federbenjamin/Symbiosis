@@ -16,7 +16,7 @@ public class InitialOpenDoors : MonoBehaviour {
 		bool enemies = roomController.ContainsEnemySpawn();
 		Debug.Log(room.name + " : " + enemies);
 
-		if (!enemies && room.name != "Room11") {
+		if (!enemies && room.name != "Room100") {
 			foreach (Transform child in room.transform) {
 				GameObject door = child.gameObject;
 				if (door.tag == "Door") {

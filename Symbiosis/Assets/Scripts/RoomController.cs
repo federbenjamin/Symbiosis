@@ -29,7 +29,16 @@ public class RoomController : MonoBehaviour {
 	}
 	public bool roomCleared = false;
 
-	public int switchesActive = 0;
+	private bool switch1Active = false;
+	public bool Switch1Active {
+		get{return switch1Active;}
+		set{switch1Active = value;}
+	}
+	private bool switch2Active = false;
+	public bool Switch2Active {
+		get{return switch2Active;}
+		set{switch2Active = value;}
+	}
 
 	private CameraController cameraController;
 
@@ -56,13 +65,12 @@ public class RoomController : MonoBehaviour {
 	void Update () {
 
 		//Check if player has enetered room and count enemies
-		if (transform.name == "Room11") {
-			if (!hasTriggered && switchesActive == 2) {
+		if (transform.name == "Room100") {
+			if (!hasTriggered && switch1Active && switch2Active) {
 				hasTriggered = true;
 				SpawnEnemies();
 				foreach (GameObject button in switches) {
 					Destroy (button);
-					switchesActive = 0;
 				}
 			}
 
@@ -105,7 +113,7 @@ public class RoomController : MonoBehaviour {
 				cameraController.MergeCamera ();
 			}
 
-			if (hasTriggered == false && transform.name != "Room11") {
+			if (hasTriggered == false && transform.name != "Room100") {
 				hasTriggered = true;
 				SpawnEnemies();
 			}

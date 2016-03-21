@@ -4929,6 +4929,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 157698, guid: 7d1689ced5a4340e197c668fa5241731, type: 2}
+      propertyPath: m_Name
+      value: SwitchP2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7d1689ced5a4340e197c668fa5241731, type: 2}
   m_IsPrefabParent: 0
@@ -6452,6 +6456,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 157812, guid: 86a015643f4db44b08e35c4f39f54678, type: 2}
+      propertyPath: m_Name
+      value: SwitchP1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 86a015643f4db44b08e35c4f39f54678, type: 2}
   m_IsPrefabParent: 0
@@ -7768,7 +7776,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 492986, guid: ab4ae1d60ee954231a42438718256e1b, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 11488120, guid: ab4ae1d60ee954231a42438718256e1b, type: 2}
       propertyPath: otherPlayer
@@ -9328,7 +9336,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 118062, guid: a2e6c757d4c7445789518799708734c4, type: 2}
       propertyPath: m_Name
-      value: Room11
+      value: Room100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2e6c757d4c7445789518799708734c4, type: 2}
@@ -10091,7 +10099,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 439838, guid: f2e3b56b04ff240b3a2ca4d444680002, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 11487576, guid: f2e3b56b04ff240b3a2ca4d444680002, type: 2}
       propertyPath: otherPlayer
@@ -11680,7 +11688,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11411400, guid: 6a0dd15a942444f4fa70580562adb5da, type: 2}
       propertyPath: nextRoomNum
-      value: 11
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 11411400, guid: 6a0dd15a942444f4fa70580562adb5da, type: 2}
       propertyPath: outDoor
