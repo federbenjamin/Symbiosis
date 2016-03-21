@@ -18,6 +18,7 @@ TagManager:
   - Canvas
   - Health
   - Light
+  - Hoop
   layers:
   - Default
   - TransparentFX

@@ -82,6 +82,9 @@ public class RoomController : MonoBehaviour {
 						doorAnimator.SetTrigger ("Close");
 					}
 				}
+				foreach (GameObject hoop in GameObject.FindGameObjectsWithTag("Hoop")) {
+					Destroy(hoop);
+				}
 			}
 		//Check if player has enetered room and count enemies
 		} else {

@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class HoopController : MonoBehaviour {
-	public GameObject otherPlayer;
+	public GameObject roomSwitch;
 
 	// Use this for initialization
 	void Start () {
@@ -15,6 +15,6 @@ public class HoopController : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-		transform.LookAt (otherPlayer.transform);
+		transform.LookAt (roomSwitch.transform);
 	}
 }
