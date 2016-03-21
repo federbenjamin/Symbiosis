@@ -8018,6 +8018,10 @@ Prefab:
       propertyPath: Reg_bullet
       value: 
       objectReference: {fileID: 108390, guid: cd47827fa4f014f94a101f796919cbbf, type: 2}
+    - target: {fileID: 11496116, guid: ab4ae1d60ee954231a42438718256e1b, type: 2}
+      propertyPath: swapCooldownSound
+      value: 
+      objectReference: {fileID: 8300000, guid: eaa112e928c2641e88acbfd230189a80, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab4ae1d60ee954231a42438718256e1b, type: 2}
   m_IsPrefabParent: 0
@@ -10319,6 +10323,10 @@ Prefab:
       propertyPath: baseBulletSpeed
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 11432160, guid: f2e3b56b04ff240b3a2ca4d444680002, type: 2}
+      propertyPath: swapCooldownSound
+      value: 
+      objectReference: {fileID: 8300000, guid: eaa112e928c2641e88acbfd230189a80, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f2e3b56b04ff240b3a2ca4d444680002, type: 2}
   m_IsPrefabParent: 0

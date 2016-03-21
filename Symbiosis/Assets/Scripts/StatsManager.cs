@@ -29,10 +29,31 @@ public class StatsManager : MonoBehaviour {
 	private GameObject playerWeapSprite;
 	private GameObject otherPlayerAugSprite;
 	private GameObject otherPlayerWeapSprite;
+	private Image otherPlayerHudImage;
+	private Sprite hudDefault;
+	private Sprite hud1;
+	private Sprite hud2;
+	private Sprite hud3;
 	private Sprite tempSpr;
 	private Sprite tempWeapSpr;
-	private float nextSwap = 0.0f;
+	private static float nextAugSwap = 0.0f;
+	private static float nextWeapSwap = 0.0f;
 
+	private bool requestAugSwap;
+	public bool RequestAugSwap {
+		get{return requestAugSwap;}
+		set{requestAugSwap = value;}
+	}
+	private bool requestWeapSwap;
+	public bool RequestWeapSwap {
+		get{return requestWeapSwap;}
+		set{requestWeapSwap = value;}
+	}
+	private int swapAugTimeout;
+	private int swapWeapTimeout;
+	public AudioClip swapCooldownSound;
+	private bool nextWeapSwapFailedSound = true;
+	private bool nextAugSwapFailedSound = true;
 
 	void Awake () {
 		//Get the HealthManager Script
@@ -64,6 +85,20 @@ public class StatsManager : MonoBehaviour {
 		otherPlayerStats = GameObject.Find (otherPlayerPrefix).GetComponent<StatsManager> ();
 		playerAugSprite = GameObject.Find (playerPrefix + "Aug");
 		otherPlayerAugSprite = GameObject.Find (otherPlayerPrefix + "Aug");
+		otherPlayerHudImage = GameObject.Find(otherPlayerPrefix + "Hud").GetComponent<Image>();
+		if (playerPrefix == "P1") {
+			hudDefault = Resources.Load<Sprite> ("YellowSlots/YellowSlots");
+			hud1 = Resources.Load<Sprite> ("YellowSlots/YellowSlots1");
+			hud2 = Resources.Load<Sprite> ("YellowSlots/YellowSlots2");
+			hud3 = Resources.Load<Sprite> ("YellowSlots/YellowSlots3");
+		} else if (playerPrefix == "P2") {
+			hudDefault = Resources.Load<Sprite> ("BlueSlots/BlueSlots");
+			hud1 = Resources.Load<Sprite> ("BlueSlots/BlueSlots1");
+			hud2 = Resources.Load<Sprite> ("BlueSlots/BlueSlots2");
+			hud3 = Resources.Load<Sprite> ("BlueSlots/BlueSlots3");
+		}
+		requestAugSwap = false;
+		requestWeapSwap = false;
 	
 		playerShooting = GetComponent<PlayerShooting> ();
 		otherPlayerShooting = GameObject.Find (otherPlayerPrefix).GetComponent<PlayerShooting> ();
@@ -77,15 +112,49 @@ public class StatsManager : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-		AugTrigger = Input.GetAxisRaw (swapButtonAug);
-		WeapTrigger = Input.GetAxisRaw (swapButtonWeap);
-
-		if (AugTrigger > 0 && Time.time > nextSwap) {
-			SwitchAugments();
+		// Check the swap request timeout, reset the request bool when it hits 0
+		if (swapAugTimeout > 0) {
+			swapAugTimeout--;
+		} else {
+			requestAugSwap = false;
+		}
+		if (swapWeapTimeout > 0) {
+			swapWeapTimeout--;
+		} else {
+			requestWeapSwap = false;
 		}
 
-		if (WeapTrigger > 0 && Time.time > nextSwap) {
-			SwitchWeapons();
+		// If swap cooldown time has passed, request a aug/weap swap when the trigger is pressed
+		// Otherwise play swap failed sound
+		AugTrigger = Input.GetAxisRaw (swapButtonAug);
+		WeapTrigger = Input.GetAxisRaw (swapButtonWeap);
+		if (AugTrigger > 0 && Time.time > nextAugSwap) {
+			requestSwapAugments();
+		} else if (AugTrigger > 0 && nextAugSwapFailedSound) {
+			AudioSource.PlayClipAtPoint (swapCooldownSound, transform.position);
+			nextAugSwapFailedSound = false;
+		} else if (WeapTrigger == 0) {
+			nextAugSwapFailedSound = true;
+		}
+		if (WeapTrigger > 0 && Time.time > nextWeapSwap) {
+			requestSwapWeapons();
+		} else if (WeapTrigger > 0 && nextWeapSwapFailedSound) {
+			AudioSource.PlayClipAtPoint (swapCooldownSound, transform.position);
+			nextWeapSwapFailedSound = false;
+		} else if (WeapTrigger == 0) {
+			nextWeapSwapFailedSound = true;
+		}
+
+		// If swap request currently sent, check for a response from other player
+		if (requestAugSwap) {
+			checkRequestSwapAugments();
+		} else if (requestWeapSwap) {
+			checkRequestSwapWeapons();
+		}
+
+		// If no requests, reset other player hud
+		if (!requestAugSwap && !requestWeapSwap) {
+			otherPlayerHudImage.sprite = hudDefault;
 		}
 	}
 
@@ -132,7 +201,50 @@ public class StatsManager : MonoBehaviour {
 		}
 	}
 
-	public void SwitchAugments() {
+	void requestSwapAugments() {
+		requestAugSwap = true;
+		swapAugTimeout = 60;
+	}
+
+	void requestSwapWeapons() {
+		requestWeapSwap = true;
+		swapWeapTimeout = 60;
+	}
+
+	void checkRequestSwapAugments() {
+		if (otherPlayerStats.RequestAugSwap) {
+			SwapAugments();
+		} else {
+			// Activate Swap Request for Other Player
+			if (requestWeapSwap) {
+				otherPlayerHudImage.sprite = hud3;
+			} else {
+				otherPlayerHudImage.sprite = hud2;
+			}
+
+			// Vibrate?
+		}
+	}
+
+	void checkRequestSwapWeapons() {
+		if (otherPlayerStats.RequestWeapSwap) {
+			SwapWeapons();
+		} else {
+			// Activate Swap Request for Other Player
+			if (requestAugSwap) {
+				otherPlayerHudImage.sprite = hud3;
+			} else {
+				otherPlayerHudImage.sprite = hud1;
+			}
+
+			// Vibrate?
+		}
+	}
+
+	public void SwapAugments() {
+		otherPlayerStats.RequestAugSwap = false;
+		requestAugSwap = false;
+
 		tempAug = GetAugment();
 		tempSpr = playerAugSprite.GetComponent<Image> ().sprite;
 
@@ -142,10 +254,14 @@ public class StatsManager : MonoBehaviour {
 		otherPlayerStats.SetAugment (tempAug);
 		otherPlayerAugSprite.GetComponent<Image>().sprite = tempSpr;
 
-		nextSwap = Time.time + 2;
+		nextAugSwap = Time.time + 2;
+		swapAugTimeout = 0;
 	}
 
-	public void SwitchWeapons() {
+	public void SwapWeapons() {
+		otherPlayerStats.RequestWeapSwap = false;
+		requestWeapSwap = false;
+
 		tempWeap = playerShooting.curWeap;
 		tempWeapSpr = playerWeapSprite.GetComponent<Image> ().sprite;
 
@@ -155,6 +271,7 @@ public class StatsManager : MonoBehaviour {
 		otherPlayerShooting.ChangeWeapon (tempWeap);
 		otherPlayerWeapSprite.GetComponent<Image> ().sprite = tempWeapSpr;
 
-		nextSwap = Time.time + 2;
+		nextWeapSwap = Time.time + 2;
+		swapWeapTimeout = 0;
 	}
 }
