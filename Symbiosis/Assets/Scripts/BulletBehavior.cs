@@ -7,6 +7,7 @@ public class BulletBehavior : MonoBehaviour {
 	public int bulletDamage;
 
 	public AudioClip sound;
+	public AudioClip sound2;
 
 	public void setAugment(iAugment aug){
 		Debug.Log ("On-hit effects set");
@@ -15,6 +16,7 @@ public class BulletBehavior : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		AudioSource.PlayClipAtPoint (sound2, transform.position);
 	}
 	
 	// Update is called once per frame

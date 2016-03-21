@@ -112,6 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletDamage: 5
   sound: {fileID: 8300000, guid: f31dc225a1e464253acf1ca679f008bd, type: 3}
+  sound2: {fileID: 8300000, guid: 15faccb8f5420432fa284037f4bf1faa, type: 3}
 --- !u!136 &13680438
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -136,6 +137,10 @@ Prefab:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: sound2
+      value: 
+      objectReference: {fileID: 8300000, guid: 15faccb8f5420432fa284037f4bf1faa, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 104442}
