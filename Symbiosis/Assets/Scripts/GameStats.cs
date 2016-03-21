@@ -22,10 +22,10 @@ public class GameStats : MonoBehaviour {
 		RoomController roomController = room.GetComponent<RoomController> ();
 		bool enemies = roomController.ContainsEnemySpawn();
 
-		if (!enemies && room.name != "Room100") {
+		if (!enemies) {
 			foreach (Transform child in room.transform) {
 				GameObject door = child.gameObject;
-				if (door.tag == "Door") {
+				if (door.tag == "Door" && door.name != "DoorSwitchExit") {
 					Animator doorAnimator = door.GetComponent<Animator> ();
 					doorAnimator.SetTrigger ("Open");
 				}

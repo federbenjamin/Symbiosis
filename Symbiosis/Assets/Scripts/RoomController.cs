@@ -59,31 +59,31 @@ public class RoomController : MonoBehaviour {
 				switches.Add (child.gameObject);
 			}
 		}
+
+		if (transform.name == "Room100") roomCleared = true;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		//Check if player has enetered room and count enemies
+		// Logic for switch room
 		if (transform.name == "Room100") {
 			if (!hasTriggered && switch1Active && switch2Active) {
 				hasTriggered = true;
-				SpawnEnemies();
 				foreach (GameObject button in switches) {
-					Destroy (button);
+					button.GetComponent<SwitchesController> ().PermanentlySwitchedOff = true;
 				}
-			}
-
-			if (hasTriggered && !roomCleared) {
-				if (CountEnemies() == 0) {
-					roomCleared = true;
-					foreach (GameObject door in doors) {
+				foreach (GameObject door in doors) {
+					if (door.name == "DoorSwitchExit") {
 						Animator doorAnimator = door.GetComponent<Animator> ();
 						doorAnimator.SetTrigger ("Open");
+					} else if (door.name == "DoorSwitchEnter") {
+						Animator doorAnimator = door.GetComponent<Animator> ();
+						doorAnimator.SetTrigger ("Close");
 					}
-					SceneManager.LoadScene ("WinScreen");
 				}
 			}
+		//Check if player has enetered room and count enemies
 		} else {
 			if (hasTriggered == true) {
 				if (roomCleared == false) {
