@@ -130,7 +130,7 @@ public class HealthManager : MonoBehaviour {
 	//Decrease health of players
 	public void DamageHealth(int damage) {
 		healthBar.GetComponent<Image>().sprite = BarHit;
-		healthBar.GetComponent<RectTransform>().sizeDelta = new Vector2(505, 125);
+		healthBar.GetComponent<RectTransform>().sizeDelta = new Vector2(500, 100);
 		if (!invincible) {
 			currentHealth -= damage;
 		}
