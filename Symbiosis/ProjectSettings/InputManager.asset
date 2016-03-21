@@ -631,7 +631,7 @@ InputManager:
     joyNum: 0
   - serializedVersion: 3
     m_Name: SwapWeaponMacP2
-    descriptiveName: PC
+    descriptiveName: Mac
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: 
@@ -643,7 +643,7 @@ InputManager:
     snap: 1
     invert: 0
     type: 2
-    axis: 8
+    axis: 4
     joyNum: 2
   - serializedVersion: 3
     m_Name: SwapWeaponMacP2
