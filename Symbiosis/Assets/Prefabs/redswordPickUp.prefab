@@ -27,7 +27,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 136966}
   m_LocalRotation: {x: 0.5000001, y: 0.49999994, z: 0.49999994, w: -0.5000001}
-  m_LocalPosition: {x: -51.200203, y: 0.37, z: 398.52286}
+  m_LocalPosition: {x: -2.790001, y: 0.37, z: -0.769989}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -91,7 +91,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: f6fa403a55b604c5cbed281f540f8514, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -109,6 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateSpeed: 100
   powerupType: Sword
+  notUsed: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
