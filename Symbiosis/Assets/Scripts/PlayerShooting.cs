@@ -244,6 +244,7 @@ public class PlayerShooting : MonoBehaviour {
 
 		while (playerShooting) 
 		{
+			GetComponent<AudioSource> ().Play();
 			Ray ray = new Ray (rayGunTip.transform.position, transform.forward * -1);
 			RaycastHit hit;
 
@@ -268,7 +269,7 @@ public class PlayerShooting : MonoBehaviour {
 					//Add force to enemy
 					hit.rigidbody.AddForceAtPosition(transform.forward * force * -1, hit.point);
 					EnemyStats enemyHP = hit.transform.GetComponent<EnemyStats> ();
-					enemyHP.TakeDamage (100, damageType);
+					enemyHP.TakeDamage (1, damageType);
 				}
 			} else {
 				line.SetPosition (1, ray.GetPoint (50));
