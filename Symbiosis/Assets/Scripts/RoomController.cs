@@ -168,6 +168,16 @@ public class RoomController : MonoBehaviour {
 		return total;
 	}
 
+	public bool ContainsEnemySpawn() {
+		int total = 0;
+		foreach (Transform child in transform) {
+			if (child.tag == "EnemySpawn") {
+				total++;
+			}
+		}
+		return total > 0;
+	}
+
 	public bool getPlayersTogether() {
 		return playersTogether;
 	}
