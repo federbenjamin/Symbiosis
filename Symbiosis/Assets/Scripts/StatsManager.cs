@@ -52,8 +52,8 @@ public class StatsManager : MonoBehaviour {
 	private int swapAugTimeout;
 	private int swapWeapTimeout;
 	public AudioClip swapCooldownSound;
-	private bool nextWeapSwapFailedSound = true;
-	private bool nextAugSwapFailedSound = true;
+	private bool nextWeapSwapFailedSound = false;
+	private bool nextAugSwapFailedSound = false;
 
 	private AudioPlacement audioPlacement;
 
@@ -133,19 +133,21 @@ public class StatsManager : MonoBehaviour {
 		WeapTrigger = Input.GetAxisRaw (swapButtonWeap);
 		if (AugTrigger > 0 && Time.time > nextAugSwap) {
 			requestSwapAugments();
+			nextAugSwapFailedSound = false;
+		} else if (AugTrigger == 0) {
+			nextAugSwapFailedSound = true;
 		} else if (AugTrigger > 0 && nextAugSwapFailedSound) {
 			audioPlacement.PlayClip (swapCooldownSound);
 			nextAugSwapFailedSound = false;
-		} else if (WeapTrigger == 0) {
-			nextAugSwapFailedSound = true;
 		}
 		if (WeapTrigger > 0 && Time.time > nextWeapSwap) {
 			requestSwapWeapons();
-		} else if (WeapTrigger > 0 && nextWeapSwapFailedSound) {
-			audioPlacement.PlayClip (swapCooldownSound);
 			nextWeapSwapFailedSound = false;
 		} else if (WeapTrigger == 0) {
 			nextWeapSwapFailedSound = true;
+		} else if (WeapTrigger > 0 && nextWeapSwapFailedSound) {
+			audioPlacement.PlayClip (swapCooldownSound);
+			nextWeapSwapFailedSound = false;
 		}
 
 		// If swap request currently sent, check for a response from other player
