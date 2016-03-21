@@ -216,6 +216,8 @@ GameObject:
   - 114: {fileID: 11418352}
   - 54: {fileID: 5418894}
   - 136: {fileID: 13695216}
+  - 65: {fileID: 6572214}
+  - 65: {fileID: 6589888}
   m_Layer: 0
   m_Name: RedZomb
   m_TagString: Enemy
@@ -476,7 +478,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 156500}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -45.24281, y: 4.372, z: 403.44797}
+  m_LocalPosition: {x: -51.769833, y: 5, z: 397.46762}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 439264}
@@ -849,6 +851,30 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!65 &6572214
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156500}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.25, y: 0.3, z: 0.8}
+  m_Center: {x: -0.33, y: 0.82, z: 0.22}
+--- !u!65 &6589888
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156500}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.25, y: 0.3, z: 0.8}
+  m_Center: {x: 0.33, y: 0.82, z: 0.22}
 --- !u!95 &9557312
 Animator:
   serializedVersion: 3
@@ -905,10 +931,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.45
+  m_Radius: 0.3
   m_Height: 1.4
   m_Direction: 1
-  m_Center: {x: 0, y: 0.65, z: 0.12}
+  m_Center: {x: 0, y: 0.65, z: -0.1}
 --- !u!137 &13700230
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
