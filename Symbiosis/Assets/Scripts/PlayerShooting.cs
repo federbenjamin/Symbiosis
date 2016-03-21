@@ -50,6 +50,8 @@ public class PlayerShooting : MonoBehaviour {
 	private GameObject sword;
 	public bool playerSwinging;
 
+	private AudioPlacement audioPlacement;
+
 	void Awake () {
 
 		//Get the StatsManager Script
@@ -64,6 +66,7 @@ public class PlayerShooting : MonoBehaviour {
 		ChangeWeapon ("Pistol");
 		curWeap = "Pistol";
 		playerMovement = transform.GetComponent<PlayerMovement>();
+		audioPlacement = GameObject.Find("AudioListener").GetComponent<AudioPlacement> ();
 
 		//Determine shooting buttons for OS and Player
 		if ((Application.platform == RuntimePlatform.OSXEditor) || (Application.platform == RuntimePlatform.OSXPlayer)) {
@@ -244,7 +247,7 @@ public class PlayerShooting : MonoBehaviour {
 
 		while (playerShooting) 
 		{
-			GetComponent<AudioSource> ().Play();
+			audioPlacement.PlayClip("beep_2");
 			Ray ray = new Ray (rayGunTip.transform.position, transform.forward * -1);
 			RaycastHit hit;
 
