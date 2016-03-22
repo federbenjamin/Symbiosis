@@ -71,8 +71,16 @@ public class PlayerSword : MonoBehaviour {
 		}
 
 		swordTrail.GetComponent<TrailRenderer>().material = trailColor;
-		swordTrail.SetActive(true);
 		swordAnimator.SetTrigger ("Attack");
+		StartCoroutine ("WaitAndStop");
+	}
+
+	IEnumerator WaitAndStop() {
+		yield return new WaitForSeconds (0.05f);
+		swordTrail.SetActive(true);
+		yield return new WaitForSeconds (0.22f);
+
+		StopSwinging();
 	}
 
 	void OnTriggerEnter(Collider c) {
