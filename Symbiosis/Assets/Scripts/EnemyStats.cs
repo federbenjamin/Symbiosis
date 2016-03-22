@@ -54,7 +54,9 @@ public class EnemyStats : MonoBehaviour {
 
 	public void TakeDamage(int incomingDamage, string damageType){
 		DamageMultiplier(incomingDamage, damageType);
-		StatusEffect(damageType);
+		if (!(damageType == "fire" && elementType == "ice")) {
+			StatusEffect(damageType);
+		}
 	}
 
 	void DamageMultiplier(int incomingDamage, string damageType) {
