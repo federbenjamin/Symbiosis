@@ -6,7 +6,7 @@ public class Enemy1Behavior : EnemyBehavior {
 	private bool enemyOriented = false;
 	private float turnSpeed = 4;
 	public float slowMoveSpeed = 2;
-	public float fastMoveSpeed = 8;
+	public float fastMoveSpeed = 6;
 	private bool realigningRotation = false;
 	private bool realignTimerSet = false;
 
