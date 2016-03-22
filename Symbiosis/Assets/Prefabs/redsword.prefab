@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1fdb3bbfff854342a33821f18aff71e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swordDamage: 10
+  swordDamage: 5
   isSwinging: 0
 --- !u!136 &13672356
 CapsuleCollider:
@@ -216,6 +216,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: swordDamage
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
