@@ -156,7 +156,7 @@ public class StatsManager : MonoBehaviour {
 		if (AugTrigger > 0 && Time.time > nextAugSwap) {
 			requestSwapAugments();
 			nextAugSwapFailedSound = false;
-		} else if (AugTrigger == 0) {
+		} else if (AugTrigger <= 0) {
 			nextAugSwapFailedSound = true;
 		} else if (AugTrigger > 0 && nextAugSwapFailedSound) {
 			audioPlacement.PlayClip (swapCooldownSound, 0.05f);
@@ -165,7 +165,7 @@ public class StatsManager : MonoBehaviour {
 		if (WeapTrigger > 0 && Time.time > nextWeapSwap) {
 			requestSwapWeapons();
 			nextWeapSwapFailedSound = false;
-		} else if (WeapTrigger == 0) {
+		} else if (WeapTrigger <= 0) {
 			nextWeapSwapFailedSound = true;
 		} else if (WeapTrigger > 0 && nextWeapSwapFailedSound) {
 			audioPlacement.PlayClip (swapCooldownSound, 0.05f);
