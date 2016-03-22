@@ -43,7 +43,7 @@ public class DoorController : MonoBehaviour {
 					Vector3 outPosition_2 = baseSpawnPoint + Offsetter(outDoor, false);
 					player2.transform.position = outPosition_2;
 
-					playersCamera.transform.position = new Vector3 (nextRoomPos.x, playersCamera.transform.position.y, nextRoomPos.z + cameraOffset); 
+					playersCamera.transform.position = new Vector3 (baseSpawnPoint.x, playersCamera.transform.position.y, nextRoomPos.z + cameraOffset); 
 				} else {
 					Vector3 newPlayerPosition = new Vector3 (nextRoomPos.x, other.transform.position.y, nextRoomPos.z);
 					newPlayerPosition = newPlayerPosition + OutPlacer (outDoor);
