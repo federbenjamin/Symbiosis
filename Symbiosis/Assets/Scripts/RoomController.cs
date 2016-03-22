@@ -139,7 +139,7 @@ public class RoomController : MonoBehaviour {
 		 */
 
 		foreach (GameObject spawnpoint in spawnpoints) {
-			string enemyType = spawnpoint.name.Substring(10);
+			string enemyType = spawnpoint.name.Substring(10, 2);
 			GameObject enemyChild;
 
 			Vector3 spawnVector = spawnpoint.transform.position;
