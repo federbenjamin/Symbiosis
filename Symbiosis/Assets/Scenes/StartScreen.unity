@@ -238,7 +238,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89f15ed6f9d2d422facdaa08dcb19cdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputToChange: Start
+  inputToChange: StartMac
+  secondaryInputToChange: StartPC
   sceneName: Main 1
 --- !u!1 &1475337956
 GameObject:
