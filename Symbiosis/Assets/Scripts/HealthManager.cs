@@ -88,7 +88,7 @@ public class HealthManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-		if (currentHealth == 0) {
+		if (currentHealth <= 0) {
 			heart1.GetComponent<Image> ().sprite = emptyHeart;
 			GameOver ();
 		} if (currentHealth == 1) {
