@@ -1186,8 +1186,8 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 32f38f1912cb74efcb48d246d7abf042, type: 2}
-  - {fileID: 2100000, guid: c6b6918845aa2493c84a448a698f2811, type: 2}
+  - {fileID: 2100000, guid: 025c8c552bf3347f4b10747aba9c60dc, type: 2}
+  - {fileID: 2100000, guid: 6bd6a402d94dd4a42bb79887361db4ba, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1401,6 +1401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookAtObject: {fileID: 0}
+  fadeTimer: 60
 --- !u!114 &11496116
 MonoBehaviour:
   m_ObjectHideFlags: 1
