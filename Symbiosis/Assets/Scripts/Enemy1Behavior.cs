@@ -10,7 +10,7 @@ public class Enemy1Behavior : EnemyBehavior {
 	private bool realigningRotation = false;
 	private bool realignTimerSet = false;
 
-	private float stoppingDistance = 1f;
+	private float stoppingDistance = 0.4f;
 	private NavMeshAgent _navMeshAgent;
 
 	void Awake () {
@@ -55,6 +55,7 @@ public class Enemy1Behavior : EnemyBehavior {
 					// myRigidBody.AddForce (moveDirection * (moveSpeed * 10) * Time.deltaTime, ForceMode.VelocityChange);
 					//myTransform.position += moveDirection * moveSpeed * Time.deltaTime;
 				} else if (timer > nextHit) {
+					enemyAnimator.SetTrigger ("Stopped");
 
 					bool playersTogether = GameObject.FindWithTag("Canvas").GetComponent<GameStats>().PlayersTogether;
 					if (!playersTogether) {
@@ -78,7 +79,7 @@ public class Enemy1Behavior : EnemyBehavior {
 
 	void UpdateTurnSpeed() {
 		if (!realigningRotation) {
-			turnSpeed = 4;
+			turnSpeed = 5;
 			moveSpeed = fastMoveSpeed;
 		} else {
 			// Debug.Log("realign");
@@ -88,7 +89,7 @@ public class Enemy1Behavior : EnemyBehavior {
 				myRigidBody.velocity = Vector3.zero;
 			}
 			turnSpeed = 0;
-			moveSpeed = -4;
+			moveSpeed = 0;
 		}
 	}
 
