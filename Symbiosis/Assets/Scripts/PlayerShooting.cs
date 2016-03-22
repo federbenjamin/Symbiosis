@@ -168,14 +168,12 @@ public class PlayerShooting : MonoBehaviour {
 			Physics.IgnoreCollision (clone.GetComponent<Collider> (), GetComponent<Collider> ());
 			clone.GetComponent<Rigidbody> ().velocity = (clone.transform.forward * ((baseBulletSpeed + bulletSpeedModifier)));
 			if (aug != null) {
-				Debug.Log ("Applying on-hit effects");
 				clone.GetComponent<BulletBehavior> ().setAugment (aug);
 			}
 
 		} else if (curWeap == "Sword") {
 			sword.GetComponent<PlayerSword> ().Swing ();
 		}
-		Debug.Log ("Firing augged bullet");
 
 
 //		if (aug != null) {

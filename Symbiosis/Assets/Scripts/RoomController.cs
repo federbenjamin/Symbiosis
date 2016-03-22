@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class RoomController : MonoBehaviour {
 
-	public GameObject enemy1;
-	public GameObject enemy2;
 	public GameObject boss;
 	public GameObject greenZomb;
 	public GameObject redZomb;
@@ -147,11 +145,7 @@ public class RoomController : MonoBehaviour {
 			Vector3 spawnVector = spawnpoint.transform.position;
 			spawnVector.y = 0.055f;
 
-			if (enemyType == "1") {
-				enemyChild = Instantiate (enemy1, spawnVector, spawnpoint.transform.rotation) as GameObject;
-			} else if (enemyType == "2") {
-				enemyChild = Instantiate (enemy2, spawnVector, spawnpoint.transform.rotation) as GameObject;
-			} else if (enemyType == "10") {
+			if (enemyType == "10") {
 				enemyChild = Instantiate (greenZomb, spawnVector, spawnpoint.transform.rotation) as GameObject;
 			} else if (enemyType == "12") {
 				enemyChild = Instantiate (greenSpecial, spawnVector, spawnpoint.transform.rotation) as GameObject;

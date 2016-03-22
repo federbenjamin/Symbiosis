@@ -26,7 +26,7 @@ public class Enemy2Behavior : EnemyBehavior {
 		}
 
 		if (IsEnemyAlive() && !playersHealth.IsGameOver) {
-			UpdateTargetPlayer(false);
+			UpdateTargetPlayer();
 			CheckNearDeath();
 
 			if (roomController.EnemiesActive) {

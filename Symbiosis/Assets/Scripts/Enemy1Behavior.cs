@@ -8,6 +8,7 @@ public class Enemy1Behavior : EnemyBehavior {
 	public float slowMoveSpeed = 2;
 	public float fastMoveSpeed = 8;
 	private bool realigningRotation = false;
+	private bool realignTimerSet = false;
 
 	void Awake () {
 		nextHit = 0;
@@ -24,9 +25,11 @@ public class Enemy1Behavior : EnemyBehavior {
 		}
 
 		if (IsEnemyAlive() && !playersHealth.IsGameOver) {
-			UpdateTargetPlayer(false);
+			UpdateTargetPlayer();
 			UpdateTurnSpeed();
-			ResetAlignTimer();
+			if (timer >= 30) {
+				realigningRotation = false;
+			}
 
 			if (roomController.EnemiesActive) {
 				timer++;
@@ -61,30 +64,34 @@ public class Enemy1Behavior : EnemyBehavior {
 			} else {
 				ActivateEnemiesOnProximity(2f);
 			}
-			collisionPosition = Vector3.zero;
 		} else {
 			enemyAnimator.SetTrigger ("Stopped");
 		}
 	}
 
 	void UpdateTurnSpeed() {
-		if (collisionPosition == Vector3.zero && !realigningRotation) {
+		if (!realigningRotation) {
 			turnSpeed = 4;
 			moveSpeed = fastMoveSpeed;
 		} else {
-			if (!realigningRotation) {
+			// Debug.Log("realign");
+			if (!realignTimerSet) {
 				timer = 0;
-				realigningRotation = true;
+				realignTimerSet = true;
 				myRigidBody.velocity = Vector3.zero;
 			}
-			turnSpeed = 9;
-			moveSpeed = slowMoveSpeed;
+			turnSpeed = 0;
+			moveSpeed = -4;
 		}
 	}
 
-	void ResetAlignTimer() {
-		if (timer >= 20) {
-			realigningRotation = false;
-		}
+	protected void OnCollisionEnter (Collision col) {
+		// if (col.gameObject.tag == "Wall" || col.gameObject.tag == "Door" || col.gameObject.tag == "Enemy" || col.gameObject.tag == "RoomObject") {
+  //       	realigningRotation = true;
+  //      	}
+       	if (col.gameObject.tag != "Floor") {
+       		Debug.Log("Colided with: " + col.gameObject.tag);
+        	realigningRotation = true;
+       	}
 	}
 }

@@ -39,13 +39,24 @@ public class EnemyBehavior : MonoBehaviour {
 		p1_Object = GameObject.Find ("P1");
 		p2_Object = GameObject.Find ("P2");
 
-		UpdateTargetPlayer(true);
 		timer = Random.Range(1, 50);
 
 		foreach (Transform child in transform) {
 			if (child.name != "SpawnParticles") {
 				enemyAnimator = child.GetComponent<Animator> ();
 			}
+		}
+		Vector3 predictedPlayerPos1 = p1_Object.transform.position + p1_Object.GetComponent<Rigidbody>().velocity * Time.deltaTime;
+    	Vector3 predictedPlayerPos2 = p2_Object.transform.position + p2_Object.GetComponent<Rigidbody>().velocity * Time.deltaTime;
+    	Transform p1_Transform = p1_Object.transform;
+    	Transform p2_Transform = p2_Object.transform;
+		// Predicted distance
+    	float dist_1 = Vector3.Distance(myTransform.position, predictedPlayerPos1);
+		float dist_2 = Vector3.Distance(myTransform.position, predictedPlayerPos2);
+		if (dist_1 < dist_2) {
+			targetPlayer = new TargetPlayer(GameObject.Find ("P1"), p1_Transform, dist_1);
+		} else {
+			targetPlayer = new TargetPlayer(GameObject.Find ("P2"), p2_Transform, dist_2);
 		}
 	}
 
@@ -73,7 +84,9 @@ public class EnemyBehavior : MonoBehaviour {
     void OnCollisionExit (Collision col) {
 		if (col.gameObject.tag == "Player") {
 			nextHit = 40;
-		}
+		} else if (col.gameObject.tag == "Wall" || col.gameObject.tag == "Door" || col.gameObject.tag == "Enemy" || col.gameObject.tag == "RoomObject") {
+        	collisionPosition = Vector3.zero;
+       	} 
     }
 
     protected void ActivateEnemies() {
@@ -105,7 +118,7 @@ public class EnemyBehavior : MonoBehaviour {
 		myTransform.rotation = Quaternion.Euler (0, newYRotation, 0);
     }
 
-    protected void UpdateTargetPlayer(bool isInit) {
+    protected void UpdateTargetPlayer() {
     	Vector3 predictedPlayerPos1 = p1_Object.transform.position + p1_Object.GetComponent<Rigidbody>().velocity * Time.deltaTime;
     	Vector3 predictedPlayerPos2 = p2_Object.transform.position + p2_Object.GetComponent<Rigidbody>().velocity * Time.deltaTime;
     	Transform p1_Transform = p1_Object.transform;
@@ -117,21 +130,13 @@ public class EnemyBehavior : MonoBehaviour {
 		float dist_2 = Vector3.Distance(myTransform.position, predictedPlayerPos2);
 
 		if (dist_1 < dist_2) {
-			if (isInit) {
-				targetPlayer = new TargetPlayer(GameObject.Find ("P1"), p1_Transform, dist_1);
-			} else {
-				targetPlayer.PlayerObject = GameObject.Find ("P1");
-				targetPlayer.Transform = p1_Transform;
-				targetPlayer.Distance = dist_1;
-			}
+			targetPlayer.PlayerObject = GameObject.Find ("P1");
+			targetPlayer.Transform = p1_Transform;
+			targetPlayer.Distance = dist_1;
 		} else {
-			if (isInit) {
-				targetPlayer = new TargetPlayer(GameObject.Find ("P2"), p2_Transform, dist_2);
-			} else {
-				targetPlayer.PlayerObject = GameObject.Find ("P2");
-				targetPlayer.Transform = p2_Transform;
-				targetPlayer.Distance = dist_2;
-			}
+			targetPlayer.PlayerObject = GameObject.Find ("P2");
+			targetPlayer.Transform = p2_Transform;
+			targetPlayer.Distance = dist_2;
 		}
     }
 
