@@ -10,6 +10,7 @@ public class Pickups : MonoBehaviour {
 	public float rotateSpeed;
 	private StatsManager playerStats;
 	private PlayerShooting playerShooting;
+	private PlayerMovement playerMovement;
 	private GameObject playerAugSprite;
 	private GameObject playerWeapSprite;
 	private string playerPrefix;
@@ -23,14 +24,17 @@ public class Pickups : MonoBehaviour {
 	public GameObject greenAugmentPickup;
 
 	private string oldWeapon;
+	private GameObject oldWeaponPickup;
 	private string oldAugment;
+	private GameObject oldAugmentPickup;
 	public bool notUsed;
-	private float nextPickup = 0.0f;
+	static float nextPickup = 0.0f;
 
 	// Use this for initialization
 	void Start () {
 		notUsed = false;
 		oldWeapon = null;
+		oldAugment = null;
 	}
 	
 	// Update is called once per frame
@@ -54,6 +58,7 @@ public class Pickups : MonoBehaviour {
 		if (other.tag == "Player") {
 			playerStats = other.GetComponent<StatsManager> ();
 			playerShooting = other.GetComponent<PlayerShooting> ();
+			playerMovement = other.GetComponent<PlayerMovement> ();
 			playerPrefix = other.name;
 			playerAugSprite = GameObject.Find (playerPrefix + "Aug");
 			playerWeapSprite = GameObject.Find (playerPrefix + "Weap");
@@ -134,7 +139,6 @@ public class Pickups : MonoBehaviour {
 
 				case "Sword":
 					oldWeapon = playerShooting.curWeap;
-					Debug.Log("Picked Sword");
 					playerShooting.ChangeWeapon (powerupType);
 					playerWeapSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("swordsprite");
 					break;
@@ -156,25 +160,27 @@ public class Pickups : MonoBehaviour {
 					break;
 				}
 
-				if (oldWeapon != null) {
+				if ((oldWeapon != null) && (oldWeapon != "Pistol")) {
 					if (oldWeapon == "RayGun") {
-						Instantiate (rayGunPickup, transform.position, rayGunPickup.transform.rotation);
+						oldWeaponPickup = Instantiate (rayGunPickup, transform.position, rayGunPickup.transform.rotation) as GameObject;
 					} else if (oldWeapon == "Sword") {
-						Instantiate (swordPickup, transform.position, swordPickup.transform.rotation);
+						oldWeaponPickup = Instantiate (swordPickup, transform.position, swordPickup.transform.rotation) as GameObject;
 					}
 
+					oldWeaponPickup.transform.parent = playerMovement.room.transform;
 					oldWeapon = null;
 				}
 
 				if (oldAugment != null) {
 					if (oldAugment == "fire") {
-						Instantiate (redAugmentPickup, transform.position, redAugmentPickup.transform.rotation);
+						oldAugmentPickup = Instantiate (redAugmentPickup, transform.position, redAugmentPickup.transform.rotation) as GameObject;
 					} else if (oldAugment == "ice") {
-						Instantiate (blueAugmentPickup, transform.position, blueAugmentPickup.transform.rotation);
+						oldAugmentPickup = Instantiate (blueAugmentPickup, transform.position, blueAugmentPickup.transform.rotation) as GameObject;
 					} else if (oldAugment == "earth") {
-						Instantiate (greenAugmentPickup, transform.position, greenAugmentPickup.transform.rotation);
+						oldAugmentPickup = Instantiate (greenAugmentPickup, transform.position, greenAugmentPickup.transform.rotation) as GameObject;
 					}
 
+					oldAugmentPickup.transform.parent = playerMovement.room.transform;
 					oldAugment = null;
 				}
 
