@@ -13,6 +13,7 @@ public class RoomController : MonoBehaviour {
 	public GameObject blueZomb;
 	public GameObject blueSpecial;
 	public GameObject greenSpecial;
+	public GameObject redSpecial;
 
 	public List<GameObject> spawnpoints;
 	public List<GameObject> enemies;
@@ -156,7 +157,9 @@ public class RoomController : MonoBehaviour {
 				enemyChild = Instantiate (greenSpecial, spawnVector, spawnpoint.transform.rotation) as GameObject;
 			} else if (enemyType == "20") {
 				enemyChild = Instantiate (redZomb, spawnVector, spawnpoint.transform.rotation) as GameObject;
-			} else if (enemyType == "30") {
+			} else if (enemyType == "22") {
+				enemyChild = Instantiate (redSpecial, spawnVector, spawnpoint.transform.rotation) as GameObject;
+			}  else if (enemyType == "30") {
 				enemyChild = Instantiate (blueZomb, spawnVector, spawnpoint.transform.rotation) as GameObject;
 			} else if (enemyType == "32") {
 				enemyChild = Instantiate (blueSpecial, spawnVector, spawnpoint.transform.rotation) as GameObject;

@@ -1307,7 +1307,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 132660}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -47.1, y: 0.01, z: 399.8}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 480524}
@@ -1648,7 +1648,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyAnimator: {fileID: 0}
-  bullet: {fileID: 108390, guid: cd47827fa4f014f94a101f796919cbbf, type: 2}
+  bullet: {fileID: 164192, guid: 4fab93891b8314d22b69a530070fa9f2, type: 2}
   bulletOrigin: {fileID: 195396}
   fireRate: 0
   bulletVelocity: 8
@@ -1681,7 +1681,7 @@ CapsuleCollider:
   m_Radius: 1.3
   m_Height: 3
   m_Direction: 1
-  m_Center: {x: 0, y: 1.34, z: -0.04}
+  m_Center: {x: 0, y: 1.45, z: -0.04}
 --- !u!137 &13703294
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -4851,6 +4851,38 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: elementType
       value: fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 164192, guid: 4fab93891b8314d22b69a530070fa9f2, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Center.y
+      value: 1.45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

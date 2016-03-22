@@ -143,6 +143,7 @@ ModelImporter:
     7400006: MinigunShoot
     7400008: Pipes
     7400010: Walk
+    7400012: Walk0
     9500000: //RootNode
     13700000: Arm_Mingun_R_Rotate
     13700002: Arm_Minigun_L
@@ -190,7 +191,811 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Walk0
+      takeName: Walk
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arm_Mingun_R_Rotate
+        weight: 1
+      - path: Arm_Minigun_L
+        weight: 1
+      - path: Arm_Minigun_L_Part
+        weight: 1
+      - path: Arm_Plasma_R
+        weight: 1
+      - path: Arm_Plasma_R_Front1
+        weight: 1
+      - path: Arm_Plasma_R_Front2
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Hip_0
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0/Leg_Bottom_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0/Leg_Bottom_L/Foot_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0/Leg_Bottom_L/Foot_L/Toe_Back_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0/Leg_Bottom_L/Foot_L/Toe_Left_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0/Leg_Bottom_L/Foot_L/Toe_Mid_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0/Leg_Bottom_L/Foot_L/Toe_Right_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0/Leg_Bottom_R
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0/Leg_Bottom_R/Foot_R
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0/Leg_Bottom_R/Foot_R/Toe_Back_R
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0/Leg_Bottom_R/Foot_R/Toe_Left_R
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0/Leg_Bottom_R/Foot_R/Toe_Mid_R
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0/Leg_Bottom_R/Foot_R/Toe_Right_R
+        weight: 1
+      - path: Armature/Hip_0/Torso_0
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Arm_L
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Arm_L/Arm_L_Rotate
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Arm_R
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Arm_R/Arm_R_DetailDown
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Arm_R/Arm_R_DetailUP
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Pipe_L
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Pipe_R
+        weight: 1
+      - path: Cylinder_007
+        weight: 1
+      - path: Cylinder_008
+        weight: 1
+      - path: Cylinder_030
+        weight: 1
+      - path: Cylinder_031
+        weight: 1
+      - path: Hip
+        weight: 1
+      - path: Leg_L
+        weight: 1
+      - path: Leg_L_Armor
+        weight: 1
+      - path: Leg_L_Wheel
+        weight: 1
+      - path: Leg_R
+        weight: 1
+      - path: Leg_R_Armor
+        weight: 1
+      - path: Leg_R_Wheel
+        weight: 1
+      - path: Toes_L_Back_
+        weight: 1
+      - path: Toes_L_Left
+        weight: 1
+      - path: Toes_L_Middle
+        weight: 1
+      - path: Toes_L_Right
+        weight: 1
+      - path: Toes_R_Back
+        weight: 1
+      - path: Toes_R_Left
+        weight: 1
+      - path: Toes_R_Middle
+        weight: 1
+      - path: Toes_R_Right
+        weight: 1
+      - path: Torso
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle
+      takeName: Idle
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arm_Mingun_R_Rotate
+        weight: 1
+      - path: Arm_Minigun_L
+        weight: 1
+      - path: Arm_Minigun_L_Part
+        weight: 1
+      - path: Arm_Plasma_R
+        weight: 1
+      - path: Arm_Plasma_R_Front1
+        weight: 1
+      - path: Arm_Plasma_R_Front2
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Hip_0
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0/Leg_Bottom_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0/Leg_Bottom_L/Foot_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0/Leg_Bottom_L/Foot_L/Toe_Back_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0/Leg_Bottom_L/Foot_L/Toe_Left_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0/Leg_Bottom_L/Foot_L/Toe_Mid_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0/Leg_Bottom_L/Foot_L/Toe_Right_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0/Leg_Bottom_R
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0/Leg_Bottom_R/Foot_R
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0/Leg_Bottom_R/Foot_R/Toe_Back_R
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0/Leg_Bottom_R/Foot_R/Toe_Left_R
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0/Leg_Bottom_R/Foot_R/Toe_Mid_R
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0/Leg_Bottom_R/Foot_R/Toe_Right_R
+        weight: 1
+      - path: Armature/Hip_0/Torso_0
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Arm_L
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Arm_L/Arm_L_Rotate
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Arm_R
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Arm_R/Arm_R_DetailDown
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Arm_R/Arm_R_DetailUP
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Pipe_L
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Pipe_R
+        weight: 1
+      - path: Cylinder_007
+        weight: 1
+      - path: Cylinder_008
+        weight: 1
+      - path: Cylinder_030
+        weight: 1
+      - path: Cylinder_031
+        weight: 1
+      - path: Hip
+        weight: 1
+      - path: Leg_L
+        weight: 1
+      - path: Leg_L_Armor
+        weight: 1
+      - path: Leg_L_Wheel
+        weight: 1
+      - path: Leg_R
+        weight: 1
+      - path: Leg_R_Armor
+        weight: 1
+      - path: Leg_R_Wheel
+        weight: 1
+      - path: Toes_L_Back_
+        weight: 1
+      - path: Toes_L_Left
+        weight: 1
+      - path: Toes_L_Middle
+        weight: 1
+      - path: Toes_L_Right
+        weight: 1
+      - path: Toes_R_Back
+        weight: 1
+      - path: Toes_R_Left
+        weight: 1
+      - path: Toes_R_Middle
+        weight: 1
+      - path: Toes_R_Right
+        weight: 1
+      - path: Torso
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: LaserShoot
+      takeName: LaserShoot
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arm_Mingun_R_Rotate
+        weight: 1
+      - path: Arm_Minigun_L
+        weight: 1
+      - path: Arm_Minigun_L_Part
+        weight: 1
+      - path: Arm_Plasma_R
+        weight: 1
+      - path: Arm_Plasma_R_Front1
+        weight: 1
+      - path: Arm_Plasma_R_Front2
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Hip_0
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0/Leg_Bottom_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0/Leg_Bottom_L/Foot_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0/Leg_Bottom_L/Foot_L/Toe_Back_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0/Leg_Bottom_L/Foot_L/Toe_Left_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0/Leg_Bottom_L/Foot_L/Toe_Mid_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0/Leg_Bottom_L/Foot_L/Toe_Right_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0/Leg_Bottom_R
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0/Leg_Bottom_R/Foot_R
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0/Leg_Bottom_R/Foot_R/Toe_Back_R
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0/Leg_Bottom_R/Foot_R/Toe_Left_R
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0/Leg_Bottom_R/Foot_R/Toe_Mid_R
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0/Leg_Bottom_R/Foot_R/Toe_Right_R
+        weight: 1
+      - path: Armature/Hip_0/Torso_0
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Arm_L
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Arm_L/Arm_L_Rotate
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Arm_R
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Arm_R/Arm_R_DetailDown
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Arm_R/Arm_R_DetailUP
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Pipe_L
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Pipe_R
+        weight: 1
+      - path: Cylinder_007
+        weight: 1
+      - path: Cylinder_008
+        weight: 1
+      - path: Cylinder_030
+        weight: 1
+      - path: Cylinder_031
+        weight: 1
+      - path: Hip
+        weight: 1
+      - path: Leg_L
+        weight: 1
+      - path: Leg_L_Armor
+        weight: 1
+      - path: Leg_L_Wheel
+        weight: 1
+      - path: Leg_R
+        weight: 1
+      - path: Leg_R_Armor
+        weight: 1
+      - path: Leg_R_Wheel
+        weight: 1
+      - path: Toes_L_Back_
+        weight: 1
+      - path: Toes_L_Left
+        weight: 1
+      - path: Toes_L_Middle
+        weight: 1
+      - path: Toes_L_Right
+        weight: 1
+      - path: Toes_R_Back
+        weight: 1
+      - path: Toes_R_Left
+        weight: 1
+      - path: Toes_R_Middle
+        weight: 1
+      - path: Toes_R_Right
+        weight: 1
+      - path: Torso
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: MinigunShoot
+      takeName: MinigunShoot
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arm_Mingun_R_Rotate
+        weight: 1
+      - path: Arm_Minigun_L
+        weight: 1
+      - path: Arm_Minigun_L_Part
+        weight: 1
+      - path: Arm_Plasma_R
+        weight: 1
+      - path: Arm_Plasma_R_Front1
+        weight: 1
+      - path: Arm_Plasma_R_Front2
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Hip_0
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0/Leg_Bottom_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0/Leg_Bottom_L/Foot_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0/Leg_Bottom_L/Foot_L/Toe_Back_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0/Leg_Bottom_L/Foot_L/Toe_Left_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0/Leg_Bottom_L/Foot_L/Toe_Mid_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0/Leg_Bottom_L/Foot_L/Toe_Right_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0/Leg_Bottom_R
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0/Leg_Bottom_R/Foot_R
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0/Leg_Bottom_R/Foot_R/Toe_Back_R
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0/Leg_Bottom_R/Foot_R/Toe_Left_R
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0/Leg_Bottom_R/Foot_R/Toe_Mid_R
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0/Leg_Bottom_R/Foot_R/Toe_Right_R
+        weight: 1
+      - path: Armature/Hip_0/Torso_0
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Arm_L
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Arm_L/Arm_L_Rotate
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Arm_R
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Arm_R/Arm_R_DetailDown
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Arm_R/Arm_R_DetailUP
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Pipe_L
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Pipe_R
+        weight: 1
+      - path: Cylinder_007
+        weight: 1
+      - path: Cylinder_008
+        weight: 1
+      - path: Cylinder_030
+        weight: 1
+      - path: Cylinder_031
+        weight: 1
+      - path: Hip
+        weight: 1
+      - path: Leg_L
+        weight: 1
+      - path: Leg_L_Armor
+        weight: 1
+      - path: Leg_L_Wheel
+        weight: 1
+      - path: Leg_R
+        weight: 1
+      - path: Leg_R_Armor
+        weight: 1
+      - path: Leg_R_Wheel
+        weight: 1
+      - path: Toes_L_Back_
+        weight: 1
+      - path: Toes_L_Left
+        weight: 1
+      - path: Toes_L_Middle
+        weight: 1
+      - path: Toes_L_Right
+        weight: 1
+      - path: Toes_R_Back
+        weight: 1
+      - path: Toes_R_Left
+        weight: 1
+      - path: Toes_R_Middle
+        weight: 1
+      - path: Toes_R_Right
+        weight: 1
+      - path: Torso
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Pipes
+      takeName: Pipes
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arm_Mingun_R_Rotate
+        weight: 1
+      - path: Arm_Minigun_L
+        weight: 1
+      - path: Arm_Minigun_L_Part
+        weight: 1
+      - path: Arm_Plasma_R
+        weight: 1
+      - path: Arm_Plasma_R_Front1
+        weight: 1
+      - path: Arm_Plasma_R_Front2
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Hip_0
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0/Leg_Bottom_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0/Leg_Bottom_L/Foot_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0/Leg_Bottom_L/Foot_L/Toe_Back_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0/Leg_Bottom_L/Foot_L/Toe_Left_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0/Leg_Bottom_L/Foot_L/Toe_Mid_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0/Leg_Bottom_L/Foot_L/Toe_Right_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0/Leg_Bottom_R
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0/Leg_Bottom_R/Foot_R
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0/Leg_Bottom_R/Foot_R/Toe_Back_R
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0/Leg_Bottom_R/Foot_R/Toe_Left_R
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0/Leg_Bottom_R/Foot_R/Toe_Mid_R
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0/Leg_Bottom_R/Foot_R/Toe_Right_R
+        weight: 1
+      - path: Armature/Hip_0/Torso_0
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Arm_L
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Arm_L/Arm_L_Rotate
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Arm_R
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Arm_R/Arm_R_DetailDown
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Arm_R/Arm_R_DetailUP
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Pipe_L
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Pipe_R
+        weight: 1
+      - path: Cylinder_007
+        weight: 1
+      - path: Cylinder_008
+        weight: 1
+      - path: Cylinder_030
+        weight: 1
+      - path: Cylinder_031
+        weight: 1
+      - path: Hip
+        weight: 1
+      - path: Leg_L
+        weight: 1
+      - path: Leg_L_Armor
+        weight: 1
+      - path: Leg_L_Wheel
+        weight: 1
+      - path: Leg_R
+        weight: 1
+      - path: Leg_R_Armor
+        weight: 1
+      - path: Leg_R_Wheel
+        weight: 1
+      - path: Toes_L_Back_
+        weight: 1
+      - path: Toes_L_Left
+        weight: 1
+      - path: Toes_L_Middle
+        weight: 1
+      - path: Toes_L_Right
+        weight: 1
+      - path: Toes_R_Back
+        weight: 1
+      - path: Toes_R_Left
+        weight: 1
+      - path: Toes_R_Middle
+        weight: 1
+      - path: Toes_R_Right
+        weight: 1
+      - path: Torso
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Walk
+      takeName: Walk
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arm_Mingun_R_Rotate
+        weight: 1
+      - path: Arm_Minigun_L
+        weight: 1
+      - path: Arm_Minigun_L_Part
+        weight: 1
+      - path: Arm_Plasma_R
+        weight: 1
+      - path: Arm_Plasma_R_Front1
+        weight: 1
+      - path: Arm_Plasma_R_Front2
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Hip_0
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0/Leg_Bottom_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0/Leg_Bottom_L/Foot_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0/Leg_Bottom_L/Foot_L/Toe_Back_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0/Leg_Bottom_L/Foot_L/Toe_Left_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0/Leg_Bottom_L/Foot_L/Toe_Mid_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_L/Leg_L_0/Leg_Bottom_L/Foot_L/Toe_Right_L
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0/Leg_Bottom_R
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0/Leg_Bottom_R/Foot_R
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0/Leg_Bottom_R/Foot_R/Toe_Back_R
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0/Leg_Bottom_R/Foot_R/Toe_Left_R
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0/Leg_Bottom_R/Foot_R/Toe_Mid_R
+        weight: 1
+      - path: Armature/Hip_0/Leg_Upper_R/Leg_R_0/Leg_Bottom_R/Foot_R/Toe_Right_R
+        weight: 1
+      - path: Armature/Hip_0/Torso_0
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Arm_L
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Arm_L/Arm_L_Rotate
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Arm_R
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Arm_R/Arm_R_DetailDown
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Arm_R/Arm_R_DetailUP
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Pipe_L
+        weight: 1
+      - path: Armature/Hip_0/Torso_0/Pipe_R
+        weight: 1
+      - path: Cylinder_007
+        weight: 1
+      - path: Cylinder_008
+        weight: 1
+      - path: Cylinder_030
+        weight: 1
+      - path: Cylinder_031
+        weight: 1
+      - path: Hip
+        weight: 1
+      - path: Leg_L
+        weight: 1
+      - path: Leg_L_Armor
+        weight: 1
+      - path: Leg_L_Wheel
+        weight: 1
+      - path: Leg_R
+        weight: 1
+      - path: Leg_R_Armor
+        weight: 1
+      - path: Leg_R_Wheel
+        weight: 1
+      - path: Toes_L_Back_
+        weight: 1
+      - path: Toes_L_Left
+        weight: 1
+      - path: Toes_L_Middle
+        weight: 1
+      - path: Toes_L_Right
+        weight: 1
+      - path: Toes_R_Back
+        weight: 1
+      - path: Toes_R_Left
+        weight: 1
+      - path: Toes_R_Middle
+        weight: 1
+      - path: Toes_R_Right
+        weight: 1
+      - path: Torso
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
