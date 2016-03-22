@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	private string playerPrefix;
 	private float horizMov, vertMov;
+	private string moveButtonHoriz, moveButtonVert;
 	private Vector3 playerMov;
 	public bool isMoving;
 
@@ -38,6 +39,14 @@ public class PlayerMovement : MonoBehaviour {
 		playerTransform = GetComponent<Transform> ();
 		playerPrefix = gameObject.name;
 
+		if ((Application.platform == RuntimePlatform.OSXEditor) || (Application.platform == RuntimePlatform.OSXPlayer)) {
+			moveButtonHoriz = "HorizontalMac" + playerPrefix;
+			moveButtonVert = "VerticalMac" + playerPrefix;
+		} else if ((Application.platform == RuntimePlatform.WindowsEditor) || (Application.platform == RuntimePlatform.WindowsPlayer)) {
+			moveButtonHoriz = "HorizontalPC" + playerPrefix;
+			moveButtonVert = "VerticalPC" + playerPrefix;
+		}
+
 		foreach (Transform child in transform) {
 			if (child.name == "Player_animated") {
 				foreach (Transform bodypart in child) {
@@ -59,8 +68,8 @@ public class PlayerMovement : MonoBehaviour {
 	void FixedUpdate() {
 		if (playersHealth.currentHealth > 0){
 			//Player Movement
-			horizMov = Input.GetAxisRaw ("Horizontal" + playerPrefix);
-			vertMov = Input.GetAxisRaw ("Vertical" + playerPrefix);
+			horizMov = Input.GetAxisRaw (moveButtonHoriz);
+			vertMov = Input.GetAxisRaw (moveButtonVert);
 			playerMov = new Vector3 (horizMov, 0f, vertMov);
 
 			isMoving = (horizMov != 0 || vertMov != 0);
