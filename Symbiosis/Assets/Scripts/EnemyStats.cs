@@ -48,7 +48,8 @@ public class EnemyStats : MonoBehaviour {
 
 	void Die(){
 		//Play dying animation, and destroy
-		enemyAnimator.SetTrigger("Dead");
+		// enemyAnimator.SetTrigger("Dead");
+		enemyAnimator.Play("Player_Death");
 		StartCoroutine ("Wait");
 	}
 
