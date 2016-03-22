@@ -3482,6 +3482,14 @@ Prefab:
       propertyPath: m_Name
       value: SwitchP2
       objectReference: {fileID: 0}
+    - target: {fileID: 10819826, guid: 7d1689ced5a4340e197c668fa5241731, type: 2}
+      propertyPath: m_Shadows.m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 10819826, guid: 7d1689ced5a4340e197c668fa5241731, type: 2}
+      propertyPath: m_Shadows.m_Strength
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7d1689ced5a4340e197c668fa5241731, type: 2}
   m_IsPrefabParent: 0
@@ -3799,6 +3807,10 @@ Prefab:
     - target: {fileID: 157812, guid: 86a015643f4db44b08e35c4f39f54678, type: 2}
       propertyPath: m_Name
       value: SwitchP1
+      objectReference: {fileID: 0}
+    - target: {fileID: 10834928, guid: 86a015643f4db44b08e35c4f39f54678, type: 2}
+      propertyPath: m_Shadows.m_Type
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 86a015643f4db44b08e35c4f39f54678, type: 2}
