@@ -915,7 +915,7 @@ InputManager:
     snap: 1
     invert: 0
     type: 2
-    axis: 4
+    axis: 8
     joyNum: 2
   - serializedVersion: 3
     m_Name: SwapWeaponPCP2
