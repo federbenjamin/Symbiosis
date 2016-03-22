@@ -159,7 +159,7 @@ public class StatsManager : MonoBehaviour {
 		} else if (AugTrigger <= 0) {
 			nextAugSwapFailedSound = true;
 		} else if (AugTrigger > 0 && nextAugSwapFailedSound) {
-			audioPlacement.PlayClip (swapCooldownSound, 0.05f);
+			//audioPlacement.PlayClip (swapCooldownSound, 0.05f);
 			nextAugSwapFailedSound = false;
 		}
 		if (WeapTrigger > 0 && Time.time > nextWeapSwap) {
@@ -168,7 +168,7 @@ public class StatsManager : MonoBehaviour {
 		} else if (WeapTrigger <= 0) {
 			nextWeapSwapFailedSound = true;
 		} else if (WeapTrigger > 0 && nextWeapSwapFailedSound) {
-			audioPlacement.PlayClip (swapCooldownSound, 0.05f);
+			//audioPlacement.PlayClip (swapCooldownSound, 0.05f);
 			nextWeapSwapFailedSound = false;
 		}
 
