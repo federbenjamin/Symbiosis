@@ -588,7 +588,7 @@ GameObject:
   - 114: {fileID: 11487576}
   m_Layer: 0
   m_Name: Hoop
-  m_TagString: Untagged
+  m_TagString: Hoop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -637,7 +637,7 @@ GameObject:
   - 95: {fileID: 9545074}
   m_Layer: 0
   m_Name: bluehoop
-  m_TagString: Untagged
+  m_TagString: Hoop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1354,16 +1354,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Reg_bullet: {fileID: 108390, guid: cd47827fa4f014f94a101f796919cbbf, type: 2}
-  RayGun_bullet: {fileID: 180152, guid: e1c57c77c006346958e399e54f8d29d4, type: 2}
+  RayGun_bullet: {fileID: 0}
   Red_bullet: {fileID: 154562, guid: 4719a506d9a8549afa33863dac9004bc, type: 2}
   Blue_bullet: {fileID: 175508, guid: 31fbea12d44e647969792441798b1636, type: 2}
   Green_bullet: {fileID: 104442, guid: 069f04cd6a8584e23bd2cb3db3141977, type: 2}
   rayGunTip: {fileID: 0}
   line: {fileID: 0}
-  fireEffect: {fileID: 111740, guid: 0a4c4cbe7f88f23458e66ea2eb85991c, type: 2}
+  fireEffect: {fileID: 0}
   iceEffect: {fileID: 0}
   earthEffect: {fileID: 0}
-  baseBulletSpeed: 20
+  baseBulletSpeed: 50
   baseFireRate: 0.3
   playerShooting: 0
   hand: {fileID: 110580}
@@ -1406,6 +1406,7 @@ MonoBehaviour:
   augmentName: 
   invincibilityTime: 0.3
   playersHealth: {fileID: 0}
+  swapCooldownSound: {fileID: 8300000, guid: eaa112e928c2641e88acbfd230189a80, type: 3}
 --- !u!114 &11487576
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1417,7 +1418,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00ad54e156b854f4a9d35a15fc64171d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  otherPlayer: {fileID: 0}
+  lookAtObject: {fileID: 0}
+  fadeTimer: 60
 --- !u!136 &13650728
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -55,6 +55,10 @@ public class StatsManager : MonoBehaviour {
 	private bool nextWeapSwapFailedSound = false;
 	private bool nextAugSwapFailedSound = false;
 
+	private HoopController hoopController;
+	private string pingButton;
+	private float nextHoopShow = 0.0f;
+
 	private AudioPlacement audioPlacement;
 
 	void Awake () {
@@ -105,8 +109,21 @@ public class StatsManager : MonoBehaviour {
 	
 		playerShooting = GetComponent<PlayerShooting> ();
 		otherPlayerShooting = GameObject.Find (otherPlayerPrefix).GetComponent<PlayerShooting> ();
-		playerWeapSprite = GameObject.Find (playerPrefix + "Weap");;
-		otherPlayerWeapSprite = GameObject.Find (otherPlayerPrefix + "Weap");;
+		playerWeapSprite = GameObject.Find (playerPrefix + "Weap");
+		otherPlayerWeapSprite = GameObject.Find (otherPlayerPrefix + "Weap");
+
+		foreach (Transform child in transform) {
+			if (child.tag == "Hoop") {
+				hoopController = child.gameObject.GetComponent<HoopController>();
+			}
+		}
+		//Determine shooting buttons for OS and Player
+		if ((Application.platform == RuntimePlatform.OSXEditor) || (Application.platform == RuntimePlatform.OSXPlayer)) {
+			pingButton = "PingMac" + playerPrefix;
+		} else if ((Application.platform == RuntimePlatform.WindowsEditor) || (Application.platform == RuntimePlatform.WindowsPlayer)) {
+			pingButton = "PingPC" + playerPrefix;
+		}
+
 	}
 	
 	// Update is called once per frame
@@ -115,6 +132,11 @@ public class StatsManager : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
+		if (Input.GetButton(pingButton) && Time.time > nextHoopShow) {
+			hoopController.Show();
+			nextHoopShow = Time.time + 3f;
+		}
+
 		// Check the swap request timeout, reset the request bool when it hits 0
 		if (swapAugTimeout > 0) {
 			swapAugTimeout--;
@@ -279,4 +301,6 @@ public class StatsManager : MonoBehaviour {
 		nextWeapSwap = Time.time + 2;
 		swapWeapTimeout = 0;
 	}
+
+
 }
