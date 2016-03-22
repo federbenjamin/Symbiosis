@@ -1,10 +1,15 @@
 fileFormatVersion: 2
 guid: d6218b172aa1244eaae7af2714db7433
-timeCreated: 1454193563
-licenseType: Free
+timeCreated: 1458639344
+licenseType: Pro
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - rayGunPickup: {fileID: 190054, guid: 0ee95262705304413aacb14b519700cb, type: 2}
+  - swordPickup: {fileID: 136966, guid: a5ded5a0fb6104fff8fc06e38d0bc8e1, type: 2}
+  - redAugmentPickup: {fileID: 115124, guid: 4829ad59575a5450888120432f08742b, type: 2}
+  - blueAugmentPickup: {fileID: 195796, guid: f6fa92d0f4dc543949127a7e8f3da89a, type: 2}
+  - greenAugmentPickup: {fileID: 148428, guid: d4fe809a14b064385835a89878a89a77, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
