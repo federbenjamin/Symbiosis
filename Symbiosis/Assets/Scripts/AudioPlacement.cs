@@ -30,8 +30,8 @@ public class AudioPlacement : MonoBehaviour {
 		AudioSource.PlayClipAtPoint (clip, transform.position);
 	}
 
-	public void PlayClip (AudioClip clip, Vector3 offset) {
-		AudioSource.PlayClipAtPoint (clip, transform.position + offset);
+	public void PlayClip (AudioClip clip, float volume) {
+		AudioSource.PlayClipAtPoint (clip, transform.position, volume);
 	}
 
 	public void changeMainSongPitch(float newPitch) {
