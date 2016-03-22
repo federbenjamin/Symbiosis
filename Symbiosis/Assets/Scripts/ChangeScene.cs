@@ -2,7 +2,10 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class WinScreen : MonoBehaviour {
+public class ChangeScene : MonoBehaviour {
+
+	public string inputToChange;
+	public string sceneName;
 
 	// Use this for initialization
 	void Start () {
@@ -11,8 +14,9 @@ public class WinScreen : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetButton ("Start")){
-			SceneManager.LoadScene("StartScreen");
+
+		if (Input.GetButton (inputToChange)){
+			SceneManager.LoadScene(sceneName);
 		}
 	}
 }

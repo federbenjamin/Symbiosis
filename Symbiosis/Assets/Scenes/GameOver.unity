@@ -338,9 +338,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 884642101}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91b317b93689842fb8b9497867e86a2c, type: 3}
+  m_Script: {fileID: 11500000, guid: 89f15ed6f9d2d422facdaa08dcb19cdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputToChange: Start
+  sceneName: StartScreen
 --- !u!1 &1033411824
 GameObject:
   m_ObjectHideFlags: 0
