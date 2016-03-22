@@ -5,6 +5,7 @@ public class Spikes : MonoBehaviour {
 
 	private HealthManager healthManager;
 	private Vector3 dir;
+	private float nextHit = 0.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -17,10 +18,18 @@ public class Spikes : MonoBehaviour {
 	}
 
 	void OnTriggerStay(Collider other) {
-		if (other.tag == "Player") {
+		if (other.tag == "Player" && Time.time > nextHit) {
+			bool playersTogether = GameObject.FindWithTag("Canvas").GetComponent<GameStats>().PlayersTogether;
+			if (!playersTogether) {
+				GameObject.Find ("Camera"+ other.name).GetComponent<CameraShaker> ().shake = 0.15f;
+			} else {
+				GameObject.Find ("CameraP1").GetComponent<CameraShaker> ().shake = 0.15f;
+			}
+
 			healthManager.DamageHealth(1);
+			nextHit = Time.time + 1;
 			dir = other.transform.position - transform.position;
-			other.GetComponent<Rigidbody>().AddForce(dir * 400);
+			other.GetComponent<Rigidbody>().AddForce(dir * 50);
 		}
 	}
 }
