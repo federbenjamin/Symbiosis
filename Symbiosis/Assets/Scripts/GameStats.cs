@@ -4,17 +4,35 @@ using System.Collections.Generic;
 
 public class GameStats : MonoBehaviour {
 
-	private bool playersTogether;
+	public static bool paused = false;
+	private bool playersTogether = false;
 	public bool PlayersTogether {
 		get{return playersTogether;}
 		set{playersTogether = value;}
 	}
+	private AudioPlacement gameAudio;
 
 	void Start () {
-		playersTogether = false;
+		gameAudio = GameObject.Find("AudioListener").GetComponent<AudioPlacement> ();
 		GameObject[] roomsList = GameObject.FindGameObjectsWithTag("Room");
 		foreach (GameObject room in roomsList) {
 			OpenDoors(room);
+		}
+	}
+
+	void Update () {
+		if (Input.GetButtonDown("Start")) {
+			if (!paused) {
+				paused = true;
+				Time.timeScale = 0;
+				gameAudio.changeMainSongVolume(0.07f);
+				gameAudio.changeMainSongPitch(0.9f);
+			} else {
+				paused = false;
+				Time.timeScale = 1;
+				gameAudio.changeMainSongVolume(0.264f);
+				gameAudio.changeMainSongPitch(1f);
+			}
 		}
 	}
 

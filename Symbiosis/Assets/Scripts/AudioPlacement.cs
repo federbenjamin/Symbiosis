@@ -33,4 +33,22 @@ public class AudioPlacement : MonoBehaviour {
 	public void PlayClip (AudioClip clip, Vector3 offset) {
 		AudioSource.PlayClipAtPoint (clip, transform.position + offset);
 	}
+
+	public void changeMainSongPitch(float newPitch) {
+		foreach (AudioSource audioSource in GetComponents<AudioSource>()) {
+			if (audioSource.clip.name == "creeping2.0") {
+				audioSource.pitch = newPitch;
+				return;
+			}
+		}
+	}
+
+	public void changeMainSongVolume(float newVolume) {
+		foreach (AudioSource audioSource in GetComponents<AudioSource>()) {
+			if (audioSource.clip.name == "creeping2.0") {
+				audioSource.volume = newVolume;
+				return;
+			}
+		}
+	}
 }
