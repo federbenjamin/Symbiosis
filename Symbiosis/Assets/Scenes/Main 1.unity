@@ -17636,10 +17636,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 766a5141c63604477a7847b0525fca66, type: 3}
   m_IsPrefabParent: 0
---- !u!1 &1365025169 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 157698, guid: 7d1689ced5a4340e197c668fa5241731, type: 2}
-  m_PrefabInternal: {fileID: 753327975}
 --- !u!1001 &1369311554
 Prefab:
   m_ObjectHideFlags: 0
@@ -18081,8 +18077,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 492986, guid: ab4ae1d60ee954231a42438718256e1b, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 11488120, guid: ab4ae1d60ee954231a42438718256e1b, type: 2}
+      propertyPath: lookAtObject
+      value: 
+      objectReference: {fileID: 1461420582}
     - target: {fileID: 11475880, guid: ab4ae1d60ee954231a42438718256e1b, type: 2}
       propertyPath: RayGun_bullet
       value: 
@@ -18092,12 +18092,8 @@ Prefab:
       value: 
       objectReference: {fileID: 111740, guid: 0a4c4cbe7f88f23458e66ea2eb85991c, type: 2}
     - target: {fileID: 11488120, guid: ab4ae1d60ee954231a42438718256e1b, type: 2}
-      propertyPath: roomSwitch
-      value: 
-      objectReference: {fileID: 1365025169}
-    - target: {fileID: 117058, guid: ab4ae1d60ee954231a42438718256e1b, type: 2}
-      propertyPath: m_TagString
-      value: Hoop
+      propertyPath: fadeTimer
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab4ae1d60ee954231a42438718256e1b, type: 2}
@@ -24690,6 +24686,18 @@ Prefab:
     - target: {fileID: 189872, guid: f2e3b56b04ff240b3a2ca4d444680002, type: 2}
       propertyPath: m_TagString
       value: Hoop
+      objectReference: {fileID: 0}
+    - target: {fileID: 11487576, guid: f2e3b56b04ff240b3a2ca4d444680002, type: 2}
+      propertyPath: lookAtObject
+      value: 
+      objectReference: {fileID: 1484224603}
+    - target: {fileID: 199446, guid: f2e3b56b04ff240b3a2ca4d444680002, type: 2}
+      propertyPath: m_TagString
+      value: Hoop
+      objectReference: {fileID: 0}
+    - target: {fileID: 11487576, guid: f2e3b56b04ff240b3a2ca4d444680002, type: 2}
+      propertyPath: fadeTimer
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f2e3b56b04ff240b3a2ca4d444680002, type: 2}
