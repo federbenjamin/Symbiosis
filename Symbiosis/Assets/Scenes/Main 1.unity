@@ -40871,12 +40871,8 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 492986, guid: ab4ae1d60ee954231a42438718256e1b, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 11488120, guid: ab4ae1d60ee954231a42438718256e1b, type: 2}
-      propertyPath: lookAtObject
-      value: 
-      objectReference: {fileID: 1461420582}
     - target: {fileID: 11475880, guid: ab4ae1d60ee954231a42438718256e1b, type: 2}
       propertyPath: RayGun_bullet
       value: 
@@ -40886,9 +40882,9 @@ Prefab:
       value: 
       objectReference: {fileID: 111740, guid: 0a4c4cbe7f88f23458e66ea2eb85991c, type: 2}
     - target: {fileID: 11488120, guid: ab4ae1d60ee954231a42438718256e1b, type: 2}
-      propertyPath: fadeTimer
-      value: 60
-      objectReference: {fileID: 0}
+      propertyPath: lookAtObject
+      value: 
+      objectReference: {fileID: 1461420582}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab4ae1d60ee954231a42438718256e1b, type: 2}
   m_IsPrefabParent: 0
@@ -54045,6 +54041,22 @@ Prefab:
     - target: {fileID: 11487576, guid: f2e3b56b04ff240b3a2ca4d444680002, type: 2}
       propertyPath: fadeTimer
       value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 13650728, guid: f2e3b56b04ff240b3a2ca4d444680002, type: 2}
+      propertyPath: m_Radius
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 13650728, guid: f2e3b56b04ff240b3a2ca4d444680002, type: 2}
+      propertyPath: m_Center.x
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 13650728, guid: f2e3b56b04ff240b3a2ca4d444680002, type: 2}
+      propertyPath: m_Center.y
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 13650728, guid: f2e3b56b04ff240b3a2ca4d444680002, type: 2}
+      propertyPath: m_Center.z
+      value: -0.24
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f2e3b56b04ff240b3a2ca4d444680002, type: 2}
