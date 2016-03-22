@@ -681,6 +681,7 @@ MonoBehaviour:
   currentHP: 10
   maxHP: 10
   moveSpeed: 8
+  elementType: earth
   enemyAnimator: {fileID: 0}
   spawnParticles: {fileID: 0}
 --- !u!114 &11479274
@@ -2809,6 +2810,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: moveSpeed
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: elementType
+      value: earth
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

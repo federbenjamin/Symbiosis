@@ -1056,6 +1056,7 @@ MonoBehaviour:
   currentHP: 40
   maxHP: 40
   moveSpeed: 6
+  elementType: ice
   enemyAnimator: {fileID: 0}
   spawnParticles: {fileID: 0}
 --- !u!114 &11453942
@@ -3463,6 +3464,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: currentHP
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: elementType
+      value: ice
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
