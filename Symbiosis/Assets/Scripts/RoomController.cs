@@ -89,7 +89,9 @@ public class RoomController : MonoBehaviour {
 				if (roomCleared == false) {
 					if (CountEnemies() == 0) {
 						roomCleared = true;
-
+						if (transform.name == "Room200") {
+							StartCoroutine ("Wait");
+						}
 						//Leftdoor +, RightDoor - Rotations in Y
 						foreach (GameObject door in doors) {
 							Animator doorAnimator = door.GetComponent<Animator> ();
@@ -189,6 +191,11 @@ public class RoomController : MonoBehaviour {
 
 	public bool getPlayersTogether() {
 		return playersTogether;
+	}
+
+	IEnumerator Wait() {
+		yield return new WaitForSeconds (3f);
+		SceneManager.LoadScene ("WinScreen");
 	}
 
 }
