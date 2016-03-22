@@ -77,6 +77,20 @@ ModelImporter:
     4300022: Side_004
     4300024: Side_005
     4300026: Side
+    6400000: Corner
+    6400002: Corner_001
+    6400004: Corner_002
+    6400006: Corner_003
+    6400008: Corner_004
+    6400010: Corner_005
+    6400012: Corner_006
+    6400014: Corner_007
+    6400016: Side
+    6400018: Side_001
+    6400020: Side_002
+    6400022: Side_003
+    6400024: Side_004
+    6400026: Side_005
     7400000: Default Take
     9500000: //RootNode
   materials:
@@ -105,7 +119,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
