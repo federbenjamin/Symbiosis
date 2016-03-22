@@ -10,7 +10,6 @@ public class BulletBehavior : MonoBehaviour {
 	public AudioClip sound2;
 
 	public void setAugment(iAugment aug){
-		Debug.Log ("On-hit effects set");
 		augment = aug;
 	}
 

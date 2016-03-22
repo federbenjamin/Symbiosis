@@ -12,7 +12,6 @@ public class PlayerSword : MonoBehaviour {
 	private Material trailColor;
 
 	public void setAugment(iAugment aug){
-		Debug.Log ("On-hit effects set");
 		augment = aug;
 	}
 

@@ -11,7 +11,7 @@ public class EnemyBehavior : MonoBehaviour {
 
 	protected float moveSpeed;
 	protected int timer;
-	protected int nextHit;
+	protected int nextHit = 0;
 	protected Transform myTransform;
 	protected Rigidbody myRigidBody;
 	//protected Vector3 collisionNormal;

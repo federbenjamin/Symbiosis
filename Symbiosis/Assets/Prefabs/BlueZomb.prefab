@@ -183,6 +183,7 @@ GameObject:
   - 114: {fileID: 11465260}
   - 54: {fileID: 5422970}
   - 136: {fileID: 13600494}
+  - 195: {fileID: 19538790}
   m_Layer: 0
   m_Name: BlueZomb
   m_TagString: Enemy
@@ -1160,6 +1161,26 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.4311937, y: 2.131497, z: 0.059859693}
     m_Extent: {x: 0.6799376, y: 0.30423516, z: 0.36813504}
   m_DirtyAABB: 0
+--- !u!195 &19538790
+NavMeshAgent:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 152012}
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!198 &19862350
 ParticleSystem:
   m_ObjectHideFlags: 1

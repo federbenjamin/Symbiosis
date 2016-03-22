@@ -10,8 +10,11 @@ public class Enemy1Behavior : EnemyBehavior {
 	private bool realigningRotation = false;
 	private bool realignTimerSet = false;
 
+	private float stoppingDistance = 1f;
+	private NavMeshAgent _navMeshAgent;
+
 	void Awake () {
-		nextHit = 0;
+		_navMeshAgent = transform.GetComponent<NavMeshAgent>();
 	}
 
 	// Update is called once per frame
@@ -34,18 +37,22 @@ public class Enemy1Behavior : EnemyBehavior {
 			if (roomController.EnemiesActive) {
 				timer++;
 
-				//rotate to look at the player
+				_navMeshAgent.speed = moveSpeed;
+				_navMeshAgent.stoppingDistance = stoppingDistance;
+				_navMeshAgent.destination = targetPlayer.Transform.position;
+
+				// rotate to look at the player
 				Vector3 direction = targetPlayer.Transform.position - myRigidBody.position;
 				direction.y = 0;
 				Quaternion angleTowardsPlayer = Quaternion.Slerp(myTransform.rotation, Quaternion.LookRotation(direction), turnSpeed * Time.deltaTime);
 				myRigidBody.MoveRotation(angleTowardsPlayer);
 
-				if (targetPlayer.Distance > 0.9f) {
+				if (targetPlayer.Distance > stoppingDistance) {
 					enemyAnimator.SetTrigger ("Walking");
-					Vector3 moveDirection = myTransform.forward;
-					moveDirection.y = 0;
-					//move towards the player
-					myRigidBody.AddForce (moveDirection * (moveSpeed * 10) * Time.deltaTime, ForceMode.VelocityChange);
+					// Vector3 moveDirection = myTransform.forward;
+					// moveDirection.y = 0;
+					// //move towards the player
+					// myRigidBody.AddForce (moveDirection * (moveSpeed * 10) * Time.deltaTime, ForceMode.VelocityChange);
 					//myTransform.position += moveDirection * moveSpeed * Time.deltaTime;
 				} else if (timer > nextHit) {
 

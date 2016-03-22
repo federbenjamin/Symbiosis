@@ -7,7 +7,6 @@ public class EnemyBulletBehavior : MonoBehaviour {
 	public int bulletDamage;
 
 	public void setAugment(iAugment aug){
-		Debug.Log ("On-hit effects set");
 		augment = aug;
 	}
 
