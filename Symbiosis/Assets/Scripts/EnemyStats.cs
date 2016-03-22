@@ -6,6 +6,7 @@ public class EnemyStats : MonoBehaviour {
 	public int currentHP;
 	public int maxHP;
 	public int moveSpeed;
+	public string elementType;
 	private bool onFire;
 	private bool frozen;
 	private int ongoingDamage;
@@ -52,7 +53,37 @@ public class EnemyStats : MonoBehaviour {
 	}
 
 	public void TakeDamage(int incomingDamage, string damageType){
-		currentHP = currentHP - incomingDamage;
+		DamageMultiplier(incomingDamage, damageType);
+		StatusEffect(damageType);
+	}
+
+	void DamageMultiplier(int incomingDamage, string damageType) {
+		if (damageType == elementType) {
+			currentHP = currentHP - incomingDamage;
+		} else if (damageType == "fire") {
+			if (elementType == "ice") {
+				currentHP = currentHP - (int)Mathf.Floor(incomingDamage / 2);
+			} else if (elementType == "earth") {
+				currentHP = currentHP - (int)(incomingDamage * 2);
+			}
+		} else if (damageType == "ice") {
+			if (elementType == "earth") {
+				currentHP = currentHP - (int)Mathf.Floor(incomingDamage / 2);
+			} else if (elementType == "fire") {
+				currentHP = currentHP - (int)(incomingDamage * 2);
+			}
+		} else if (damageType == "earth") {
+			if (elementType == "fire") {
+				currentHP = currentHP - (int)Mathf.Floor(incomingDamage / 2);
+			} else if (elementType == "ice") {
+				currentHP = currentHP - (int)(incomingDamage * 2);
+			}
+		} else {
+			currentHP = currentHP - incomingDamage;
+		}
+	}
+
+	void StatusEffect(string damageType) {
 		if (damageType == "fire" && !onFire) {
 			Ignite ();
 		}
