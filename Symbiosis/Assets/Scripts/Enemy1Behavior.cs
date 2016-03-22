@@ -10,7 +10,7 @@ public class Enemy1Behavior : EnemyBehavior {
 	private bool realigningRotation = false;
 	private bool realignTimerSet = false;
 
-	private float stoppingDistance = 0.4f;
+	public float stoppingDistance;
 	private NavMeshAgent _navMeshAgent;
 
 	void Awake () {
@@ -57,13 +57,6 @@ public class Enemy1Behavior : EnemyBehavior {
 				} else if (timer > nextHit) {
 					enemyAnimator.SetTrigger ("Stopped");
 
-					bool playersTogether = GameObject.FindWithTag("Canvas").GetComponent<GameStats>().PlayersTogether;
-					if (!playersTogether) {
-						GameObject.Find ("Camera"+ targetPlayer.PlayerObject.name).GetComponent<CameraShaker> ().shake = 0.25f;
-					} else {
-						GameObject.Find ("CameraP1").GetComponent<CameraShaker> ().shake = 0.25f;
-					}
-
 					DamagePlayer(1);
 				} else {
 					enemyAnimator.SetTrigger ("Stopped");
@@ -93,13 +86,20 @@ public class Enemy1Behavior : EnemyBehavior {
 		}
 	}
 
-	protected void OnCollisionEnter (Collision col) {
+	void OnTriggerEnter (Collider col) {
 		// if (col.gameObject.tag == "Wall" || col.gameObject.tag == "Door" || col.gameObject.tag == "Enemy" || col.gameObject.tag == "RoomObject") {
   //       	realigningRotation = true;
   //      	}
+
        	if (col.gameObject.tag != "Floor") {
-       		Debug.Log("Colided with: " + col.gameObject.tag);
+       		// Debug.Log("Colided with: " + col.gameObject.tag);
         	realigningRotation = true;
        	}
+       	// if (col.gameObject.tag == "Player") {
+       	// 	Debug.Log("in");
+       	// 	if (timer > nextHit) {
+       	// 		DamagePlayer(1);
+       	// 	}
+       	// }
 	}
 }

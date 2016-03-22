@@ -141,6 +141,12 @@ public class EnemyBehavior : MonoBehaviour {
     }
 
     protected void DamagePlayer(int damage) {
+    	bool playersTogether = GameObject.FindWithTag("Canvas").GetComponent<GameStats>().PlayersTogether;
+		if (!playersTogether) {
+			GameObject.Find ("Camera"+ targetPlayer.PlayerObject.name).GetComponent<CameraShaker> ().shake = 0.25f;
+		} else {
+			GameObject.Find ("CameraP1").GetComponent<CameraShaker> ().shake = 0.25f;
+		}
 		if (transform.GetComponent<EnemyStats>().currentHP > 0) {
 			playersHealth.DamageHealth(damage);
 			timer = 0;

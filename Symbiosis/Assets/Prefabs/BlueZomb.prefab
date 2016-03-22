@@ -669,6 +669,7 @@ MonoBehaviour:
   enemyAnimator: {fileID: 0}
   slowMoveSpeed: 2
   fastMoveSpeed: 8
+  stoppingDistance: 0.4
 --- !u!136 &13600494
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -2767,6 +2768,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: elementType
       value: ice
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: stoppingDistance
+      value: 0.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -479,7 +479,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 156500}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -51.769833, y: 5, z: 397.46762}
+  m_LocalPosition: {x: 5.96, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 439264}
@@ -859,8 +859,8 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 156500}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
+  m_IsTrigger: 0
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.25, y: 0.3, z: 0.8}
   m_Center: {x: -0.33, y: 0.82, z: 0.22}
@@ -871,11 +871,11 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 156500}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.25, y: 0.3, z: 0.8}
-  m_Center: {x: 0.33, y: 0.82, z: 0.22}
+  m_Size: {x: 0.85, y: 0.35, z: 0.8}
+  m_Center: {x: 0, y: 0.82, z: 0.22}
 --- !u!95 &9557312
 Animator:
   serializedVersion: 3
@@ -924,6 +924,7 @@ MonoBehaviour:
   enemyAnimator: {fileID: 0}
   slowMoveSpeed: 2
   fastMoveSpeed: 8
+  stoppingDistance: 0.7
 --- !u!136 &13695216
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -3240,6 +3241,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: elementType
       value: fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: stoppingDistance
+      value: 0.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
