@@ -41835,10 +41835,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 11488120, guid: ab4ae1d60ee954231a42438718256e1b, type: 2}
-      propertyPath: lookAtObject
-      value: 
-      objectReference: {fileID: 1461420582}
     - target: {fileID: 11475880, guid: ab4ae1d60ee954231a42438718256e1b, type: 2}
       propertyPath: RayGun_bullet
       value: 
@@ -41847,6 +41843,10 @@ Prefab:
       propertyPath: fireEffect
       value: 
       objectReference: {fileID: 111740, guid: 0a4c4cbe7f88f23458e66ea2eb85991c, type: 2}
+    - target: {fileID: 11488120, guid: ab4ae1d60ee954231a42438718256e1b, type: 2}
+      propertyPath: lookAtObject
+      value: 
+      objectReference: {fileID: 1461420582}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab4ae1d60ee954231a42438718256e1b, type: 2}
   m_IsPrefabParent: 0
