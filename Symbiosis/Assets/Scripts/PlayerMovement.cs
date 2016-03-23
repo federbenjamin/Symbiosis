@@ -71,6 +71,9 @@ public class PlayerMovement : MonoBehaviour {
 			horizMov = Input.GetAxisRaw (moveButtonHoriz);
 			vertMov = Input.GetAxisRaw (moveButtonVert);
 			playerMov = new Vector3 (horizMov, 0f, vertMov);
+			if (playerMov.magnitude > 1) {
+				playerMov = playerMov / playerMov.magnitude;
+			}
 
 			isMoving = (horizMov != 0 || vertMov != 0);
 			animatorBody.SetBool ("moving", isMoving);
