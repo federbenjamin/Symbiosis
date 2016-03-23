@@ -1675,7 +1675,7 @@ CapsuleCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 132660}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 42f7df789ee7e43f29787044c8b181ae, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 1.3
@@ -4884,6 +4884,11 @@ Prefab:
       propertyPath: m_Center.y
       value: 1.45
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 42f7df789ee7e43f29787044c8b181ae,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 132660}
