@@ -34,8 +34,9 @@ public class PlayerShooting : MonoBehaviour {
 	private float bulletSpeedModifier;
 	private float fireRateModifier;
 
-	int shootHoriz;
-	int shootVert;
+	float shootHoriz;
+	float shootVert;
+	Vector3 shootingDir;
 	string shootButtonHoriz;
 	string shootButtonVert;
 	public bool playerShooting;
@@ -81,8 +82,9 @@ public class PlayerShooting : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//Joystick Shooting	
-		int shootVert = (int)Input.GetAxisRaw(shootButtonVert);
-		int shootHoriz  = (int)Input.GetAxisRaw(shootButtonHoriz);
+		shootVert = Mathf.Round(Input.GetAxisRaw(shootButtonVert));
+		shootHoriz  = Mathf.Round(Input.GetAxisRaw(shootButtonHoriz));
+		shootingDir = new Vector3 (shootHoriz, 0f, shootVert);
 
 		aug = GetComponent<StatsManager> ().GetAugment ();
 
@@ -112,36 +114,43 @@ public class PlayerShooting : MonoBehaviour {
 			
 			//Player Shooting
 			if (curWeap == "RayGun") {
-				if (Input.GetButton ("FireRight" + playerPrefix) || ((shootHoriz >= Mathf.Abs(shootVert)) && shootHoriz != 0)) {
+				if (Input.GetButton ("FireRight" + playerPrefix)) {
 					transform.rotation = Quaternion.LookRotation (Vector3.left);
 					StopCoroutine ("FireLaser");
 					StartCoroutine ("FireLaser");
-				} else if (Input.GetButton ("FireDown" + playerPrefix) || ((shootVert <= Mathf.Abs(shootHoriz)) && shootVert != 0)) {
+				} else if (Input.GetButton ("FireDown" + playerPrefix)) {
 					transform.rotation = Quaternion.LookRotation (Vector3.forward);
 					StopCoroutine ("FireLaser");
 					StartCoroutine ("FireLaser");
-				} else if (Input.GetButton ("FireUp" + playerPrefix) || ((shootVert >= Mathf.Abs(shootHoriz)) && shootVert != 0)) {
+				} else if (Input.GetButton ("FireUp" + playerPrefix)) {
 					transform.rotation = Quaternion.LookRotation (Vector3.back);
 					StopCoroutine ("FireLaser");
 					StartCoroutine ("FireLaser");
-				} else if (Input.GetButton ("FireLeft" + playerPrefix) || ((shootHoriz <= Mathf.Abs(shootVert)) && shootHoriz != 0)) {
+				} else if (Input.GetButton ("FireLeft" + playerPrefix)) {
 					transform.rotation = Quaternion.LookRotation (Vector3.right);
+					StopCoroutine ("FireLaser");
+					StartCoroutine ("FireLaser");
+				} else if (shootingDir.magnitude != 0) {
+					transform.rotation = Quaternion.LookRotation (shootingDir * -1);
 					StopCoroutine ("FireLaser");
 					StartCoroutine ("FireLaser");
 				}
 			} else {
-				if ((Input.GetButton ("FireRight" + playerPrefix) || ((shootHoriz >= Mathf.Abs(shootVert)) && shootHoriz != 0)) && Time.time > nextFire) {
+				if (Input.GetButton ("FireRight" + playerPrefix) && Time.time > nextFire) {
 					transform.rotation = Quaternion.LookRotation (Vector3.left);
 					Shoot (Vector3.right);
-				} else if ((Input.GetButton ("FireDown" + playerPrefix) || ((shootVert <= Mathf.Abs(shootHoriz)) && shootVert != 0)) && Time.time > nextFire) {
+				} else if (Input.GetButton ("FireDown" + playerPrefix) && Time.time > nextFire) {
 					transform.rotation = Quaternion.LookRotation (Vector3.forward);
 					Shoot (Vector3.back);
-				} else if ((Input.GetButton ("FireUp" + playerPrefix) || ((shootVert >= Mathf.Abs(shootHoriz)) && shootVert != 0)) && Time.time > nextFire) {
+				} else if (Input.GetButton ("FireUp" + playerPrefix) && Time.time > nextFire) {
 					transform.rotation = Quaternion.LookRotation (Vector3.back);
 					Shoot (Vector3.forward);
-				} else if ((Input.GetButton ("FireLeft" + playerPrefix) || ((shootHoriz <= Mathf.Abs(shootVert)) && shootHoriz != 0)) && Time.time > nextFire) {
+				} else if (Input.GetButton ("FireLeft" + playerPrefix) && Time.time > nextFire) {
 					transform.rotation = Quaternion.LookRotation (Vector3.right);
 					Shoot (Vector3.left);
+				} else if (shootingDir.magnitude != 0 && Time.time > nextFire) {
+					transform.rotation = Quaternion.LookRotation (shootingDir * -1);
+					Shoot (shootingDir);
 				}
 			}
 		}
@@ -164,7 +173,7 @@ public class PlayerShooting : MonoBehaviour {
 		if (curWeap == "Pistol") {
 			//Create the bullet and launch it
 			GameObject clone = Instantiate (cur_bullet, hand.transform.position, hand.transform.rotation) as GameObject;
-			clone.transform.rotation = Quaternion.LookRotation (shootDir);
+			//clone.transform.rotation = Quaternion.LookRotation (shootDir);
 			Physics.IgnoreCollision (clone.GetComponent<Collider> (), GetComponent<Collider> ());
 			clone.GetComponent<Rigidbody> ().velocity = (clone.transform.forward * ((baseBulletSpeed + bulletSpeedModifier)));
 			if (aug != null) {
@@ -174,18 +183,6 @@ public class PlayerShooting : MonoBehaviour {
 		} else if (curWeap == "Sword") {
 			sword.GetComponent<PlayerSword> ().Swing ();
 		}
-
-
-//		if (aug != null) {
-//			Debug.Log ("Applying on-hit effects");
-//			clone.GetComponent<BulletBehavior> ().setAugment(aug);
-//			GameObject augEffect;
-//			if (aug.Element == "fire") {
-//				Debug.Log ("Applying fire effects");
-//				augEffect = Instantiate (fireEffect, clone.transform.position, Quaternion.identity) as GameObject;
-//				augEffect.transform.parent = clone.transform;
-//			}
-//		}
 
 		//Set when the next bullet can be fired
 		nextFire = Time.time + (baseFireRate + fireRateModifier);
@@ -255,14 +252,14 @@ public class PlayerShooting : MonoBehaviour {
 				line.SetPosition(1, hit.point);
 				if (hit.transform.tag == "Enemy") {
 					string damageType = "none";
-					float force = 50;
+					float force = 10;
 
 					if (aug != null) {
 						aug.onHitEffect (hit.transform.gameObject);
 						damageType = aug.Element;
 
 						if (aug.Element == "earth") {
-							force = 100;
+							force = 50;
 
 						}
 					}
