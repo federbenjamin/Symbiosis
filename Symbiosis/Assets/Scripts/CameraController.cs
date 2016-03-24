@@ -17,6 +17,8 @@ public class CameraController : MonoBehaviour {
 	public GameObject cameraPointer;
 	private float deltaDist;
 	private bool facingRight;
+	float oppositeOffset = 4.5f;
+	float sameOffset = 0.3f;
 	float camMoveSpeed = 3f;
 
 	// Use this for initialization
@@ -41,29 +43,21 @@ public class CameraController : MonoBehaviour {
 			}
 		} else {
 			deltaDist = cameraPointer.transform.position.x - newCameraPos.x;
-			Debug.Log("DD " + deltaDist + " CP " + cameraPointer.transform.position.x);
 			if (facingRight == false) {
 				//Far Right
-				Debug.Log("ENTERED LEFT");
-				if (deltaDist > 4.5) {
-					Debug.Log("ENTERED >=2 L");
+				if (deltaDist > oppositeOffset) {
 					facingRight = true;
-					Debug.Log("BOOL " + facingRight);
-					newCameraPos = new Vector3 (player.transform.position.x + 2, transform.position.y, transform.position.z);
-				} else if (deltaDist <= - 0.5f) { 
-					Debug.Log("ENTERED <= 0.2 L");
+					newCameraPos = new Vector3 (cameraPointer.transform.position.x, transform.position.y, transform.position.z);
+				} else if (deltaDist <= -sameOffset) { 
 					newCameraPos = new Vector3 (cameraPointer.transform.position.x, transform.position.y, transform.position.z);
 				}
 				transform.position = Vector3.Lerp (transform.position, newCameraPos, camMoveSpeed * Time.deltaTime);
 			} else if (facingRight == true) {
 				//Far Left
-				Debug.Log("ENTERED RIGHT");
-				if (deltaDist < -4.5) {
-					Debug.Log("ENTERED >=2 R");
+				if (deltaDist < -oppositeOffset) {
 					facingRight = false;
-					newCameraPos = new Vector3 (player.transform.position.x - 2, transform.position.y, transform.position.z);
-				} else if (deltaDist >= 0.5f) {
-					Debug.Log("ENTERED <= 0.2 R");
+					newCameraPos = new Vector3 (cameraPointer.transform.position.x, transform.position.y, transform.position.z);
+				} else if (deltaDist >= sameOffset) {
 					newCameraPos = new Vector3 (cameraPointer.transform.position.x, transform.position.y, transform.position.z);
 				}
 				transform.position = Vector3.Lerp (transform.position, newCameraPos, camMoveSpeed * Time.deltaTime);

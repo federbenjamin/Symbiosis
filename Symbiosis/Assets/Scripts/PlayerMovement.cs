@@ -8,14 +8,15 @@ public class PlayerMovement : MonoBehaviour {
 	public Animator animatorBody;
 	public Animator animatorSlime;
 	public GameObject playerBody;
+	public GameObject cameraPointer;
 
 	public GameObject room;
 	public float baseSpeed = 8f;
 
 	private string playerPrefix;
-	private float horizMov, vertMov;
+	private float horizMov, vertMov, horizLook, vertLook;
 	private string moveButtonHoriz, moveButtonVert;
-	private Vector3 playerMov;
+	private Vector3 playerMov, playerLook;
 	public bool isMoving;
 
 	private StatsManager playerStats;
@@ -75,14 +76,22 @@ public class PlayerMovement : MonoBehaviour {
 				playerMov = playerMov / playerMov.magnitude;
 			}
 
+			vertLook = Mathf.Round(Input.GetAxisRaw(moveButtonVert));
+			horizLook  = Mathf.Round(Input.GetAxisRaw(moveButtonHoriz));
+			playerLook = new Vector3 (horizLook, 0f, vertLook);
+
 			isMoving = (horizMov != 0 || vertMov != 0);
 			animatorBody.SetBool ("moving", isMoving);
 			animatorSlime.SetBool ("moving", isMoving);
 
 			bool playerBusy = (playerShooting.playerShooting || playerShooting.playerSwinging);
 
+
 			if (!playerBusy) {
-				if (horizMov != 0) {
+				if (playerLook.magnitude != 0) {
+					transform.rotation = Quaternion.LookRotation (playerLook * -1);
+				}
+				/*if (horizMov != 0) {
 					if (horizMov > 0) {
 						if (vertMov > 0) {
 							playerTransform.rotation = Quaternion.Euler (0, -135, 0);
@@ -106,7 +115,7 @@ public class PlayerMovement : MonoBehaviour {
 					} else if (vertMov < 0) {
 						playerTransform.rotation = Quaternion.Euler (0, 0, 0);
 					}
-				}
+				}*/
 			}
 
 			//Get the speed stat for the player
