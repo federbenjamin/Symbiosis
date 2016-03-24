@@ -13,6 +13,7 @@ public class EnemyStats : MonoBehaviour {
 	private int ongoingTimer;
 	public Animator enemyAnimator;
 	public GameObject spawnParticles;
+	int halfDmg, doubleDmg;
 
 
 	// Use this for initialization
@@ -61,25 +62,29 @@ public class EnemyStats : MonoBehaviour {
 	}
 
 	void DamageMultiplier(int incomingDamage, string damageType) {
+		doubleDmg = (int)(incomingDamage * 2);
+		halfDmg = (int)Mathf.Floor(incomingDamage / 2);
+		halfDmg = ((int)Mathf.Floor(incomingDamage / 2) == 0) ? 1 : halfDmg;
+
 		if (damageType == elementType) {
 			currentHP = currentHP - incomingDamage;
 		} else if (damageType == "fire") {
 			if (elementType == "ice") {
-				currentHP = currentHP - (int)Mathf.Floor(incomingDamage / 2);
+				currentHP = currentHP - halfDmg;
 			} else if (elementType == "earth") {
-				currentHP = currentHP - (int)(incomingDamage * 2);
+				currentHP = currentHP - doubleDmg;
 			}
 		} else if (damageType == "ice") {
 			if (elementType == "earth") {
-				currentHP = currentHP - (int)Mathf.Floor(incomingDamage / 2);
+				currentHP = currentHP - halfDmg;
 			} else if (elementType == "fire") {
-				currentHP = currentHP - (int)(incomingDamage * 2);
+				currentHP = currentHP - doubleDmg;
 			}
 		} else if (damageType == "earth") {
 			if (elementType == "fire") {
-				currentHP = currentHP - (int)Mathf.Floor(incomingDamage / 2);
+				currentHP = currentHP - halfDmg;
 			} else if (elementType == "ice") {
-				currentHP = currentHP - (int)(incomingDamage * 2);
+				currentHP = currentHP - doubleDmg;
 			}
 		} else {
 			currentHP = currentHP - incomingDamage;
