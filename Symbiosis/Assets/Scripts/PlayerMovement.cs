@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour {
 	public Animator animatorSlime;
 	public GameObject playerBody;
 	public GameObject cameraPointer;
+	private CameraController camera;
 
 	public GameObject room;
 	public float baseSpeed = 8f;
@@ -48,6 +49,12 @@ public class PlayerMovement : MonoBehaviour {
 			moveButtonVert = "VerticalPC" + playerPrefix;
 		}
 
+		if (playerPrefix == "P1") {
+			camera = GameObject.Find ("CameraParentP1").GetComponent<CameraController>();
+		} else {
+			camera = GameObject.Find ("CameraParentP2").GetComponent<CameraController>();
+		}
+
 		foreach (Transform child in transform) {
 			if (child.name == "Player_animated") {
 				foreach (Transform bodypart in child) {
@@ -79,6 +86,13 @@ public class PlayerMovement : MonoBehaviour {
 			vertLook = Mathf.Round(Input.GetAxisRaw(moveButtonVert));
 			horizLook  = Mathf.Round(Input.GetAxisRaw(moveButtonHoriz));
 			playerLook = new Vector3 (horizLook, 0f, vertLook);
+
+			//Debug.Log(horizLook);
+			if (horizLook == 1) {
+				camera.MovingRight = true;
+			} else if (horizLook == -1) {
+				camera.MovingRight = false;
+			}
 
 			isMoving = (horizMov != 0 || vertMov != 0);
 			animatorBody.SetBool ("moving", isMoving);

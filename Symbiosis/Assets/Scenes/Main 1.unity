@@ -34817,6 +34817,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1484224603}
   cameraPointer: {fileID: 215485327}
+  xPosLimit: 4.5
 --- !u!4 &1125245487
 Transform:
   m_ObjectHideFlags: 0
@@ -48294,6 +48295,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1461420582}
   cameraPointer: {fileID: 1820502490}
+  xPosLimit: 4.5
 --- !u!1 &1555554537
 GameObject:
   m_ObjectHideFlags: 0
