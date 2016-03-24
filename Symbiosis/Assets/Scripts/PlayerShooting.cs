@@ -185,7 +185,11 @@ public class PlayerShooting : MonoBehaviour {
 		}
 
 		//Set when the next bullet can be fired
-		nextFire = Time.time + (baseFireRate + fireRateModifier);
+		if (curWeap == "Sword") {
+			nextFire = Time.time + 0.32f;
+		} else {
+			nextFire = Time.time + (baseFireRate + fireRateModifier);
+		}
 	}
 
 	public void ChangeWeapon(string weapon) {

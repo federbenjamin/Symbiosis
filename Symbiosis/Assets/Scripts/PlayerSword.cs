@@ -88,19 +88,24 @@ public class PlayerSword : MonoBehaviour {
 
 		if (other.tag == "Enemy") {
 			string damageType = "none";
-			float force = 500;
+			float force = 50;
 			if (augment != null) {
 				augment.onHitEffect (other);
 				damageType = augment.Element;
 				if (augment.Element == "earth") {
-					force = 1000;
+					force = 80;
 				}
 			}
 
 			//TODO: Add enemy Knockback
+			Vector3 enemyPos = other.transform.position;
+			Vector3 playerPos = transform.parent.position;
+			other.GetComponent<Rigidbody>().AddForce((enemyPos - playerPos) * force, ForceMode.VelocityChange);
 
 			EnemyStats enemyHP = other.GetComponent<EnemyStats> ();
+			Debug.Log("about to damage");
 			if (isSwinging) {
+				Debug.Log("damage");
 				enemyHP.TakeDamage (swordDamage, damageType);
 			}
 		}
