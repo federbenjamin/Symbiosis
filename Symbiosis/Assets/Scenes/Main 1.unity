@@ -41853,6 +41853,10 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11431852, guid: ab4ae1d60ee954231a42438718256e1b, type: 2}
+      propertyPath: cameraPointer
+      value: 
+      objectReference: {fileID: 215485327}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab4ae1d60ee954231a42438718256e1b, type: 2}
   m_IsPrefabParent: 0
@@ -55180,6 +55184,10 @@ Prefab:
       propertyPath: lookAtObject
       value: 
       objectReference: {fileID: 1484224603}
+    - target: {fileID: 11419628, guid: f2e3b56b04ff240b3a2ca4d444680002, type: 2}
+      propertyPath: cameraPointer
+      value: 
+      objectReference: {fileID: 1820502490}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f2e3b56b04ff240b3a2ca4d444680002, type: 2}
   m_IsPrefabParent: 0
