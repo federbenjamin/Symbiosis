@@ -18455,6 +18455,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 242238f36f94341aaafe925e74eeba35, type: 2}
+    - target: {fileID: 9500000, guid: b8c86ccacaa6a4789831d61ed02ff6c2, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 0993afbd249e54d8d87f66c40418f0bb, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b8c86ccacaa6a4789831d61ed02ff6c2, type: 3}
   m_IsPrefabParent: 0
@@ -41827,7 +41831,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 492986, guid: ab4ae1d60ee954231a42438718256e1b, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 11475880, guid: ab4ae1d60ee954231a42438718256e1b, type: 2}
       propertyPath: RayGun_bullet
@@ -55178,7 +55182,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 439838, guid: f2e3b56b04ff240b3a2ca4d444680002, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 11487576, guid: f2e3b56b04ff240b3a2ca4d444680002, type: 2}
       propertyPath: lookAtObject
@@ -57648,6 +57652,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 242238f36f94341aaafe925e74eeba35, type: 2}
+    - target: {fileID: 9500000, guid: b8c86ccacaa6a4789831d61ed02ff6c2, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 0993afbd249e54d8d87f66c40418f0bb, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b8c86ccacaa6a4789831d61ed02ff6c2, type: 3}
   m_IsPrefabParent: 0
