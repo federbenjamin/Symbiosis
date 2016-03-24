@@ -50,6 +50,8 @@ public class CameraController : MonoBehaviour {
 					newCameraPos = new Vector3 (cameraPointer.transform.position.x, transform.position.y, transform.position.z);
 				} else if (deltaDist <= -sameOffset) { 
 					newCameraPos = new Vector3 (cameraPointer.transform.position.x, transform.position.y, transform.position.z);
+				} else {
+					newCameraPos = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
 				}
 				transform.position = Vector3.Lerp (transform.position, newCameraPos, camMoveSpeed * Time.deltaTime);
 			} else if (facingRight == true) {
@@ -59,6 +61,8 @@ public class CameraController : MonoBehaviour {
 					newCameraPos = new Vector3 (cameraPointer.transform.position.x, transform.position.y, transform.position.z);
 				} else if (deltaDist >= sameOffset) {
 					newCameraPos = new Vector3 (cameraPointer.transform.position.x, transform.position.y, transform.position.z);
+				} else {
+					newCameraPos = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
 				}
 				transform.position = Vector3.Lerp (transform.position, newCameraPos, camMoveSpeed * Time.deltaTime);
 			}
