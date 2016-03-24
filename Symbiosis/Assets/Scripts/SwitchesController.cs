@@ -30,6 +30,9 @@ public class SwitchesController : MonoBehaviour {
 	private float emissionColorGDelta;
 	private float emissionColorBDelta;
 
+	public GameObject ButtonWire;
+	private Animator animator;
+
 	// Use this for initialization
 	void Start () {
 		roomController = transform.parent.GetComponent<RoomController> ();
@@ -41,6 +44,8 @@ public class SwitchesController : MonoBehaviour {
 				buttonShader = child.GetComponent<Renderer>().material;
 			}
 		}
+
+		animator = ButtonWire.GetComponent<Animator> ();
 
 		basicColor = buttonShader.GetColor("_Color");
 		emissionColor = buttonShader.GetColor("_EmissionColor");
@@ -105,10 +110,12 @@ public class SwitchesController : MonoBehaviour {
 
 	void pressButton() {
 		transform.Find("Button").transform.Translate(0,0,-0.1f);
+		animator.SetTrigger ("Triggered");
 	}
 
 	void depressButton() {
 		transform.Find("Button").transform.Translate(0, 0,0.1f);
+		animator.SetTrigger ("Revert");
 	}
 
 }

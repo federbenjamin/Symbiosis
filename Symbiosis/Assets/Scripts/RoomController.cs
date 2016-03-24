@@ -76,7 +76,7 @@ public class RoomController : MonoBehaviour {
 				foreach (GameObject door in doors) {
 					if (door.name == "DoorSwitchExit") {
 						Animator doorAnimator = door.GetComponent<Animator> ();
-						doorAnimator.SetTrigger ("Open");
+						doorAnimator.SetTrigger ("OpenDoor");
 					} else if (door.name == "DoorSwitchEnter") {
 						Animator doorAnimator = door.GetComponent<Animator> ();
 						doorAnimator.SetTrigger ("Close");
