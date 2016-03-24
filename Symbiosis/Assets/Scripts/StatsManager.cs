@@ -132,56 +132,58 @@ public class StatsManager : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-		if (Input.GetButton(pingButton) && Time.time > nextHoopShow) {
-			hoopController.Show();
-			nextHoopShow = Time.time + 3f;
-		}
+		if (GameStats.playersCanMove) {
+			if (Input.GetButton(pingButton) && Time.time > nextHoopShow) {
+				hoopController.Show();
+				nextHoopShow = Time.time + 3f;
+			}
 
-		// Check the swap request timeout, reset the request bool when it hits 0
-		if (swapAugTimeout > 0) {
-			swapAugTimeout--;
-		} else {
-			requestAugSwap = false;
-		}
-		if (swapWeapTimeout > 0) {
-			swapWeapTimeout--;
-		} else {
-			requestWeapSwap = false;
-		}
+			// Check the swap request timeout, reset the request bool when it hits 0
+			if (swapAugTimeout > 0) {
+				swapAugTimeout--;
+			} else {
+				requestAugSwap = false;
+			}
+			if (swapWeapTimeout > 0) {
+				swapWeapTimeout--;
+			} else {
+				requestWeapSwap = false;
+			}
 
-		// If swap cooldown time has passed, request a aug/weap swap when the trigger is pressed
-		// Otherwise play swap failed sound
-		AugTrigger = Input.GetAxisRaw (swapButtonAug);
-		WeapTrigger = Input.GetAxisRaw (swapButtonWeap);
-		if (AugTrigger > 0 && Time.time > nextAugSwap) {
-			requestSwapAugments();
-			nextAugSwapFailedSound = false;
-		} else if (AugTrigger <= 0) {
-			nextAugSwapFailedSound = true;
-		} else if (AugTrigger > 0 && nextAugSwapFailedSound) {
-			//audioPlacement.PlayClip (swapCooldownSound, 0.05f);
-			nextAugSwapFailedSound = false;
-		}
-		if (WeapTrigger > 0 && Time.time > nextWeapSwap) {
-			requestSwapWeapons();
-			nextWeapSwapFailedSound = false;
-		} else if (WeapTrigger <= 0) {
-			nextWeapSwapFailedSound = true;
-		} else if (WeapTrigger > 0 && nextWeapSwapFailedSound) {
-			//audioPlacement.PlayClip (swapCooldownSound, 0.05f);
-			nextWeapSwapFailedSound = false;
-		}
+			// If swap cooldown time has passed, request a aug/weap swap when the trigger is pressed
+			// Otherwise play swap failed sound
+			AugTrigger = Input.GetAxisRaw (swapButtonAug);
+			WeapTrigger = Input.GetAxisRaw (swapButtonWeap);
+			if (AugTrigger > 0 && Time.time > nextAugSwap) {
+				requestSwapAugments();
+				nextAugSwapFailedSound = false;
+			} else if (AugTrigger <= 0) {
+				nextAugSwapFailedSound = true;
+			} else if (AugTrigger > 0 && nextAugSwapFailedSound) {
+				//audioPlacement.PlayClip (swapCooldownSound, 0.05f);
+				nextAugSwapFailedSound = false;
+			}
+			if (WeapTrigger > 0 && Time.time > nextWeapSwap) {
+				requestSwapWeapons();
+				nextWeapSwapFailedSound = false;
+			} else if (WeapTrigger <= 0) {
+				nextWeapSwapFailedSound = true;
+			} else if (WeapTrigger > 0 && nextWeapSwapFailedSound) {
+				//audioPlacement.PlayClip (swapCooldownSound, 0.05f);
+				nextWeapSwapFailedSound = false;
+			}
 
-		// If swap request currently sent, check for a response from other player
-		if (requestAugSwap) {
-			checkRequestSwapAugments();
-		} else if (requestWeapSwap) {
-			checkRequestSwapWeapons();
-		}
+			// If swap request currently sent, check for a response from other player
+			if (requestAugSwap) {
+				checkRequestSwapAugments();
+			} else if (requestWeapSwap) {
+				checkRequestSwapWeapons();
+			}
 
-		// If no requests, reset other player hud
-		if (!requestAugSwap && !requestWeapSwap) {
-			otherPlayerHudImage.sprite = hudDefault;
+			// If no requests, reset other player hud
+			if (!requestAugSwap && !requestWeapSwap) {
+				otherPlayerHudImage.sprite = hudDefault;
+			}
 		}
 	}
 

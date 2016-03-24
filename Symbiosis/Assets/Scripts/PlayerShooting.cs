@@ -92,7 +92,7 @@ public class PlayerShooting : MonoBehaviour {
 			sword.GetComponent<PlayerSword> ().setAugment (aug);
 		};
 
-		if (playersHealth.currentHealth > 0 && !GameStats.paused) {
+		if (playersHealth.currentHealth > 0 && !GameStats.paused && GameStats.playersCanMove) {
 			//Get the stats for the player
 			bulletSpeedModifier = playerStats.GetBulletSpeed ();
 			fireRateModifier = playerStats.GetFireRate ();

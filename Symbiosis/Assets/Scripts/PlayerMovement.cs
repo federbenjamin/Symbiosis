@@ -74,7 +74,7 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		if (playersHealth.currentHealth > 0){
+		if (playersHealth.currentHealth > 0 && GameStats.playersCanMove){
 			//Player Movement
 			horizMov = Input.GetAxisRaw (moveButtonHoriz);
 			vertMov = Input.GetAxisRaw (moveButtonVert);

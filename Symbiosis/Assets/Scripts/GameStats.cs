@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class GameStats : MonoBehaviour {
 
 	public static bool paused = false;
+	public static bool playersCanMove = false;
 	private string startButton;
 	private bool playersTogether = false;
 	public bool PlayersTogether {
@@ -25,6 +26,8 @@ public class GameStats : MonoBehaviour {
 		} else if ((Application.platform == RuntimePlatform.WindowsEditor) || (Application.platform == RuntimePlatform.WindowsPlayer)) {
 			startButton = "StartPC";
 		}
+
+		StartCoroutine("WaitForAnimationEndToMove");
 	}
 
 	void Update () {
@@ -56,6 +59,11 @@ public class GameStats : MonoBehaviour {
 				}
 			}
 		}
+	}
+
+	IEnumerator WaitForAnimationEndToMove() {
+		yield return new WaitForSeconds (2.2f);
+		playersCanMove = true;
 	}
 
 }
