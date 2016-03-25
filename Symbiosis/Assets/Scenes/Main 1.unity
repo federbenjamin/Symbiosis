@@ -22564,6 +22564,10 @@ Prefab:
       propertyPath: fireEffect
       value: 
       objectReference: {fileID: 111740, guid: 0a4c4cbe7f88f23458e66ea2eb85991c, type: 2}
+    - target: {fileID: 13622694, guid: ab4ae1d60ee954231a42438718256e1b, type: 2}
+      propertyPath: m_Center.z
+      value: -0.04
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab4ae1d60ee954231a42438718256e1b, type: 2}
   m_IsPrefabParent: 0
@@ -33998,6 +34002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1484224603}
+  newCameraVector: {x: 0, y: 0, z: 0}
   cameraPointer: {fileID: 215485327}
   xPosLimit: 4.5
 --- !u!4 &1125245487
@@ -46999,6 +47004,10 @@ Prefab:
       propertyPath: lookAtObject
       value: 
       objectReference: {fileID: 1484224603}
+    - target: {fileID: 13650728, guid: f2e3b56b04ff240b3a2ca4d444680002, type: 2}
+      propertyPath: m_Center.z
+      value: -0.04
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f2e3b56b04ff240b3a2ca4d444680002, type: 2}
   m_IsPrefabParent: 0
@@ -47235,6 +47244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1461420582}
+  newCameraVector: {x: 0, y: 0, z: 0}
   cameraPointer: {fileID: 1820502490}
   xPosLimit: 4.5
 --- !u!1 &1555554537
