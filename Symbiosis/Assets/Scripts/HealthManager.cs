@@ -59,27 +59,17 @@ public class HealthManager : MonoBehaviour {
 
 		foreach (Transform child in playerP1.transform) {
 			if (child.name == "Player_animated") {
-				foreach (Transform bodypart in child) {
-					if (bodypart.name == "Player_scientistonly") {
-						animatorP1Body = bodypart.GetComponent<Animator> ();
-					} else {
-						animatorP1Slime = bodypart.GetComponent<Animator> ();
-					}
-				}
+				animatorP1Body = child.GetChild(0).GetComponent<Animator> ();
 			}
 		}
+		animatorP1Slime = GameObject.Find("Player_blue_slime").GetComponent<Animator> ();
 
 		foreach (Transform child in playerP2.transform) {
 			if (child.name == "Player_animated") {
-				foreach (Transform bodypart in child) {
-					if (bodypart.name == "Player_scientistonly") {
-						animatorP2Body = bodypart.GetComponent<Animator> ();
-					} else {
-						animatorP2Slime = bodypart.GetComponent<Animator> ();
-					}
-				}
+				animatorP2Body = child.GetChild(0).GetComponent<Animator> ();
 			}
 		}
+		animatorP2Slime = GameObject.Find("Player_yellow_slime").GetComponent<Animator> ();
 	}
 	void FixedUpdate() {
 		

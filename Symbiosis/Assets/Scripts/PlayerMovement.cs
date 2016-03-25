@@ -51,21 +51,18 @@ public class PlayerMovement : MonoBehaviour {
 
 		if (playerPrefix == "P1") {
 			camera = GameObject.Find ("CameraParentP1").GetComponent<CameraController>();
+			animatorSlime = GameObject.Find("Player_blue_slime").GetComponent<Animator> ();
 		} else {
 			camera = GameObject.Find ("CameraParentP2").GetComponent<CameraController>();
+			animatorSlime = GameObject.Find("Player_yellow_slime").GetComponent<Animator> ();
 		}
 
 		foreach (Transform child in transform) {
 			if (child.name == "Player_animated") {
-				foreach (Transform bodypart in child) {
-					if (bodypart.name == "Player_scientistonly") {
-						animatorBody = bodypart.GetComponent<Animator> ();
-					} else {
-						animatorSlime = bodypart.GetComponent<Animator> ();
-					}
-				}
+				animatorBody = child.GetChild(0).GetComponent<Animator> ();
 			}
 		}
+
 	}
 	
 	// Update is called once per frame
