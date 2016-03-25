@@ -18,12 +18,15 @@ public class AudioPlacement : MonoBehaviour {
 	}
 
 	public void PlayClip (string clip) {
-		foreach (AudioSource audioSource in GetComponents<AudioSource>()) {
-			if (audioSource.clip.name == clip) {
-				audioSource.Play();
-				return;
-			}
-		}
+		clip = "Sounds/" + clip;
+		AudioClip soundClip = Resources.Load (clip) as AudioClip;
+		AudioSource.PlayClipAtPoint (soundClip, transform.position);
+	}
+
+	public void PlayClip (string clip, float volume) {
+		clip = "Sounds/" + clip;
+		AudioClip soundClip = Resources.Load (clip) as AudioClip;
+		AudioSource.PlayClipAtPoint (soundClip, transform.position, volume);
 	}
 
 	public void PlayClip (AudioClip clip) {
