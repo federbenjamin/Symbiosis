@@ -50,7 +50,7 @@ public class DoorController : MonoBehaviour {
 					other.transform.position = newPlayerPosition;
 
 					playerCamera = GameObject.Find ("CameraParent" + other.name);
-					playerCamera.transform.position = new Vector3 (newPlayerPosition.x, playerCamera.transform.position.y, nextRoomPos.z + cameraOffset);
+					playerCamera.GetComponent<CameraController>().newCameraVector = new Vector3 (newPlayerPosition.x, playerCamera.transform.position.y, nextRoomPos.z + cameraOffset);
 					playerCamera.GetComponent<CameraController>().setMaxX(nextRoomPos.x);
 				}
 			}

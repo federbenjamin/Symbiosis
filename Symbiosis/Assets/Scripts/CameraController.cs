@@ -13,6 +13,7 @@ public class CameraController : MonoBehaviour {
 	private GameObject player2;
 
 	private Camera camera;
+	public Vector3 newCameraVector;
 
 	public GameObject cameraPointer;
 	private float deltaDist;
@@ -64,10 +65,7 @@ public class CameraController : MonoBehaviour {
 					newCameraPos = new Vector3 (cameraPointer.transform.position.x, transform.position.y, transform.position.z);
 				} else if (deltaDist <= -sameOffset && transform.position.x > maxLeft) { 
 					newCameraPos = new Vector3 (cameraPointer.transform.position.x, transform.position.y, transform.position.z);
-				} else {
-					newCameraPos = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
 				}
-				transform.position = Vector3.Lerp (transform.position, newCameraPos, camMoveSpeed * Time.deltaTime);
 			} else if (movingRight == true) {
 				//Far Left
 				if (deltaDist < -oppositeOffset) {
@@ -75,10 +73,15 @@ public class CameraController : MonoBehaviour {
 					newCameraPos = new Vector3 (cameraPointer.transform.position.x, transform.position.y, transform.position.z);
 				} else if (deltaDist >= sameOffset && transform.position.x < maxRight) {
 					newCameraPos = new Vector3 (cameraPointer.transform.position.x, transform.position.y, transform.position.z);
-				} else {
-					newCameraPos = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
 				}
+			}
+			
+			if (newCameraVector == Vector3.zero) {
 				transform.position = Vector3.Lerp (transform.position, newCameraPos, camMoveSpeed * Time.deltaTime);
+			} else {
+				transform.position = newCameraVector;
+				newCameraPos = newCameraVector;
+				newCameraVector = Vector3.zero;
 			}
 		}
 	}
