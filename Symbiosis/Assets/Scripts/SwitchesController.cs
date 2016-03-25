@@ -17,6 +17,9 @@ public class SwitchesController : MonoBehaviour {
 		}
 	}
 	private bool turningOff = false;
+	private int timer1 = -1;
+	private int timer2 = -1;
+	private int timerMax = 100;
 
 	public float inverseShutoffSpeed;
 	private Color basicColor;
@@ -68,7 +71,7 @@ public class SwitchesController : MonoBehaviour {
 				basicColor.r - colorRDelta,
 				basicColor.g - colorGDelta,
 				basicColor.b - colorBDelta,
-				basicColor.a - colorADelta
+				basicColor.a// - colorADelta
 			);
 			Color newEmissionColor = new Color (
 				emissionColor.r - emissionColorRDelta,
@@ -86,31 +89,47 @@ public class SwitchesController : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerEnter(Collider other) {
-		if (switchName == "SwitchP1" && other.name == "P1") {
+	void FixedUpdate () {
+		if (timer1 > 0) {
+			timer1--;
+		} else if (timer1 == 0) {
 			roomController.Switch1Active = true;
-			pressButton();
-		} else if (switchName == "SwitchP2" && other.name == "P2") {
+		}
+
+		if (timer2 > 0) {
+			timer2--;
+		} else if (timer2 == 0) {
 			roomController.Switch2Active = true;
-			pressButton();
 		}
 	}
 
-	void OnTriggerExit(Collider other) {
-		if (!permanentlySwitchedOff) {
-			if (switchName == "SwitchP1" && other.name == "P1") {
-				roomController.Switch1Active = false;
-				depressButton();
-			} else if (switchName == "SwitchP2" && other.name == "P2") {
-				roomController.Switch2Active = false;
-				depressButton();
-			}
+	void OnTriggerEnter(Collider other) {
+		if (switchName == "SwitchP1" && other.name == "P1") {
+			timer1 = timerMax;
+			pressButton();
+		} else if (switchName == "SwitchP2" && other.name == "P2") {
+			timer2 = timerMax;
+			pressButton();
 		}
 	}
 
 	void pressButton() {
 		transform.Find("Button").transform.Translate(0,0,-0.1f);
 		animator.SetTrigger ("Triggered");
+	}
+
+	void OnTriggerExit(Collider other) {
+		if (!permanentlySwitchedOff) {
+			if (switchName == "SwitchP1" && other.name == "P1") {
+				timer1 = -1;
+				roomController.Switch1Active = false;
+				depressButton();
+			} else if (switchName == "SwitchP2" && other.name == "P2") {
+				timer2 = -1;
+				roomController.Switch2Active = false;
+				depressButton();
+			}
+		}
 	}
 
 	void depressButton() {
