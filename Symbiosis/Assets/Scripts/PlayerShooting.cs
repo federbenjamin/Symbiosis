@@ -246,7 +246,7 @@ public class PlayerShooting : MonoBehaviour {
 
 		while (playerShooting) 
 		{
-			audioPlacement.PlayClip("beep_2");
+			audioPlacement.PlayClip("beep/beep_2", 0.05f);
 			Ray ray = new Ray (rayGunTip.transform.position, transform.forward * -1);
 			RaycastHit hit;
 
