@@ -7,13 +7,17 @@ public class CameraController : MonoBehaviour {
 	public GameObject player;
 
 	private Vector3 newCameraPos;
+	private Vector3 newRoomCameraPos;
+	public Vector3 NewRoomCameraPos {
+		set{newRoomCameraPos = value;}
+	}
 	private bool playersTogether = false;
 	private float playersMiddle;
 
 	private GameObject player2;
 
 	private Camera camera;
-	public Vector3 newCameraVector;
+	
 
 	public GameObject cameraPointer;
 	private float deltaDist;
@@ -62,26 +66,24 @@ public class CameraController : MonoBehaviour {
 				//Far Right
 				if (deltaDist > oppositeOffset) {
 					movingRight = true;
-					newCameraPos = new Vector3 (cameraPointer.transform.position.x, transform.position.y, transform.position.z);
-				} else if (deltaDist <= -sameOffset && transform.position.x > maxLeft) { 
-					newCameraPos = new Vector3 (cameraPointer.transform.position.x, transform.position.y, transform.position.z);
+				} else if (deltaDist <= -sameOffset) {
+					newCameraPos = new Vector3 (Mathf.Max(cameraPointer.transform.position.x, maxLeft), transform.position.y, transform.position.z);
 				}
 			} else if (movingRight == true) {
 				//Far Left
 				if (deltaDist < -oppositeOffset) {
 					movingRight = false;
-					newCameraPos = new Vector3 (cameraPointer.transform.position.x, transform.position.y, transform.position.z);
-				} else if (deltaDist >= sameOffset && transform.position.x < maxRight) {
-					newCameraPos = new Vector3 (cameraPointer.transform.position.x, transform.position.y, transform.position.z);
+				} else if (deltaDist >= sameOffset) {
+					newCameraPos = new Vector3 (Mathf.Min(cameraPointer.transform.position.x, maxRight), transform.position.y, transform.position.z);
 				}
 			}
-			
-			if (newCameraVector == Vector3.zero) {
+
+			if (newRoomCameraPos == Vector3.zero) {
 				transform.position = Vector3.Lerp (transform.position, newCameraPos, camMoveSpeed * Time.deltaTime);
 			} else {
-				transform.position = newCameraVector;
-				newCameraPos = newCameraVector;
-				newCameraVector = Vector3.zero;
+				transform.position = newRoomCameraPos;
+				newCameraPos = newRoomCameraPos;
+				newRoomCameraPos = Vector3.zero;
 			}
 		}
 	}
