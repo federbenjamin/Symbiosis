@@ -4,7 +4,7 @@ using System.Collections;
 public class BulletBehavior : MonoBehaviour {
 
 	public iAugment augment;
-	public int bulletDamage;
+	public float bulletDamage;
 
 	public AudioClip sound;
 	public AudioClip sound2;

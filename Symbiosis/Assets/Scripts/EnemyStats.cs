@@ -3,17 +3,17 @@ using System.Collections;
 
 public class EnemyStats : MonoBehaviour {
 
-	public int currentHP;
-	public int maxHP;
+	public float currentHP;
+	public float maxHP;
 	public int moveSpeed;
 	public string elementType;
 	private bool onFire;
 	private bool frozen;
-	private int ongoingDamage;
+	private float ongoingDamage;
 	private int ongoingTimer;
 	public Animator enemyAnimator;
 	public GameObject spawnParticles;
-	int halfDmg, doubleDmg;
+	float halfDmg, doubleDmg;
 
 
 	// Use this for initialization
@@ -54,17 +54,20 @@ public class EnemyStats : MonoBehaviour {
 		StartCoroutine ("Wait");
 	}
 
-	public void TakeDamage(int incomingDamage, string damageType){
+	public void TakeDamage(float incomingDamage, string damageType){
 		DamageMultiplier(incomingDamage, damageType);
 		if (!(damageType == "fire" && elementType == "ice")) {
 			StatusEffect(damageType);
+		} else {
+			onFire = false;
+			frozen = false;
 		}
 	}
 
-	void DamageMultiplier(int incomingDamage, string damageType) {
-		doubleDmg = (int)(incomingDamage * 2);
-		halfDmg = (int)Mathf.Floor(incomingDamage / 2);
-		halfDmg = ((int)Mathf.Floor(incomingDamage / 2) == 0) ? 1 : halfDmg;
+	void DamageMultiplier(float incomingDamage, string damageType) {
+		doubleDmg = (incomingDamage * 2);
+		halfDmg = Mathf.Floor(incomingDamage / 2);
+		halfDmg = (halfDmg == 0) ? 0.5f : halfDmg;
 
 		if (damageType == elementType) {
 			currentHP = currentHP - incomingDamage;
@@ -87,15 +90,15 @@ public class EnemyStats : MonoBehaviour {
 				currentHP = currentHP - doubleDmg;
 			}
 		} else {
-			currentHP = currentHP - incomingDamage;
+			currentHP = currentHP - halfDmg;
 		}
 	}
 
 	void StatusEffect(string damageType) {
-		if (damageType == "fire" && !onFire) {
+		if (damageType == "fire" && elementType != "fire" && !onFire) {
 			Ignite ();
 		}
-		if (damageType == "ice" && !frozen) {
+		if (damageType == "ice" && elementType != "ice" && !frozen) {
 			Freeze ();
 		}
 	}
@@ -112,7 +115,7 @@ public class EnemyStats : MonoBehaviour {
 		onFire = true;
 		spawnParticles.SetActive(true);
 		spawnParticles.GetComponent<Renderer>().material.mainTexture = Resources.Load<Texture>("particle-red");
-		ongoingDamage = 4;
+		ongoingDamage = 0.25f;
 	}
 
 

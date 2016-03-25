@@ -5,7 +5,7 @@ public class PlayerSword : MonoBehaviour {
 
 	Animator swordAnimator;
 	public iAugment augment;
-	public int swordDamage;
+	public float swordDamage;
 
 	public bool isSwinging;
 	private GameObject swordTrail;
@@ -88,12 +88,12 @@ public class PlayerSword : MonoBehaviour {
 
 		if (other.tag == "Enemy") {
 			string damageType = "none";
-			float force = 50;
+			float force = 20;
 			if (augment != null) {
 				augment.onHitEffect (other);
 				damageType = augment.Element;
 				if (augment.Element == "earth") {
-					force = 80;
+					force = 40;
 				}
 			}
 
@@ -103,9 +103,7 @@ public class PlayerSword : MonoBehaviour {
 			other.GetComponent<Rigidbody>().AddForce((enemyPos - playerPos) * force, ForceMode.VelocityChange);
 
 			EnemyStats enemyHP = other.GetComponent<EnemyStats> ();
-			Debug.Log("about to damage");
 			if (isSwinging) {
-				Debug.Log("damage");
 				enemyHP.TakeDamage (swordDamage, damageType);
 			}
 		}
