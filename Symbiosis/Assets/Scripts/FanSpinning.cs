@@ -10,7 +10,8 @@ public class FanSpinning : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.Rotate (0, 0, 2);
-	
+		if (!GameStats.paused) {
+			transform.Rotate (0, 0, 2);
+		}
 	}
 }

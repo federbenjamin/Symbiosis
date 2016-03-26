@@ -28,31 +28,40 @@ public class GameStats : MonoBehaviour {
 		// Scale and Translate UI depending on screen size
 		foreach (Transform ui in transform) {
 			RectTransform uiTransform = (RectTransform) ui;
-			float newScale;
+			float newScaleX, newScaleY = 0f;
 			if (ui.name == "Health") {
-				newScale = (Screen.height / (256f * 8f)) * 2f;
+				newScaleX = (Screen.height / (256f * 8f)) * 2f;
 				Camera healthDivCam = GameObject.Find("DividerHealth").GetComponent<Camera>();
-				healthDivCam.rect = new Rect(healthDivCam.rect.x, healthDivCam.rect.y, healthDivCam.rect.width, newScale * 100f / Screen.height);
+				healthDivCam.rect = new Rect(healthDivCam.rect.x, healthDivCam.rect.y, healthDivCam.rect.width, newScaleX * 100f / Screen.height);
 			} else if (ui.name == "Pause") {
+				// Make pause screen invisible when game starts
 				pauseUI = ui.gameObject;
 				pauseUI.GetComponent<Image>().color = new Color(0, 0, 0, 0);
 				pauseUI.transform.GetChild(0).GetComponent<Image>().color = new Color(255, 255, 255, 0);
-
-				newScale = (Screen.height / 1080f);
-
+				// Get scale for pause background and keep pause text in a locked ratio
+				newScaleY = (Screen.height / 1080f);
+				newScaleX = (Screen.width / 1920f);
+				if (Mathf.Min(newScaleY, newScaleX) == newScaleX) {
+					pauseUI.transform.GetChild(0).localScale = new Vector3(newScaleY / newScaleX, 1.0f, 1.0f);
+				} else {
+					pauseUI.transform.GetChild(0).localScale = new Vector3(1.0f, newScaleX / newScaleY, 1.0f);
+				}
+				// Get new anchor position based on screen height
 				float newYPos = Screen.height / -2f;
 				uiTransform.anchoredPosition = new Vector2(0f, newYPos);
 			} else {
-				newScale = Screen.height / (256f * 8f);
+				newScaleX = Screen.height / (256f * 8f);
 
 				// Translate Augment UI
-				float newXPos = (Screen.width * 0.99f / 4f) - (512f / 2f * newScale);
+				float newXPos = (Screen.width * 0.99f / 4f) - (512f / 2f * newScaleX);
 				if (ui.name == "P2Hud") {
 					newXPos = -newXPos;
 				}
 				uiTransform.anchoredPosition = new Vector2(newXPos, 0f);
 			}
-			uiTransform.localScale = new Vector3(newScale, newScale, 1.0f);
+			// Rescale UI element
+			newScaleY = (newScaleY == 0f ? newScaleX : newScaleY);
+			uiTransform.localScale = new Vector3(newScaleX, newScaleY, 1.0f);
 		}
 
 		gameAudio = GameObject.Find("AudioListener").GetComponent<AudioPlacement> ();
