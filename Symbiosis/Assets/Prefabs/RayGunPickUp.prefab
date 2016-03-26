@@ -12,7 +12,7 @@ GameObject:
   - 23: {fileID: 2333066}
   - 95: {fileID: 9571614}
   - 114: {fileID: 11486540}
-  - 65: {fileID: 6558528}
+  - 136: {fileID: 13662786}
   m_Layer: 0
   m_Name: RayGunPickUp
   m_TagString: Untagged
@@ -27,7 +27,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 190054}
   m_LocalRotation: {x: -0.00000002669254, y: 0.7071067, z: 0.000000026692536, w: 0.7071068}
-  m_LocalPosition: {x: -0.33, y: 0.9, z: 2.51}
+  m_LocalPosition: {x: -2.366, y: 0.526, z: 1.509}
   m_LocalScale: {x: 0.10298609, y: 0.10298609, z: 0.15468338}
   m_Children: []
   m_Father: {fileID: 0}
@@ -67,18 +67,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 190054}
   m_Mesh: {fileID: 4300000, guid: 24757d08396d44b32999124a6165d633, type: 3}
---- !u!65 &6558528
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190054}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.0727875, y: 4.324596, z: 5.195873}
-  m_Center: {x: -0.10017882, y: 1.323643, z: 2.3195236}
 --- !u!95 &9571614
 Animator:
   serializedVersion: 3
@@ -115,6 +103,19 @@ MonoBehaviour:
   blueAugmentPickup: {fileID: 195796, guid: f6fa92d0f4dc543949127a7e8f3da89a, type: 2}
   greenAugmentPickup: {fileID: 148428, guid: d4fe809a14b064385835a89878a89a77, type: 2}
   notUsed: 0
+--- !u!136 &13662786
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190054}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 2
+  m_Height: 6
+  m_Direction: 2
+  m_Center: {x: -0.10017882, y: 2.1, z: 2.3195236}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
