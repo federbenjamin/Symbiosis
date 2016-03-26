@@ -4,9 +4,6 @@ using System.Collections;
 
 public class StatsManager : MonoBehaviour {
 
-	public float playerSpeedModifier;
-	public float playerBulletSpeedModifier;
-	public float playerFireRateModifier;
 	public iAugment playerAugment;
 	public string augmentName;
 
@@ -20,7 +17,6 @@ public class StatsManager : MonoBehaviour {
 	private string playerPrefix;
 	private string otherPlayerPrefix;
 	private iAugment tempAug;
-	private string tempWeap;
 	private StatsManager otherPlayerStats;
 	private PlayerShooting otherPlayerShooting;
 	private GameObject playerAugSprite;
@@ -31,22 +27,15 @@ public class StatsManager : MonoBehaviour {
 	private Sprite hudReq;
 	private Sprite tempSpr;
 	private static float nextAugSwap = 0.0f;
-	private static float nextWeapSwap = 0.0f;
 
 	private bool requestAugSwap;
 	public bool RequestAugSwap {
 		get{return requestAugSwap;}
 		set{requestAugSwap = value;}
 	}
-	private bool requestWeapSwap;
-	public bool RequestWeapSwap {
-		get{return requestWeapSwap;}
-		set{requestWeapSwap = value;}
-	}
+
 	private int swapAugTimeout;
-	private int swapWeapTimeout;
 	public AudioClip swapCooldownSound;
-	private bool nextWeapSwapFailedSound = false;
 	private bool nextAugSwapFailedSound = false;
 
 	private HoopController hoopController;
@@ -63,9 +52,6 @@ public class StatsManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		playerSpeedModifier = 0f;
-		playerBulletSpeedModifier = 0f;
-		playerFireRateModifier = 0f;
 		playerAugment = null;
 		playerPrefix = gameObject.name;
 
@@ -130,7 +116,7 @@ public class StatsManager : MonoBehaviour {
 				requestAugSwap = false;
 			}
 
-			// If swap cooldown time has passed, request a aug/weap swap when the trigger is pressed
+			// If swap cooldown time has passed, request an aug swap when the trigger is pressed
 			// Otherwise play swap failed sound
 			AugTrigger = Input.GetAxisRaw (swapButtonAug);
 			if (AugTrigger > 0 && Time.time > nextAugSwap) {
@@ -159,36 +145,6 @@ public class StatsManager : MonoBehaviour {
 				}
 			}
 		}
-	}
-
-	//Gets Player's Speed
-	public float GetSpeed() {
-		return playerSpeedModifier;
-	}
-
-	//Sets Player's Speed
-	public void SetSpeed(float modifier) {
-		playerSpeedModifier += modifier;
-	}
-
-	//Gets Player's FireRate
-	public float GetFireRate() {
-		return playerFireRateModifier;
-	}
-
-	//Sets Player's FireRate
-	public void SetFireRate(float modifier) {
-		playerFireRateModifier -= modifier;
-	}
-
-	//Gets Player's BulletSpeed
-	public float GetBulletSpeed() {
-		return playerBulletSpeedModifier;
-	}
-
-	//Sets Player's BulletSpeed
-	public void SetBulletSpeed(float modifier) {
-		playerBulletSpeedModifier += modifier;
 	}
 		
 	public iAugment GetAugment() {

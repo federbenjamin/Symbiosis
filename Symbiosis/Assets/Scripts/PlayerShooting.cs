@@ -30,9 +30,6 @@ public class PlayerShooting : MonoBehaviour {
 	private StatsManager playerStats;
 	private HealthManager playersHealth;
 	private PlayerMovement playerMovement;
-	
-	private float bulletSpeedModifier;
-	private float fireRateModifier;
 
 	float shootHoriz;
 	float shootVert;
@@ -93,9 +90,7 @@ public class PlayerShooting : MonoBehaviour {
 		};
 
 		if (playersHealth.currentHealth > 0 && !GameStats.paused && GameStats.playersCanMove) {
-			//Get the stats for the player
-			bulletSpeedModifier = playerStats.GetBulletSpeed ();
-			fireRateModifier = playerStats.GetFireRate ();
+
 			playerShooting = (Input.GetButton ("FireRight" + playerPrefix) ||
 				Input.GetButton ("FireDown" + playerPrefix) ||
 				Input.GetButton ("FireUp" + playerPrefix) ||
@@ -175,7 +170,7 @@ public class PlayerShooting : MonoBehaviour {
 			GameObject clone = Instantiate (cur_bullet, hand.transform.position, hand.transform.rotation) as GameObject;
 			//clone.transform.rotation = Quaternion.LookRotation (shootDir);
 			Physics.IgnoreCollision (clone.GetComponent<Collider> (), GetComponent<Collider> ());
-			clone.GetComponent<Rigidbody> ().velocity = (clone.transform.forward * ((baseBulletSpeed + bulletSpeedModifier)));
+			clone.GetComponent<Rigidbody> ().velocity = (clone.transform.forward * baseBulletSpeed);
 			if (aug != null) {
 				clone.GetComponent<BulletBehavior> ().setAugment (aug);
 			}
@@ -188,7 +183,7 @@ public class PlayerShooting : MonoBehaviour {
 		if (curWeap == "Sword") {
 			nextFire = Time.time + 0.32f;
 		} else {
-			nextFire = Time.time + (baseFireRate + fireRateModifier);
+			nextFire = Time.time + baseFireRate;
 		}
 	}
 
@@ -197,7 +192,7 @@ public class PlayerShooting : MonoBehaviour {
 		foreach (Transform child in hand.transform) {
 			Destroy (child.gameObject);
 		}
-			
+
 		switch (weapon) {
 
 		case "Pistol":

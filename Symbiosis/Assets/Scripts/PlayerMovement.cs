@@ -102,38 +102,10 @@ public class PlayerMovement : MonoBehaviour {
 				if (playerLook.magnitude != 0) {
 					transform.rotation = Quaternion.LookRotation (playerLook * -1);
 				}
-				/*if (horizMov != 0) {
-					if (horizMov > 0) {
-						if (vertMov > 0) {
-							playerTransform.rotation = Quaternion.Euler (0, -135, 0);
-						} else if (vertMov < 0) {
-							playerTransform.rotation = Quaternion.Euler (0, -45, 0);
-						} else {
-							playerTransform.rotation = Quaternion.Euler (0, -90, 0);
-						}
-					} else if (horizMov < 0) {
-						if (vertMov > 0) {
-							playerTransform.rotation = Quaternion.Euler (0, 135, 0);
-						} else if (vertMov < 0) {
-							playerTransform.rotation = Quaternion.Euler (0, 45, 0);
-						} else {
-							playerTransform.rotation = Quaternion.Euler (0, 90, 0);
-						}
-					}
-				} else if (vertMov != 0) {
-					if (vertMov > 0) {
-						playerTransform.rotation = Quaternion.Euler (0, -180, 0);
-					} else if (vertMov < 0) {
-						playerTransform.rotation = Quaternion.Euler (0, 0, 0);
-					}
-				}*/
 			}
 
-			//Get the speed stat for the player
-			speedModifier = playerStats.GetSpeed ();
-
 			//Apply Movement
-			playerRB.AddForce (playerMov * ((baseSpeed + speedModifier) * 10) * Time.deltaTime, ForceMode.VelocityChange);
+			playerRB.AddForce (playerMov * (baseSpeed * 10) * Time.deltaTime, ForceMode.VelocityChange);
 		}
 	}
 

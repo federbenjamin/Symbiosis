@@ -68,33 +68,24 @@ public class Pickups : MonoBehaviour {
 				//Check which pickup it is and apply effects
 				switch (powerupType) 
 				{
-				case "SpeedUp":
-					playerStats.SetSpeed (10f);
-					break;
-				case "FireRateUp":
-					playerStats.SetFireRate (0.4f);
-					break;
-				case "BulletSpeedUp":
-					playerStats.SetBulletSpeed (15f);
-					break;
-				case "BeepAugment":
-					Augment temp = new Augment ("Sounds/beep/beep_1");
-					Debug.Log (temp);
-					playerStats.SetAugment (temp);
-					playerAugSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("SpeedUpSprite");
+				// case "BeepAugment":
+				// 	Augment temp = new Augment ("Sounds/beep/beep_1");
+				// 	Debug.Log (temp);
+				// 	playerStats.SetAugment (temp);
+				// 	playerAugSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("SpeedUpSprite");
 
-					Debug.Log (playerStats.GetAugment());
+				// 	Debug.Log (playerStats.GetAugment());
 
-					break;
-				case "GrowAugment":
-					GrowAugment g = new GrowAugment();
-					Debug.Log (g);
-					playerStats.SetAugment (g);
-					playerAugSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("BulletSpeedUpSprite");
+				// 	break;
+				// case "GrowAugment":
+				// 	GrowAugment g = new GrowAugment();
+				// 	Debug.Log (g);
+				// 	playerStats.SetAugment (g);
+				// 	playerAugSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("BulletSpeedUpSprite");
 
-					Debug.Log (playerStats.GetAugment());
+				// 	Debug.Log (playerStats.GetAugment());
 
-					break;
+				// 	break;
 				case "FireAugment":
 					if (playerStats.GetAugment() != null) {
 						oldAugment = playerStats.GetAugment().Element;

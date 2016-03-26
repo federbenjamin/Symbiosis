@@ -28,7 +28,7 @@ public class SwitchesController : MonoBehaviour {
 	private float colorRDelta;
 	private float colorGDelta;
 	private float colorBDelta;
-	private float colorADelta;
+	// private float colorADelta;
 	private float emissionColorRDelta;
 	private float emissionColorGDelta;
 	private float emissionColorBDelta;
@@ -56,7 +56,7 @@ public class SwitchesController : MonoBehaviour {
 		colorRDelta = basicColor.r / inverseShutoffSpeed;
 		colorGDelta = basicColor.g / inverseShutoffSpeed;
 		colorBDelta = basicColor.b / inverseShutoffSpeed;
-		colorADelta = basicColor.a / inverseShutoffSpeed;
+		//colorADelta = basicColor.a / inverseShutoffSpeed;
 		emissionColorRDelta = emissionColor.r / inverseShutoffSpeed;
 		emissionColorGDelta = emissionColor.g / inverseShutoffSpeed;
 		emissionColorBDelta = emissionColor.b / inverseShutoffSpeed;
