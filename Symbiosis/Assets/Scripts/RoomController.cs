@@ -84,7 +84,7 @@ public class RoomController : MonoBehaviour {
 				}
 			}
 		//Check if player has enetered room and count enemies
-		} else if (transform.name != "Room1" && transform.name != "Room2") {
+		} else {
 			if (hasTriggered == true) {
 				if (roomCleared == false) {
 					if (CountEnemies() == 0) {
@@ -93,9 +93,11 @@ public class RoomController : MonoBehaviour {
 							StartCoroutine ("Wait");
 						}
 						//Leftdoor +, RightDoor - Rotations in Y
-						foreach (GameObject door in doors) {
-							Animator doorAnimator = door.GetComponent<Animator> ();
-							doorAnimator.SetTrigger ("Open");
+						if (transform.name != "Room1" && transform.name != "Room2") {
+							foreach (GameObject door in doors) {
+								Animator doorAnimator = door.GetComponent<Animator> ();
+								doorAnimator.SetTrigger ("Open");
+							}
 						}
 					}
 				}
