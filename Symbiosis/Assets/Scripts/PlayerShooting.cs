@@ -19,7 +19,7 @@ public class PlayerShooting : MonoBehaviour {
 	public Object iceEffect;
 	public Object earthEffect;
 
-	public float baseBulletSpeed = 10f;
+	public float baseBulletSpeed = 11f;
 	public float baseFireRate = 0.5f;
 
 	public iAugment aug = null;
@@ -201,7 +201,7 @@ public class PlayerShooting : MonoBehaviour {
 		switch (weapon) {
 
 		case "Pistol":
-			baseBulletSpeed = 10f;
+			baseBulletSpeed = 11f;
 			baseFireRate = 0.5f;
 			cur_bullet = Reg_bullet;
 			GameObject pistol = Instantiate (Pistol, hand.transform.position, hand.transform.rotation) as GameObject;
