@@ -8,7 +8,7 @@ public class GameStats : MonoBehaviour {
 
 	public bool invincible = false;
 	public static bool paused = false;
-	public static bool playersCanMove = false;
+	public static bool gameStarted = false;
 	private string startButton;
 	private bool playersTogether = false;
 	public bool PlayersTogether {
@@ -16,10 +16,6 @@ public class GameStats : MonoBehaviour {
 		set{playersTogether = value;}
 	}
 	private AudioPlacement gameAudio;
-	public GameObject P1Slime;
-	public GameObject P2Slime;
-	public GameObject P1Tank;
-	public GameObject P2Tank;
 
 	void Awake () {
 		Instance = this;
@@ -58,12 +54,12 @@ public class GameStats : MonoBehaviour {
 		} else if ((Application.platform == RuntimePlatform.WindowsEditor) || (Application.platform == RuntimePlatform.WindowsPlayer)) {
 			startButton = "StartPC";
 		}
-
-		StartCoroutine("WaitForGameLoad");
-		StartCoroutine("WaitForAnimationEndToMove");
 	}
 
 	void Update () {
+		if (!gameStarted) {
+			StartCoroutine("StartIntroAnimation");
+		}
 		if (Input.GetButtonDown(startButton)) {
 			if (!paused) {
 				paused = true;
@@ -94,18 +90,15 @@ public class GameStats : MonoBehaviour {
 		}
 	}
 
-	IEnumerator WaitForAnimationEndToMove() {
+	IEnumerator StartIntroAnimation() {
+		yield return new WaitForSeconds (2.0f);
+		GameObject.Find("Player_blue_slime").GetComponent<Animator>().SetTrigger("StartJump");
+		GameObject.Find("P1InitialSlimeTank").GetComponent<Animator>().SetTrigger("StartBreak");
+		GameObject.Find("Player_yellow_slime").GetComponent<Animator>().SetTrigger("StartJump");
+		GameObject.Find("P2InitialSlimeTank").GetComponent<Animator>().SetTrigger("StartBreak");
 		yield return new WaitForSeconds (2.4f);
-		playersCanMove = true;
+		gameStarted = true;
 		CameraController.followSlime = false;
-	}
-
-	IEnumerator WaitForGameLoad() {
-		yield return new WaitForSeconds (0.3f);
-		P1Slime.GetComponent<Animator>().SetTrigger("StartJump");
-		P1Tank.GetComponent<Animator>().SetTrigger("StartBreak");
-		P2Slime.GetComponent<Animator>().SetTrigger("StartJump");
-		P2Tank.GetComponent<Animator>().SetTrigger("StartBreak");
 	}
 
 }

@@ -100,7 +100,7 @@ public class StatsManager : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-		if (GameStats.playersCanMove) {
+		if (GameStats.gameStarted) {
 			if (Input.GetButton(pingButton) && Time.time > nextHoopShow) {
 				hoopController.Show();
 				nextHoopShow = Time.time + 3f;

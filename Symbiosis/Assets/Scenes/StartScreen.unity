@@ -156,8 +156,8 @@ GameObject:
   - 224: {fileID: 1445015610}
   - 222: {fileID: 1445015612}
   - 114: {fileID: 1445015611}
-  - 114: {fileID: 1445015613}
   - 114: {fileID: 1445015614}
+  - 114: {fileID: 1445015613}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -223,10 +223,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1445015609}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cece20a92e9a4a858b0c992a57b03c7, type: 3}
+  m_Script: {fileID: 11500000, guid: ffb3d31c2a1e942c8b26cd27f7b559fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Main 1
 --- !u!114 &1445015614
 MonoBehaviour:
   m_ObjectHideFlags: 0
