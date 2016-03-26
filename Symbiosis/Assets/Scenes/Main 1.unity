@@ -1317,6 +1317,10 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 48139446}
   m_Mesh: {fileID: 4300074, guid: 98557d3d10bc6fd47a705bac4670002a, type: 3}
+--- !u!1 &50738544 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: b8c86ccacaa6a4789831d61ed02ff6c2, type: 3}
+  m_PrefabInternal: {fileID: 1914141680}
 --- !u!1001 &51512035
 Prefab:
   m_ObjectHideFlags: 0
@@ -29034,6 +29038,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 48320e25f3f8041f6b82bbfee095db5f, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &971260351 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: b8c86ccacaa6a4789831d61ed02ff6c2, type: 3}
+  m_PrefabInternal: {fileID: 639036238}
 --- !u!1 &972640288
 GameObject:
   m_ObjectHideFlags: 0
@@ -29360,6 +29368,10 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400016, guid: 108ad0340b8244d64b4f38db27f64313, type: 3}
   m_PrefabInternal: {fileID: 979463010}
+--- !u!1 &981781014 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 101712, guid: ab4ae1d60ee954231a42438718256e1b, type: 2}
+  m_PrefabInternal: {fileID: 771587734}
 --- !u!1001 &986081560
 Prefab:
   m_ObjectHideFlags: 0
@@ -34014,7 +34026,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1484224603}
-  newCameraVector: {x: 0, y: 0, z: 0}
   cameraPointer: {fileID: 215485327}
   xPosLimit: 4.5
 --- !u!4 &1125245487
@@ -36996,6 +37007,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 423462f5aa8dc489d985b5d7fb0f4a25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  P1Slime: {fileID: 1353113485}
+  P2Slime: {fileID: 981781014}
+  P1Tank: {fileID: 50738544}
+  P2Tank: {fileID: 971260351}
 --- !u!1001 &1226952052
 Prefab:
   m_ObjectHideFlags: 0
@@ -41190,6 +41205,10 @@ MeshFilter:
 Transform:
   m_PrefabParentObject: {fileID: 400016, guid: dcafca773bf944bb2b1c12df8f59d6a7, type: 3}
   m_PrefabInternal: {fileID: 245845070}
+--- !u!1 &1353113485 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 150018, guid: f2e3b56b04ff240b3a2ca4d444680002, type: 2}
+  m_PrefabInternal: {fileID: 1551003716}
 --- !u!1001 &1353280678
 Prefab:
   m_ObjectHideFlags: 0
@@ -47256,7 +47275,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1461420582}
-  newCameraVector: {x: 0, y: 0, z: 0}
   cameraPointer: {fileID: 1820502490}
   xPosLimit: 4.5
 --- !u!1 &1555554537
@@ -55431,7 +55449,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: bd73204d266117641ad3d4287888087d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6
+      value: 6.54
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bd73204d266117641ad3d4287888087d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -55439,27 +55457,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bd73204d266117641ad3d4287888087d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2
+      value: 2.45
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bd73204d266117641ad3d4287888087d, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: -0.00000011520229
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bd73204d266117641ad3d4287888087d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.70710695
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bd73204d266117641ad3d4287888087d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.7071066
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bd73204d266117641ad3d4287888087d, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.00000011520235
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bd73204d266117641ad3d4287888087d, type: 3}
       propertyPath: m_RootOrder
-      value: 40
+      value: 39
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bd73204d266117641ad3d4287888087d, type: 3}
