@@ -48,11 +48,11 @@ public class HealthManager : MonoBehaviour {
 
 
 		healthBar = transform.FindChild("HealthBar");
-		heart1 = transform.FindChild ("0,1,2");
-		heart2 = transform.FindChild ("3,4");
-		heart3 = transform.FindChild ("5,6");
-		heart4 = transform.FindChild ("7,8");
-		heart5 = transform.FindChild ("9,10");
+		heart1 = healthBar.FindChild ("0,1,2");
+		heart2 = healthBar.FindChild ("3,4");
+		heart3 = healthBar.FindChild ("5,6");
+		heart4 = healthBar.FindChild ("7,8");
+		heart5 = healthBar.FindChild ("9,10");
 
 		GameObject playerP1 = GameObject.Find ("P1");
 		GameObject playerP2 = GameObject.Find ("P2");

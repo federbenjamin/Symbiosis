@@ -19,6 +19,25 @@ public class GameStats : MonoBehaviour {
 	public GameObject P2Tank;
 
 	void Start () {
+		// Scale and Translate UI depending on screen size
+		foreach (Transform ui in transform) {
+			RectTransform uiTransform = (RectTransform) ui;
+			float newScale;
+			if (ui.name == "Health") {
+				newScale = (Screen.height / (256f * 8f)) * (256f / 128f);
+			} else {
+				newScale = Screen.height / (256f * 8f);
+
+				// Translate Augment UI
+				float newXPos = (Screen.width * 0.99f / 4f) - (512f / 2f * newScale);
+				if (ui.name == "P2Hud") {
+					newXPos = -newXPos;
+				}
+				uiTransform.anchoredPosition = new Vector2(newXPos, 0f);
+			}
+			uiTransform.localScale = new Vector3(newScale, newScale, 1.0f);
+		}
+
 		gameAudio = GameObject.Find("AudioListener").GetComponent<AudioPlacement> ();
 		GameObject[] roomsList = GameObject.FindGameObjectsWithTag("Room");
 		foreach (GameObject room in roomsList) {
