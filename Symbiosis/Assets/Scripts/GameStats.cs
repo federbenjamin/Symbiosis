@@ -67,12 +67,13 @@ public class GameStats : MonoBehaviour {
 	}
 
 	IEnumerator WaitForAnimationEndToMove() {
-		yield return new WaitForSeconds (2.6f);
+		yield return new WaitForSeconds (2.4f);
 		playersCanMove = true;
+		CameraController.followSlime = false;
 	}
 
 	IEnumerator WaitForGameLoad() {
-		yield return new WaitForSeconds (0.75f);
+		yield return new WaitForSeconds (0.3f);
 		P1Slime.GetComponent<Animator>().SetTrigger("StartJump");
 		P1Tank.GetComponent<Animator>().SetTrigger("StartBreak");
 		P2Slime.GetComponent<Animator>().SetTrigger("StartJump");
