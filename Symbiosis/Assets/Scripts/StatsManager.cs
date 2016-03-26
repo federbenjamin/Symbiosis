@@ -31,9 +31,10 @@ public class StatsManager : MonoBehaviour {
 	//private GameObject otherPlayerWeapSprite;
 	private Image otherPlayerHudImage;
 	private Sprite hudDefault;
-	private Sprite hud1;
-	private Sprite hud2;
-	private Sprite hud3;
+	private Sprite hudReq;
+	// private Sprite hud1;
+	// private Sprite hud2;
+	// private Sprite hud3;
 	private Sprite tempSpr;
 	//private Sprite tempWeapSpr;
 	private static float nextAugSwap = 0.0f;
@@ -94,15 +95,17 @@ public class StatsManager : MonoBehaviour {
 		otherPlayerAugSprite = GameObject.Find (otherPlayerPrefix + "Aug");
 		otherPlayerHudImage = GameObject.Find(otherPlayerPrefix + "Hud").GetComponent<Image>();
 		if (playerPrefix == "P1") {
-			hudDefault = Resources.Load<Sprite> ("YellowSlots/YellowSlots");
-			hud1 = Resources.Load<Sprite> ("YellowSlots/YellowSlots1");
-			hud2 = Resources.Load<Sprite> ("YellowSlots/YellowSlots2");
-			hud3 = Resources.Load<Sprite> ("YellowSlots/YellowSlots3");
+			hudDefault = Resources.Load<Sprite> ("Interface/P2-slots-blank");
+			hudReq = Resources.Load<Sprite> ("Interface/P2-slots-prompt");
+			// hud1 = Resources.Load<Sprite> ("YellowSlots/YellowSlots1");
+			// hud2 = Resources.Load<Sprite> ("YellowSlots/YellowSlots2");
+			// hud3 = Resources.Load<Sprite> ("YellowSlots/YellowSlots3");
 		} else if (playerPrefix == "P2") {
-			hudDefault = Resources.Load<Sprite> ("BlueSlots/BlueSlots");
-			hud1 = Resources.Load<Sprite> ("BlueSlots/BlueSlots1");
-			hud2 = Resources.Load<Sprite> ("BlueSlots/BlueSlots2");
-			hud3 = Resources.Load<Sprite> ("BlueSlots/BlueSlots3");
+			hudDefault = Resources.Load<Sprite> ("Interface/P1-slots-blank");
+			hudReq = Resources.Load<Sprite> ("Interface/P1-slots-prompt");
+			// hud1 = Resources.Load<Sprite> ("BlueSlots/BlueSlots1");
+			// hud2 = Resources.Load<Sprite> ("BlueSlots/BlueSlots2");
+			// hud3 = Resources.Load<Sprite> ("BlueSlots/BlueSlots3");
 		}
 		requestAugSwap = false;
 		//requestWeapSwap = false;
@@ -176,15 +179,17 @@ public class StatsManager : MonoBehaviour {
 			// If swap request currently sent, check for a response from other player
 			if (requestAugSwap) {
 				checkRequestSwapAugments();
-			} 
+			} else {
+				otherPlayerHudImage.sprite = hudDefault;
+			}
 			// else if (requestWeapSwap) {
 			// 	checkRequestSwapWeapons();
 			// }
 
 			// If no requests, reset other player hud
-			if (!requestAugSwap && !requestWeapSwap) {
-				otherPlayerHudImage.sprite = hudDefault;
-			}
+			// if (!requestAugSwap && !requestWeapSwap) {
+			// 	otherPlayerHudImage.sprite = hudDefault;
+			// }
 		}
 	}
 
@@ -245,12 +250,34 @@ public class StatsManager : MonoBehaviour {
 		if (otherPlayerStats.RequestAugSwap) {
 			SwapAugments();
 		} else {
+			string myElement = (GetAugment() == null ? null : GetAugment().Element);
+			string otherElement = (otherPlayerStats.GetAugment() == null ? null : otherPlayerStats.GetAugment().Element);
 			// Activate Swap Request for Other Player
-			if (requestWeapSwap) {
-				otherPlayerHudImage.sprite = hud3;
-			} else {
-				otherPlayerHudImage.sprite = hud2;
+			// if (requestWeapSwap) {
+			// 	otherPlayerHudImage.sprite = hud3;
+			// } else {
+			otherPlayerHudImage.sprite = hudReq;
+			if (otherElement == "fire") {
+				if (myElement == "ice") {
+					otherPlayerAugSprite.GetComponent<Image>().sprite = Resources.Load<Sprite> ("Interface/Augment-Red-Blue");
+				} else if (myElement == "earth") {
+					otherPlayerAugSprite.GetComponent<Image>().sprite = Resources.Load<Sprite> ("Interface/Augment-Red-Green");
+				}
+			} else if (otherElement == "ice") {
+				if (myElement == "fire") {
+					otherPlayerAugSprite.GetComponent<Image>().sprite = Resources.Load<Sprite> ("Interface/Augment-Blue-Red");
+				} else if (myElement == "earth") {
+					otherPlayerAugSprite.GetComponent<Image>().sprite = Resources.Load<Sprite> ("Interface/Augment-Blue-Green");
+				}
+			} else if (otherElement == "earth") {
+				if (myElement == "ice") {
+					otherPlayerAugSprite.GetComponent<Image>().sprite = Resources.Load<Sprite> ("Interface/Augment-Green-Blue");
+				} else if (myElement == "fire") {
+					otherPlayerAugSprite.GetComponent<Image>().sprite = Resources.Load<Sprite> ("Interface/Augment-Green-Red");
+				}
 			}
+
+			// }
 
 			// Vibrate?
 		}

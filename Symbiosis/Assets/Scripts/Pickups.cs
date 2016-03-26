@@ -102,7 +102,7 @@ public class Pickups : MonoBehaviour {
 					FireAugment f = new FireAugment();
 					Debug.Log (f);
 					playerStats.SetAugment (f);
-					playerAugSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("redaugmentsprite");
+					playerAugSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Interface/Augment-Red-Blank");
 
 					Debug.Log (playerStats.GetAugment());
 
@@ -114,7 +114,7 @@ public class Pickups : MonoBehaviour {
 					IceAugment i = new IceAugment();
 					Debug.Log (i);
 					playerStats.SetAugment (i);
-					playerAugSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("blueaugmentsprite");
+					playerAugSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Interface/Augment-Blue-Blank");
 
 					Debug.Log (playerStats.GetAugment());
 
@@ -126,7 +126,7 @@ public class Pickups : MonoBehaviour {
 					EarthAugment e = new EarthAugment ();
 					Debug.Log (e);
 					playerStats.SetAugment (e);
-					playerAugSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("greenaugmentsprite");
+					playerAugSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Interface/Augment-Green-Blank");
 
 					Debug.Log (playerStats.GetAugment ());
 
@@ -134,13 +134,13 @@ public class Pickups : MonoBehaviour {
 				case "RayGun":
 					oldWeapon = playerShooting.curWeap;
 					playerShooting.ChangeWeapon(powerupType);
-					playerWeapSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("raygunsprite");
+					//playerWeapSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("raygunsprite");
 					break;
 
 				case "Sword":
 					oldWeapon = playerShooting.curWeap;
 					playerShooting.ChangeWeapon (powerupType);
-					playerWeapSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("swordsprite");
+					//playerWeapSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("swordsprite");
 					break;
 
 				case "FullHealth":
