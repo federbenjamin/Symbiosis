@@ -101,14 +101,17 @@ public class GameStats : MonoBehaviour {
 
 	IEnumerator StartIntroAnimation() {
 		yield return new WaitForSeconds (2.0f);
-		GameObject.Find("Player_blue_slime").GetComponent<Animator>().SetTrigger("StartJump");
+		GameObject blueSlime = GameObject.Find("Player_blue_slime");
+		GameObject yellowSlime = GameObject.Find("Player_yellow_slime");
+		blueSlime.GetComponent<Animation>().Play("SlimeJumping");//.SetTrigger("StartJump");
 		GameObject.Find("P1InitialSlimeTank").GetComponent<Animator>().SetTrigger("StartBreak");
-		GameObject.Find("Player_yellow_slime").GetComponent<Animator>().SetTrigger("StartJump");
+		yellowSlime.GetComponent<Animation>().Play("SlimeJumping");//.SetTrigger("StartJump");
 		GameObject.Find("P2InitialSlimeTank").GetComponent<Animator>().SetTrigger("StartBreak");
-		yield return new WaitForSeconds (2.4f);
+		yield return new WaitForSeconds (1.8f);
+
 		gameStarted = true;
 		CameraController.followSlime = false;
-		yield return new WaitForSeconds (5.0f);
+		yield return new WaitForSeconds (8.0f);
 		OpenDoor(GameObject.Find("Room1"));
 		OpenDoor(GameObject.Find("Room2"));
 		animationStarted = false;
