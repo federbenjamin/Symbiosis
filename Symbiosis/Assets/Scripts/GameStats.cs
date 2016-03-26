@@ -26,11 +26,12 @@ public class GameStats : MonoBehaviour {
 
 	void Start () {
 		// Scale and Translate UI depending on screen size
+		float inverseHudHeight = 7.6f;
 		foreach (Transform ui in transform) {
 			RectTransform uiTransform = (RectTransform) ui;
 			float newScaleX, newScaleY = 0f;
 			if (ui.name == "Health") {
-				newScaleX = (Screen.height / (256f * 8f)) * 2f;
+				newScaleX = (Screen.height / (256f * inverseHudHeight)) * 2f;
 				Camera healthDivCam = GameObject.Find("DividerHealth").GetComponent<Camera>();
 				healthDivCam.rect = new Rect(healthDivCam.rect.x, healthDivCam.rect.y, healthDivCam.rect.width, newScaleX * 100f / Screen.height);
 			} else if (ui.name == "Pause") {
@@ -50,7 +51,7 @@ public class GameStats : MonoBehaviour {
 				float newYPos = Screen.height / -2f;
 				uiTransform.anchoredPosition = new Vector2(0f, newYPos);
 			} else {
-				newScaleX = Screen.height / (256f * 8f);
+				newScaleX = Screen.height / (256f * inverseHudHeight);
 
 				// Translate Augment UI
 				float newXPos = (Screen.width * 0.99f / 4f) - (512f / 2f * newScaleX);
