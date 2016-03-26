@@ -24,7 +24,9 @@ public class GameStats : MonoBehaviour {
 			RectTransform uiTransform = (RectTransform) ui;
 			float newScale;
 			if (ui.name == "Health") {
-				newScale = (Screen.height / (256f * 8f)) * (256f / 128f);
+				newScale = (Screen.height / (256f * 8f)) * 2f;
+				Camera healthDivCam = GameObject.Find("DividerHealth").GetComponent<Camera>();
+				healthDivCam.rect = new Rect(healthDivCam.rect.x, healthDivCam.rect.y, healthDivCam.rect.width, newScale * 100f / Screen.height);
 			} else {
 				newScale = Screen.height / (256f * 8f);
 
