@@ -9,6 +9,7 @@ public class GameStats : MonoBehaviour {
 	public bool invincible = false;
 	public static bool paused = false;
 	public static bool gameStarted = false;
+	public bool animationStarted = false;
 	private string startButton;
 	private bool playersTogether = false;
 	public bool PlayersTogether {
@@ -44,10 +45,8 @@ public class GameStats : MonoBehaviour {
 		}
 
 		gameAudio = GameObject.Find("AudioListener").GetComponent<AudioPlacement> ();
-		GameObject[] roomsList = GameObject.FindGameObjectsWithTag("Room");
-		foreach (GameObject room in roomsList) {
-			OpenDoors(room);
-		}
+
+		OpenDoorsExceptFirst();
 
 		if ((Application.platform == RuntimePlatform.OSXEditor) || (Application.platform == RuntimePlatform.OSXPlayer)) {
 			startButton = "StartMac";
@@ -57,7 +56,8 @@ public class GameStats : MonoBehaviour {
 	}
 
 	void Update () {
-		if (!gameStarted) {
+		if (!gameStarted && !animationStarted) {
+			animationStarted = true;
 			StartCoroutine("StartIntroAnimation");
 		}
 		if (Input.GetButtonDown(startButton)) {
@@ -75,7 +75,16 @@ public class GameStats : MonoBehaviour {
 		}
 	}
 
-	void OpenDoors(GameObject room) {
+	void OpenDoorsExceptFirst() {
+		GameObject[] roomsList = GameObject.FindGameObjectsWithTag("Room");
+		foreach (GameObject room in roomsList) {
+			if (room.name != "Room1" && room.name != "Room2") {
+				OpenDoor(room);
+			}
+		}
+	}
+
+	void OpenDoor(GameObject room) {
 		RoomController roomController = room.GetComponent<RoomController> ();
 		bool enemies = roomController.ContainsEnemySpawn();
 
@@ -99,6 +108,10 @@ public class GameStats : MonoBehaviour {
 		yield return new WaitForSeconds (2.4f);
 		gameStarted = true;
 		CameraController.followSlime = false;
+		yield return new WaitForSeconds (5.0f);
+		OpenDoor(GameObject.Find("Room1"));
+		OpenDoor(GameObject.Find("Room2"));
+		animationStarted = false;
 	}
 
 }

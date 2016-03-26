@@ -84,7 +84,7 @@ public class RoomController : MonoBehaviour {
 				}
 			}
 		//Check if player has enetered room and count enemies
-		} else {
+		} else if (transform.name != "Room1" && transform.name != "Room2") {
 			if (hasTriggered == true) {
 				if (roomCleared == false) {
 					if (CountEnemies() == 0) {
