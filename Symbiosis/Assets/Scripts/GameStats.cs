@@ -13,6 +13,10 @@ public class GameStats : MonoBehaviour {
 		set{playersTogether = value;}
 	}
 	private AudioPlacement gameAudio;
+	public GameObject P1Slime;
+	public GameObject P2Slime;
+	public GameObject P1Tank;
+	public GameObject P2Tank;
 
 	void Start () {
 		gameAudio = GameObject.Find("AudioListener").GetComponent<AudioPlacement> ();
@@ -27,6 +31,7 @@ public class GameStats : MonoBehaviour {
 			startButton = "StartPC";
 		}
 
+		StartCoroutine("WaitForGameLoad");
 		StartCoroutine("WaitForAnimationEndToMove");
 	}
 
@@ -62,8 +67,16 @@ public class GameStats : MonoBehaviour {
 	}
 
 	IEnumerator WaitForAnimationEndToMove() {
-		yield return new WaitForSeconds (2.2f);
+		yield return new WaitForSeconds (2.6f);
 		playersCanMove = true;
+	}
+
+	IEnumerator WaitForGameLoad() {
+		yield return new WaitForSeconds (0.75f);
+		P1Slime.GetComponent<Animator>().SetTrigger("StartJump");
+		P1Tank.GetComponent<Animator>().SetTrigger("StartBreak");
+		P2Slime.GetComponent<Animator>().SetTrigger("StartJump");
+		P2Tank.GetComponent<Animator>().SetTrigger("StartBreak");
 	}
 
 }
