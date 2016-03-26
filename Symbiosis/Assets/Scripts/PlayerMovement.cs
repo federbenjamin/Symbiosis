@@ -20,9 +20,7 @@ public class PlayerMovement : MonoBehaviour {
 	private Vector3 playerMov, playerLook;
 	public bool isMoving;
 
-	private StatsManager playerStats;
 	private PlayerShooting playerShooting;
-	private HealthManager playersHealth;
 
 	private float speedModifier;
 
@@ -30,9 +28,7 @@ public class PlayerMovement : MonoBehaviour {
 	void Awake () {
 
 		//Get the StatsManager Script
-		playerStats = GetComponent<StatsManager> ();
 		playerShooting = GetComponent<PlayerShooting> ();
-		playersHealth = GameObject.Find("Health").GetComponent<HealthManager> ();
 	}
 
 	// Use this for initialization
@@ -71,7 +67,7 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		if (playersHealth.currentHealth > 0 && GameStats.playersCanMove){
+		if (!HealthManager.isGameOver && GameStats.playersCanMove){
 			//Player Movement
 			horizMov = Input.GetAxisRaw (moveButtonHoriz);
 			vertMov = Input.GetAxisRaw (moveButtonVert);

@@ -44,8 +44,7 @@ public class EnemyBulletBehavior : MonoBehaviour {
 				augment.onHitEffect (other);
 				damageType = augment.Element;
 			}
-			HealthManager playerHP = GameObject.Find ("Health").GetComponent<HealthManager>();
-			playerHP.DamageHealth (bulletDamage);
+			HealthManager.DamageHealth (bulletDamage);
 		}
 	}
 }

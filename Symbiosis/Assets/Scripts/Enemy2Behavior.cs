@@ -25,7 +25,7 @@ public class Enemy2Behavior : EnemyBehavior {
 			enemyOriented = true;
 		}
 
-		if (IsEnemyAlive() && !playersHealth.IsGameOver) {
+		if (IsEnemyAlive() && !HealthManager.isGameOver) {
 			UpdateTargetPlayer();
 			CheckNearDeath();
 

@@ -19,7 +19,6 @@ public class EnemyBehavior : MonoBehaviour {
 
 	public Animator enemyAnimator;
 
-	protected HealthManager playersHealth;
 	protected RoomController roomController;
 
 	void Awake () {
@@ -33,7 +32,6 @@ public class EnemyBehavior : MonoBehaviour {
 	protected void setStartVariables() {
 		myTransform = transform;
 		myRigidBody = GetComponent<Rigidbody>();
-		playersHealth = GameObject.FindWithTag("Health").GetComponent<HealthManager> ();
 		roomController = transform.parent.GetComponent<RoomController> ();
 		moveSpeed = GetComponent<EnemyStats>().moveSpeed;
 		p1_Object = GameObject.Find ("P1");
@@ -148,7 +146,7 @@ public class EnemyBehavior : MonoBehaviour {
 			GameObject.Find ("CameraP1").GetComponent<CameraShaker> ().shake = 0.25f;
 		}
 		if (transform.GetComponent<EnemyStats>().currentHP > 0) {
-			playersHealth.DamageHealth(damage);
+			HealthManager.DamageHealth(damage);
 			timer = 0;
 			nextHit = 60;
 		}

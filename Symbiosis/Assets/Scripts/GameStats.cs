@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 public class GameStats : MonoBehaviour {
 
+	public static GameStats Instance;
+
+	public bool invincible = false;
 	public static bool paused = false;
 	public static bool playersCanMove = false;
 	private string startButton;
@@ -17,6 +20,10 @@ public class GameStats : MonoBehaviour {
 	public GameObject P2Slime;
 	public GameObject P1Tank;
 	public GameObject P2Tank;
+
+	void Awake () {
+		Instance = this;
+	}
 
 	void Start () {
 		// Scale and Translate UI depending on screen size

@@ -27,7 +27,7 @@ public class Enemy1Behavior : EnemyBehavior {
 			enemyOriented = true;
 		}
 
-		if (IsEnemyAlive() && !playersHealth.IsGameOver) {
+		if (IsEnemyAlive() && !HealthManager.isGameOver) {
 			UpdateTargetPlayer();
 			UpdateTurnSpeed();
 			if (timer >= 30) {

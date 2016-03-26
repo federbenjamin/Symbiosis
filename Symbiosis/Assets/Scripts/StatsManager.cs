@@ -8,7 +8,6 @@ public class StatsManager : MonoBehaviour {
 	public string augmentName;
 
 	public float invincibilityTime;
-	public HealthManager playersHealth;
 	private PlayerShooting playerShooting;
 	private float nextHit = 0.0f;
 
@@ -45,8 +44,6 @@ public class StatsManager : MonoBehaviour {
 	private AudioPlacement audioPlacement;
 
 	void Awake () {
-		//Get the HealthManager Script
-		playersHealth = GameObject.Find("Health").GetComponent<HealthManager> ();
 		audioPlacement = GameObject.Find("AudioListener").GetComponent<AudioPlacement> ();
 	}
 

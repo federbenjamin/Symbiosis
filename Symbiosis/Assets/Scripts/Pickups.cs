@@ -2,9 +2,6 @@
 using UnityEngine.UI;
 using System.Collections;
 
-
-
-
 public class Pickups : MonoBehaviour {
 
 	public float rotateSpeed;
@@ -135,16 +132,16 @@ public class Pickups : MonoBehaviour {
 					break;
 
 				case "FullHealth":
-					if (playerStats.playersHealth.currentHealth < 10) {
-						playerStats.playersHealth.HealHealth (2);
+					if (HealthManager.currentHealth < 10) {
+						HealthManager.HealHealth (2);
 					} else {
 						notUsed = true;
 					}
 					break;
 				
 				case "HalfHealth":
-					if (playerStats.playersHealth.currentHealth < 10) {
-						playerStats.playersHealth.HealHealth (1);
+					if (HealthManager.currentHealth < 10) {
+						HealthManager.HealHealth (1);
 					} else {
 						notUsed = true;
 					}

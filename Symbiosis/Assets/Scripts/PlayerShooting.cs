@@ -27,8 +27,6 @@ public class PlayerShooting : MonoBehaviour {
 	private float nextFire = 0.0f;
 	private string playerPrefix;
 
-	private StatsManager playerStats;
-	private HealthManager playersHealth;
 	private PlayerMovement playerMovement;
 
 	float shootHoriz;
@@ -51,10 +49,6 @@ public class PlayerShooting : MonoBehaviour {
 	private AudioPlacement audioPlacement;
 
 	void Awake () {
-
-		//Get the StatsManager Script
-		playersHealth = GameObject.Find("Health").GetComponent<HealthManager> ();
-		playerStats = GetComponent<StatsManager> ();
 	}
 
 	// Use this for initialization
@@ -89,7 +83,7 @@ public class PlayerShooting : MonoBehaviour {
 			sword.GetComponent<PlayerSword> ().setAugment (aug);
 		};
 
-		if (playersHealth.currentHealth > 0 && !GameStats.paused && GameStats.playersCanMove) {
+		if (!HealthManager.isGameOver && !GameStats.paused && GameStats.playersCanMove) {
 
 			playerShooting = (Input.GetButton ("FireRight" + playerPrefix) ||
 				Input.GetButton ("FireDown" + playerPrefix) ||

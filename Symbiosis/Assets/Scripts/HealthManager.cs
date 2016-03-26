@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class HealthManager : MonoBehaviour {
 
+	public static HealthManager Instance;
+
 	private PlayerMovement playerMovementP1;
 	private PlayerMovement playerMovementP2;
 
@@ -13,9 +15,8 @@ public class HealthManager : MonoBehaviour {
 	Animator animatorP2Body;
 	Animator animatorP2Slime;
 
-	public bool invincible;
-	public int totalHealth;
-	public int currentHealth;
+	public static int totalHealth;
+	public static int currentHealth;
 
 	public Sprite BarHit;
 	public Sprite BarNormal;
@@ -30,9 +31,10 @@ public class HealthManager : MonoBehaviour {
 	private Transform heart4;
 	private Transform heart5;
 
-	private bool isGameOver = false;
-	public bool IsGameOver {
-		get{return isGameOver;}
+	public static bool isGameOver = false;
+
+	void Awake () {
+		Instance = this;
 	}
 
 	// Use this for initialization
@@ -113,7 +115,7 @@ public class HealthManager : MonoBehaviour {
 	}
 
 	//Increase health of players
-	public void HealHealth(int heal) {
+	public static void HealHealth(int heal) {
 		
 		if ((currentHealth += heal) > totalHealth) {
 			currentHealth = totalHealth;
@@ -121,13 +123,13 @@ public class HealthManager : MonoBehaviour {
 	}
 
 	//Decrease health of players
-	public void DamageHealth(int damage) {
-		healthBar.GetComponent<Image>().sprite = BarHit;
-		healthBar.GetComponent<RectTransform>().sizeDelta = new Vector2(500, 100);
-		if (!invincible) {
+	public static void DamageHealth(int damage) {
+		HealthManager.Instance.healthBar.GetComponent<Image>().sprite = HealthManager.Instance.BarHit;
+		HealthManager.Instance.healthBar.GetComponent<RectTransform>().sizeDelta = new Vector2(500, 100);
+		if (!GameStats.Instance.invincible) {
 			currentHealth -= damage;
 		}
-		StartCoroutine ("ChangeHealthBar");
+		HealthManager.Instance.StartCoroutine ("ChangeHealthBar");
 	}
 
 	public void GameOver() {
