@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class GameStats : MonoBehaviour {
 
@@ -8,8 +9,9 @@ public class GameStats : MonoBehaviour {
 
 	public bool invincible = false;
 	public static bool paused = false;
+	private GameObject pauseUI;
 	public static bool gameStarted = false;
-	public bool animationStarted = false;
+	private bool animationStarted = false;
 	private string startButton;
 	private bool playersTogether = false;
 	public bool PlayersTogether {
@@ -31,6 +33,15 @@ public class GameStats : MonoBehaviour {
 				newScale = (Screen.height / (256f * 8f)) * 2f;
 				Camera healthDivCam = GameObject.Find("DividerHealth").GetComponent<Camera>();
 				healthDivCam.rect = new Rect(healthDivCam.rect.x, healthDivCam.rect.y, healthDivCam.rect.width, newScale * 100f / Screen.height);
+			} else if (ui.name == "Pause") {
+				pauseUI = ui.gameObject;
+				pauseUI.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+				pauseUI.transform.GetChild(0).GetComponent<Image>().color = new Color(255, 255, 255, 0);
+
+				newScale = (Screen.height / 1080f);
+
+				float newYPos = Screen.height / -2f;
+				uiTransform.anchoredPosition = new Vector2(0f, newYPos);
 			} else {
 				newScale = Screen.height / (256f * 8f);
 
@@ -63,11 +74,15 @@ public class GameStats : MonoBehaviour {
 		if (Input.GetButtonDown(startButton)) {
 			if (!paused) {
 				paused = true;
+				pauseUI.GetComponent<Image>().color = new Color(0, 0, 0, 0.5f);
+				pauseUI.transform.GetChild(0).GetComponent<Image>().color = new Color(1, 1, 1, 1);
 				Time.timeScale = 0;
 				gameAudio.changeMainSongVolume(0.07f);
 				gameAudio.changeMainSongPitch(0.9f);
 			} else {
 				paused = false;
+				pauseUI.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+				pauseUI.transform.GetChild(0).GetComponent<Image>().color = new Color(1, 1, 1, 0);
 				Time.timeScale = 1;
 				gameAudio.changeMainSongVolume(0.264f);
 				gameAudio.changeMainSongPitch(1f);
