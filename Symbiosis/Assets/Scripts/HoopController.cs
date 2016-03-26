@@ -5,7 +5,8 @@ public class HoopController : MonoBehaviour {
 	public GameObject lookAtObject;
 	private Renderer hoopRenderer;
 	private float alphaDelta;
-	public float fadeTimer;
+	private float fadeTimer = 20;
+	private int showTimer;
 
 	// Use this for initialization
 	void Start () {
@@ -19,18 +20,24 @@ public class HoopController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		foreach (Material mat in hoopRenderer.materials) {
-			mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, mat.color.a - alphaDelta);
+		if (showTimer == 0) {
+			foreach (Material mat in hoopRenderer.materials) {
+				mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, mat.color.a - alphaDelta);
+			}
 		}
 	}
 
 	void FixedUpdate () {
 		transform.LookAt (lookAtObject.transform);
+		if (showTimer > 0) {
+			showTimer--;
+		}
 	}
 
 	public void Show() {
 		foreach (Material mat in hoopRenderer.materials) {
 			mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, 1);
 		}
+		showTimer = 50;
 	}
 }

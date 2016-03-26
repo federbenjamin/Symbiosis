@@ -33,11 +33,11 @@ public class EnemyStats : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		if (onFire) {
 			if (ongoingTimer <= 0) {
 				currentHP = currentHP - ongoingDamage;
-				ongoingTimer = 60;
+				ongoingTimer = 30;
 			} else {
 				ongoingTimer = ongoingTimer - 1;
 			}
