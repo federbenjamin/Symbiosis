@@ -12,7 +12,7 @@ GameObject:
   - 23: {fileID: 2330650}
   - 95: {fileID: 9524458}
   - 114: {fileID: 11437052}
-  - 65: {fileID: 6526358}
+  - 136: {fileID: 13648020}
   m_Layer: 0
   m_Name: redswordPickUp
   m_TagString: Pickups
@@ -27,7 +27,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 136966}
   m_LocalRotation: {x: 0.5000001, y: 0.49999994, z: 0.49999994, w: -0.5000001}
-  m_LocalPosition: {x: -2.790001, y: 0.37, z: -0.769989}
+  m_LocalPosition: {x: 6.0029907, y: 0.26, z: 2.057251}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -67,18 +67,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 136966}
   m_Mesh: {fileID: 4300000, guid: 4ee8498dfbf964d049c6045741cf0a63, type: 3}
---- !u!65 &6526358
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136966}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.24000026, y: 0.24000026, z: 1.5500003}
-  m_Center: {x: -0.00000007450581, y: -0.00000007450579, z: 0.6250001}
 --- !u!95 &9524458
 Animator:
   serializedVersion: 3
@@ -115,6 +103,19 @@ MonoBehaviour:
   blueAugmentPickup: {fileID: 195796, guid: f6fa92d0f4dc543949127a7e8f3da89a, type: 2}
   greenAugmentPickup: {fileID: 148428, guid: d4fe809a14b064385835a89878a89a77, type: 2}
   notUsed: 0
+--- !u!136 &13648020
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136966}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.35
+  m_Height: 1.5
+  m_Direction: 2
+  m_Center: {x: -0.00000007450581, y: -0.00000007450579, z: 0.6250001}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
