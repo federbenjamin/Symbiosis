@@ -280,7 +280,7 @@ MonoBehaviour:
   rotateSpeed: 100
   powerupType: Pistol
   pistolPickup: {fileID: 159162}
-  rayGunPickup: {fileID: 190054, guid: 0ee95262705304413aacb14b519700cb, type: 2}
+  rayGunPickup: {fileID: 193782, guid: 0ee95262705304413aacb14b519700cb, type: 2}
   swordPickup: {fileID: 136966, guid: a5ded5a0fb6104fff8fc06e38d0bc8e1, type: 2}
   redAugmentPickup: {fileID: 115124, guid: 4829ad59575a5450888120432f08742b, type: 2}
   blueAugmentPickup: {fileID: 195796, guid: f6fa92d0f4dc543949127a7e8f3da89a, type: 2}
@@ -326,6 +326,10 @@ Prefab:
       propertyPath: pistolPickup
       value: 
       objectReference: {fileID: 159162}
+    - target: {fileID: 0}
+      propertyPath: rayGunPickup
+      value: 
+      objectReference: {fileID: 193782, guid: 0ee95262705304413aacb14b519700cb, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 159162}

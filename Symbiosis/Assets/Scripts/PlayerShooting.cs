@@ -202,7 +202,7 @@ public class PlayerShooting : MonoBehaviour {
 			cur_bullet = null;
 			GameObject rayGun = Instantiate (RayGun, hand.transform.position, hand.transform.rotation) as GameObject;
 			rayGun.transform.parent = hand.transform;
-			rayGunTip = rayGun.transform.GetChild (0).gameObject;
+			rayGunTip = rayGun.transform.GetChild (0).GetChild(0).gameObject;
 			line = rayGunTip.GetComponent<LineRenderer>();
 			line.enabled = false;
 			break;
