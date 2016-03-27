@@ -199,6 +199,7 @@ public class StatsManager : MonoBehaviour {
 	public void SwapAugments() {
 		otherPlayerStats.RequestAugSwap = false;
 		requestAugSwap = false;
+		hudReset = false;
 
 		tempAug = GetAugment();
 		tempSpr = playerAugSprite.GetComponent<Image> ().sprite;
