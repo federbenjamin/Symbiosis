@@ -16,7 +16,7 @@ GameObject:
   - 136: {fileID: 13680438}
   m_Layer: 0
   m_Name: Bullet_green
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -168,6 +168,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Height
       value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Bullet
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
