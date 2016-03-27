@@ -678,7 +678,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: SwapAugMacP1
+    m_Name: SwapAugMacP1Right
     descriptiveName: Mac
     descriptiveNegativeName: 
     negativeButton: 
@@ -694,7 +694,7 @@ InputManager:
     axis: 5
     joyNum: 1
   - serializedVersion: 3
-    m_Name: SwapAugMacP1
+    m_Name: SwapAugMacP1Right
     descriptiveName: Keyboard
     descriptiveNegativeName: 
     negativeButton: 
@@ -710,7 +710,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: SwapAugPCP1
+    m_Name: SwapAugPCP1Right
     descriptiveName: PC
     descriptiveNegativeName: 
     negativeButton: 
@@ -726,7 +726,7 @@ InputManager:
     axis: 9
     joyNum: 1
   - serializedVersion: 3
-    m_Name: SwapAugPCP1
+    m_Name: SwapAugPCP1Right
     descriptiveName: Keyboard
     descriptiveNegativeName: 
     negativeButton: 
@@ -742,7 +742,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: SwapAugMacP1
+    m_Name: SwapAugMacP1Left
     descriptiveName: Mac
     descriptiveNegativeName: 
     negativeButton: 
@@ -758,7 +758,7 @@ InputManager:
     axis: 4
     joyNum: 1
   - serializedVersion: 3
-    m_Name: SwapAugMacP1
+    m_Name: SwapAugMacP1Left
     descriptiveName: Keyboard
     descriptiveNegativeName: 
     negativeButton: 
@@ -774,7 +774,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: SwapAugPCP1
+    m_Name: SwapAugPCP1Left
     descriptiveName: PC
     descriptiveNegativeName: 
     negativeButton: 
@@ -790,7 +790,7 @@ InputManager:
     axis: 8
     joyNum: 1
   - serializedVersion: 3
-    m_Name: SwapAugPCP1
+    m_Name: SwapAugPCP1Left
     descriptiveName: Keyboard
     descriptiveNegativeName: 
     negativeButton: 
@@ -806,7 +806,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: SwapAugMacP2
+    m_Name: SwapAugMacP2Right
     descriptiveName: Mac
     descriptiveNegativeName: 
     negativeButton: 
@@ -822,7 +822,7 @@ InputManager:
     axis: 5
     joyNum: 2
   - serializedVersion: 3
-    m_Name: SwapAugMacP2
+    m_Name: SwapAugMacP2Right
     descriptiveName: Keyboard
     descriptiveNegativeName: 
     negativeButton: 
@@ -838,7 +838,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: SwapAugPCP2
+    m_Name: SwapAugPCP2Right
     descriptiveName: PC
     descriptiveNegativeName: 
     negativeButton: 
@@ -854,7 +854,7 @@ InputManager:
     axis: 9
     joyNum: 2
   - serializedVersion: 3
-    m_Name: SwapAugPCP2
+    m_Name: SwapAugPCP2Right
     descriptiveName: Keyboard
     descriptiveNegativeName: 
     negativeButton: 
@@ -870,7 +870,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: SwapAugMacP2
+    m_Name: SwapAugMacP2Left
     descriptiveName: Mac
     descriptiveNegativeName: 
     negativeButton: 
@@ -886,7 +886,7 @@ InputManager:
     axis: 4
     joyNum: 2
   - serializedVersion: 3
-    m_Name: SwapAugMacP2
+    m_Name: SwapAugMacP2Left
     descriptiveName: Keyboard
     descriptiveNegativeName: 
     negativeButton: 
@@ -902,7 +902,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: SwapAugPCP2
+    m_Name: SwapAugPCP2Left
     descriptiveName: Mac
     descriptiveNegativeName: 
     negativeButton: 
@@ -918,7 +918,7 @@ InputManager:
     axis: 8
     joyNum: 2
   - serializedVersion: 3
-    m_Name: SwapAugPCP2
+    m_Name: SwapAugPCP2Left
     descriptiveName: Keyboard
     descriptiveNegativeName: 
     negativeButton: 

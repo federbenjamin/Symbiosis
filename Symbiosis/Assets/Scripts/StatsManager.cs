@@ -11,7 +11,8 @@ public class StatsManager : MonoBehaviour {
 	private PlayerShooting playerShooting;
 	private float nextHit = 0.0f;
 
-	private float AugTrigger;
+	private float AugTriggerRight;
+	private float AugTriggerLeft;
 	string swapButtonAug;
 	private string playerPrefix;
 	private string otherPlayerPrefix;
@@ -115,13 +116,14 @@ public class StatsManager : MonoBehaviour {
 
 			// If swap cooldown time has passed, request an aug swap when the trigger is pressed
 			// Otherwise play swap failed sound
-			AugTrigger = Input.GetAxisRaw (swapButtonAug);
-			if (AugTrigger > 0 && Time.time > nextAugSwap) {
+			AugTriggerRight = Input.GetAxisRaw (swapButtonAug + "Right");
+			AugTriggerLeft = Input.GetAxisRaw (swapButtonAug + "Left");
+			if ((AugTriggerRight > 0 || AugTriggerLeft > 0) && Time.time > nextAugSwap) {
 				requestSwapAugments();
 				nextAugSwapFailedSound = false;
-			} else if (AugTrigger <= 0) {
+			} else if (AugTriggerRight <= 0 || AugTriggerLeft <= 0) {
 				nextAugSwapFailedSound = true;
-			} else if (AugTrigger > 0 && nextAugSwapFailedSound) {
+			} else if ((AugTriggerRight > 0 || AugTriggerLeft > 0) && nextAugSwapFailedSound) {
 				audioPlacement.PlayClip (swapCooldownSound, 0.05f);
 				nextAugSwapFailedSound = false;
 			}

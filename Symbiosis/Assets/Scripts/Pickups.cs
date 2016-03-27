@@ -13,6 +13,7 @@ public class Pickups : MonoBehaviour {
 	private string playerPrefix;
 	public string powerupType;
 
+	public GameObject pistolPickup;
 	public GameObject rayGunPickup;
 	public GameObject swordPickup;
 
@@ -25,7 +26,9 @@ public class Pickups : MonoBehaviour {
 	private string oldAugment;
 	private GameObject oldAugmentPickup;
 	public bool notUsed;
-	static float nextPickup = 0.0f;
+	private float nextPickup = 0.0f;
+	static float nextPickupP1 = 0.0f;
+	static float nextPickupP2 = 0.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -59,6 +62,11 @@ public class Pickups : MonoBehaviour {
 			playerPrefix = other.name;
 			playerAugSprite = GameObject.Find (playerPrefix + "Aug");
 			playerWeapSprite = GameObject.Find (playerPrefix + "Weap");
+			if (other.name == "P1") {
+				nextPickup = nextPickupP1;
+			} else {
+				nextPickup = nextPickupP2;
+			}
 
 			if (Time.time > nextPickup) {
 
@@ -119,6 +127,12 @@ public class Pickups : MonoBehaviour {
 					Debug.Log (playerStats.GetAugment ());
 
 					break;
+
+				case "Pistol":
+					oldWeapon = playerShooting.curWeap;
+					playerShooting.ChangeWeapon(powerupType);
+					break;
+
 				case "RayGun":
 					oldWeapon = playerShooting.curWeap;
 					playerShooting.ChangeWeapon(powerupType);
@@ -148,8 +162,10 @@ public class Pickups : MonoBehaviour {
 					break;
 				}
 
-				if ((oldWeapon != null) && (oldWeapon != "Pistol")) {
-					if (oldWeapon == "RayGun") {
+				if (oldWeapon != null) {
+					if (oldWeapon == "Pistol") {
+						oldWeaponPickup = Instantiate (pistolPickup, transform.position, pistolPickup.transform.rotation) as GameObject;
+					} else if (oldWeapon == "RayGun") {
 						oldWeaponPickup = Instantiate (rayGunPickup, transform.position, rayGunPickup.transform.rotation) as GameObject;
 					} else if (oldWeapon == "Sword") {
 						oldWeaponPickup = Instantiate (swordPickup, transform.position, swordPickup.transform.rotation) as GameObject;
@@ -179,7 +195,13 @@ public class Pickups : MonoBehaviour {
 				
 				//Reset the variable for next switch statement
 				notUsed = false;
-				nextPickup = Time.time + 2f;
+
+				//Check if P1 or P2 picked it up, update nextPickup time respectively
+				if (other.name == "P1") {
+					nextPickupP1 = Time.time + 1f;
+				} else {
+					nextPickupP2 = Time.time + 1f;
+				}
 			}
 		}
 	}
