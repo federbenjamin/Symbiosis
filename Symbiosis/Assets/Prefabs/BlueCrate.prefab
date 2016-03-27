@@ -107,7 +107,7 @@ GameObject:
   - 65: {fileID: 6570506}
   - 114: {fileID: 11466732}
   m_Layer: 0
-  m_Name: crate-blue
+  m_Name: BlueCrate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1372,6 +1372,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Name
+      value: BlueCrate
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
