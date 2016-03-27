@@ -445,7 +445,7 @@ GameObject:
   - 4: {fileID: 422148}
   - 95: {fileID: 9507282}
   m_Layer: 0
-  m_Name: RoomBoss
+  m_Name: BossRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
