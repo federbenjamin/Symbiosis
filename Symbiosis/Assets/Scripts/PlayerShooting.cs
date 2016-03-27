@@ -9,6 +9,7 @@ public class PlayerShooting : MonoBehaviour {
 	public GameObject Blue_bullet;
 	public GameObject Green_bullet;
 
+	public GameObject pistolTip;
 	public GameObject rayGunTip;
 	public LineRenderer line;
 
@@ -158,7 +159,7 @@ public class PlayerShooting : MonoBehaviour {
 
 		if (curWeap == "Pistol") {
 			//Create the bullet and launch it
-			GameObject clone = Instantiate (cur_bullet, hand.transform.position, hand.transform.rotation) as GameObject;
+			GameObject clone = Instantiate (cur_bullet, pistolTip.transform.position, pistolTip.transform.rotation) as GameObject;
 			//clone.transform.rotation = Quaternion.LookRotation (shootDir);
 			Physics.IgnoreCollision (clone.GetComponent<Collider> (), GetComponent<Collider> ());
 			clone.GetComponent<Rigidbody> ().velocity = (clone.transform.forward * baseBulletSpeed);
@@ -192,6 +193,7 @@ public class PlayerShooting : MonoBehaviour {
 			cur_bullet = Reg_bullet;
 			GameObject pistol = Instantiate (Pistol, hand.transform.position, hand.transform.rotation) as GameObject;
 			pistol.transform.parent = hand.transform;
+			pistolTip = pistol.transform.GetChild(0).gameObject;
 			break;
 
 		case "RayGun":
