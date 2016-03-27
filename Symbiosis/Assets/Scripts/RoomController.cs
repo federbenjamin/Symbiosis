@@ -10,6 +10,7 @@ public class RoomController : MonoBehaviour {
 	public GameObject redZomb;
 	public GameObject blueZomb;
 	public GameObject blueSpecial;
+	public GameObject blueTurret;
 	public GameObject greenSpecial;
 	public GameObject redSpecial;
 
@@ -140,6 +141,7 @@ public class RoomController : MonoBehaviour {
 		 * _0 is walking zombie
 		 * _1 is walking with shooting scientist
 		 * _2 is special lab enemy
+		 * _3 is turret enemy
 		 */
 
 		foreach (GameObject spawnpoint in spawnpoints) {
@@ -161,7 +163,9 @@ public class RoomController : MonoBehaviour {
 				enemyChild = Instantiate (blueZomb, spawnVector, spawnpoint.transform.rotation) as GameObject;
 			} else if (enemyType == "32") {
 				enemyChild = Instantiate (blueSpecial, spawnVector, spawnpoint.transform.rotation) as GameObject;
-			} else {
+			} else if (enemyType == "33") {
+				enemyChild = Instantiate (blueTurret, spawnVector, spawnpoint.transform.rotation) as GameObject;
+			}else {
 				spawnVector.y = 0.74f;
 				enemyChild = Instantiate (boss, spawnVector, spawnpoint.transform.rotation) as GameObject;
 			}
