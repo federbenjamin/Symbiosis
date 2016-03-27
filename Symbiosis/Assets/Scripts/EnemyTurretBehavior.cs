@@ -4,9 +4,10 @@ using System.Collections;
 public class EnemyTurretBehavior : EnemyBehavior {
 
 	public GameObject bullet;
-	private GameObject bulletOrigin;
+	public GameObject bulletOrigin;
 	public GameObject bulletOrigin1;
 	public GameObject bulletOrigin2;
+	private int cannonNum = 1;
 	public float fireRate = 1;
 	public int bulletVelocity;
 	private float nextFire;
@@ -49,7 +50,8 @@ public class EnemyTurretBehavior : EnemyBehavior {
 
 				if (Time.time > nextFire) {
 						//enemyAnimator.SetTrigger ("Shoot");
-						Shoot (myTransform.forward);
+						Shoot (myTransform.forward, bulletOrigin);
+						AlternateCannon();
 				}
 
 			} else {
@@ -62,19 +64,12 @@ public class EnemyTurretBehavior : EnemyBehavior {
 
 	}
 
-	void Shoot(Vector3 shootDir) {
+	void Shoot(Vector3 shootDir, GameObject cannon) {
 		if (transform.GetComponent<EnemyStats>().currentHP > 0) {
-			//Right Cannon
-			GameObject clone = Instantiate (bullet, bulletOrigin1.transform.position, bulletOrigin1.transform.rotation) as GameObject;
+			GameObject clone = Instantiate (bullet, cannon.transform.position, cannon.transform.rotation) as GameObject;
 			clone.transform.rotation = Quaternion.LookRotation (shootDir);
 			Physics.IgnoreCollision (clone.GetComponent<Collider> (), GetComponent<Collider> ());
 			clone.GetComponent<Rigidbody> ().velocity = (clone.transform.forward * bulletVelocity);
-		
-			//Left Cannon
-			GameObject clone2 = Instantiate (bullet, bulletOrigin2.transform.position, bulletOrigin2.transform.rotation) as GameObject;
-			clone2.transform.rotation = Quaternion.LookRotation (shootDir);
-			Physics.IgnoreCollision (clone2.GetComponent<Collider> (), GetComponent<Collider> ());
-			clone2.GetComponent<Rigidbody> ().velocity = (clone2.transform.forward * bulletVelocity);
 			nextFire = Time.time + Random.Range (0.4f - (fireRate * 0.25f), 1.5f - (fireRate * 0.47f)); //- (fireRate * 0.1f);
 			
 
@@ -83,6 +78,8 @@ public class EnemyTurretBehavior : EnemyBehavior {
 
 	void addShootingOffset(float offset) {
 		nextFire = Time.time + offset;
+		//Set first cannon
+		bulletOrigin = bulletOrigin1;
 	}
 
 	void CheckTimeUntilRotation() {
@@ -93,6 +90,16 @@ public class EnemyTurretBehavior : EnemyBehavior {
 		if (!nearDeath && (GetComponent<EnemyStats>().currentHP <= (GetComponent<EnemyStats>().maxHP / 3))) {
 			nearDeath = true;
 			fireRate = fireRate * 3;
+		}
+	}
+
+	void AlternateCannon() {
+		if (cannonNum % 2 == 1) {
+			bulletOrigin = bulletOrigin2;
+			cannonNum = 2;
+		} else {
+			bulletOrigin = bulletOrigin1;
+			cannonNum = 1;
 		}
 	}
 }
