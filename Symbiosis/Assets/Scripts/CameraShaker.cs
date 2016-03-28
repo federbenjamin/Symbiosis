@@ -14,16 +14,18 @@ public class CameraShaker : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (shake > 0) {
-			Vector3 offset = Random.insideUnitSphere * shakeAmount;
-			transform.localPosition = offset;
-			shake -= Time.deltaTime * decreaseFactor;
-			if (shake <= 0) {
-				transform.localPosition = new Vector3 (0, 0, 0);
-			}
+		if (!GameStats.paused) {
+			if (shake > 0) {
+				Vector3 offset = Random.insideUnitSphere * shakeAmount;
+				transform.localPosition = offset;
+				shake -= Time.deltaTime * decreaseFactor;
+				if (shake <= 0) {
+					transform.localPosition = new Vector3 (0, 0, 0);
+				}
 
-		} else {
-			shake = 0.0f;
+			} else {
+				shake = 0.0f;
+			}
 		}
 	}
 }
