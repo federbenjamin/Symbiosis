@@ -39,7 +39,7 @@ public class LevelGenerator : MonoBehaviour {
 		GameObject newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/Gauntlet"), roomPosition, Quaternion.identity) as GameObject;
 		newObj.name = "RoomGauntlet";
 		newObj.transform.SetParent(roomParent);
-		
+
 		LoadRemainingAssets();
 	}
 	
@@ -52,14 +52,88 @@ public class LevelGenerator : MonoBehaviour {
 		for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {
 				int roomNumber = (i * size) + j;
-				int xOffset = i * 40 + offset;
-				int zOffset = j * 32;
+				int xOffset = j * 40 + offset;
+				int zOffset = i * 32;
 				Vector3 roomPosition = new Vector3(xOffset, 0, zOffset);
 				GameObject newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/RoomBlank"), roomPosition, Quaternion.identity) as GameObject;
-				newObj.name = "Room" + player + roomNumber;
+				newObj.name = "Room" + player + "-" + roomNumber;
 				newObj.transform.SetParent(roomParent);
+
+				GenerateDoors(newObj, player, roomNumber, xOffset, zOffset);
 			}
 		}
+	}
+
+	void GenerateDoors(GameObject room, string player, int roomNum, int offsetX, int offsetZ) {
+		Transform doorParent = room.transform;
+
+		GameObject newObj;
+		Vector3 objectPos;
+		Quaternion objectRot;
+		DoorController doorControl;
+		// Left/West
+		objectPos = new Vector3(-8f + offsetX, 0, 0 + offsetZ);
+		if (roomNum % size == 0) {
+			objectRot = Quaternion.Euler(-90, 90, 0);
+			newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/WallBlank"), objectPos, objectRot) as GameObject;
+			newObj.name = "WallWest";
+		} else {
+			objectRot = Quaternion.Euler(0, 90, 0);
+			newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/DoorBlank"), objectPos, objectRot) as GameObject;
+			newObj.name = "DoorWest";
+			doorControl = newObj.GetComponent<DoorController>();
+			doorControl.outDoor = 'e';
+			doorControl.nextRoomNum = player + "-" + (roomNum - 1);
+		}
+		newObj.transform.SetParent(doorParent);
+
+		// Up/North
+		objectPos = new Vector3(0 + offsetX, 0, 4f + offsetZ);
+		if (roomNum >= (size * (size - 1))) {
+			objectRot = Quaternion.Euler(-90, -180, 0);
+			newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/WallBlank"), objectPos, objectRot) as GameObject;
+			newObj.name = "WallNorth";
+		} else {
+			objectRot = Quaternion.Euler(0, -180, 0);
+			newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/DoorBlank"), objectPos, objectRot) as GameObject;
+			newObj.name = "DoorNorth";
+			doorControl = newObj.GetComponent<DoorController>();
+			doorControl.outDoor = 's';
+			doorControl.nextRoomNum = player + "-" + (roomNum + size);
+		}
+		newObj.transform.SetParent(doorParent);
+
+		// Right/East
+		objectPos = new Vector3(8f + offsetX, 0, 0 + offsetZ);
+		if (roomNum % size == (size - 1)) {
+			objectRot = Quaternion.Euler(-90, -90, 0);
+			newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/WallBlank"), objectPos, objectRot) as GameObject;
+			newObj.name = "WallEast";
+		} else {
+			objectRot = Quaternion.Euler(0, -90, 0);
+			newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/DoorBlank"), objectPos, objectRot) as GameObject;
+			newObj.name = "DoorEast";
+			doorControl = newObj.GetComponent<DoorController>();
+			doorControl.outDoor = 'w';
+			doorControl.nextRoomNum = player + "-" + (roomNum + 1);
+		}
+		newObj.transform.SetParent(doorParent);
+
+		// Down/South
+		objectPos = new Vector3(0 + offsetX, 0, -4f + offsetZ);
+		if (roomNum < size) {
+			objectRot = Quaternion.Euler(-90, 0, 0);
+			newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/WallBlank"), objectPos, objectRot) as GameObject;
+			newObj.name = "WallSouth";
+		} else {
+			objectRot = Quaternion.Euler(0, 0, 0);
+			newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/DoorBlank"), objectPos, objectRot) as GameObject;
+			newObj.name = "DoorSouth";
+			doorControl = newObj.GetComponent<DoorController>();
+			doorControl.outDoor = 'n';
+			doorControl.nextRoomNum = player + "-" + (roomNum - size);
+		}
+		newObj.transform.SetParent(doorParent);
 	}
 
 	void LoadRemainingAssets() {
