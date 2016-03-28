@@ -12,5 +12,6 @@ public class StartScreenReset : MonoBehaviour {
 	void Update () {
 		GameStats.gameStarted = false;
 		HealthManager.isGameOver = false;
+		CameraController.followSlime = true;
 	}
 }

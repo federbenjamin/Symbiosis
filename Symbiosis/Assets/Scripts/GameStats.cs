@@ -8,6 +8,8 @@ public class GameStats : MonoBehaviour {
 	public static GameStats Instance;
 
 	public bool invincible = false;
+	public bool skipIntro;
+
 	public static bool paused = false;
 	private GameObject pauseUI;
 	public static bool gameStarted = false;
@@ -74,13 +76,16 @@ public class GameStats : MonoBehaviour {
 		} else if ((Application.platform == RuntimePlatform.WindowsEditor) || (Application.platform == RuntimePlatform.WindowsPlayer)) {
 			startButton = "StartPC";
 		}
+
+		if (!gameStarted && !animationStarted && !skipIntro) {
+			animationStarted = true;
+			StartCoroutine("StartIntroAnimation");
+		} else if (skipIntro) {
+			StartCoroutine("SkipIntroAnimation");
+		}
 	}
 
 	void Update () {
-		if (!gameStarted && !animationStarted) {
-			animationStarted = true;
-			StartCoroutine("StartIntroAnimation");
-		}
 		if (Input.GetButtonDown(startButton)) {
 			if (!paused) {
 				paused = true;
@@ -140,6 +145,20 @@ public class GameStats : MonoBehaviour {
 		OpenDoor(GameObject.Find("Room1"));
 		OpenDoor(GameObject.Find("Room2"));
 		animationStarted = false;
+	}
+
+	IEnumerator SkipIntroAnimation() {
+		GameObject blueSlime = GameObject.Find("Player_blue_slime");
+		GameObject yellowSlime = GameObject.Find("Player_yellow_slime");
+		blueSlime.GetComponent<Animation>().Play("SlimeJumping");
+		yellowSlime.GetComponent<Animation>().Play("SlimeJumping");
+
+		gameStarted = true;
+		CameraController.followSlime = false;
+		OpenDoor(GameObject.Find("Room1"));
+		OpenDoor(GameObject.Find("Room2"));
+		animationStarted = false;
+		yield return new WaitForSeconds (0f);
 	}
 
 }
