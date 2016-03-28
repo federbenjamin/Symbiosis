@@ -47028,10 +47028,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1817562959}
-  - {fileID: 1725721977}
   - {fileID: 1232877899}
-  - {fileID: 1129284843}
+  - {fileID: 1725721977}
   - {fileID: 1108753412}
+  - {fileID: 1129284843}
   - {fileID: 143712112}
   - {fileID: 610620020}
   m_Father: {fileID: 2099203991}
@@ -49350,6 +49350,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 2311382, guid: ba2a7d79f6b504d5aa1232a51d7d4a1e, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 785e55c2b7ba24e0bbf5768478427e7e, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ba2a7d79f6b504d5aa1232a51d7d4a1e, type: 2}
   m_IsPrefabParent: 0
