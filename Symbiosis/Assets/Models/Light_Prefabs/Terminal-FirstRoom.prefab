@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 453234}
   - 95: {fileID: 9586018}
   m_Layer: 0
-  m_Name: Terminal - First Room
+  m_Name: Terminal-FirstRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
