@@ -40,13 +40,9 @@ public class CameraController : MonoBehaviour {
 		player2 = GameObject.Find ("P2");
 		newCameraPos = new Vector3 (player.transform.position.x, transform.position.y, transform.position.z);
 
-		if (gameObject.name == "CameraParentP1") {
-			float p1XPos = GameObject.Find ("P1").transform.position.x;
-			setMaxX(p1XPos);
-		} else {
-			float p2XPos = player2.transform.position.x;
-			setMaxX(p2XPos);
-		}
+		Vector3 newRoomPos = player.GetComponent<StatsManager>().RoomIn.transform.position;
+		setMaxX(newRoomPos.x);
+		NewRoomCameraPos = new Vector3 (newRoomPos.x, transform.position.y, newRoomPos.z - 3.2f);
 	}
 	
 	// Update is called once per frame

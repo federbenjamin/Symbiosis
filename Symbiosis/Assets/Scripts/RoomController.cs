@@ -123,6 +123,8 @@ public class RoomController : MonoBehaviour {
 				hasTriggered = true;
 				SpawnEnemies();
 			}
+
+			other.gameObject.GetComponent<StatsManager>().RoomIn = this.gameObject;
 		}
 	}
 

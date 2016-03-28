@@ -4,6 +4,13 @@ using System.Collections;
 
 public class StatsManager : MonoBehaviour {
 
+	private GameObject roomIn;
+	public GameObject RoomIn {
+		get{return roomIn;}
+		set{roomIn = value;}
+	}
+	public string startRoom;
+
 	public iAugment playerAugment;
 	public string augmentName;
 
@@ -19,6 +26,7 @@ public class StatsManager : MonoBehaviour {
 	private iAugment tempAug;
 	private StatsManager otherPlayerStats;
 	private PlayerShooting otherPlayerShooting;
+
 	private GameObject playerAugSprite;
 	private GameObject otherPlayerAugSprite;
 	private Image otherPlayerHudImage;
@@ -28,7 +36,7 @@ public class StatsManager : MonoBehaviour {
 	private Sprite tempSpr;
 	private static float nextAugSwap = 0.0f;
 
-	private bool requestAugSwap;
+	private bool requestAugSwap = false;
 	public bool RequestAugSwap {
 		get{return requestAugSwap;}
 		set{requestAugSwap = value;}
@@ -45,6 +53,7 @@ public class StatsManager : MonoBehaviour {
 	private AudioPlacement audioPlacement;
 
 	void Awake () {
+		roomIn = GameObject.Find("Room" + startRoom);
 		audioPlacement = GameObject.Find("AudioListener").GetComponent<AudioPlacement> ();
 	}
 
@@ -76,7 +85,8 @@ public class StatsManager : MonoBehaviour {
 			hudDefault = Resources.Load<Sprite> ("Interface/P1-slots-blank");
 			hudReq = Resources.Load<Sprite> ("Interface/P1-slots-prompt");
 		}
-		requestAugSwap = false;
+
+		transform.position = new Vector3(roomIn.transform.position.x, 0f, roomIn.transform.position.z);
 	
 		playerShooting = GetComponent<PlayerShooting> ();
 		otherPlayerShooting = GameObject.Find (otherPlayerPrefix).GetComponent<PlayerShooting> ();
