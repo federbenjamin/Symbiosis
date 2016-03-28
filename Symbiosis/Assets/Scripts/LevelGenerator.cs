@@ -71,13 +71,21 @@ public class LevelGenerator : MonoBehaviour {
 	void GenerateDoors(GameObject room, string player, int roomNum, int offsetX, int offsetZ) {
 		Transform doorParent = room.transform;
 
+		bool p1SwitchDoor = false;
+		bool p2SwitchDoor = false;
+		if (player == "P1" && (roomNum == (size * size - 1))) {
+			p1SwitchDoor = true;
+		} else if (player == "P2" && (roomNum == size * (size - 1))) {
+			p2SwitchDoor = true;
+		}
+
 		GameObject newObj;
 		Vector3 objectPos;
 		Quaternion objectRot;
 		DoorController doorControl;
 		// Left/West
 		objectPos = new Vector3(-8f + offsetX, 0, 0 + offsetZ);
-		if (roomNum % size == 0) {
+		if ((roomNum % size == 0) && !p2SwitchDoor) {
 			objectRot = Quaternion.Euler(-90, 90, 0);
 			newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/WallBlank"), objectPos, objectRot) as GameObject;
 			newObj.name = "WallWest";
@@ -87,7 +95,11 @@ public class LevelGenerator : MonoBehaviour {
 			newObj.name = "DoorWest";
 			doorControl = newObj.GetComponent<DoorController>();
 			doorControl.outDoor = 'e';
-			doorControl.nextRoomNum = player + "-" + (roomNum - 1);
+			if (!p2SwitchDoor) {
+				doorControl.nextRoomNum = player + "-" + (roomNum - 1);
+			} else {
+				doorControl.nextRoomNum = "100";
+			}
 		}
 		newObj.transform.SetParent(doorParent);
 
@@ -109,7 +121,7 @@ public class LevelGenerator : MonoBehaviour {
 
 		// Right/East
 		objectPos = new Vector3(8f + offsetX, 0, 0 + offsetZ);
-		if (roomNum % size == (size - 1)) {
+		if ((roomNum % size == (size - 1)) && !p1SwitchDoor) {
 			objectRot = Quaternion.Euler(-90, -90, 0);
 			newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/WallBlank"), objectPos, objectRot) as GameObject;
 			newObj.name = "WallEast";
@@ -119,7 +131,11 @@ public class LevelGenerator : MonoBehaviour {
 			newObj.name = "DoorEast";
 			doorControl = newObj.GetComponent<DoorController>();
 			doorControl.outDoor = 'w';
-			doorControl.nextRoomNum = player + "-" + (roomNum + 1);
+			if (!p1SwitchDoor) {
+				doorControl.nextRoomNum = player + "-" + (roomNum + 1);
+			} else {
+				doorControl.nextRoomNum = "100";
+			}
 		}
 		newObj.transform.SetParent(doorParent);
 
