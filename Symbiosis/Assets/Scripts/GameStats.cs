@@ -130,8 +130,10 @@ public class GameStats : MonoBehaviour {
 		gameStarted = true;
 		CameraController.followSlime = false;
 		yield return new WaitForSeconds (8.0f);
-		OpenDoor(GameObject.Find("Room1"));
-		OpenDoor(GameObject.Find("Room2"));
+		if (GameObject.Find("Room1") != null) {
+			OpenDoor(GameObject.Find("Room1"));
+			OpenDoor(GameObject.Find("Room2"));
+		}
 		animationStarted = false;
 	}
 
@@ -143,8 +145,10 @@ public class GameStats : MonoBehaviour {
 
 		gameStarted = true;
 		CameraController.followSlime = false;
-		OpenDoor(GameObject.Find("Room1"));
-		OpenDoor(GameObject.Find("Room2"));
+		if (GameObject.Find("Room1") != null) {
+			OpenDoor(GameObject.Find("Room1"));
+			OpenDoor(GameObject.Find("Room2"));
+		}
 		animationStarted = false;
 		yield return new WaitForSeconds (0f);
 	}

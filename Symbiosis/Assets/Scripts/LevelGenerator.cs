@@ -35,10 +35,14 @@ public class LevelGenerator : MonoBehaviour {
 			GenerateInitalRooms(player, offset);
 		}
 
+		// Generate gauntlet
 		Vector3 roomPosition = new Vector3(size * 40, 0, (size - 1) * 32);
 		GameObject newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/Gauntlet"), roomPosition, Quaternion.identity) as GameObject;
 		newObj.name = "RoomGauntlet";
 		newObj.transform.SetParent(roomParent);
+
+		GameObject.Find("DoorSwitchEnterRight").GetComponent<DoorController>().nextRoomNum = "P2-" + (size * (size - 1));
+		GameObject.Find("DoorSwitchEnterLeft").GetComponent<DoorController>().nextRoomNum = "P1-" + ((size * size) - 1);
 
 		LoadRemainingAssets();
 	}
@@ -138,7 +142,7 @@ public class LevelGenerator : MonoBehaviour {
 
 	void LoadRemainingAssets() {
 		Transform rootTransform = GameObject.Find("Root").transform;
-		string[] objectNameList = new string[] {"Divider", "DividerHealth", "Canvas", "P1", "P2", "CameraParentP1", "CameraParentP2"};
+		string[] objectNameList = new string[] {"Divider", "DividerHealth", "Canvas", "P1", "P2", "CameraParentP1", "CameraParentP2", "AudioListener"};
 		foreach (string objectName in objectNameList) {
 			GameObject newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/" + objectName) as GameObject);
 			newObj.name = objectName;

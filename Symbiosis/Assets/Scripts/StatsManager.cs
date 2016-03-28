@@ -51,10 +51,13 @@ public class StatsManager : MonoBehaviour {
 	private float nextHoopShow = 0.0f;
 
 	private AudioPlacement audioPlacement;
+	public AudioPlacement AudioPlacement {
+		set{audioPlacement = value;}
+	}
 
 	void Awake () {
 		roomIn = GameObject.Find("Room" + playerPrefix + startRoom);
-		audioPlacement = GameObject.Find("AudioListener").GetComponent<AudioPlacement> ();
+		//audioPlacement = GameObject.Find("AudioListener").GetComponent<AudioPlacement> ();
 	}
 
 	// Use this for initialization

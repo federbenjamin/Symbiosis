@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class HoopController : MonoBehaviour {
-	public GameObject lookAtObject;
+	private GameObject lookAtObject;
 	private Renderer hoopRenderer;
 	private float alphaDelta;
 	private float fadeTimer = 20;
@@ -10,6 +10,11 @@ public class HoopController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		if (transform.parent.name == "P1") {
+			lookAtObject = GameObject.Find("P2");
+		} else {
+			lookAtObject = GameObject.Find("P1");
+		}
 		foreach (Transform child in transform) {
 			if (child.tag == "Hoop") {
 				hoopRenderer = child.gameObject.GetComponent<Renderer>();
