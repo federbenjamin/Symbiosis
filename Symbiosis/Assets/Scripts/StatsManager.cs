@@ -53,7 +53,7 @@ public class StatsManager : MonoBehaviour {
 	private AudioPlacement audioPlacement;
 
 	void Awake () {
-		roomIn = GameObject.Find("Room" + startRoom);
+		roomIn = GameObject.Find("Room" + playerPrefix + startRoom);
 		audioPlacement = GameObject.Find("AudioListener").GetComponent<AudioPlacement> ();
 	}
 
