@@ -211,7 +211,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 474736}
   m_Layer: 0
-  m_Name: CameraPointer
+  m_Name: CameraPointerP1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1123,7 +1123,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 146730}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -50, y: 0, z: 400.37}
+  m_LocalPosition: {x: 142.69785, y: 40.22031, z: 17.272472}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 426692}
@@ -2073,6 +2073,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: startRoom
       value: P1-0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Name
+      value: CameraPointerP1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

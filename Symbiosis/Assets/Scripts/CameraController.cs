@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class CameraController : MonoBehaviour {
 
-	public GameObject player;
+	private GameObject player;
 
 	private Vector3 newCameraPos;
 	private Vector3 newRoomCameraPos;
@@ -36,6 +36,15 @@ public class CameraController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		string playerName = transform.name.Substring(12);
+		player = GameObject.Find(playerName);
+		if (playerName == "P1") {
+			playerSlime = GameObject.Find("Player_blue_slime");
+		} else {
+			playerSlime = GameObject.Find("Player_yellow_slime");
+		}
+		cameraPointer = GameObject.Find("CameraPointer" + playerName);
+
 		camera = GameObject.Find ("CameraP2").GetComponent<Camera> ();
 		player2 = GameObject.Find ("P2");
 		newCameraPos = new Vector3 (player.transform.position.x, transform.position.y, transform.position.z);
