@@ -29,7 +29,8 @@ public class Enemy1Behavior : EnemyBehavior {
 
 		if (IsEnemyAlive() && !HealthManager.isGameOver) {
 			UpdateTargetPlayer();
-			UpdateTurnSpeed();
+			//UpdateTurnSpeed();
+
 			if (timer >= 30) {
 				realigningRotation = false;
 			}
@@ -92,8 +93,8 @@ public class Enemy1Behavior : EnemyBehavior {
   //      	}
 
        	if (col.gameObject.tag != "Floor") {
-       		// Debug.Log("Colided with: " + col.gameObject.tag);
-        	realigningRotation = true;
+       		//Debug.Log("Colided with: " + col.gameObject.tag);
+        	//realigningRotation = true;
        	}
        	// if (col.gameObject.tag == "Player") {
        	// 	Debug.Log("in");

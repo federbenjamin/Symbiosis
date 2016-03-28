@@ -8,6 +8,7 @@ public class EnemyBehavior : MonoBehaviour {
 	protected GameObject p2_Object;
 	protected TargetPlayer targetPlayer;
 	protected bool ignorePlayer;
+	protected int switchTargetTimer;
 
 	protected float moveSpeed;
 	protected int timer;
@@ -127,14 +128,39 @@ public class EnemyBehavior : MonoBehaviour {
     	float dist_1 = Vector3.Distance(myTransform.position, predictedPlayerPos1);
 		float dist_2 = Vector3.Distance(myTransform.position, predictedPlayerPos2);
 
+
+
 		if (dist_1 < dist_2) {
-			targetPlayer.PlayerObject = GameObject.Find ("P1");
-			targetPlayer.Transform = p1_Transform;
-			targetPlayer.Distance = dist_1;
+			if (targetPlayer.PlayerObject.name == "P2") {
+				targetPlayer.PlayerObject = GameObject.Find ("P2");
+				targetPlayer.Transform = p2_Transform;
+				targetPlayer.Distance = dist_2;
+				switchTargetTimer--;
+			} else {
+				switchTargetTimer = 30;
+			}
+
+			if (switchTargetTimer <= 0) {
+				targetPlayer.PlayerObject = GameObject.Find ("P1");
+				targetPlayer.Transform = p1_Transform;
+				targetPlayer.Distance = dist_1;
+				switchTargetTimer = 30;
+			}
 		} else {
-			targetPlayer.PlayerObject = GameObject.Find ("P2");
-			targetPlayer.Transform = p2_Transform;
-			targetPlayer.Distance = dist_2;
+			if (targetPlayer.PlayerObject.name == "P1") {
+				targetPlayer.PlayerObject = GameObject.Find ("P1");
+				targetPlayer.Transform = p1_Transform;
+				targetPlayer.Distance = dist_1;
+				switchTargetTimer--;
+			} else {
+				switchTargetTimer = 30;
+			}
+
+			if (switchTargetTimer <= 0) {
+				targetPlayer.PlayerObject = GameObject.Find ("P2");
+				targetPlayer.Transform = p2_Transform;
+				targetPlayer.Distance = dist_2;
+			}
 		}
     }
 

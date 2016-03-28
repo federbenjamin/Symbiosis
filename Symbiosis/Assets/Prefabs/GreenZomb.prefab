@@ -681,7 +681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHP: 10
   maxHP: 10
-  moveSpeed: 8
+  moveSpeed: 3
   elementType: earth
   enemyAnimator: {fileID: 0}
   spawnParticles: {fileID: 0}
@@ -1247,7 +1247,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_Radius: 0.5
   m_Speed: 3.5
-  m_Acceleration: 8
+  m_Acceleration: 60
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
@@ -2831,7 +2831,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: moveSpeed
-      value: 8
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: elementType
@@ -2846,6 +2846,10 @@ Prefab:
       value: 
       objectReference: {fileID: 13400000, guid: 42f7df789ee7e43f29787044c8b181ae,
         type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Acceleration
+      value: 60
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 153214}
