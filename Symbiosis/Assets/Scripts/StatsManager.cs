@@ -86,8 +86,10 @@ public class StatsManager : MonoBehaviour {
 			hudReq = Resources.Load<Sprite> ("Interface/P1-slots-prompt");
 		}
 
-		transform.position = new Vector3(roomIn.transform.position.x, 0f, roomIn.transform.position.z);
-	
+		if (roomIn != null) {
+			transform.position = new Vector3(roomIn.transform.position.x, 0f, roomIn.transform.position.z);
+		}
+
 		playerShooting = GetComponent<PlayerShooting> ();
 		otherPlayerShooting = GameObject.Find (otherPlayerPrefix).GetComponent<PlayerShooting> ();
 
