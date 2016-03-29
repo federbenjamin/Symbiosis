@@ -8,7 +8,7 @@ public class LevelGenerator : MonoBehaviour {
 	public static LevelGenerator Instance;
 
 	private int seed;
-	private bool useRandomSeed = false;
+	private bool useRandomSeed = true;
 	private int size;
 	private System.Random pseudoRandom;
 	private Transform roomParent;
@@ -21,6 +21,8 @@ public class LevelGenerator : MonoBehaviour {
 	private int p1Quadrant = 0;
 	private int p2Quadrant = 0;
 
+	private string switchRoomNumber = "100";
+
 	void Awake () {
 		Instance = this;
 	}
@@ -29,7 +31,8 @@ public class LevelGenerator : MonoBehaviour {
 	void Start () {
 		roomParent = GameObject.Find("Rooms").transform;
 
-		size = GameStats.levelSize;
+		size = Mathf.Min(GameStats.levelSize, 10);
+		size = Mathf.Max(size, 3);
 		if (useRandomSeed) {
 			seed = (int)System.DateTime.Now.Ticks;
 		} else {
@@ -38,18 +41,25 @@ public class LevelGenerator : MonoBehaviour {
 		Debug.Log(seed);
 		pseudoRandom = new System.Random(seed);
 
+		// Randomize level positioning
 		int rightSidePlayer = pseudoRandom.Next(2);
 		int topHalfPlayer = pseudoRandom.Next(2);
+
+		// Generate gauntlet
+		Vector3 roomPosition = new Vector3((size - 1) * 40, 0, (size - 1) * 32);
+		GameObject newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/Gauntlet"), roomPosition, Quaternion.identity) as GameObject;
+		newObj.name = "RoomGauntlet";
+		newObj.transform.SetParent(roomParent);
 
 		string[] players = new string[] {"P1", "P2"};
 		foreach (string player in players) {
 			int xOffset = 0;
 			if (player == "P1" && rightSidePlayer == 0) {
-				xOffset = (size + 1) * 40;
+				xOffset = (size - 1) * 40;
 				p1Quadrant++;
 			}
 			else if (player == "P2" && rightSidePlayer == 1) {
-				xOffset = (size + 1) * 40;
+				xOffset = (size - 1) * 40;
 				p2Quadrant++;
 			}
 
@@ -65,15 +75,6 @@ public class LevelGenerator : MonoBehaviour {
 			GenerateInitalRooms(player, xOffset, zOffset);
 		}
 
-		// Generate gauntlet
-		Vector3 roomPosition = new Vector3(size * 40, 0, (size - 1) * 32);
-		GameObject newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/Gauntlet"), roomPosition, Quaternion.identity) as GameObject;
-		newObj.name = "RoomGauntlet";
-		newObj.transform.SetParent(roomParent);
-
-		GameObject.Find("DoorSwitchEnterRight").GetComponent<DoorController>().nextRoomNum = "P2-" + (size * (size - 1));
-		GameObject.Find("DoorSwitchEnterLeft").GetComponent<DoorController>().nextRoomNum = "P1-" + ((size * size) - 1);
-
 		LoadRemainingAssets();
 	}
 	
@@ -83,21 +84,59 @@ public class LevelGenerator : MonoBehaviour {
 	}
 
 	void GenerateInitalRooms(string player, int levelXOffset, int levelZOffset) {
+		int quadrant;
+		if (player == "P1") {
+			quadrant = p1Quadrant;
+		} else {
+			quadrant = p2Quadrant;
+		}
+
+		int switchRoomAdjacentNum;
+		int skipRoom;
+		int switchRoomBlocking;
+		if (quadrant == 0) {
+			switchRoomAdjacentNum = (size * size) - 2;
+			skipRoom = (size * size - 1);
+			switchRoomBlocking = size * (size - 1) - 1;
+		} else if (quadrant == 1) {
+			switchRoomAdjacentNum = size * (size - 1) + 1;
+			skipRoom = size * (size - 1);
+			switchRoomBlocking = size * (size - 2);
+		} else if (quadrant == 2) {
+			switchRoomAdjacentNum = size - 2;
+			skipRoom = size - 1;
+			switchRoomBlocking = (size * 2) - 1;
+		} else {
+			switchRoomAdjacentNum = 1;
+			skipRoom = 0;
+			switchRoomBlocking = size;
+		}
+
 		for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {
 				int roomNumber = (i * size) + j;
-				int xOffset = j * 40 + levelXOffset;
-				int zOffset = i * 32 + levelZOffset;
-				Vector3 roomPosition = new Vector3(xOffset, 0, zOffset);
 
-				string roomSuffix = RandomRoomPrefab(roomNumber);
-				string roomColor = Regex.Match(roomSuffix, @"\D+").Groups[0].Value;
-				GameObject newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/Room" + roomSuffix), roomPosition, Quaternion.identity) as GameObject;
-				newObj.name = "Room" + player + "-" + roomNumber;
-				newObj.transform.SetParent(roomParent);
-				newObj.GetComponent<RoomController>().RoomColor = roomColor;
+				if (roomNumber != skipRoom) {
+					int xOffset = j * 40 + levelXOffset;
+					int zOffset = i * 32 + levelZOffset;
+					Vector3 roomPosition = new Vector3(xOffset, 0, zOffset);
 
-				GenerateDoors(newObj, player, roomNumber, roomColor, xOffset, zOffset);
+					string roomSuffix = RandomRoomPrefab(roomNumber);
+					string roomColor = Regex.Match(roomSuffix, @"\D+").Groups[0].Value;
+					GameObject newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/Room" + roomSuffix), roomPosition, Quaternion.identity) as GameObject;
+					newObj.name = "Room" + player + "-" + roomNumber;
+					newObj.transform.SetParent(roomParent);
+					newObj.GetComponent<RoomController>().RoomColor = roomColor;
+
+					bool switchDoor = false;
+					bool switchWall = false;
+					if (roomNumber == switchRoomAdjacentNum) {
+						switchDoor = true;
+					} else if (roomNumber == switchRoomBlocking) {
+						switchWall = true;
+					}
+					GenerateDoorOrWall(newObj, player, roomNumber, roomColor, xOffset, zOffset, quadrant, switchDoor, switchWall);
+				}
 			}
 		}
 	}
@@ -122,102 +161,74 @@ public class LevelGenerator : MonoBehaviour {
 		}
 	}
 
-	void GenerateDoors(GameObject room, string player, int roomNum, string roomColor, int offsetX, int offsetZ) {
+	void GenerateDoorOrWall(
+			GameObject room, 
+			string player, 
+			int roomNum, 
+			string roomColor, 
+			int offsetX, 
+			int offsetZ, 
+			int quadrant, 
+			bool switchDoorAdjacent,
+			bool switchWallAdjacent
+		) {
+
 		Transform doorParent = room.transform;
-
-		string switchRoomNumber = "100";
-		int switchRoomAdjacentNum = (size * size - 1);
-		// Switch room adjacent
-		bool switchDoor = false;
-		if (roomNum == switchRoomAdjacentNum) {
-			switchDoor = true;
-		}
-
 		GameObject newObj;
 		Vector3 objectPos;
 		Quaternion objectRot;
 		DoorController doorControl;
 
-		if (player == "P1") {
-			// Left/West
-			objectPos = new Vector3(-8f + offsetX, 0, offsetZ);
-			if (roomNum % size == 0) {
-				objectRot = Quaternion.Euler(-90, 90, 0);
-				newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/Wall" + roomColor), objectPos, objectRot) as GameObject;
-				newObj.name = "WallWest";
+		// Left/West
+		objectPos = new Vector3(-8f + offsetX, 0, offsetZ);
+		if (roomNum % size == 0 && !switchDoorAdjacent) {
+			objectRot = Quaternion.Euler(-90, 90, 0);
+			newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/Wall" + roomColor), objectPos, objectRot) as GameObject;
+			newObj.name = "WallWest";
+		} else {
+			objectRot = Quaternion.Euler(0, 90, 0);
+			newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/Door" + roomColor), objectPos, objectRot) as GameObject;
+			newObj.name = "DoorWest";
+			doorControl = newObj.GetComponent<DoorController>();
+			doorControl.outDoor = 'e';
+			
+			if (switchDoorAdjacent && (quadrant == 1 || quadrant == 3)) {
+				doorControl.nextRoomNum = switchRoomNumber;
+				GameObject.Find("DoorSwitchEnterRight").GetComponent<DoorController>().nextRoomNum = player + "-" + roomNum;
 			} else {
-				objectRot = Quaternion.Euler(0, 90, 0);
-				newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/Door" + roomColor), objectPos, objectRot) as GameObject;
-				newObj.name = "DoorWest";
-				doorControl = newObj.GetComponent<DoorController>();
-				doorControl.outDoor = 'e';
 				doorControl.nextRoomNum = player + "-" + (roomNum - 1);
 			}
-			newObj.transform.SetParent(doorParent);
-
-			// Right/East
-			objectPos = new Vector3(8f + offsetX, 0, offsetZ);
-			if ((roomNum % size == (size - 1)) && !switchDoor) {
-				objectRot = Quaternion.Euler(-90, -90, 0);
-				newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/Wall" + roomColor), objectPos, objectRot) as GameObject;
-				newObj.name = "WallEast";
-			} else {
-				objectRot = Quaternion.Euler(0, -90, 0);
-				newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/Door" + roomColor), objectPos, objectRot) as GameObject;
-				newObj.name = "DoorEast";
-				doorControl = newObj.GetComponent<DoorController>();
-				doorControl.outDoor = 'w';
-				if (!switchDoor) {
-					doorControl.nextRoomNum = player + "-" + (roomNum + 1);
-				} else {
-					doorControl.nextRoomNum = switchRoomNumber;
-				}
-			}
-			newObj.transform.SetParent(doorParent);
 		}
+		newObj.transform.SetParent(doorParent);
 
-		else if (player == "P2") {
-			// Left/West
-			objectPos = new Vector3(-8f + offsetX, 0, offsetZ);
-			if ((roomNum % size == (size - 1)) && !switchDoor) {
-				objectRot = Quaternion.Euler(-90, 90, 0);
-				newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/Wall" + roomColor), objectPos, objectRot) as GameObject;
-				newObj.name = "WallWest";
-			} else {
-				objectRot = Quaternion.Euler(0, 90, 0);
-				newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/Door" + roomColor), objectPos, objectRot) as GameObject;
-				newObj.name = "DoorWest";
-				doorControl = newObj.GetComponent<DoorController>();
-				doorControl.outDoor = 'e';
-				if (!switchDoor) {
-					doorControl.nextRoomNum = player + "-" + (roomNum + 1);
-				} else {
-					doorControl.nextRoomNum = switchRoomNumber;
-				}
-			}
-			newObj.transform.SetParent(doorParent);
+		// Right/East
+		objectPos = new Vector3(8f + offsetX, 0, offsetZ);
+		if ((roomNum % size == (size - 1)) && !switchDoorAdjacent) {
+			objectRot = Quaternion.Euler(-90, -90, 0);
+			newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/Wall" + roomColor), objectPos, objectRot) as GameObject;
+			newObj.name = "WallEast";
+		} else {
+			objectRot = Quaternion.Euler(0, -90, 0);
+			newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/Door" + roomColor), objectPos, objectRot) as GameObject;
+			newObj.name = "DoorEast";
+			doorControl = newObj.GetComponent<DoorController>();
+			doorControl.outDoor = 'w';
 
-			// Right/East
-			objectPos = new Vector3(8f + offsetX, 0, offsetZ);
-			if (roomNum % size == 0) {
-				objectRot = Quaternion.Euler(-90, -90, 0);
-				newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/Wall" + roomColor), objectPos, objectRot) as GameObject;
-				newObj.name = "WallEast";
+			if (switchDoorAdjacent && (quadrant == 0 || quadrant == 2)) {
+				doorControl.nextRoomNum = switchRoomNumber;
+				GameObject.Find("DoorSwitchEnterLeft").GetComponent<DoorController>().nextRoomNum = player + "-" + roomNum;
 			} else {
-				objectRot = Quaternion.Euler(0, -90, 0);
-				newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/Door" + roomColor), objectPos, objectRot) as GameObject;
-				newObj.name = "DoorEast";
-				doorControl = newObj.GetComponent<DoorController>();
-				doorControl.outDoor = 'w';
-				doorControl.nextRoomNum = player + "-" + (roomNum - 1);
+				doorControl.nextRoomNum = player + "-" + (roomNum + 1);
 			}
-			newObj.transform.SetParent(doorParent);
 		}
+		newObj.transform.SetParent(doorParent);
 
-
+		bool isSwitchWall;
 		// Up/North
+		isSwitchWall = switchWallAdjacent && quadrant <= 1;
 		objectPos = new Vector3(0 + offsetX, 0, 4f + offsetZ);
-		if (roomNum >= (size * (size - 1))) {
+		bool topWall = roomNum >= (size * (size - 1));
+		if (topWall || isSwitchWall) {
 			objectRot = Quaternion.Euler(-90, -180, 0);
 			newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/Wall" + roomColor), objectPos, objectRot) as GameObject;
 			newObj.name = "WallNorth";
@@ -232,8 +243,10 @@ public class LevelGenerator : MonoBehaviour {
 		newObj.transform.SetParent(doorParent);
 
 		// Down/South
+		isSwitchWall = switchWallAdjacent && quadrant >= 2;
+		bool bottomWall = roomNum < size;
 		objectPos = new Vector3(0 + offsetX, 0, -4f + offsetZ);
-		if (roomNum < size) {
+		if (bottomWall || isSwitchWall) {
 			objectRot = Quaternion.Euler(-90, 0, 0);
 			newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/Wall" + roomColor), objectPos, objectRot) as GameObject;
 			newObj.name = "WallSouth";
@@ -246,10 +259,6 @@ public class LevelGenerator : MonoBehaviour {
 			doorControl.nextRoomNum = player + "-" + (roomNum - size);
 		}
 		newObj.transform.SetParent(doorParent);
-	}
-
-	void GenerateWallOrDoor(char direction) {
-
 	}
 
 	void ReplaceDoorWithWall(string player, string roomNum, string direction) {
