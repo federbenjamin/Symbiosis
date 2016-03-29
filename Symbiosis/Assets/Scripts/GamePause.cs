@@ -105,7 +105,7 @@ public class GamePause : MonoBehaviour {
 
 	public void changeControlImage(string targetImage) {
 		if (targetImage == "next") {
-			if (controlImageIndex != 1) {
+			if (controlImageIndex != tutorialSprites.Length - 1) {
 				controlImageIndex++;
 				controlsImage.GetComponent<Image>().sprite = tutorialSprites[controlImageIndex];
 				controlsPageCount.GetComponent<Text>().text = (controlImageIndex + 1) + "/" + (tutorialSprites.Length);
