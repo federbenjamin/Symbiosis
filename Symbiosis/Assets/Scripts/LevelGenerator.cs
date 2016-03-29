@@ -9,13 +9,17 @@ public class LevelGenerator : MonoBehaviour {
 
 	private int seed;
 	private bool useRandomSeed = false;
-	private int size = 3;
+	private int size;
 	private System.Random pseudoRandom;
 	private Transform roomParent;
 
 	private int numRedRoomPrefabs = 1;
 	private int numGreenRoomPrefabs = 1;
 	private int numBlueRoomPrefabs = 1;
+
+	// 0=bottom-left, 1=bottom-right, 2=top-left, 3=top-right
+	private int p1Quadrant = 0;
+	private int p2Quadrant = 0;
 
 	void Awake () {
 		Instance = this;
@@ -25,21 +29,40 @@ public class LevelGenerator : MonoBehaviour {
 	void Start () {
 		roomParent = GameObject.Find("Rooms").transform;
 
+		size = GameStats.levelSize;
 		if (useRandomSeed) {
 			seed = (int)System.DateTime.Now.Ticks;
 		} else {
-			seed = -2001603228;
+			seed = GameStats.seed;
 		}
 		Debug.Log(seed);
 		pseudoRandom = new System.Random(seed);
 
+		int rightSidePlayer = pseudoRandom.Next(2);
+		int topHalfPlayer = pseudoRandom.Next(2);
+
 		string[] players = new string[] {"P1", "P2"};
 		foreach (string player in players) {
-			int offset = 0;
-			if (player == "P2") {
-				offset = (size + 1) * 40;
+			int xOffset = 0;
+			if (player == "P1" && rightSidePlayer == 0) {
+				xOffset = (size + 1) * 40;
+				p1Quadrant++;
 			}
-			GenerateInitalRooms(player, offset);
+			else if (player == "P2" && rightSidePlayer == 1) {
+				xOffset = (size + 1) * 40;
+				p2Quadrant++;
+			}
+
+			int zOffset = 0;
+			if (player == "P1" && topHalfPlayer == 0) {
+				zOffset = (size - 1) * 32;
+				p1Quadrant = p1Quadrant + 2;
+			}
+			else if (player == "P2" && topHalfPlayer == 1) {
+				zOffset = (size - 1) * 32;
+				p2Quadrant = p2Quadrant + 2;
+			}
+			GenerateInitalRooms(player, xOffset, zOffset);
 		}
 
 		// Generate gauntlet
@@ -59,17 +82,12 @@ public class LevelGenerator : MonoBehaviour {
 	
 	}
 
-	void GenerateInitalRooms(string player, int offset) {
+	void GenerateInitalRooms(string player, int levelXOffset, int levelZOffset) {
 		for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {
 				int roomNumber = (i * size) + j;
-				int xOffset;
-				if (player == "P1") {
-					xOffset = j * 40 + offset;
-				} else {
-					xOffset = (size - 1 - j) * 40 + offset;
-				}
-				int zOffset = i * 32;
+				int xOffset = j * 40 + levelXOffset;
+				int zOffset = i * 32 + levelZOffset;
 				Vector3 roomPosition = new Vector3(xOffset, 0, zOffset);
 
 				string roomSuffix = RandomRoomPrefab(roomNumber);
@@ -86,7 +104,7 @@ public class LevelGenerator : MonoBehaviour {
 
 	string RandomRoomPrefab(int roomNum) {
 		int colorNum = pseudoRandom.Next(3);
-		Debug.Log(colorNum);
+
 		// Red
 		if (colorNum == 0) {
 			int prefabNum = pseudoRandom.Next(numRedRoomPrefabs);
@@ -228,6 +246,10 @@ public class LevelGenerator : MonoBehaviour {
 			doorControl.nextRoomNum = player + "-" + (roomNum - size);
 		}
 		newObj.transform.SetParent(doorParent);
+	}
+
+	void GenerateWallOrDoor(char direction) {
+
 	}
 
 	void LoadRemainingAssets() {

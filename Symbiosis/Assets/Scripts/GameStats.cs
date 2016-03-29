@@ -7,9 +7,15 @@ public class GameStats : MonoBehaviour {
 
 	public static GameStats Instance;
 
+	public static int seed = -2001603228;
+	public static int levelSize = 3;
+
 	public bool invincible = false;
 	public bool skipIntro;
 
+
+	public static bool paused = false;
+	private GameObject pauseUI;
 	public static bool gameStarted = false;
 	private bool animationStarted = false;
 	private string startButton;
