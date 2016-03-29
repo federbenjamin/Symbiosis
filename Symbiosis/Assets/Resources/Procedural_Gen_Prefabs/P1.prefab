@@ -1397,7 +1397,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00ad54e156b854f4a9d35a15fc64171d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookAtObject: {fileID: 0}
 --- !u!114 &11452692
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1427,7 +1426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76bf0cb6a44f2456ab48ffa747011d1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startRoom: P1-0
+  startRoom: P1-1
   augmentName: 
   invincibilityTime: 0.3
   swapCooldownSound: {fileID: 8300000, guid: eaa112e928c2641e88acbfd230189a80, type: 3}
@@ -2072,7 +2071,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: startRoom
-      value: P1-0
+      value: P1-1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Name

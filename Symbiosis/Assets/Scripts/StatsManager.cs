@@ -56,6 +56,7 @@ public class StatsManager : MonoBehaviour {
 	}
 
 	void Awake () {
+		startRoom = (startRoom == "" ? "Tutorial" : startRoom);
 		roomIn = GameObject.Find("Room" + playerPrefix + startRoom);
 		//audioPlacement = GameObject.Find("AudioListener").GetComponent<AudioPlacement> ();
 	}

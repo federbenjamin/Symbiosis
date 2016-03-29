@@ -5,10 +5,7 @@ using System.Text.RegularExpressions;
 
 public class LevelGenerator : MonoBehaviour {
 
-	public static LevelGenerator Instance;
-
 	private int seed;
-	private bool useRandomSeed = true;
 	private int size;
 	private System.Random pseudoRandom;
 	private Transform roomParent;
@@ -24,20 +21,18 @@ public class LevelGenerator : MonoBehaviour {
 	private string switchRoomNumber = "100";
 
 	void Awake () {
-		Instance = this;
+		roomParent = GameObject.Find("Rooms").transform;
 	}
 
 	// Use this for initialization
 	void Start () {
-		roomParent = GameObject.Find("Rooms").transform;
 
-		size = Mathf.Min(GameStats.levelSize, 10);
-		size = Mathf.Max(size, 3);
-		if (useRandomSeed) {
-			seed = (int)System.DateTime.Now.Ticks;
-		} else {
-			seed = GameStats.seed;
+		// Get level inputs - size and seed
+		if (LevelData.randomLevel) {
+			LevelData.GenerateRandomSeed();
 		}
+		size = LevelData.levelSize;
+		seed = LevelData.levelSeed;
 		Debug.Log(seed);
 		pseudoRandom = new System.Random(seed);
 

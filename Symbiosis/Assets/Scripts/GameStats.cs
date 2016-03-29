@@ -7,9 +7,6 @@ public class GameStats : MonoBehaviour {
 
 	public static GameStats Instance;
 
-	public static int seed = -2001603228;
-	public static int levelSize = 3;
-
 	public bool invincible = false;
 	public bool skipIntro;
 
