@@ -77,7 +77,7 @@ public class RoomController : MonoBehaviour {
 				foreach (GameObject door in doors) {
 					if (door.name == "DoorSwitchExit") {
 						Animator doorAnimator = door.GetComponent<Animator> ();
-						doorAnimator.SetTrigger ("OpenDoor");
+						StartCoroutine (OpenDoor(1f, doorAnimator));
 					} else if (door.name == "DoorSwitchEnter") {
 						Animator doorAnimator = door.GetComponent<Animator> ();
 						doorAnimator.SetTrigger ("Close");
@@ -204,6 +204,12 @@ public class RoomController : MonoBehaviour {
 	IEnumerator Wait() {
 		yield return new WaitForSeconds (3f);
 		SceneManager.LoadScene ("WinScreen");
+	}
+
+	IEnumerator OpenDoor(float timeToWait, Animator doorAnimator) {
+		doorAnimator.Play("DoorButton-ColorChange");
+		yield return new WaitForSeconds (timeToWait);
+		doorAnimator.Play("DoorOpening");
 	}
 
 }
