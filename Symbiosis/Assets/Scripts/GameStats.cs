@@ -10,8 +10,6 @@ public class GameStats : MonoBehaviour {
 	public bool invincible = false;
 	public bool skipIntro;
 
-	public static bool paused = false;
-	private GameObject pauseUI;
 	public static bool gameStarted = false;
 	private bool animationStarted = false;
 	private string startButton;
@@ -42,17 +40,17 @@ public class GameStats : MonoBehaviour {
 			// Pause Screen
 			else if (ui.name == "Pause") {
 				// Make pause screen invisible when game starts
-				pauseUI = ui.gameObject;
-				pauseUI.GetComponent<Image>().color = new Color(0, 0, 0, 0);
-				pauseUI.transform.GetChild(0).GetComponent<Image>().color = new Color(255, 255, 255, 0);
+				// pauseUI = ui.gameObject;
+				// pauseUI.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+				// pauseUI.transform.GetChild(0).GetComponent<Image>().color = new Color(255, 255, 255, 0);
 				// Get scale for pause background and keep pause text in a locked ratio
-				newScaleY = (Screen.height / 1080f);
-				newScaleX = (Screen.width / 1920f);
-				if (Mathf.Min(newScaleY, newScaleX) == newScaleX) {
-					pauseUI.transform.GetChild(0).localScale = new Vector3(newScaleY / newScaleX, 1.0f, 1.0f);
-				} else {
-					pauseUI.transform.GetChild(0).localScale = new Vector3(1.0f, newScaleX / newScaleY, 1.0f);
-				}
+				 newScaleY = (Screen.height / 1080f);
+				 newScaleX = (Screen.width / 1920f);
+				// if (Mathf.Min(newScaleY, newScaleX) == newScaleX) {
+				// 	pauseUI.transform.GetChild(0).localScale = new Vector3(newScaleY / newScaleX, 1.0f, 1.0f);
+				// } else {
+				// 	pauseUI.transform.GetChild(0).localScale = new Vector3(1.0f, newScaleX / newScaleY, 1.0f);
+				// }
 				// Get new anchor position based on screen height
 				float newYPos = Screen.height / -2f;
 				uiTransform.anchoredPosition = new Vector2(0f, newYPos);
@@ -92,23 +90,7 @@ public class GameStats : MonoBehaviour {
 	}
 
 	void Update () {
-		if (Input.GetButtonDown(startButton)) {
-			if (!paused) {
-				paused = true;
-				pauseUI.GetComponent<Image>().color = new Color(0, 0, 0, 0.5f);
-				pauseUI.transform.GetChild(0).GetComponent<Image>().color = new Color(1, 1, 1, 1);
-				Time.timeScale = 0;
-				gameAudio.changeMainSongVolume(0.07f);
-				gameAudio.changeMainSongPitch(0.9f);
-			} else {
-				paused = false;
-				pauseUI.GetComponent<Image>().color = new Color(0, 0, 0, 0);
-				pauseUI.transform.GetChild(0).GetComponent<Image>().color = new Color(1, 1, 1, 0);
-				Time.timeScale = 1;
-				gameAudio.changeMainSongVolume(0.264f);
-				gameAudio.changeMainSongPitch(1f);
-			}
-		}
+		
 	}
 
 	void OpenDoorsExceptFirst() {

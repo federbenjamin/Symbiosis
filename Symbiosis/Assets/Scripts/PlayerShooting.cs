@@ -81,7 +81,7 @@ public class PlayerShooting : MonoBehaviour {
 			sword.GetComponent<PlayerSword> ().setAugment (aug);
 		};
 
-		if (!HealthManager.isGameOver && !GameStats.paused && GameStats.gameStarted) {
+		if (!HealthManager.isGameOver && !GamePause.isPaused && GameStats.gameStarted) {
 
 			playerShooting = (Input.GetButton ("FireRight" + playerPrefix) ||
 				Input.GetButton ("FireDown" + playerPrefix) ||
