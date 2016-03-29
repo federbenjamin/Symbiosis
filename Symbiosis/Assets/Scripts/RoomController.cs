@@ -5,6 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class RoomController : MonoBehaviour {
 
+	private string roomColor;
+	public string RoomColor {
+		get{return roomColor;}
+		set{roomColor = value;}
+	}
+
 	public GameObject boss;
 	public GameObject greenZomb;
 	public GameObject redZomb;
