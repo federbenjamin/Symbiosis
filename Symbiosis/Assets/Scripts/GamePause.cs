@@ -23,6 +23,7 @@ public class GamePause : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		pausePanel.SetActive(false);
 
 		if ((Application.platform == RuntimePlatform.OSXEditor) || (Application.platform == RuntimePlatform.OSXPlayer)) {
 			startButton = "StartMac";
