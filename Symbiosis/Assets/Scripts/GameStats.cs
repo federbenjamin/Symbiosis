@@ -28,14 +28,14 @@ public class GameStats : MonoBehaviour {
 
 	void Start () {
 		// Scale and Translate UI depending on screen size
-		float inverseHudHeight = 7.3f;
+		float inverseHudHeight = 7.32f;
 		foreach (Transform ui in transform) {
 			RectTransform uiTransform = (RectTransform) ui;
 			float newScaleX, newScaleY = 0f;
 
 			// Health UI Element
 			if (ui.name == "Health") {
-				newScaleX = (Screen.height / (256f * inverseHudHeight)) * 1.84f;
+				newScaleX = (Screen.height / (256f * inverseHudHeight)) * 1.83f;
 				// Camera healthDivCam = GameObject.Find("DividerHealth").GetComponent<Camera>();
 				// healthDivCam.rect = new Rect(healthDivCam.rect.x, healthDivCam.rect.y, healthDivCam.rect.width, newScaleX * 100f / Screen.height);
 			}
