@@ -65,6 +65,8 @@ ModelImporter:
     7400004: Player_Shoot
     7400006: Player_Walk
     7400008: Player_Walk2
+    7400010: Player_Fear
+    7400012: Player_Walk_001
     9500000: //RootNode
     13700000: Arm_True_L
     13700002: Arm_True_R
