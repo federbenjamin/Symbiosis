@@ -44351,7 +44351,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1125245485}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 113.1, y: 6.4, z: 397}
+  m_LocalPosition: {x: 113.1, y: 6.4, z: 396.44}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 738618418}
@@ -59447,7 +59447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -60528,7 +60528,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1554828754}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -47, y: 6.4, z: 397}
+  m_LocalPosition: {x: -47, y: 6.4, z: 396.44}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1729722207}
@@ -67329,6 +67329,10 @@ Prefab:
     - target: {fileID: 2004190, guid: 69511bb06e5054426b85720a028f96bd, type: 2}
       propertyPath: m_NormalizedViewPortRect.height
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 145026, guid: 69511bb06e5054426b85720a028f96bd, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 69511bb06e5054426b85720a028f96bd, type: 2}
