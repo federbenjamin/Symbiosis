@@ -14,10 +14,6 @@ public class LevelGenerator : MonoBehaviour {
 	private int numGreenRoomPrefabs = 1;
 	private int numBlueRoomPrefabs = 1;
 
-	// 0=bottom-left, 1=bottom-right, 2=top-left, 3=top-right
-	private int p1Quadrant = 0;
-	private int p2Quadrant = 0;
-
 	void Awake () {
 		roomParent = GameObject.Find("Rooms").transform;
 	}
@@ -46,6 +42,7 @@ public class LevelGenerator : MonoBehaviour {
 
 		string[] players = new string[] {"P1", "P2"};
 		foreach (string player in players) {
+			// Quadrant: 0=bottom-left, 1=bottom-right, 2=top-left, 3=top-right
 			int quadrant, xOffset, zOffset;
 			quadrant = xOffset = zOffset = 0;
 
@@ -62,7 +59,6 @@ public class LevelGenerator : MonoBehaviour {
 
 			GenerateInitalRooms(player, quadrant, xOffset, zOffset);
 		}
-
 		LoadRemainingAssets();
 	}
 
@@ -85,16 +81,25 @@ public class LevelGenerator : MonoBehaviour {
 
 					string roomSuffix = RandomRoomPrefab(roomNumber);
 					string roomColor = Regex.Match(roomSuffix, @"\D+").Groups[0].Value;
-					GameObject newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/Room" + roomSuffix), roomPosition, Quaternion.identity) as GameObject;
-					newObj.name = "Room" + player + "-" + roomNumber;
-					newObj.transform.SetParent(roomParent);
-					newObj.GetComponent<RoomController>().RoomColor = roomColor;
+					// GameObject newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/Room" + roomSuffix), roomPosition, Quaternion.identity) as GameObject;
+					string name = "Room" + player + "-" + roomNumber;
+					// newObj.transform.SetParent(roomParent);
+					// newObj.GetComponent<RoomController>().RoomColor = roomColor;
+					GameObject newRoom = GenerateRoom(roomSuffix, name, roomColor, roomPosition);
 					
 					Vector3 roomOffset = new Vector3(xOffset, 0, zOffset);
-					GenerateDoorsAndWalls(newObj.transform, player, roomNumber, roomColor, roomOffset, quadrantRooms);
+					GenerateDoorsAndWalls(newRoom.transform, player, roomNumber, roomColor, roomOffset, quadrantRooms);
 				}
 			}
 		}
+	}
+
+	private GameObject GenerateRoom(string roomSuffix, string roomName, string roomColor, Vector3 roomPosition) {
+		GameObject newRoom = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/Room" + roomSuffix), roomPosition, Quaternion.identity) as GameObject;
+		newRoom.name = roomName;
+		newRoom.transform.SetParent(roomParent);
+		newRoom.GetComponent<RoomController>().RoomColor = roomColor;
+		return newRoom;
 	}
 
 	private void GenerateTutorialRoom(string player, int[] quadrantRooms) {
@@ -159,12 +164,12 @@ public class LevelGenerator : MonoBehaviour {
 	}
 
 	private void GenerateDoorsAndWalls(Transform doorParent, string player, int roomNum, string roomColor, Vector3 offset, int[] quadrantRooms) {
+		const string switchRoomNumber = "100";
 
 		int quadrant = quadrantRooms[0];
-		int switchRoomNumber = quadrantRooms[2];
 		bool switchDoor, switchWall, tutorialDoor;
 		switchDoor = switchWall = tutorialDoor = false;
-		if (roomNum == switchRoomNumber) {
+		if (roomNum == quadrantRooms[2]) {
 			switchDoor = true;
 		} else if (roomNum == quadrantRooms[3]) {
 			switchWall = true;
@@ -191,14 +196,14 @@ public class LevelGenerator : MonoBehaviour {
 
 			if (direction == "East") {
 				if (switchDoor && (quadrant == 0 || quadrant == 2)) {
-					newObj.GetComponent<DoorController>().nextRoomNum = switchRoomNumber.ToString();
+					newObj.GetComponent<DoorController>().nextRoomNum = switchRoomNumber;
 					GameObject.Find("DoorSwitchEnterLeft").GetComponent<DoorController>().nextRoomNum = player + "-" + roomNum;
 				} else if (tutorialDoor && (quadrant == 1 || quadrant == 3)) {
 					newObj.GetComponent<DoorController>().nextRoomNum = player + "Tutorial";
 				} 
 			} else if (direction == "West") {
 				if (switchDoor && (quadrant == 1 || quadrant == 3)) {
-					newObj.GetComponent<DoorController>().nextRoomNum = switchRoomNumber.ToString();
+					newObj.GetComponent<DoorController>().nextRoomNum = switchRoomNumber;
 					GameObject.Find("DoorSwitchEnterRight").GetComponent<DoorController>().nextRoomNum = player + "-" + roomNum;
 				} else if (tutorialDoor && (quadrant == 0 || quadrant == 2)) {
 					newObj.GetComponent<DoorController>().nextRoomNum = player + "Tutorial";
@@ -214,7 +219,6 @@ public class LevelGenerator : MonoBehaviour {
 		Quaternion objectRot;
 		DoorController doorControl;
 
-		const string switchRoomNumber = "100";
 		Vector3 dirOffset;
 		int yRotation;
 		char newOutDoor;
