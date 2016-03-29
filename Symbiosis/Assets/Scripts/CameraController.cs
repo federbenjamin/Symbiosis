@@ -19,7 +19,7 @@ public class CameraController : MonoBehaviour {
 	private Camera camera;
 	public GameObject playerSlime;
 	public static bool followSlime = true;
-	
+	private bool cameraInit = false;
 
 	public GameObject cameraPointer;
 	private float deltaDist;
@@ -50,7 +50,7 @@ public class CameraController : MonoBehaviour {
 	
 	}
 
-	void LateUpdate () {
+	void FixedUpdate () {
 		if (followSlime == false) {
 
 			if (playersTogether == true) {
@@ -77,7 +77,14 @@ public class CameraController : MonoBehaviour {
 					}
 				}
 
-				if (newRoomCameraPos == Vector3.zero) {
+				if (!cameraInit) {
+					newCameraPos = newRoomCameraPos;
+					if (transform.position.x < newRoomCameraPos.x + 0.01) {
+						cameraInit = true;
+					}
+				}
+
+				if (newRoomCameraPos == Vector3.zero || !cameraInit) {
 					transform.position = Vector3.Lerp (transform.position, newCameraPos, camMoveSpeed * Time.deltaTime);
 				} else {
 					transform.position = newRoomCameraPos;
