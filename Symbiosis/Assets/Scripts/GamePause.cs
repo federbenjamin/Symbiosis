@@ -2,6 +2,7 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GamePause : MonoBehaviour {
 
@@ -48,5 +49,15 @@ public class GamePause : MonoBehaviour {
 			gameAudio.changeMainSongVolume(0.264f);
 			gameAudio.changeMainSongPitch(1f);
 		}
+	}
+
+	public void GameQuit() {
+		TogglePause();
+		Application.Quit();
+	}
+
+	public void ReturnToMain () {
+		TogglePause();
+		SceneManager.LoadScene("StartScreen");
 	}
 }
