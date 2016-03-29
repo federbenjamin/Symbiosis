@@ -252,6 +252,21 @@ public class LevelGenerator : MonoBehaviour {
 
 	}
 
+	void ReplaceDoorWithWall(string player, string roomNum, string direction) {
+		GameObject room = GameObject.Find("Room" + player + "-" + roomNum);
+		foreach (Transform child in room.transform) {
+			if (child.name == ("Door" + direction)) {
+				Vector3 wallPos = new Vector3(child.position.x, 0, child.position.z);
+				Quaternion wallRot = Quaternion.Euler(-90, child.rotation.eulerAngles.y, 0);
+				string roomColor = room.GetComponent<RoomController>().RoomColor;
+				GameObject newWall = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/Wall" + roomColor), wallPos, wallRot) as GameObject;
+				newWall.name = ("Wall" + direction);
+				Destroy(child.gameObject);
+				break;
+			}
+		}
+	}
+
 	void LoadRemainingAssets() {
 		Transform rootTransform = GameObject.Find("Root").transform;
 		string[] objectNameList = new string[] {"Divider", "DividerHealth", "Canvas", "P1", "P2", "CameraParentP1", "CameraParentP2", "AudioListener"};

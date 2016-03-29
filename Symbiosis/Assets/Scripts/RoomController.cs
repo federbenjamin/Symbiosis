@@ -102,8 +102,10 @@ public class RoomController : MonoBehaviour {
 						//Leftdoor +, RightDoor - Rotations in Y
 						if (transform.name != "Room1" && transform.name != "Room2") {
 							foreach (GameObject door in doors) {
-								Animator doorAnimator = door.GetComponent<Animator> ();
-								doorAnimator.SetTrigger ("Open");
+								if (door != null) {
+									Animator doorAnimator = door.GetComponent<Animator> ();
+									doorAnimator.SetTrigger ("Open");
+								}
 							}
 						}
 					}
