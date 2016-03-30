@@ -36,9 +36,7 @@ public class LevelGenerator : MonoBehaviour {
 
 		// Generate gauntlet
 		Vector3 roomPosition = new Vector3((size - 1) * 40, 0, (size - 1) * 32);
-		GameObject newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/Gauntlet"), roomPosition, Quaternion.identity) as GameObject;
-		newObj.name = "RoomGauntlet";
-		newObj.transform.SetParent(roomParent);
+		GenerateRoom("Gauntlet", "RoomGauntlet", roomPosition);
 
 		string[] players = new string[] {"P1", "P2"};
 		foreach (string player in players) {
@@ -81,11 +79,8 @@ public class LevelGenerator : MonoBehaviour {
 
 					string roomSuffix = RandomRoomPrefab(roomNumber);
 					string roomColor = Regex.Match(roomSuffix, @"\D+").Groups[0].Value;
-					// GameObject newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/Room" + roomSuffix), roomPosition, Quaternion.identity) as GameObject;
 					string name = "Room" + player + "-" + roomNumber;
-					// newObj.transform.SetParent(roomParent);
-					// newObj.GetComponent<RoomController>().RoomColor = roomColor;
-					GameObject newRoom = GenerateRoom(roomSuffix, name, roomColor, roomPosition);
+					GameObject newRoom = GenerateRoom(roomSuffix, name, roomPosition, roomColor);
 					
 					Vector3 roomOffset = new Vector3(xOffset, 0, zOffset);
 					GenerateDoorsAndWalls(newRoom.transform, player, roomNumber, roomColor, roomOffset, quadrantRooms);
@@ -94,7 +89,14 @@ public class LevelGenerator : MonoBehaviour {
 		}
 	}
 
-	private GameObject GenerateRoom(string roomSuffix, string roomName, string roomColor, Vector3 roomPosition) {
+	private GameObject GenerateRoom(string roomSuffix, string roomName, Vector3 roomPosition) {
+		GameObject newRoom = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/Room" + roomSuffix), roomPosition, Quaternion.identity) as GameObject;
+		newRoom.name = roomName;
+		newRoom.transform.SetParent(roomParent);
+		return newRoom;
+	}
+
+	private GameObject GenerateRoom(string roomSuffix, string roomName, Vector3 roomPosition, string roomColor) {
 		GameObject newRoom = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/Room" + roomSuffix), roomPosition, Quaternion.identity) as GameObject;
 		newRoom.name = roomName;
 		newRoom.transform.SetParent(roomParent);
@@ -106,6 +108,45 @@ public class LevelGenerator : MonoBehaviour {
 		int quadrant = quadrantRooms[0];
 		int tutorialRoomAdjacent = quadrantRooms[4];
 
+		int roomNum, offsetX, offsetZ;
+		Vector3 offset;
+		if (quadrant == 0) {
+			roomNum = -1;
+			offsetX = -1;
+			offsetZ = 0;
+		} else if (quadrant == 1) {
+			roomNum = size;
+			offsetX = size * 2 - 1;
+			offsetZ = 0;
+		} else if (quadrant == 2) {
+			roomNum = size * (size - 1) - 1;
+			offsetX = -1;
+			offsetZ = size * 2 - 2;
+		} else {
+			roomNum = size * size;
+			offsetX = size * 2 - 1;
+			offsetZ = size * 2 - 2;
+		}
+		offset = new Vector3(offsetX * 40, 0, offsetZ * 32);
+
+		string roomName = "Room" + player + "Tutorial";
+		GameObject newRoom = GenerateRoom("Tutorial", roomName, offset, "Blank");
+
+		bool spawnWall;
+		GameObject newObj;
+		string[] directions = new string[] {"West", "East", "North", "South"};
+		foreach (string direction in directions) {
+
+			spawnWall = true;
+			bool rightHalfDoor = direction == "West" && (quadrant == 1 || quadrant == 3);
+			bool leftHalfDoor = direction == "East" && (quadrant == 0 || quadrant == 2);
+			if (rightHalfDoor || leftHalfDoor) {
+				spawnWall = false;
+			}
+
+			newObj = GenerateDoorOrWall(direction, player, roomNum, "Blank", offset, spawnWall);
+			newObj.transform.SetParent(newRoom.transform);
+		}
 	}
 
 	/*
@@ -186,7 +227,7 @@ public class LevelGenerator : MonoBehaviour {
 			} else if (direction == "West") {
 				spawnWall = (roomNum % size == 0) && !switchDoor && !tutorialDoor;
 			} else if (direction == "North") {
-				spawnWall = (roomNum >= (size * size - 1)) || (switchWall && quadrant <= 1);
+				spawnWall = (roomNum >= (size * (size - 1))) || (switchWall && quadrant <= 1);
 			} else {
 				spawnWall = (roomNum < size) || (switchWall && quadrant >= 2);
 			}

@@ -56,15 +56,17 @@ public class StatsManager : MonoBehaviour {
 	}
 
 	void Awake () {
+		playerPrefix = gameObject.name.Substring(0, 2);
 		startRoom = (startRoom == "" ? "Tutorial" : startRoom);
-		roomIn = GameObject.Find("Room" + playerPrefix + startRoom);
+		string startRoomName = "Room" + playerPrefix + startRoom;
+		roomIn = GameObject.Find(startRoomName);
+		Debug.Log(startRoomName);
 		//audioPlacement = GameObject.Find("AudioListener").GetComponent<AudioPlacement> ();
 	}
 
 	// Use this for initialization
 	void Start () {
 		playerAugment = null;
-		playerPrefix = gameObject.name;
 
 		if (playerPrefix == "P1") {
 			otherPlayerPrefix = "P2";
