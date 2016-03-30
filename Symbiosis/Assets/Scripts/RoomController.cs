@@ -84,7 +84,7 @@ public class RoomController : MonoBehaviour {
 					if (door.name == "DoorSwitchExit") {
 						Animator doorAnimator = door.GetComponent<Animator> ();
 						StartCoroutine (OpenDoor(1f, doorAnimator));
-					} else if (door.name == "DoorSwitchEnter") {
+					} else if (door.name == "DoorSwitchEnterLeft" || door.name == "DoorSwitchEnterRight") {
 						Animator doorAnimator = door.GetComponent<Animator> ();
 						doorAnimator.SetTrigger ("Close");
 					}
