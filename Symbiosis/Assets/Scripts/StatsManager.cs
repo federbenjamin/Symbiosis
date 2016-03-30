@@ -51,16 +51,30 @@ public class StatsManager : MonoBehaviour {
 	private float nextHoopShow = 0.0f;
 
 	private AudioPlacement audioPlacement;
+	public AudioPlacement AudioPlacement {
+		set{audioPlacement = value;}
+	}
+	public bool inGeneratedLevel;
 
 	void Awake () {
-		roomIn = GameObject.Find("Room" + startRoom);
-		audioPlacement = GameObject.Find("AudioListener").GetComponent<AudioPlacement> ();
+		playerPrefix = gameObject.name.Substring(0, 2);
+		string startRoomName;
+		if (inGeneratedLevel) {
+			startRoom = (startRoom == "" ? "Tutorial" : startRoom);
+			startRoomName = "Room" + playerPrefix + startRoom;
+		} else {
+			if (startRoom == "") {
+				startRoom = (playerPrefix == "P1" ? "1" : "2");
+			}
+			startRoomName = "Room" + startRoom;
+		}
+		roomIn = GameObject.Find(startRoomName);
+		//audioPlacement = GameObject.Find("AudioListener").GetComponent<AudioPlacement> ();
 	}
 
 	// Use this for initialization
 	void Start () {
 		playerAugment = null;
-		playerPrefix = gameObject.name;
 
 		if (playerPrefix == "P1") {
 			otherPlayerPrefix = "P2";
@@ -86,8 +100,10 @@ public class StatsManager : MonoBehaviour {
 			hudReq = Resources.Load<Sprite> ("Interface/P1-slots-prompt");
 		}
 
-		transform.position = new Vector3(roomIn.transform.position.x, 0f, roomIn.transform.position.z);
-	
+		if (roomIn != null) {
+			transform.position = new Vector3(roomIn.transform.position.x, 0f, roomIn.transform.position.z);
+		}
+
 		playerShooting = GetComponent<PlayerShooting> ();
 		otherPlayerShooting = GameObject.Find (otherPlayerPrefix).GetComponent<PlayerShooting> ();
 

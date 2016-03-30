@@ -10,6 +10,9 @@ public class GameStats : MonoBehaviour {
 	public bool invincible = false;
 	public bool skipIntro;
 
+
+	public static bool paused = false;
+	private GameObject pauseUI;
 	public static bool gameStarted = false;
 	private bool animationStarted = false;
 	private string startButton;
@@ -19,6 +22,7 @@ public class GameStats : MonoBehaviour {
 		set{playersTogether = value;}
 	}
 	private AudioPlacement gameAudio;
+	public bool isGeneratedLevel;
 
 	void Awake () {
 		Instance = this;
@@ -94,9 +98,18 @@ public class GameStats : MonoBehaviour {
 	}
 
 	void OpenDoorsExceptFirst() {
+		string startRoom1, startRoom2;
+		if (isGeneratedLevel) {
+			startRoom1 = "RoomP1Tutorial";
+			startRoom2 = "RoomP2Tutorial";
+		} else {
+			startRoom1 = "Room1";
+			startRoom2 = "Room2";
+		}
+
 		GameObject[] roomsList = GameObject.FindGameObjectsWithTag("Room");
 		foreach (GameObject room in roomsList) {
-			if (room.name != "Room1" && room.name != "Room2") {
+			if (room.name != startRoom1 && room.name != startRoom2) {
 				OpenDoor(room);
 			}
 		}
@@ -130,8 +143,13 @@ public class GameStats : MonoBehaviour {
 		gameStarted = true;
 		CameraController.followSlime = false;
 		yield return new WaitForSeconds (8.0f);
-		OpenDoor(GameObject.Find("Room1"));
-		OpenDoor(GameObject.Find("Room2"));
+		if (isGeneratedLevel) {
+			OpenDoor(GameObject.Find("RoomP1Tutorial"));
+			OpenDoor(GameObject.Find("RoomP2Tutorial"));
+		} else {
+			OpenDoor(GameObject.Find("Room1"));
+			OpenDoor(GameObject.Find("Room2"));
+		}
 		animationStarted = false;
 	}
 
@@ -143,8 +161,13 @@ public class GameStats : MonoBehaviour {
 
 		gameStarted = true;
 		CameraController.followSlime = false;
-		OpenDoor(GameObject.Find("Room1"));
-		OpenDoor(GameObject.Find("Room2"));
+		if (isGeneratedLevel) {
+			OpenDoor(GameObject.Find("RoomP1Tutorial"));
+			OpenDoor(GameObject.Find("RoomP2Tutorial"));
+		} else {
+			OpenDoor(GameObject.Find("Room1"));
+			OpenDoor(GameObject.Find("Room2"));
+		}
 		animationStarted = false;
 		yield return new WaitForSeconds (0f);
 	}

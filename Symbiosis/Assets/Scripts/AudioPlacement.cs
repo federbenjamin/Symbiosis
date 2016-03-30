@@ -10,6 +10,9 @@ public class AudioPlacement : MonoBehaviour {
 	void Start () {
 		cameraP1 = GameObject.Find("CameraParentP1").transform;
 		cameraP2 = GameObject.Find("CameraParentP2").transform;
+
+		GameObject.Find("P1").GetComponent<StatsManager>().AudioPlacement = this;
+		GameObject.Find("P2").GetComponent<StatsManager>().AudioPlacement = this;
 	}
 	
 	// Update is called once per frame

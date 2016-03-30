@@ -3,7 +3,7 @@ using System.Collections;
 
 public class DoorController : MonoBehaviour {
 
-	public float nextRoomNum;
+	public string nextRoomNum;
 	public char outDoor;
 	private GameObject nextRoom;
 	private GameObject playerCamera;

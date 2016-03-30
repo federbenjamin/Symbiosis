@@ -5,6 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class RoomController : MonoBehaviour {
 
+	private string roomColor;
+	public string RoomColor {
+		get{return roomColor;}
+		set{roomColor = value;}
+	}
+
 	public GameObject boss;
 	public GameObject greenZomb;
 	public GameObject redZomb;
@@ -78,7 +84,7 @@ public class RoomController : MonoBehaviour {
 					if (door.name == "DoorSwitchExit") {
 						Animator doorAnimator = door.GetComponent<Animator> ();
 						StartCoroutine (OpenDoor(1f, doorAnimator));
-					} else if (door.name == "DoorSwitchEnter") {
+					} else if (door.name == "DoorSwitchEnterLeft" || door.name == "DoorSwitchEnterRight") {
 						Animator doorAnimator = door.GetComponent<Animator> ();
 						doorAnimator.SetTrigger ("Close");
 					}
@@ -94,10 +100,12 @@ public class RoomController : MonoBehaviour {
 							StartCoroutine ("Wait");
 						}
 						//Leftdoor +, RightDoor - Rotations in Y
-						if (transform.name != "Room1" && transform.name != "Room2") {
+						if (transform.name != "RoomP1Tutorial" && transform.name != "RoomP2Tutorial") {
 							foreach (GameObject door in doors) {
-								Animator doorAnimator = door.GetComponent<Animator> ();
-								doorAnimator.SetTrigger ("Open");
+								if (door != null) {
+									Animator doorAnimator = door.GetComponent<Animator> ();
+									doorAnimator.SetTrigger ("Open");
+								}
 							}
 						}
 					}
