@@ -54,13 +54,21 @@ public class StatsManager : MonoBehaviour {
 	public AudioPlacement AudioPlacement {
 		set{audioPlacement = value;}
 	}
+	public bool inGeneratedLevel;
 
 	void Awake () {
 		playerPrefix = gameObject.name.Substring(0, 2);
-		startRoom = (startRoom == "" ? "Tutorial" : startRoom);
-		string startRoomName = "Room" + playerPrefix + startRoom;
+		string startRoomName;
+		if (inGeneratedLevel) {
+			startRoom = (startRoom == "" ? "Tutorial" : startRoom);
+			startRoomName = "Room" + playerPrefix + startRoom;
+		} else {
+			if (startRoom == "") {
+				startRoom = (playerPrefix == "P1" ? "1" : "2");
+			}
+			startRoomName = "Room" + startRoom;
+		}
 		roomIn = GameObject.Find(startRoomName);
-		Debug.Log(startRoomName);
 		//audioPlacement = GameObject.Find("AudioListener").GetComponent<AudioPlacement> ();
 	}
 

@@ -130,7 +130,7 @@ public class LevelGenerator : MonoBehaviour {
 		offset = new Vector3(offsetX * 40, 0, offsetZ * 32);
 
 		string roomName = "Room" + player + "Tutorial";
-		GameObject newRoom = GenerateRoom("Tutorial", roomName, offset, "Blank");
+		GameObject newRoom = GenerateRoom(player + "Tutorial", roomName, offset, "Blank");
 
 		bool spawnWall;
 		GameObject newObj;
@@ -364,11 +364,13 @@ public class LevelGenerator : MonoBehaviour {
 
 	private void LoadRemainingAssets() {
 		Transform rootTransform = GameObject.Find("Root").transform;
-		string[] objectNameList = new string[] {"Divider", /*"DividerHealth",*/ "Canvas", "P1", "P2", "CameraParentP1", "CameraParentP2", "AudioListener"};
+		string[] objectNameList = new string[] {"Divider", "HUD", "Pause", "P1", "P2", "CameraParentP1", "CameraParentP2", "AudioListener"};
 		foreach (string objectName in objectNameList) {
 			GameObject newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/" + objectName) as GameObject);
 			newObj.name = objectName;
 			newObj.transform.SetParent(rootTransform);
 		}
+
+		Destroy(this.gameObject);
 	}
 }

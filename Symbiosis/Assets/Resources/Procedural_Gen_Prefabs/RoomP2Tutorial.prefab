@@ -1499,7 +1499,7 @@ GameObject:
   - 65: {fileID: 6510112}
   - 114: {fileID: 11443684}
   m_Layer: 0
-  m_Name: RoomTutorial
+  m_Name: RoomP2Tutorial
   m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

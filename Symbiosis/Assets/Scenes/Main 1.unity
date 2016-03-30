@@ -44451,6 +44451,10 @@ Prefab:
       propertyPath: startRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 127302, guid: f2e3b56b04ff240b3a2ca4d444680002, type: 2}
+      propertyPath: m_Name
+      value: CameraPointerP1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f2e3b56b04ff240b3a2ca4d444680002, type: 2}
   m_IsPrefabParent: 0
@@ -45438,7 +45442,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10ebbc41db1b149f29a2aafd5f0ec66a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1484224603}
   playerSlime: {fileID: 983998997}
   cameraPointer: {fileID: 215485327}
   xPosLimit: 4.5
@@ -49324,6 +49327,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   invincible: 0
   skipIntro: 0
+  isGeneratedLevel: 0
 --- !u!1001 &1226952052
 Prefab:
   m_ObjectHideFlags: 0
@@ -61903,7 +61907,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10ebbc41db1b149f29a2aafd5f0ec66a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1461420582}
   playerSlime: {fileID: 1353113485}
   cameraPointer: {fileID: 1820502490}
   xPosLimit: 4.5
@@ -67646,6 +67649,10 @@ Prefab:
     - target: {fileID: 11496116, guid: ab4ae1d60ee954231a42438718256e1b, type: 2}
       propertyPath: startRoom
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 119212, guid: ab4ae1d60ee954231a42438718256e1b, type: 2}
+      propertyPath: m_Name
+      value: CameraPointerP2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab4ae1d60ee954231a42438718256e1b, type: 2}
