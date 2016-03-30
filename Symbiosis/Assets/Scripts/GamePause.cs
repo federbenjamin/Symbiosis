@@ -46,11 +46,13 @@ public class GamePause : MonoBehaviour {
 			TogglePause ();
 		}
 
-		if (Input.GetButtonDown("UICancel")) {
-			if (showControls) {
-				ToggleControls();
-			} else {
-				TogglePause ();
+		if (isPaused) {
+			if (Input.GetButtonDown("UICancel")) {
+				if (showControls) {
+					ToggleControls();
+				} else {
+					TogglePause ();
+				}
 			}
 		}
 
