@@ -132,15 +132,8 @@ public class EnemyBehavior : MonoBehaviour {
 
 		if (dist_1 < dist_2) {
 			if (targetPlayer.PlayerObject.name == "P2") {
-				targetPlayer.PlayerObject = GameObject.Find ("P2");
-				targetPlayer.Transform = p2_Transform;
-				targetPlayer.Distance = dist_2;
 				switchTargetTimer--;
 			} else {
-				switchTargetTimer = 30;
-			}
-
-			if (switchTargetTimer <= 0) {
 				targetPlayer.PlayerObject = GameObject.Find ("P1");
 				targetPlayer.Transform = p1_Transform;
 				targetPlayer.Distance = dist_1;
@@ -148,18 +141,12 @@ public class EnemyBehavior : MonoBehaviour {
 			}
 		} else {
 			if (targetPlayer.PlayerObject.name == "P1") {
-				targetPlayer.PlayerObject = GameObject.Find ("P1");
-				targetPlayer.Transform = p1_Transform;
-				targetPlayer.Distance = dist_1;
 				switchTargetTimer--;
 			} else {
-				switchTargetTimer = 30;
-			}
-
-			if (switchTargetTimer <= 0) {
 				targetPlayer.PlayerObject = GameObject.Find ("P2");
 				targetPlayer.Transform = p2_Transform;
 				targetPlayer.Distance = dist_2;
+				switchTargetTimer = 30;
 			}
 		}
     }
