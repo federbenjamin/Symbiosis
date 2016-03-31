@@ -100,7 +100,7 @@ public class RoomController : MonoBehaviour {
 							StartCoroutine ("Wait");
 						}
 						//Leftdoor +, RightDoor - Rotations in Y
-						if (transform.name != "RoomP1Tutorial" && transform.name != "RoomP2Tutorial") {
+						if (transform.name != "RoomP1Tutorial1" && transform.name != "RoomP2Tutorial1") {
 							foreach (GameObject door in doors) {
 								if (door != null) {
 									Animator doorAnimator = door.GetComponent<Animator> ();

@@ -60,7 +60,7 @@ public class StatsManager : MonoBehaviour {
 		playerPrefix = gameObject.name.Substring(0, 2);
 		string startRoomName;
 		if (inGeneratedLevel) {
-			startRoom = (startRoom == "" ? "Tutorial" : startRoom);
+			startRoom = (startRoom == "" ? "Tutorial1" : startRoom);
 			startRoomName = "Room" + playerPrefix + startRoom;
 		} else {
 			if (startRoom == "") {

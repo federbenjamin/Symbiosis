@@ -144,8 +144,8 @@ public class GameStats : MonoBehaviour {
 		CameraController.followSlime = false;
 		yield return new WaitForSeconds (8.0f);
 		if (isGeneratedLevel) {
-			OpenDoor(GameObject.Find("RoomP1Tutorial"));
-			OpenDoor(GameObject.Find("RoomP2Tutorial"));
+			OpenDoor(GameObject.Find("RoomP1Tutorial1"));
+			OpenDoor(GameObject.Find("RoomP2Tutorial1"));
 		} else {
 			OpenDoor(GameObject.Find("Room1"));
 			OpenDoor(GameObject.Find("Room2"));
@@ -162,8 +162,8 @@ public class GameStats : MonoBehaviour {
 		gameStarted = true;
 		CameraController.followSlime = false;
 		if (isGeneratedLevel) {
-			OpenDoor(GameObject.Find("RoomP1Tutorial"));
-			OpenDoor(GameObject.Find("RoomP2Tutorial"));
+			OpenDoor(GameObject.Find("RoomP1Tutorial1"));
+			OpenDoor(GameObject.Find("RoomP2Tutorial1"));
 		} else {
 			OpenDoor(GameObject.Find("Room1"));
 			OpenDoor(GameObject.Find("Room2"));

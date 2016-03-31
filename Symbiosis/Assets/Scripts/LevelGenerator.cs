@@ -18,6 +18,9 @@ public class LevelGenerator : MonoBehaviour {
 	private int[] numRoomTypePrefabs = new int[] {5, 5, 5};
 	private Dictionary<string, List<int>> remainingRoomPrefabs = new Dictionary<string, List<int>>();
 
+	private int tutorialCorridorLength = 4;
+
+
 	void Awake () {
 		roomParent = GameObject.Find("Rooms").transform;
 	}
@@ -73,7 +76,7 @@ public class LevelGenerator : MonoBehaviour {
 		int[] quadrantRooms;
 		quadrantRooms = GetRoomExceptionsByQuadrant(quadrant);
 
-		GenerateTutorialRoom(player, quadrantRooms);
+		GenerateTutorialRooms(player, quadrantRooms);
 
 		int skipRoom = quadrantRooms[1];
 		for (int i = 0; i < size; i++) {
@@ -113,7 +116,7 @@ public class LevelGenerator : MonoBehaviour {
 		return newRoom;
 	}
 
-	private void GenerateTutorialRoom(string player, int[] quadrantRooms) {
+	private void GenerateTutorialRooms(string player, int[] quadrantRooms) {
 		int quadrant = quadrantRooms[0];
 		int tutorialRoomAdjacent = quadrantRooms[4];
 
@@ -136,11 +139,13 @@ public class LevelGenerator : MonoBehaviour {
 			offsetX = size * 2 - 1;
 			offsetZ = size * 2 - 2;
 		}
-		offset = new Vector3(offsetX * 40, 0, offsetZ * 32);
+		offset = new Vector3(offsetX * 40, 0, (offsetZ - (tutorialCorridorLength - 1)) * 32);
 
 		string roomName = "Room" + player + "Tutorial";
-		GameObject newRoom = GenerateRoom(player + "Tutorial", roomName, offset, "Blank");
+		GameObject tutorialCorridor = GenerateRoom(player + "Tutorial", roomName, offset);
+		Transform finalTutorialRoom = GameObject.Find(roomName + "Exit").transform;
 
+		offset = new Vector3(offsetX * 40, 0, offsetZ * 32);
 		bool spawnWall;
 		GameObject newObj;
 		foreach (string direction in directions) {
@@ -153,7 +158,7 @@ public class LevelGenerator : MonoBehaviour {
 			}
 
 			newObj = GenerateDoorOrWall(direction, player, roomNum, "Blank", offset, spawnWall);
-			newObj.transform.SetParent(newRoom.transform);
+			newObj.transform.SetParent(finalTutorialRoom);
 		}
 	}
 
@@ -271,14 +276,14 @@ public class LevelGenerator : MonoBehaviour {
 					newObj.GetComponent<DoorController>().nextRoomNum = switchRoomNumber;
 					GameObject.Find("DoorSwitchEnterLeft").GetComponent<DoorController>().nextRoomNum = player + "-" + roomNum;
 				} else if (tutorialDoor && (quadrant == 1 || quadrant == 3)) {
-					newObj.GetComponent<DoorController>().nextRoomNum = player + "Tutorial";
+					newObj.GetComponent<DoorController>().nextRoomNum = player + "TutorialExit";
 				} 
 			} else if (direction == "West") {
 				if (switchDoor && (quadrant == 1 || quadrant == 3)) {
 					newObj.GetComponent<DoorController>().nextRoomNum = switchRoomNumber;
 					GameObject.Find("DoorSwitchEnterRight").GetComponent<DoorController>().nextRoomNum = player + "-" + roomNum;
 				} else if (tutorialDoor && (quadrant == 0 || quadrant == 2)) {
-					newObj.GetComponent<DoorController>().nextRoomNum = player + "Tutorial";
+					newObj.GetComponent<DoorController>().nextRoomNum = player + "TutorialExit";
 				} 
 			}
 		}
