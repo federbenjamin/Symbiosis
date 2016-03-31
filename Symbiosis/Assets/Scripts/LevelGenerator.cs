@@ -8,17 +8,20 @@ public class LevelGenerator : MonoBehaviour {
 
 	private int seed;
 	private int size;
+	private int maxDifficulty;
 	private System.Random pseudoRandom;
-	private Transform roomParent;
 
 	private string[] directions = new string[] {"West", "East", "North", "South"};
 	private string[] colors = new string[] {"Red", "Green", "Blue"};
+
+	private Transform roomParent;
+	private Vector3 gauntletPosition;
+	private float tutorialRoomDistance;
 
 	private List<string> remainingRoomColors = new List<string>();
 	// List order: Red, Green, Blue
 	private int[] numRoomTypePrefabs = new int[] {5, 5, 5};
 	private Dictionary<string, List<int>> remainingRoomPrefabs = new Dictionary<string, List<int>>();
-
 	private int tutorialCorridorLength = 4;
 
 
@@ -29,11 +32,12 @@ public class LevelGenerator : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		// Get level inputs - size and seed
+		// Get level inputs - difficulty, size, and seed
+		maxDifficulty = LevelData.levelDifficulty;
+		size = LevelData.levelSize;
 		if (LevelData.randomLevel) {
 			LevelData.GenerateRandomSeed();
 		}
-		size = LevelData.levelSize;
 		seed = LevelData.levelSeed;
 		Debug.Log("Using Seed: " + seed);
 		pseudoRandom = new System.Random(seed);
@@ -49,8 +53,8 @@ public class LevelGenerator : MonoBehaviour {
 		int topHalfPlayer = pseudoRandom.Next(2);
 
 		// Generate gauntlet
-		Vector3 roomPosition = new Vector3((size - 1) * 40, 0, (size - 1) * 32);
-		GenerateRoom("Gauntlet", "RoomGauntlet", roomPosition);
+		gauntletPosition = new Vector3((size - 1) * 40, 0, (size - 1) * 32);
+		GenerateRoom("Gauntlet", "RoomGauntlet", gauntletPosition);
 
 		string[] players = new string[] {"P1", "P2"};
 		foreach (string player in players) {
@@ -129,6 +133,12 @@ public class LevelGenerator : MonoBehaviour {
 		}
 	}
 
+	private int GetNormalizedRoomDifficulty(Vector3 roomPosition) {
+		float roomDistance = Vector3.Distance(roomPosition, gauntletPosition);
+		float unNormalizedDifficulty = (roomDistance / tutorialRoomDistance) * maxDifficulty;
+		return Mathf.CeilToInt(unNormalizedDifficulty);
+	}
+
 	private GameObject GenerateRoom(string roomSuffix, string roomName, Vector3 roomPosition) {
 		GameObject newRoom = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/Rooms/Room" + roomSuffix), roomPosition, Quaternion.identity) as GameObject;
 		newRoom.name = roomName;
@@ -169,6 +179,7 @@ public class LevelGenerator : MonoBehaviour {
 		offset = new Vector3(offsetX * 40, 0, (offsetZ - (tutorialCorridorLength - 1)) * 32);
 
 		string roomName = "Room" + player + "Tutorial";
+		tutorialRoomDistance = Vector3.Distance(offset, gauntletPosition);
 		GenerateRoom(player + "Tutorial", roomName, offset);
 		Transform finalTutorialRoom = GameObject.Find(roomName + "Exit").transform;
 

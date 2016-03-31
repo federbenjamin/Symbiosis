@@ -5,9 +5,11 @@ public class LevelData : MonoBehaviour {
 
 	public static LevelData Instance;
 
+	public static bool randomLevel = false;
 	public static int levelSeed = -2001603228;
 	public static int levelSize = 3;
-	public static bool randomLevel = true;
+	public static int levelDifficulty = 10;
+
 
 	void Awake () {
 		Instance = this;
@@ -35,5 +37,9 @@ public class LevelData : MonoBehaviour {
 		size = Mathf.Min(size, 10);
 		size = Mathf.Max(size, 3);
 		levelSize = size;
+	}
+
+	public static void SetDifficulty(int difficulty) {
+		levelDifficulty = difficulty;
 	}
 }
