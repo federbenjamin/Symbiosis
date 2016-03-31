@@ -21,6 +21,7 @@ TagManager:
   - Hoop
   - Floor
   - EnemySpawnerBlank
+  - TutorialRoom
   layers:
   - Default
   - TransparentFX

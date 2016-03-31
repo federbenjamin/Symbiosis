@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour {
 	public GameObject cameraPointer;
 	private CameraController camera;
 
-	public GameObject room;
+	private GameObject room;
 	public float baseSpeed = 8f;
 
 	private string playerPrefix;
@@ -26,7 +26,6 @@ public class PlayerMovement : MonoBehaviour {
 
 
 	void Awake () {
-
 		//Get the StatsManager Script
 		playerShooting = GetComponent<PlayerShooting> ();
 	}
@@ -106,7 +105,7 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider col) {
-		if (col.gameObject.tag == "Room") {
+		if (col.gameObject.tag == "Room" || col.gameObject.tag == "TutorialRoom") {
 			room = col.gameObject;
 		}
 	}

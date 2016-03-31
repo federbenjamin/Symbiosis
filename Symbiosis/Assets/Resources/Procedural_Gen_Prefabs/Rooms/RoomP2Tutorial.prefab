@@ -3836,7 +3836,7 @@ GameObject:
   - 114: {fileID: 11470690}
   m_Layer: 0
   m_Name: RoomP2Tutorial1
-  m_TagString: Room
+  m_TagString: TutorialRoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5251,7 +5251,7 @@ GameObject:
   - 114: {fileID: 11433088}
   m_Layer: 0
   m_Name: RoomP2TutorialExit
-  m_TagString: Room
+  m_TagString: TutorialRoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6667,7 +6667,7 @@ GameObject:
   - 114: {fileID: 11444678}
   m_Layer: 0
   m_Name: RoomP2Tutorial2
-  m_TagString: Room
+  m_TagString: TutorialRoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6740,7 +6740,7 @@ GameObject:
   - 114: {fileID: 11434838}
   m_Layer: 0
   m_Name: RoomP2Tutorial3
-  m_TagString: Room
+  m_TagString: TutorialRoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

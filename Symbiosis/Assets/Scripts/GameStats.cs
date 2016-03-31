@@ -98,20 +98,18 @@ public class GameStats : MonoBehaviour {
 	}
 
 	void OpenDoorsExceptFirst() {
-		string startRoom1, startRoom2;
-		if (isGeneratedLevel) {
-			startRoom1 = "RoomP1Tutorial";
-			startRoom2 = "RoomP2Tutorial";
-		} else {
-			startRoom1 = "Room1";
-			startRoom2 = "Room2";
+		List<GameObject> roomsList = new List<GameObject>();
+		foreach (GameObject normalRoom in GameObject.FindGameObjectsWithTag("Room")) {
+			roomsList.Add(normalRoom);
+		}
+		if (skipIntro) {
+			foreach (GameObject tutRoom in GameObject.FindGameObjectsWithTag("TutorialRoom")) {
+				roomsList.Add(tutRoom);
+			}
 		}
 
-		GameObject[] roomsList = GameObject.FindGameObjectsWithTag("Room");
 		foreach (GameObject room in roomsList) {
-			if (room.name != startRoom1 && room.name != startRoom2) {
-				OpenDoor(room);
-			}
+			OpenDoor(room);
 		}
 	}
 
@@ -138,18 +136,13 @@ public class GameStats : MonoBehaviour {
 		GameObject.Find("P1InitialSlimeTank").GetComponent<Animator>().SetTrigger("StartBreak");
 		yellowSlime.GetComponent<Animation>().Play("SlimeJumping");//.SetTrigger("StartJump");
 		GameObject.Find("P2InitialSlimeTank").GetComponent<Animator>().SetTrigger("StartBreak");
-		yield return new WaitForSeconds (1.8f);
+		yield return new WaitForSeconds (2.2f);
 
-		gameStarted = true;
 		CameraController.followSlime = false;
-		yield return new WaitForSeconds (8.0f);
-		if (isGeneratedLevel) {
-			OpenDoor(GameObject.Find("RoomP1Tutorial1"));
-			OpenDoor(GameObject.Find("RoomP2Tutorial1"));
-		} else {
-			OpenDoor(GameObject.Find("Room1"));
-			OpenDoor(GameObject.Find("Room2"));
-		}
+		yield return new WaitForSeconds (1.8f);
+		gameStarted = true;
+
+		//yield return new WaitForSeconds (6.0f);
 		animationStarted = false;
 	}
 
@@ -159,15 +152,8 @@ public class GameStats : MonoBehaviour {
 		blueSlime.GetComponent<Animation>().Play("SlimeJumping");
 		yellowSlime.GetComponent<Animation>().Play("SlimeJumping");
 
-		gameStarted = true;
 		CameraController.followSlime = false;
-		if (isGeneratedLevel) {
-			OpenDoor(GameObject.Find("RoomP1Tutorial1"));
-			OpenDoor(GameObject.Find("RoomP2Tutorial1"));
-		} else {
-			OpenDoor(GameObject.Find("Room1"));
-			OpenDoor(GameObject.Find("Room2"));
-		}
+		gameStarted = true;
 		animationStarted = false;
 		yield return new WaitForSeconds (0f);
 	}

@@ -26,7 +26,7 @@ public class BulletBehavior : MonoBehaviour {
 	void OnTriggerEnter(Collider c) {
 		GameObject other = c.gameObject;
 		//If it hits a player don't disappear
-		if (other.tag != "Player" && other.tag != "Bullet" && other.tag != "Room" && other.tag != "Pickups") {
+		if (other.tag != "Player" && other.tag != "Bullet" && other.tag != "Room" && other.tag != "TutorialRoom" && other.tag != "Pickups") {
 			GameObject.Find("AudioListener").GetComponent<AudioPlacement> ().PlayClip (sound, 0.05f);
 			Destroy (gameObject);
 		}

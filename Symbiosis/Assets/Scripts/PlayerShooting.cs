@@ -91,7 +91,7 @@ public class PlayerShooting : MonoBehaviour {
 				(shootHoriz != 0));
 
 			if (playerShooting && curWeap != "Sword") {
-				RoomController roomController = playerMovement.room.GetComponent<RoomController>();
+				RoomController roomController = gameObject.GetComponent<StatsManager>().RoomIn.GetComponent<RoomController>();
 				roomController.EnemiesActive = true;
 			}
 

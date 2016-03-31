@@ -171,7 +171,7 @@ public class Pickups : MonoBehaviour {
 						oldWeaponPickup = Instantiate (swordPickup, transform.position, swordPickup.transform.rotation) as GameObject;
 					}
 
-					oldWeaponPickup.transform.parent = playerMovement.room.transform;
+					oldWeaponPickup.transform.parent = playerStats.RoomIn.transform;
 					oldWeapon = null;
 				}
 
@@ -184,7 +184,7 @@ public class Pickups : MonoBehaviour {
 						oldAugmentPickup = Instantiate (greenAugmentPickup, transform.position, greenAugmentPickup.transform.rotation) as GameObject;
 					}
 
-					oldAugmentPickup.transform.parent = playerMovement.room.transform;
+					oldAugmentPickup.transform.parent = playerStats.RoomIn.transform;
 					oldAugment = null;
 				}
 

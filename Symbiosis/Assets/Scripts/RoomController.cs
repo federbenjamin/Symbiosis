@@ -73,44 +73,51 @@ public class RoomController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-		// Logic for switch room
-		if (transform.name == "Room100") {
-			if (!hasTriggered && switch1Active && switch2Active) {
-				hasTriggered = true;
-				foreach (GameObject button in switches) {
-					button.GetComponent<SwitchesController> ().PermanentlySwitchedOff = true;
-				}
-				foreach (GameObject door in doors) {
-					if (door.name == "DoorSwitchExit") {
-						Animator doorAnimator = door.GetComponent<Animator> ();
-						StartCoroutine (OpenDoor(1f, doorAnimator));
-					} else if (door.name == "DoorSwitchEnterLeft" || door.name == "DoorSwitchEnterRight") {
-						Animator doorAnimator = door.GetComponent<Animator> ();
-						doorAnimator.SetTrigger ("Close");
+		if (GameStats.gameStarted) {
+			// Logic for switch room
+			if (transform.name == "Room100") {
+				if (!hasTriggered && switch1Active && switch2Active) {
+					hasTriggered = true;
+					foreach (GameObject button in switches) {
+						button.GetComponent<SwitchesController> ().PermanentlySwitchedOff = true;
+					}
+					foreach (GameObject door in doors) {
+						if (door.name == "DoorSwitchExit") {
+							Animator doorAnimator = door.GetComponent<Animator> ();
+							StartCoroutine (OpenDoor(1f, doorAnimator));
+						} else if (door.name == "DoorSwitchEnterLeft" || door.name == "DoorSwitchEnterRight") {
+							Animator doorAnimator = door.GetComponent<Animator> ();
+							doorAnimator.SetTrigger ("Close");
+						}
 					}
 				}
-			}
-		//Check if player has enetered room and count enemies
-		} else {
-			if (hasTriggered == true) {
-				if (roomCleared == false) {
-					if (CountEnemies() == 0) {
-						roomCleared = true;
-						if (transform.name == "Room200") {
-							StartCoroutine ("Wait");
-						}
-						//Leftdoor +, RightDoor - Rotations in Y
-						if (transform.name != "RoomP1Tutorial1" && transform.name != "RoomP2Tutorial1") {
-							foreach (GameObject door in doors) {
-								if (door != null) {
-									Animator doorAnimator = door.GetComponent<Animator> ();
-									doorAnimator.SetTrigger ("Open");
-								}
+			//Check if player has enetered room and count enemies
+			} else {
+				if (hasTriggered == true) {
+					if (roomCleared == false) {
+						if (CountEnemies() == 0) {
+							roomCleared = true;
+
+							if (transform.name == "Room200") {
+								StartCoroutine ("WaitToWin");
+							} else if (transform.tag == "TutorialRoom") {
+								StartCoroutine("WaitToOpenDoors");
+							} else {
+								OpenRoomDoors();
 							}
 						}
 					}
 				}
+			}
+		}
+	}
+
+	void OpenRoomDoors() {
+		//Leftdoor +, RightDoor - Rotations in Y
+		foreach (GameObject door in doors) {
+			if (door != null) {
+				Animator doorAnimator = door.GetComponent<Animator> ();
+				doorAnimator.SetTrigger ("Open");
 			}
 		}
 	}
@@ -211,7 +218,12 @@ public class RoomController : MonoBehaviour {
 		return playersTogether;
 	}
 
-	IEnumerator Wait() {
+	IEnumerator WaitToOpenDoors() {
+		yield return new WaitForSeconds (8f);
+		OpenRoomDoors();
+	}
+
+	IEnumerator WaitToWin() {
 		yield return new WaitForSeconds (3f);
 		SceneManager.LoadScene ("WinScreen");
 	}
