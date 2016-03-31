@@ -7,7 +7,7 @@ public class LevelData : MonoBehaviour {
 
 	public static bool randomLevel = true;
 	public static int levelSeed = -2001603228;
-	public static int levelSize = 3;
+	public static int levelSize = 5;
 	public static int levelDifficulty = 8;
 
 

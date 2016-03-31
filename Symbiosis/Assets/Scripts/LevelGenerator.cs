@@ -25,6 +25,7 @@ public class LevelGenerator : MonoBehaviour {
 	private Dictionary<string, int[]> enemyTypeDifficulty = new Dictionary<string, int[]>();
 	private int tutorialCorridorLength = 4;
 	private int roomDifficultyRange = 2;
+	private int maxEnemiesPerRoom = 4;
 
 
 	void Awake () {
@@ -125,7 +126,10 @@ public class LevelGenerator : MonoBehaviour {
 				spawnerTransforms.Add(child);
 			}
 		}
-		int enemySpawnCount = pseudoRandom.Next(spawnerTransforms.Count - 1) + 1;
+
+		int enemySpawnCountUpper = Mathf.CeilToInt((float)roomDifficulty / (float)maxDifficulty * 5f);
+		int enemySpawnCountLower = Mathf.CeilToInt((float)enemySpawnCountUpper / 2f);
+		int enemySpawnCount = Mathf.Min(pseudoRandom.Next(enemySpawnCountLower, enemySpawnCountUpper), maxEnemiesPerRoom);
 		int[] enemiesToSpawn = GenerateEnemySet(roomDifficulty, roomColor, enemySpawnCount);
 
 		// Spawn choosen enemy types in random locations in the room
@@ -136,24 +140,26 @@ public class LevelGenerator : MonoBehaviour {
 			ReplaceSpawnWithObject(spawnObject, roomColor, newRoom, enemiesToSpawn[i]);
 		}
 		// Clean up the rest of the spawn objects
+		int maxHealthItems = 2;
 		foreach (Transform remainingSpawns in spawnerTransforms) {
-			ReplaceSpawnWithObject(remainingSpawns, newRoom);
+			if (maxHealthItems < 0) {
+				ReplaceSpawnWithObject(remainingSpawns, newRoom);
+			}
 			Destroy(remainingSpawns.gameObject);
+			maxHealthItems--;
 		}
 	}
 
-	private int[] GenerateEnemySet(int roomDifficultyUpper, string roomColor, int numOfSpawnLocations) {
+	private int[] GenerateEnemySet(int roomDifficulty, string roomColor, int numOfSpawnLocations) {
 		// Replace with enemy subset generation algorithm
-		int roomDifficultyLower = roomDifficultyUpper - roomDifficultyRange;
-		int[] enemyColorTypes = enemyTypeDifficulty[roomColor];
+		int[] enemyTypes = enemyTypeDifficulty[roomColor];
 
 		// Initialize enemy set to random enemies
 		int[] enemySet = new int[numOfSpawnLocations];
 		for (int i = 0; i < numOfSpawnLocations; i++) {
-			int randomEnemyIndex = pseudoRandom.Next(enemyColorTypes.Length);
-			enemySet[i] = enemyColorTypes[randomEnemyIndex];
+			int randomEnemyIndex = pseudoRandom.Next(enemyTypes.Length);
+			enemySet[i] = enemyTypes[randomEnemyIndex];
 		}
-		int enemyDifficultyTotal = SumArray(enemySet);
 
 		return enemySet;
 	}
@@ -190,17 +196,7 @@ public class LevelGenerator : MonoBehaviour {
 		string objectSpawnFile;
 		int objectToSpawn = pseudoRandom.Next(100);
 
-		// Spawn enemy as intended
-		if (objectToSpawn <= 95) {
-			objectSpawnFile = "EnemySpawns/SpawnEnemy" + roomColor + enemyNumber;
-		}
-		// Spawn health pick-ups
-		else if (objectToSpawn >= 99) {
-			objectSpawnFile = "FullHeart";
-		}
-		else {
-			objectSpawnFile = "HalfHeart";
-		}
+		objectSpawnFile = "EnemySpawns/SpawnEnemy" + roomColor + enemyNumber;
 
 		GameObject newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/" + objectSpawnFile)) as GameObject;
 		newObj.transform.SetParent(newRoom);
