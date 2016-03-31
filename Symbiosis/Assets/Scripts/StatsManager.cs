@@ -54,6 +54,7 @@ public class StatsManager : MonoBehaviour {
 	public AudioPlacement AudioPlacement {
 		set{audioPlacement = value;}
 	}
+	private static bool swapLock = false;
 	public bool inGeneratedLevel;
 
 	void Awake () {
@@ -223,19 +224,24 @@ public class StatsManager : MonoBehaviour {
 	}
 
 	public void SwapAugments() {
-		otherPlayerStats.RequestAugSwap = false;
-		requestAugSwap = false;
 		hudReset = false;
+		if (!swapLock) {
+			swapLock = true;
 
-		tempAug = GetAugment();
-		tempSpr = playerAugSprite.GetComponent<Image> ().sprite;
+			otherPlayerStats.RequestAugSwap = false;
+			requestAugSwap = false;
 
-		SetAugment(otherPlayerStats.GetAugment ());
-		playerAugSprite.GetComponent<Image>().sprite = otherPlayerAugSprite.GetComponent<Image>().sprite;
+			tempAug = GetAugment();
+			tempSpr = playerAugSprite.GetComponent<Image> ().sprite;
 
-		otherPlayerStats.SetAugment (tempAug);
-		otherPlayerAugSprite.GetComponent<Image>().sprite = tempSpr;
+			SetAugment(otherPlayerStats.GetAugment ());
+			playerAugSprite.GetComponent<Image>().sprite = otherPlayerAugSprite.GetComponent<Image>().sprite;
 
+			otherPlayerStats.SetAugment (tempAug);
+			otherPlayerAugSprite.GetComponent<Image>().sprite = tempSpr;
+
+			swapLock = false;
+		}
 		nextAugSwap = Time.time + 2;
 		swapAugTimeout = 0;
 	}
