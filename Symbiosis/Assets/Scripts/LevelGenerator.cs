@@ -112,44 +112,74 @@ public class LevelGenerator : MonoBehaviour {
 		int roomDifficulty = GetNormalizedRoomDifficulty(newRoom.position);
 		Debug.Log(newRoom.name + ": " + roomDifficulty);
 
-		foreach (Transform transform in newRoom) {
-			if (transform.tag == "EnemySpawnerBlank") {
-				Vector3 location = transform.position;
-				string objectSpawnFile = "";
-				int objectToSpawn = pseudoRandom.Next(100);
-
-				// Spawn enemy type
-				if (objectToSpawn <= 40) {
-					objectSpawnFile = "EnemySpawns/SpawnEnemy";
-
-					int enemyNum = 1;
-					int chanceOfDifficulty = pseudoRandom.Next(10);
-					if (chanceOfDifficulty <= 4) {
-						enemyNum = 1;
-					} else if (chanceOfDifficulty >= 8) {
-						enemyNum = (roomColor == "Blue" ? 3 : 1);
-					} else {
-						enemyNum = 2;
-					}
-					objectSpawnFile = objectSpawnFile + roomColor + enemyNum;
-				}
-				// Spawn health pick-up
-				else if (objectToSpawn >= 97) {
-					objectSpawnFile = "FullHeart";
-				}
-				else if (objectToSpawn >= 90) {
-					objectSpawnFile = "HalfHeart";
-				}
-
-				if (objectSpawnFile != "") {
-					GameObject objectSpawned = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/" + objectSpawnFile)) as GameObject;
-					objectSpawned.transform.SetParent(newRoom);
-					objectSpawned.transform.position = location;
-				}
-
-				Destroy(transform.gameObject);
+		// Generate a random subset of possible enemy types
+		List<Transform> spawnerTransforms = new List<Transform>();
+		foreach (Transform child in newRoom) {
+			if (child.tag == "EnemySpawnerBlank") {
+				spawnerTransforms.Add(child);
 			}
 		}
+		int[] enemiesToSpawn = GenerateEnemySet(roomDifficulty, roomColor, spawnerTransforms.Count);
+
+		// Spawn choosen enemy types in random locations in the room
+		for (int i = 0; i < enemiesToSpawn.Length; i++) {
+			int spawnObjectIndex = pseudoRandom.Next(spawnerTransforms.Count);
+			Transform spawnObject = spawnerTransforms[spawnObjectIndex];
+			spawnerTransforms.RemoveAt(spawnObjectIndex);
+			ReplaceSpawnWithObject(spawnObject, roomColor, newRoom, enemiesToSpawn[i]);
+		}
+		// Clean up the rest of the spawn objects
+		foreach (Transform remainingSpawns in spawnerTransforms) {
+			ReplaceSpawnWithObject(remainingSpawns, newRoom);
+			Destroy(remainingSpawns.gameObject);
+		}
+	}
+
+	private void ReplaceSpawnWithObject(Transform spawn, Transform newRoom) {
+		string objectSpawnFile = "";
+		int objectToSpawn = pseudoRandom.Next(100);
+
+		// Spawn health pick-ups
+		if (objectToSpawn >= 98) {
+			objectSpawnFile = "FullHeart";
+		}
+		else if (objectToSpawn >= 94) {
+			objectSpawnFile = "HalfHeart";
+		}
+
+		if (objectSpawnFile != "") {
+			GameObject newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/" + objectSpawnFile)) as GameObject;
+			newObj.transform.SetParent(newRoom);
+			newObj.transform.position = spawn.position;
+		}
+		Destroy(spawn.gameObject);
+	}
+
+	private void ReplaceSpawnWithObject(Transform spawn, string roomColor, Transform newRoom, int enemyNumber) {
+		string objectSpawnFile;
+		int objectToSpawn = pseudoRandom.Next(100);
+
+		// Spawn enemy as intended
+		if (objectToSpawn <= 95) {
+			objectSpawnFile = "EnemySpawns/SpawnEnemy" + roomColor + enemyNumber;
+		}
+		// Spawn health pick-ups
+		else if (objectToSpawn >= 99) {
+			objectSpawnFile = "FullHeart";
+		}
+		else {
+			objectSpawnFile = "HalfHeart";
+		}
+
+		GameObject newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/" + objectSpawnFile)) as GameObject;
+		newObj.transform.SetParent(newRoom);
+		newObj.transform.position = spawn.position;
+		Destroy(spawn.gameObject);
+	}
+
+	private int[] GenerateEnemySet(int roomDifficulty, string roomColor, int numOfSpawnLocations) {
+		// Replace with enemy subset generation algorithm
+		return new int[] {1, 1, 2};
 	}
 
 	private int GetNormalizedRoomDifficulty(Vector3 roomPosition) {
