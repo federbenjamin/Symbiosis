@@ -143,7 +143,7 @@ public class HealthManager : MonoBehaviour {
 		StartCoroutine ("Wait");
 	}
 
-	IEnumerator Wait() {
+	private	IEnumerator Wait() {
 		yield return new WaitForSeconds (3f);
 		SceneManager.LoadScene ("GameOver");
 	}

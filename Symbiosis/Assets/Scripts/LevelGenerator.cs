@@ -118,7 +118,6 @@ public class LevelGenerator : MonoBehaviour {
 
 	private void GenerateTutorialRooms(string player, int[] quadrantRooms) {
 		int quadrant = quadrantRooms[0];
-		int tutorialRoomAdjacent = quadrantRooms[4];
 
 		int roomNum, offsetX, offsetZ;
 		Vector3 offset;
@@ -142,7 +141,7 @@ public class LevelGenerator : MonoBehaviour {
 		offset = new Vector3(offsetX * 40, 0, (offsetZ - (tutorialCorridorLength - 1)) * 32);
 
 		string roomName = "Room" + player + "Tutorial";
-		GameObject tutorialCorridor = GenerateRoom(player + "Tutorial", roomName, offset);
+		GenerateRoom(player + "Tutorial", roomName, offset);
 		Transform finalTutorialRoom = GameObject.Find(roomName + "Exit").transform;
 
 		offset = new Vector3(offsetX * 40, 0, offsetZ * 32);
