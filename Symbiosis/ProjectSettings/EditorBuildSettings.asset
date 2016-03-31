@@ -13,5 +13,7 @@ EditorBuildSettings:
     path: Assets/Scenes/GameOver.unity
   - enabled: 1
     path: Assets/Scenes/WinScreen.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main 1.unity
+  - enabled: 1
+    path: Assets/Scenes/Generated_Level.unity
