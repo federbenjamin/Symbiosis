@@ -32,7 +32,7 @@ public class CameraController : MonoBehaviour {
 	float camMoveSpeed = 3f;
 	private float maxRight;
 	private float maxLeft;
-	public float xPosLimit;
+	private float xPosLimit = 4.5f;
 
 	// Use this for initialization
 	void Start () {
