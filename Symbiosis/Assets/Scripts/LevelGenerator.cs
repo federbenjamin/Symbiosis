@@ -11,8 +11,8 @@ public class LevelGenerator : MonoBehaviour {
 	private System.Random pseudoRandom;
 	private Transform roomParent;
 
-	string[] directions = new string[] {"West", "East", "North", "South"};
-	string[] colors = new string[] {"Red", "Green", "Blue"};
+	private string[] directions = new string[] {"West", "East", "North", "South"};
+	private string[] colors = new string[] {"Red", "Green", "Blue"};
 
 	// List order: Red, Green, Blue
 	private int[] numRoomTypePrefabs = new int[] {5, 5, 5};
@@ -99,14 +99,14 @@ public class LevelGenerator : MonoBehaviour {
 	}
 
 	private GameObject GenerateRoom(string roomSuffix, string roomName, Vector3 roomPosition) {
-		GameObject newRoom = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/Room" + roomSuffix), roomPosition, Quaternion.identity) as GameObject;
+		GameObject newRoom = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/Rooms/Room" + roomSuffix), roomPosition, Quaternion.identity) as GameObject;
 		newRoom.name = roomName;
 		newRoom.transform.SetParent(roomParent);
 		return newRoom;
 	}
 
 	private GameObject GenerateRoom(string roomSuffix, string roomName, Vector3 roomPosition, string roomColor) {
-		GameObject newRoom = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/Room" + roomSuffix), roomPosition, Quaternion.identity) as GameObject;
+		GameObject newRoom = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/Rooms/Room" + roomSuffix), roomPosition, Quaternion.identity) as GameObject;
 		newRoom.name = roomName;
 		newRoom.transform.SetParent(roomParent);
 		newRoom.GetComponent<RoomController>().RoomColor = roomColor;
