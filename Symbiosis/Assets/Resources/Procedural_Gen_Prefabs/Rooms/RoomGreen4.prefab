@@ -697,7 +697,7 @@ GameObject:
   - 4: {fileID: 443008}
   m_Layer: 0
   m_Name: EnemySpawner (2)
-  m_TagString: EnemySpawn
+  m_TagString: EnemySpawnerBlank
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -785,7 +785,7 @@ GameObject:
   - 4: {fileID: 477626}
   m_Layer: 0
   m_Name: EnemySpawner (1)
-  m_TagString: EnemySpawn
+  m_TagString: EnemySpawnerBlank
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -997,7 +997,7 @@ GameObject:
   - 4: {fileID: 409974}
   m_Layer: 0
   m_Name: EnemySpawner
-  m_TagString: EnemySpawn
+  m_TagString: EnemySpawnerBlank
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1371,7 +1371,7 @@ GameObject:
   - 4: {fileID: 459306}
   m_Layer: 0
   m_Name: EnemySpawner (3)
-  m_TagString: EnemySpawn
+  m_TagString: EnemySpawnerBlank
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
