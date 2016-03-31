@@ -5,10 +5,10 @@ public class LevelData : MonoBehaviour {
 
 	public static LevelData Instance;
 
-	public static bool randomLevel = false;
+	public static bool randomLevel = true;
 	public static int levelSeed = -2001603228;
 	public static int levelSize = 3;
-	public static int levelDifficulty = 10;
+	public static int levelDifficulty = 8;
 
 
 	void Awake () {

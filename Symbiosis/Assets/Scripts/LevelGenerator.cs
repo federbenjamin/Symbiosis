@@ -101,8 +101,7 @@ public class LevelGenerator : MonoBehaviour {
 					string name = "Room" + player + "-" + roomNumber;
 					GameObject newRoom = GenerateRoom(roomSuffix, name, roomPosition, roomColor);
 					
-					Vector3 roomOffset = new Vector3(xOffset, 0, zOffset);
-					GenerateDoorsAndWalls(newRoom.transform, player, roomNumber, roomColor, roomOffset, quadrantRooms);
+					GenerateDoorsAndWalls(newRoom.transform, player, roomNumber, roomColor, roomPosition, quadrantRooms);
 					SpawnEnemies(newRoom.transform, roomColor);
 				}
 			}
@@ -110,9 +109,19 @@ public class LevelGenerator : MonoBehaviour {
 	}
 
 	private void SpawnEnemies(Transform newRoom, string roomColor) {
+		int roomDifficulty = GetNormalizedRoomDifficulty(newRoom.position);
+		Debug.Log(newRoom.name + ": " + roomDifficulty);
+
 		foreach (Transform transform in newRoom) {
 			if (transform.tag == "EnemySpawnerBlank") {
-				if (pseudoRandom.Next(100) <= 40) {
+				Vector3 location = transform.position;
+				string objectSpawnFile = "";
+				int objectToSpawn = pseudoRandom.Next(100);
+
+				// Spawn enemy type
+				if (objectToSpawn <= 40) {
+					objectSpawnFile = "EnemySpawns/SpawnEnemy";
+
 					int enemyNum = 1;
 					int chanceOfDifficulty = pseudoRandom.Next(10);
 					if (chanceOfDifficulty <= 4) {
@@ -122,12 +131,22 @@ public class LevelGenerator : MonoBehaviour {
 					} else {
 						enemyNum = 2;
 					}
-
-					Vector3 location = transform.position;
-					GameObject enemySpawn = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/EnemySpawns/SpawnEnemy" + roomColor + enemyNum)) as GameObject;
-					enemySpawn.transform.SetParent(newRoom);
-					enemySpawn.transform.position = location;
+					objectSpawnFile = objectSpawnFile + roomColor + enemyNum;
 				}
+				// Spawn health pick-up
+				else if (objectToSpawn >= 97) {
+					objectSpawnFile = "FullHeart";
+				}
+				else if (objectToSpawn >= 90) {
+					objectSpawnFile = "HalfHeart";
+				}
+
+				if (objectSpawnFile != "") {
+					GameObject objectSpawned = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/" + objectSpawnFile)) as GameObject;
+					objectSpawned.transform.SetParent(newRoom);
+					objectSpawned.transform.position = location;
+				}
+
 				Destroy(transform.gameObject);
 			}
 		}
@@ -135,7 +154,7 @@ public class LevelGenerator : MonoBehaviour {
 
 	private int GetNormalizedRoomDifficulty(Vector3 roomPosition) {
 		float roomDistance = Vector3.Distance(roomPosition, gauntletPosition);
-		float unNormalizedDifficulty = (roomDistance / tutorialRoomDistance) * maxDifficulty;
+		float unNormalizedDifficulty = (1 - roomDistance / tutorialRoomDistance) * maxDifficulty;
 		return Mathf.CeilToInt(unNormalizedDifficulty);
 	}
 
@@ -179,11 +198,12 @@ public class LevelGenerator : MonoBehaviour {
 		offset = new Vector3(offsetX * 40, 0, (offsetZ - (tutorialCorridorLength - 1)) * 32);
 
 		string roomName = "Room" + player + "Tutorial";
-		tutorialRoomDistance = Vector3.Distance(offset, gauntletPosition);
 		GenerateRoom(player + "Tutorial", roomName, offset);
 		Transform finalTutorialRoom = GameObject.Find(roomName + "Exit").transform;
 
 		offset = new Vector3(offsetX * 40, 0, offsetZ * 32);
+		tutorialRoomDistance = Vector3.Distance(offset, gauntletPosition);
+
 		bool spawnWall;
 		GameObject newObj;
 		foreach (string direction in directions) {
