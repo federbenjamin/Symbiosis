@@ -10,9 +10,9 @@ public class LevelGenerator : MonoBehaviour {
 	private System.Random pseudoRandom;
 	private Transform roomParent;
 
-	private int numRedRoomPrefabs = 1;
-	private int numGreenRoomPrefabs = 1;
-	private int numBlueRoomPrefabs = 1;
+	private int numRedRoomPrefabs = 5;
+	private int numGreenRoomPrefabs = 5;
+	private int numBlueRoomPrefabs = 5;
 
 	void Awake () {
 		roomParent = GameObject.Find("Rooms").transform;
