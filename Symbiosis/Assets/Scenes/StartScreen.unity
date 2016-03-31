@@ -239,7 +239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputToChange: StartMac
   secondaryInputToChange: StartPC
-  sceneName: Main 1
+  sceneName: Generated_Level
 --- !u!1 &1475337956
 GameObject:
   m_ObjectHideFlags: 0
