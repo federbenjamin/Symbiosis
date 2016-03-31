@@ -423,7 +423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invincible: 0
-  skipIntro: 1
+  skipIntro: 0
   isGeneratedLevel: 1
 --- !u!114 &11459512
 MonoBehaviour:
@@ -851,7 +851,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: skipIntro
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: isGeneratedLevel
