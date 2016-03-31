@@ -22,7 +22,9 @@ public class LevelGenerator : MonoBehaviour {
 	// List order: Red, Green, Blue
 	private int[] numRoomTypePrefabs = new int[] {5, 5, 5};
 	private Dictionary<string, List<int>> remainingRoomPrefabs = new Dictionary<string, List<int>>();
+	private Dictionary<string, int[]> enemyTypeDifficulty = new Dictionary<string, int[]>();
 	private int tutorialCorridorLength = 4;
+	private int roomDifficultyRange = 2;
 
 
 	void Awake () {
@@ -47,6 +49,11 @@ public class LevelGenerator : MonoBehaviour {
 		foreach (string color in colors) {
 			ResetPrefabsRemainingByColor(color);
 		}
+
+		// Add the number and difficulty of each enemy color
+		enemyTypeDifficulty.Add("Red", new int[] {1, 2});
+		enemyTypeDifficulty.Add("Green", new int[] {1, 2});
+		enemyTypeDifficulty.Add("Blue", new int[] {1, 2, 3});
 
 		// Randomize level positioning
 		int rightSidePlayer = pseudoRandom.Next(2);
@@ -110,7 +117,6 @@ public class LevelGenerator : MonoBehaviour {
 
 	private void SpawnEnemies(Transform newRoom, string roomColor) {
 		int roomDifficulty = GetNormalizedRoomDifficulty(newRoom.position);
-		Debug.Log(newRoom.name + ": " + roomDifficulty);
 
 		// Generate a random subset of possible enemy types
 		List<Transform> spawnerTransforms = new List<Transform>();
@@ -119,7 +125,8 @@ public class LevelGenerator : MonoBehaviour {
 				spawnerTransforms.Add(child);
 			}
 		}
-		int[] enemiesToSpawn = GenerateEnemySet(roomDifficulty, roomColor, spawnerTransforms.Count);
+		int enemySpawnCount = pseudoRandom.Next(spawnerTransforms.Count - 1) + 1;
+		int[] enemiesToSpawn = GenerateEnemySet(roomDifficulty, roomColor, enemySpawnCount);
 
 		// Spawn choosen enemy types in random locations in the room
 		for (int i = 0; i < enemiesToSpawn.Length; i++) {
@@ -133,6 +140,30 @@ public class LevelGenerator : MonoBehaviour {
 			ReplaceSpawnWithObject(remainingSpawns, newRoom);
 			Destroy(remainingSpawns.gameObject);
 		}
+	}
+
+	private int[] GenerateEnemySet(int roomDifficultyUpper, string roomColor, int numOfSpawnLocations) {
+		// Replace with enemy subset generation algorithm
+		int roomDifficultyLower = roomDifficultyUpper - roomDifficultyRange;
+		int[] enemyColorTypes = enemyTypeDifficulty[roomColor];
+
+		// Initialize enemy set to random enemies
+		int[] enemySet = new int[numOfSpawnLocations];
+		for (int i = 0; i < numOfSpawnLocations; i++) {
+			int randomEnemyIndex = pseudoRandom.Next(enemyColorTypes.Length);
+			enemySet[i] = enemyColorTypes[randomEnemyIndex];
+		}
+		int enemyDifficultyTotal = SumArray(enemySet);
+
+		return enemySet;
+	}
+
+	private int SumArray(int[] array) {
+		int sum = 0;
+		for (int i = 0; i < array.Length; i++) {
+			sum += array[i];
+		}
+		return sum;
 	}
 
 	private void ReplaceSpawnWithObject(Transform spawn, Transform newRoom) {
@@ -175,11 +206,6 @@ public class LevelGenerator : MonoBehaviour {
 		newObj.transform.SetParent(newRoom);
 		newObj.transform.position = spawn.position;
 		Destroy(spawn.gameObject);
-	}
-
-	private int[] GenerateEnemySet(int roomDifficulty, string roomColor, int numOfSpawnLocations) {
-		// Replace with enemy subset generation algorithm
-		return new int[] {1, 1, 2};
 	}
 
 	private int GetNormalizedRoomDifficulty(Vector3 roomPosition) {
