@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 475482}
   m_Layer: 0
-  m_Name: SpawnEnemy30
+  m_Name: SpawnEnemyBlue0
   m_TagString: EnemySpawn
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
