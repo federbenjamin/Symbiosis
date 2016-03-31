@@ -4381,7 +4381,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 460012, guid: c70eb2c67c7da45589f281c5082240c0, type: 2}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c70eb2c67c7da45589f281c5082240c0, type: 2}
@@ -10602,7 +10602,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 146382, guid: c70eb2c67c7da45589f281c5082240c0, type: 2}
       propertyPath: m_Name
-      value: SpawnEnemy20 (1)
+      value: SpawnEnemyRed1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c70eb2c67c7da45589f281c5082240c0, type: 2}
@@ -33287,7 +33287,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 129718, guid: 5dd091d9fa7744f41aa0ace32dc2fb09, type: 2}
       propertyPath: m_Name
-      value: SpawnEnemy10 (3)
+      value: SpawnEnemyGreen1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5dd091d9fa7744f41aa0ace32dc2fb09, type: 2}
@@ -33598,56 +33598,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 850855924}
   m_Mesh: {fileID: 4300062, guid: 98557d3d10bc6fd47a705bac4670002a, type: 3}
---- !u!1001 &851864548
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1123361207}
-    m_Modifications:
-    - target: {fileID: 440848, guid: 0ee95262705304413aacb14b519700cb, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -4.9069977
-      objectReference: {fileID: 0}
-    - target: {fileID: 440848, guid: 0ee95262705304413aacb14b519700cb, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 440848, guid: 0ee95262705304413aacb14b519700cb, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 3.1672668
-      objectReference: {fileID: 0}
-    - target: {fileID: 440848, guid: 0ee95262705304413aacb14b519700cb, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0.00000002669254
-      objectReference: {fileID: 0}
-    - target: {fileID: 440848, guid: 0ee95262705304413aacb14b519700cb, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071067
-      objectReference: {fileID: 0}
-    - target: {fileID: 440848, guid: 0ee95262705304413aacb14b519700cb, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0.000000026692536
-      objectReference: {fileID: 0}
-    - target: {fileID: 440848, guid: 0ee95262705304413aacb14b519700cb, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 440848, guid: 0ee95262705304413aacb14b519700cb, type: 2}
-      propertyPath: m_RootOrder
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 190054, guid: 0ee95262705304413aacb14b519700cb, type: 2}
-      propertyPath: m_Name
-      value: RayGunPickUp (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 440848, guid: 0ee95262705304413aacb14b519700cb, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.1029861
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 0}
-  m_IsPrefabParent: 0
 --- !u!1001 &856784237
 Prefab:
   m_ObjectHideFlags: 0
@@ -34923,7 +34873,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 129718, guid: 5dd091d9fa7744f41aa0ace32dc2fb09, type: 2}
       propertyPath: m_Name
-      value: SpawnEnemy10 (1)
+      value: SpawnEnemyGreen1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5dd091d9fa7744f41aa0ace32dc2fb09, type: 2}
@@ -37964,11 +37914,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 460012, guid: c70eb2c67c7da45589f281c5082240c0, type: 2}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 146382, guid: c70eb2c67c7da45589f281c5082240c0, type: 2}
       propertyPath: m_Name
-      value: SpawnEnemy20 (1)
+      value: SpawnEnemyRed1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c70eb2c67c7da45589f281c5082240c0, type: 2}
@@ -39452,7 +39402,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 185670, guid: 0de2accfdfc184d639eba2ef267309e8, type: 2}
       propertyPath: m_Name
-      value: SpawnEnemy22 (1)
+      value: SpawnEnemyRed1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0de2accfdfc184d639eba2ef267309e8, type: 2}
@@ -49718,7 +49668,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 169666, guid: 55b277df595c0461b8e9cc02a5fdc2c0, type: 2}
       propertyPath: m_Name
-      value: SpawnEnemy30 (3)
+      value: SpawnEnemyBlue1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 55b277df595c0461b8e9cc02a5fdc2c0, type: 2}
@@ -49992,7 +49942,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 129718, guid: 5dd091d9fa7744f41aa0ace32dc2fb09, type: 2}
       propertyPath: m_Name
-      value: SpawnEnemy10 (1)
+      value: SpawnEnemyGreen1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5dd091d9fa7744f41aa0ace32dc2fb09, type: 2}
@@ -55533,7 +55483,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 146382, guid: c70eb2c67c7da45589f281c5082240c0, type: 2}
       propertyPath: m_Name
-      value: SpawnEnemy20 (2)
+      value: SpawnEnemyRed1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c70eb2c67c7da45589f281c5082240c0, type: 2}
@@ -56805,128 +56755,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 6f8cb5b9026f9488ca32f36968038e3a, type: 3}
   m_PrefabInternal: {fileID: 1414473093}
---- !u!1 &1416062046
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 190054, guid: 0ee95262705304413aacb14b519700cb, type: 2}
-  m_PrefabInternal: {fileID: 851864548}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1416062047}
-  - 33: {fileID: 1416062052}
-  - 23: {fileID: 1416062051}
-  - 95: {fileID: 1416062050}
-  - 114: {fileID: 1416062049}
-  - 136: {fileID: 1416062048}
-  m_Layer: 0
-  m_Name: RayGunPickUp (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1416062047
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 440848, guid: 0ee95262705304413aacb14b519700cb, type: 2}
-  m_PrefabInternal: {fileID: 851864548}
-  m_GameObject: {fileID: 1416062046}
-  m_LocalRotation: {x: -0.00000002669254, y: 0.7071067, z: 0.000000026692536, w: 0.7071068}
-  m_LocalPosition: {x: -4.9069977, y: 0, z: 3.1672668}
-  m_LocalScale: {x: 0.1029861, y: 0.10298609, z: 0.15468338}
-  m_Children: []
-  m_Father: {fileID: 1123361207}
-  m_RootOrder: 13
---- !u!136 &1416062048
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 13662786, guid: 0ee95262705304413aacb14b519700cb,
-    type: 2}
-  m_PrefabInternal: {fileID: 851864548}
-  m_GameObject: {fileID: 1416062046}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 2
-  m_Height: 6
-  m_Direction: 2
-  m_Center: {x: -0.10017882, y: 2.1, z: 2.3195236}
---- !u!114 &1416062049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11486540, guid: 0ee95262705304413aacb14b519700cb,
-    type: 2}
-  m_PrefabInternal: {fileID: 851864548}
-  m_GameObject: {fileID: 1416062046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6218b172aa1244eaae7af2714db7433, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotateSpeed: 100
-  powerupType: RayGun
-  pistolPickup: {fileID: 159162, guid: 0b754bcf084cb4690bda77d7cee86b6a, type: 2}
-  rayGunPickup: {fileID: 1416062046}
-  swordPickup: {fileID: 136966, guid: a5ded5a0fb6104fff8fc06e38d0bc8e1, type: 2}
-  redAugmentPickup: {fileID: 115124, guid: 4829ad59575a5450888120432f08742b, type: 2}
-  blueAugmentPickup: {fileID: 195796, guid: f6fa92d0f4dc543949127a7e8f3da89a, type: 2}
-  greenAugmentPickup: {fileID: 148428, guid: d4fe809a14b064385835a89878a89a77, type: 2}
-  notUsed: 0
---- !u!95 &1416062050
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 9571614, guid: 0ee95262705304413aacb14b519700cb,
-    type: 2}
-  m_PrefabInternal: {fileID: 851864548}
-  m_GameObject: {fileID: 1416062046}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 24757d08396d44b32999124a6165d633, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!23 &1416062051
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 2333066, guid: 0ee95262705304413aacb14b519700cb,
-    type: 2}
-  m_PrefabInternal: {fileID: 851864548}
-  m_GameObject: {fileID: 1416062046}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 2100000, guid: 4b0917d1c064d4374995a858de6997e8, type: 2}
-  - {fileID: 2100000, guid: fc46d5e27673a412b9914c1dc66c593e, type: 2}
-  - {fileID: 2100000, guid: 0b925e6bbd1f54e2987424243f13da55, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
---- !u!33 &1416062052
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 3315146, guid: 0ee95262705304413aacb14b519700cb,
-    type: 2}
-  m_PrefabInternal: {fileID: 851864548}
-  m_GameObject: {fileID: 1416062046}
-  m_Mesh: {fileID: 4300000, guid: 24757d08396d44b32999124a6165d633, type: 3}
 --- !u!1 &1418089890
 GameObject:
   m_ObjectHideFlags: 0
@@ -59834,7 +59662,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 146382, guid: c70eb2c67c7da45589f281c5082240c0, type: 2}
       propertyPath: m_Name
-      value: SpawnEnemy20 (3)
+      value: SpawnEnemyRed1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c70eb2c67c7da45589f281c5082240c0, type: 2}
@@ -61264,7 +61092,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 169666, guid: 55b277df595c0461b8e9cc02a5fdc2c0, type: 2}
       propertyPath: m_Name
-      value: SpawnEnemy30 (1)
+      value: SpawnEnemyBlue1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 55b277df595c0461b8e9cc02a5fdc2c0, type: 2}
@@ -63351,7 +63179,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 169666, guid: 55b277df595c0461b8e9cc02a5fdc2c0, type: 2}
       propertyPath: m_Name
-      value: SpawnEnemy30 (2)
+      value: SpawnEnemyBlue1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 55b277df595c0461b8e9cc02a5fdc2c0, type: 2}
@@ -67960,7 +67788,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 115310, guid: e6236010e17ff43fb9d57c1f8774f44d, type: 2}
       propertyPath: m_Name
-      value: SpawnEnemy32 (1)
+      value: SpawnEnemyBlue1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e6236010e17ff43fb9d57c1f8774f44d, type: 2}
@@ -82991,7 +82819,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 129718, guid: 5dd091d9fa7744f41aa0ace32dc2fb09, type: 2}
       propertyPath: m_Name
-      value: SpawnEnemy10 (2)
+      value: SpawnEnemyGreen1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5dd091d9fa7744f41aa0ace32dc2fb09, type: 2}
@@ -85177,7 +85005,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 129718, guid: 5dd091d9fa7744f41aa0ace32dc2fb09, type: 2}
       propertyPath: m_Name
-      value: SpawnEnemy10 (1)
+      value: SpawnEnemyGreen1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5dd091d9fa7744f41aa0ace32dc2fb09, type: 2}
