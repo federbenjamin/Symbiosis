@@ -69,6 +69,7 @@ public class LevelGenerator : MonoBehaviour {
 
 			GenerateInitalRooms(player, quadrant, xOffset, zOffset);
 		}
+
 		LoadRemainingAssets();
 	}
 
@@ -96,7 +97,32 @@ public class LevelGenerator : MonoBehaviour {
 					
 					Vector3 roomOffset = new Vector3(xOffset, 0, zOffset);
 					GenerateDoorsAndWalls(newRoom.transform, player, roomNumber, roomColor, roomOffset, quadrantRooms);
+					SpawnEnemies(newRoom.transform, roomColor);
 				}
+			}
+		}
+	}
+
+	private void SpawnEnemies(Transform newRoom, string roomColor) {
+		foreach (Transform transform in newRoom) {
+			if (transform.tag == "EnemySpawnerBlank") {
+				if (pseudoRandom.Next(3) != 1) {
+					int enemyNum = 1;
+					int chanceOfDifficulty = pseudoRandom.Next(10);
+					if (chanceOfDifficulty <= 3) {
+						enemyNum = 1;
+					} else if (chanceOfDifficulty >= 8) {
+						enemyNum = (roomColor == "Blue" ? 3 : 1);
+					} else {
+						enemyNum = 2;
+					}
+
+					Vector3 location = transform.position;
+					GameObject enemySpawn = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/EnemySpawns/SpawnEnemy" + roomColor + enemyNum)) as GameObject;
+					enemySpawn.transform.SetParent(newRoom);
+					enemySpawn.transform.position = location;
+				}
+				Destroy(transform.gameObject);
 			}
 		}
 	}
