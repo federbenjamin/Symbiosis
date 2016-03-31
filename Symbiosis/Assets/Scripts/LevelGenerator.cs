@@ -14,6 +14,7 @@ public class LevelGenerator : MonoBehaviour {
 	private string[] directions = new string[] {"West", "East", "North", "South"};
 	private string[] colors = new string[] {"Red", "Green", "Blue"};
 
+	private List<string> remainingRoomColors = new List<string>();
 	// List order: Red, Green, Blue
 	private int[] numRoomTypePrefabs = new int[] {5, 5, 5};
 	private Dictionary<string, List<int>> remainingRoomPrefabs = new Dictionary<string, List<int>>();
@@ -37,7 +38,8 @@ public class LevelGenerator : MonoBehaviour {
 		Debug.Log("Using Seed: " + seed);
 		pseudoRandom = new System.Random(seed);
 
-		// Instantiate Room Prefabs Remaning Lists
+		// Instantiate Room Prefabs and Room Colors Remaning Lists
+		//FillEmptyRoomColorList();
 		foreach (string color in colors) {
 			ResetPrefabsRemainingByColor(color);
 		}
@@ -223,26 +225,34 @@ public class LevelGenerator : MonoBehaviour {
 	}
 
 	private string RandomRoomPrefab() {
-		int colorNum = pseudoRandom.Next(3);
-		string color;
-		if (colorNum == 0) {
-			color = "Red";
-		} else if (colorNum == 1) {
-			color = "Green";
-		} else {
-			color = "Blue";
+		if (remainingRoomColors.Count == 0) {
+			FillEmptyRoomColorList();
 		}
+
+		// Pick one of the three colors
+		int colorIndexNum = pseudoRandom.Next(remainingRoomColors.Count);
+		string color = remainingRoomColors[colorIndexNum];
+		remainingRoomColors.RemoveAt(colorIndexNum);
 
 		if (remainingRoomPrefabs[color].Count == 0) {
 			ResetPrefabsRemainingByColor(color);
 		}
 
+		// Pick one of the prefabs of the color chosen above
 		List<int> prefabList = remainingRoomPrefabs[color];
 		int indexNum = pseudoRandom.Next(prefabList.Count);
 		int prefabNum = prefabList[indexNum];
 		prefabList.RemoveAt(indexNum);
 
 		return color + prefabNum;
+	}
+
+	private void FillEmptyRoomColorList() {
+		foreach (string color in colors) {
+			for (int i = 0; i < size; i++) {
+				remainingRoomColors.Add(color);
+			}
+		}
 	}
 
 	private void ResetPrefabsRemainingByColor(string color) {

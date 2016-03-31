@@ -157,12 +157,12 @@ public class RoomController : MonoBehaviour {
 
 		foreach (GameObject spawnpoint in spawnpoints) {
 			string enemyType = spawnpoint.name.Substring(10);
-			enemyType = Regex.Match(enemyType, @"\D+[1-3]").Groups[0].Value;
+			enemyType = Regex.Match(enemyType, @"\D+\d+").Groups[0].Value;
 			GameObject enemyChild;
 
 			Vector3 spawnVector = spawnpoint.transform.position;
 			spawnVector.y = 0.055f;
-			Debug.Log(enemyType);
+
 			if (enemyType == "Green1" || enemyType == "10") {
 				enemyChild = Instantiate (greenZomb, spawnVector, spawnpoint.transform.rotation) as GameObject;
 			} else if (enemyType == "Green2" || enemyType == "12") {

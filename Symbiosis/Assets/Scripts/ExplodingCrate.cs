@@ -35,7 +35,6 @@ public class ExplodingCrate : MonoBehaviour {
 	            
 				Color newColor = material.color;
 				newColor.a = alphaValue;
-				Debug.Log(newColor.a);
 				material.SetColor("_Color", newColor);
 			}
 			setFadeRendering = true;

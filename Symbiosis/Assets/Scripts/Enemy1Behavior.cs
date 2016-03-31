@@ -11,10 +11,10 @@ public class Enemy1Behavior : EnemyBehavior {
 	private bool realignTimerSet = false;
 
 	public float stoppingDistance;
-	private NavMeshAgent _navMeshAgent;
+	// private NavMeshAgent _navMeshAgent;
 
 	void Awake () {
-		_navMeshAgent = transform.GetComponent<NavMeshAgent>();
+		// _navMeshAgent = transform.GetComponent<NavMeshAgent>();
 	}
 
 	// Update is called once per frame
