@@ -21290,7 +21290,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 450410, guid: 6e0af27ec351045ea95a7930cfaaaf4e, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8278382, guid: 6e0af27ec351045ea95a7930cfaaaf4e, type: 2}
       propertyPath: m_Volume
@@ -44276,7 +44276,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 439838, guid: f2e3b56b04ff240b3a2ca4d444680002, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 11487576, guid: f2e3b56b04ff240b3a2ca4d444680002, type: 2}
       propertyPath: lookAtObject
@@ -67447,7 +67447,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 492986, guid: ab4ae1d60ee954231a42438718256e1b, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 11488120, guid: ab4ae1d60ee954231a42438718256e1b, type: 2}
       propertyPath: lookAtObject
@@ -68577,7 +68577,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 490964, guid: 69511bb06e5054426b85720a028f96bd, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2004190, guid: 69511bb06e5054426b85720a028f96bd, type: 2}
       propertyPath: m_NormalizedViewPortRect.width
@@ -83470,7 +83470,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 490964, guid: 69511bb06e5054426b85720a028f96bd, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2004190, guid: 69511bb06e5054426b85720a028f96bd, type: 2}
       propertyPath: m_NormalizedViewPortRect.width

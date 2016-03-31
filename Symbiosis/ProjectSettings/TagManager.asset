@@ -20,6 +20,7 @@ TagManager:
   - Light
   - Hoop
   - Floor
+  - EnemySpawnerBlank
   layers:
   - Default
   - TransparentFX
