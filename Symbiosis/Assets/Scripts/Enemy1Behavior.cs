@@ -38,9 +38,9 @@ public class Enemy1Behavior : EnemyBehavior {
 			if (roomController.EnemiesActive) {
 				timer++;
 
-				_navMeshAgent.speed = moveSpeed;
-				_navMeshAgent.stoppingDistance = stoppingDistance;
-				_navMeshAgent.destination = targetPlayer.Transform.position;
+				// _navMeshAgent.speed = moveSpeed;
+				// _navMeshAgent.stoppingDistance = stoppingDistance;
+				// _navMeshAgent.destination = targetPlayer.Transform.position;
 
 				// rotate to look at the player
 				Vector3 direction = targetPlayer.Transform.position - myRigidBody.position;
@@ -50,11 +50,11 @@ public class Enemy1Behavior : EnemyBehavior {
 
 				if (targetPlayer.Distance > stoppingDistance) {
 					enemyAnimator.SetTrigger ("Walking");
-					// Vector3 moveDirection = myTransform.forward;
-					// moveDirection.y = 0;
-					// //move towards the player
-					// myRigidBody.AddForce (moveDirection * (moveSpeed * 10) * Time.deltaTime, ForceMode.VelocityChange);
-					//myTransform.position += moveDirection * moveSpeed * Time.deltaTime;
+					Vector3 moveDirection = myTransform.forward;
+					moveDirection.y = 0;
+					//move towards the player
+					myRigidBody.AddForce (moveDirection * (moveSpeed * 10) * Time.deltaTime, ForceMode.VelocityChange);
+					myTransform.position += moveDirection * moveSpeed * Time.deltaTime;
 				} else if (timer > nextHit) {
 					enemyAnimator.SetTrigger ("Stopped");
 
