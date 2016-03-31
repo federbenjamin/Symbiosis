@@ -161,15 +161,15 @@ public class RoomController : MonoBehaviour {
 			Vector3 spawnVector = spawnpoint.transform.position;
 			spawnVector.y = 0.055f;
 
-			if (enemyType == "Green0") {
+			if (enemyType == "Green1") {
 				enemyChild = Instantiate (greenZomb, spawnVector, spawnpoint.transform.rotation) as GameObject;
 			} else if (enemyType == "Green2") {
 				enemyChild = Instantiate (greenSpecial, spawnVector, spawnpoint.transform.rotation) as GameObject;
-			} else if (enemyType == "Red0") {
+			} else if (enemyType == "Red1") {
 				enemyChild = Instantiate (redZomb, spawnVector, spawnpoint.transform.rotation) as GameObject;
 			} else if (enemyType == "Red2") {
 				enemyChild = Instantiate (redSpecial, spawnVector, spawnpoint.transform.rotation) as GameObject;
-			}  else if (enemyType == "Blue0") {
+			}  else if (enemyType == "Blue1") {
 				enemyChild = Instantiate (blueZomb, spawnVector, spawnpoint.transform.rotation) as GameObject;
 			} else if (enemyType == "Blue2") {
 				enemyChild = Instantiate (blueSpecial, spawnVector, spawnpoint.transform.rotation) as GameObject;
