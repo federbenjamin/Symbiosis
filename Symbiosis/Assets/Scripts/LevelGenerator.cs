@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System;
 using System.Text.RegularExpressions;
 
@@ -10,9 +11,12 @@ public class LevelGenerator : MonoBehaviour {
 	private System.Random pseudoRandom;
 	private Transform roomParent;
 
-	private int numRedRoomPrefabs = 5;
-	private int numGreenRoomPrefabs = 5;
-	private int numBlueRoomPrefabs = 5;
+	string[] directions = new string[] {"West", "East", "North", "South"};
+	string[] colors = new string[] {"Red", "Green", "Blue"};
+
+	// List order: Red, Green, Blue
+	private int[] numRoomTypePrefabs = new int[] {5, 5, 5};
+	private Dictionary<string, List<int>> remainingRoomPrefabs = new Dictionary<string, List<int>>();
 
 	void Awake () {
 		roomParent = GameObject.Find("Rooms").transform;
@@ -27,8 +31,13 @@ public class LevelGenerator : MonoBehaviour {
 		}
 		size = LevelData.levelSize;
 		seed = LevelData.levelSeed;
-		Debug.Log(seed);
+		Debug.Log("Using Seed: " + seed);
 		pseudoRandom = new System.Random(seed);
+
+		// Instantiate Room Prefabs Remaning Lists
+		foreach (string color in colors) {
+			ResetPrefabsRemainingByColor(color);
+		}
 
 		// Randomize level positioning
 		int rightSidePlayer = pseudoRandom.Next(2);
@@ -77,7 +86,7 @@ public class LevelGenerator : MonoBehaviour {
 					int zOffset = i * 32 + levelZOffset;
 					Vector3 roomPosition = new Vector3(xOffset, 0, zOffset);
 
-					string roomSuffix = RandomRoomPrefab(roomNumber);
+					string roomSuffix = RandomRoomPrefab();
 					string roomColor = Regex.Match(roomSuffix, @"\D+").Groups[0].Value;
 					string name = "Room" + player + "-" + roomNumber;
 					GameObject newRoom = GenerateRoom(roomSuffix, name, roomPosition, roomColor);
@@ -134,7 +143,6 @@ public class LevelGenerator : MonoBehaviour {
 
 		bool spawnWall;
 		GameObject newObj;
-		string[] directions = new string[] {"West", "East", "North", "South"};
 		foreach (string direction in directions) {
 
 			spawnWall = true;
@@ -184,23 +192,47 @@ public class LevelGenerator : MonoBehaviour {
 		return new int[] {quadrant, skipRoom, switchRoomAdjacentNum, switchRoomBlocking, tutorialRoomAdjacent};
 	}
 
-	private string RandomRoomPrefab(int roomNum) {
+	private string RandomRoomPrefab() {
 		int colorNum = pseudoRandom.Next(3);
-
-		// Red
+		string color;
 		if (colorNum == 0) {
-			int prefabNum = pseudoRandom.Next(numRedRoomPrefabs);
-			return "Red" + prefabNum;
+			color = "Red";
+		} else if (colorNum == 1) {
+			color = "Green";
+		} else {
+			color = "Blue";
 		}
-		//Green
-		else if (colorNum == 1) {
-			int prefabNum = pseudoRandom.Next(numGreenRoomPrefabs);
-			return "Green" + prefabNum;
+
+		if (remainingRoomPrefabs[color].Count == 0) {
+			ResetPrefabsRemainingByColor(color);
 		}
-		//Blue
-		else {
-			int prefabNum = pseudoRandom.Next(numBlueRoomPrefabs);
-			return "Blue" + prefabNum;
+
+		List<int> prefabList = remainingRoomPrefabs[color];
+		int indexNum = pseudoRandom.Next(prefabList.Count);
+		int prefabNum = prefabList[indexNum];
+		prefabList.RemoveAt(indexNum);
+
+		return color + prefabNum;
+	}
+
+	private void ResetPrefabsRemainingByColor(string color) {
+		int numOfPrefabs;
+		if (color == "Red") {
+			numOfPrefabs = numRoomTypePrefabs[0];
+		} else if (color == "Green") {
+			numOfPrefabs = numRoomTypePrefabs[1];
+		} else {
+			numOfPrefabs = numRoomTypePrefabs[2];
+		}
+
+		List<int> prefabList = new List<int>(numOfPrefabs);
+		for (int i = 0; i < numOfPrefabs; i++) {
+			prefabList.Add(i);
+		}
+		if (remainingRoomPrefabs.ContainsKey(color)) {
+			remainingRoomPrefabs[color] = prefabList;
+		} else {
+			remainingRoomPrefabs.Add(color, prefabList);
 		}
 	}
 
@@ -220,7 +252,6 @@ public class LevelGenerator : MonoBehaviour {
 
 		bool spawnWall;
 		GameObject newObj;
-		string[] directions = new string[] {"West", "East", "North", "South"};
 		foreach (string direction in directions) {
 			if (direction == "East") {
 				spawnWall = (roomNum % size == (size - 1)) && !switchDoor && !tutorialDoor;
