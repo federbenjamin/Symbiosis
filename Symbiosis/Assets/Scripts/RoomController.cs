@@ -155,27 +155,27 @@ public class RoomController : MonoBehaviour {
 		 */
 
 		foreach (GameObject spawnpoint in spawnpoints) {
-			string enemyType = spawnpoint.name.Substring(10, 2);
+			string enemyType = spawnpoint.name.Substring(10);
 			GameObject enemyChild;
 
 			Vector3 spawnVector = spawnpoint.transform.position;
 			spawnVector.y = 0.055f;
 
-			if (enemyType == "10") {
+			if (enemyType == "Green0") {
 				enemyChild = Instantiate (greenZomb, spawnVector, spawnpoint.transform.rotation) as GameObject;
-			} else if (enemyType == "12") {
+			} else if (enemyType == "Green2") {
 				enemyChild = Instantiate (greenSpecial, spawnVector, spawnpoint.transform.rotation) as GameObject;
-			} else if (enemyType == "20") {
+			} else if (enemyType == "Red0") {
 				enemyChild = Instantiate (redZomb, spawnVector, spawnpoint.transform.rotation) as GameObject;
-			} else if (enemyType == "22") {
+			} else if (enemyType == "Red2") {
 				enemyChild = Instantiate (redSpecial, spawnVector, spawnpoint.transform.rotation) as GameObject;
-			}  else if (enemyType == "30") {
+			}  else if (enemyType == "Blue0") {
 				enemyChild = Instantiate (blueZomb, spawnVector, spawnpoint.transform.rotation) as GameObject;
-			} else if (enemyType == "32") {
+			} else if (enemyType == "Blue2") {
 				enemyChild = Instantiate (blueSpecial, spawnVector, spawnpoint.transform.rotation) as GameObject;
-			} else if (enemyType == "33") {
+			} else if (enemyType == "Blue3") {
 				enemyChild = Instantiate (blueTurret, spawnVector, spawnpoint.transform.rotation) as GameObject;
-			}else {
+			} else {
 				spawnVector.y = 0.74f;
 				enemyChild = Instantiate (boss, spawnVector, spawnpoint.transform.rotation) as GameObject;
 			}
