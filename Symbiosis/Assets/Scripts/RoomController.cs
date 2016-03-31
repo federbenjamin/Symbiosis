@@ -161,19 +161,19 @@ public class RoomController : MonoBehaviour {
 			Vector3 spawnVector = spawnpoint.transform.position;
 			spawnVector.y = 0.055f;
 
-			if (enemyType == "Green1") {
+			if (enemyType == "Green1" || enemyType == "10") {
 				enemyChild = Instantiate (greenZomb, spawnVector, spawnpoint.transform.rotation) as GameObject;
-			} else if (enemyType == "Green2") {
+			} else if (enemyType == "Green2" || enemyType == "12") {
 				enemyChild = Instantiate (greenSpecial, spawnVector, spawnpoint.transform.rotation) as GameObject;
-			} else if (enemyType == "Red1") {
+			} else if (enemyType == "Red1" || enemyType == "20") {
 				enemyChild = Instantiate (redZomb, spawnVector, spawnpoint.transform.rotation) as GameObject;
-			} else if (enemyType == "Red2") {
+			} else if (enemyType == "Red2" || enemyType == "22") {
 				enemyChild = Instantiate (redSpecial, spawnVector, spawnpoint.transform.rotation) as GameObject;
-			}  else if (enemyType == "Blue1") {
+			}  else if (enemyType == "Blue1" || enemyType == "30") {
 				enemyChild = Instantiate (blueZomb, spawnVector, spawnpoint.transform.rotation) as GameObject;
-			} else if (enemyType == "Blue2") {
+			} else if (enemyType == "Blue2" || enemyType == "32") {
 				enemyChild = Instantiate (blueSpecial, spawnVector, spawnpoint.transform.rotation) as GameObject;
-			} else if (enemyType == "Blue3") {
+			} else if (enemyType == "Blue3" || enemyType == "33") {
 				enemyChild = Instantiate (blueTurret, spawnVector, spawnpoint.transform.rotation) as GameObject;
 			} else {
 				spawnVector.y = 0.74f;

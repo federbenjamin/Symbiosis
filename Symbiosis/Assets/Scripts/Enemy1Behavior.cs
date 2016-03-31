@@ -40,7 +40,7 @@ public class Enemy1Behavior : EnemyBehavior {
 
 				_navMeshAgent.speed = moveSpeed;
 				_navMeshAgent.stoppingDistance = stoppingDistance;
-				//_navMeshAgent.destination = targetPlayer.Transform.position;
+				_navMeshAgent.destination = targetPlayer.Transform.position;
 
 				// rotate to look at the player
 				Vector3 direction = targetPlayer.Transform.position - myRigidBody.position;
