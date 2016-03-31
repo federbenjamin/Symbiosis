@@ -106,10 +106,10 @@ public class LevelGenerator : MonoBehaviour {
 	private void SpawnEnemies(Transform newRoom, string roomColor) {
 		foreach (Transform transform in newRoom) {
 			if (transform.tag == "EnemySpawnerBlank") {
-				if (pseudoRandom.Next(3) != 1) {
+				if (pseudoRandom.Next(100) <= 40) {
 					int enemyNum = 1;
 					int chanceOfDifficulty = pseudoRandom.Next(10);
-					if (chanceOfDifficulty <= 3) {
+					if (chanceOfDifficulty <= 4) {
 						enemyNum = 1;
 					} else if (chanceOfDifficulty >= 8) {
 						enemyNum = (roomColor == "Blue" ? 3 : 1);
