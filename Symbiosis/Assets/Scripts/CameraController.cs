@@ -65,7 +65,13 @@ public class CameraController : MonoBehaviour {
 
 			if (playersTogether == true) {
 				playersMiddle = (player.transform.position.x + player2.transform.position.x) * 0.5f;
-				if ((playersMiddle - transform.position.x >= 1) || (playersMiddle - transform.position.x <= -1)) {
+				if (transform.position.x < maxLeft - 1) {
+					newCameraPos = new Vector3 (maxLeft, transform.position.y, transform.position.z);
+					transform.position = Vector3.Lerp (transform.position, newCameraPos, 1f * Time.deltaTime);
+				} else if (transform.position.x > maxRight + 1) {
+					newCameraPos = new Vector3 (maxRight, transform.position.y, transform.position.z);
+					transform.position = Vector3.Lerp (transform.position, newCameraPos, 1f * Time.deltaTime);
+				} else if ((playersMiddle - transform.position.x > 0) || (playersMiddle - transform.position.x < 0)) {
 					newCameraPos = new Vector3 (playersMiddle, transform.position.y, transform.position.z);
 					transform.position = Vector3.Lerp (transform.position, newCameraPos, 1f * Time.deltaTime);
 				}
