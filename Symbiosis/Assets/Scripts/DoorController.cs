@@ -48,6 +48,7 @@ public class DoorController : MonoBehaviour {
 					Vector3 newPlayerPosition = new Vector3 (nextRoomPos.x, other.transform.position.y, nextRoomPos.z);
 					newPlayerPosition = newPlayerPosition + OutPlacer (outDoor);
 					other.transform.position = newPlayerPosition;
+					other.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
 
 					playerCamera = GameObject.Find ("CameraParent" + other.name);
 					playerCamera.GetComponent<CameraController>().NewRoomCameraPos = new Vector3 (newPlayerPosition.x, playerCamera.transform.position.y, nextRoomPos.z + cameraOffset);
@@ -60,13 +61,13 @@ public class DoorController : MonoBehaviour {
 	Vector3 OutPlacer(char dirChar){
 		Vector3 retval;
 		if (dirChar == 'n'){
-			retval = new Vector3 (0, 0, 3.2f);
-		}else if (dirChar == 's'){
-			retval = new Vector3 (0, 0, -3.2f);
-		}else if (dirChar == 'e'){
-			retval = new Vector3 (7.2f, 0,0);
-		}else{
-			retval = new Vector3 (-7.2f, 0,0);
+			retval = new Vector3 (0, 0, 3.7f);
+		} else if (dirChar == 's'){
+			retval = new Vector3 (0, 0, -3.7f);
+		} else if (dirChar == 'e'){
+			retval = new Vector3 (7.7f, 0,0);
+		} else{
+			retval = new Vector3 (-7.7f, 0,0);
 		}
 		return retval;
 	}

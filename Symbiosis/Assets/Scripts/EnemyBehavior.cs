@@ -132,21 +132,27 @@ public class EnemyBehavior : MonoBehaviour {
 
 		if (dist_1 < dist_2) {
 			if (targetPlayer.PlayerObject.name == "P2") {
-				switchTargetTimer--;
+				if (switchTargetTimer == 0) {
+					targetPlayer.ChangeTargetPlayer(GameObject.Find ("P2"), p2_Transform, dist_2);
+					switchTargetTimer = 20;
+				} else {
+					switchTargetTimer--;
+				}
 			} else {
-				targetPlayer.PlayerObject = GameObject.Find ("P1");
-				targetPlayer.Transform = p1_Transform;
-				targetPlayer.Distance = dist_1;
-				switchTargetTimer = 30;
+				targetPlayer.ChangeTargetPlayer(GameObject.Find ("P1"), p1_Transform, dist_1);
+				switchTargetTimer = 20;
 			}
 		} else {
 			if (targetPlayer.PlayerObject.name == "P1") {
-				switchTargetTimer--;
+				if (switchTargetTimer == 0) {
+					targetPlayer.ChangeTargetPlayer(GameObject.Find ("P1"), p1_Transform, dist_1);
+					switchTargetTimer = 20;
+				} else {
+					switchTargetTimer--;
+				}
 			} else {
-				targetPlayer.PlayerObject = GameObject.Find ("P2");
-				targetPlayer.Transform = p2_Transform;
-				targetPlayer.Distance = dist_2;
-				switchTargetTimer = 30;
+				targetPlayer.ChangeTargetPlayer(GameObject.Find ("P2"), p2_Transform, dist_2);
+				switchTargetTimer = 20;
 			}
 		}
     }
@@ -182,6 +188,12 @@ public class TargetPlayer {
 		get{return distance;}
      	set{distance = value;}
     }
+
+	public void ChangeTargetPlayer(GameObject pObject, Transform targetTransform, float targetDistance) {
+		playerObject = pObject;
+		transform = targetTransform;
+		distance = targetDistance;
+	}
 
     public TargetPlayer(GameObject pObject, Transform targetTransform, float targetDistance) {
     	playerObject = pObject;
