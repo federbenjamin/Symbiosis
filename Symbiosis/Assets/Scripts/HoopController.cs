@@ -7,6 +7,7 @@ public class HoopController : MonoBehaviour {
 	private float alphaDelta;
 	private float fadeTimer = 20;
 	private int showTimer;
+	private bool stopFading = true;
 
 	// Use this for initialization
 	void Start () {
@@ -25,9 +26,12 @@ public class HoopController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (showTimer == 0) {
+		if (showTimer == 0 && !stopFading) {
 			foreach (Material mat in hoopRenderer.materials) {
 				mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, mat.color.a - alphaDelta);
+				if (mat.color.a <= 0) {
+					stopFading = true;
+				}
 			}
 		}
 	}
@@ -44,5 +48,6 @@ public class HoopController : MonoBehaviour {
 			mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, 1);
 		}
 		showTimer = 50;
+		stopFading = false;
 	}
 }
