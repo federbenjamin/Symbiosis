@@ -69,14 +69,14 @@ public class GamePause : MonoBehaviour {
 		isPaused = !isPaused;
 
 		if (isPaused) {
+			Time.timeScale = 0.0f;
 			pausePanel.SetActive(true);
 			EventSystem.current.SetSelectedGameObject(firstSelected, null);
-			Time.timeScale = 0.0f;
 			gameAudio.changeMainSongVolume(0.07f);
 			gameAudio.changeMainSongPitch(0.9f);
 		} else {
-			pausePanel.SetActive(false);
 			Time.timeScale = 1.0f;
+			pausePanel.SetActive(false);
 			gameAudio.changeMainSongVolume(0.264f);
 			gameAudio.changeMainSongPitch(1f);
 		}
