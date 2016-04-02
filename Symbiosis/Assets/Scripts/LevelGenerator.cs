@@ -117,7 +117,7 @@ public class LevelGenerator : MonoBehaviour {
 	}
 
 	private void SpawnEnemies(Transform newRoom, string roomColor) {
-		int roomDifficulty = GetNormalizedRoomDifficulty(newRoom.position);
+		float roomDifficulty = GetNormalizedRoomDifficulty(newRoom.position);
 
 		// Generate a random subset of possible enemy types
 		List<Transform> spawnerTransforms = new List<Transform>();
@@ -127,7 +127,7 @@ public class LevelGenerator : MonoBehaviour {
 			}
 		}
 
-		int enemySpawnCountUpper = Mathf.CeilToInt((float)roomDifficulty / (float)maxDifficulty * 5f);
+		int enemySpawnCountUpper = Mathf.CeilToInt(roomDifficulty * ((float)maxEnemiesPerRoom + 1f));
 		int enemySpawnCountLower = Mathf.CeilToInt((float)enemySpawnCountUpper / 2f);
 		int enemySpawnCount = Mathf.Min(pseudoRandom.Next(enemySpawnCountLower, enemySpawnCountUpper), maxEnemiesPerRoom);
 		int[] enemiesToSpawn = GenerateEnemySet(roomDifficulty, roomColor, enemySpawnCount);
@@ -150,14 +150,15 @@ public class LevelGenerator : MonoBehaviour {
 		}
 	}
 
-	private int[] GenerateEnemySet(int roomDifficulty, string roomColor, int numOfSpawnLocations) {
+	private int[] GenerateEnemySet(float roomDifficulty, string roomColor, int numOfSpawnLocations) {
 		// Replace with enemy subset generation algorithm
 		int[] enemyTypes = enemyTypeDifficulty[roomColor];
+		int enemyTypeMax = Mathf.FloorToInt(roomDifficulty * (float)enemyTypes.Length);
 
 		// Initialize enemy set to random enemies
 		int[] enemySet = new int[numOfSpawnLocations];
 		for (int i = 0; i < numOfSpawnLocations; i++) {
-			int randomEnemyIndex = pseudoRandom.Next(enemyTypes.Length);
+			int randomEnemyIndex = Mathf.Min(pseudoRandom.Next(enemyTypeMax + 1), enemyTypes.Length - 1);
 			enemySet[i] = enemyTypes[randomEnemyIndex];
 		}
 
@@ -204,10 +205,10 @@ public class LevelGenerator : MonoBehaviour {
 		Destroy(spawn.gameObject);
 	}
 
-	private int GetNormalizedRoomDifficulty(Vector3 roomPosition) {
+	private float GetNormalizedRoomDifficulty(Vector3 roomPosition) {
 		float roomDistance = Vector3.Distance(roomPosition, gauntletPosition);
-		float unNormalizedDifficulty = (1 - roomDistance / tutorialRoomDistance) * maxDifficulty;
-		return Mathf.CeilToInt(unNormalizedDifficulty);
+		float normalizedDifficulty = (1 - roomDistance / tutorialRoomDistance);
+		return normalizedDifficulty;
 	}
 
 	private GameObject GenerateRoom(string roomSuffix, string roomName, Vector3 roomPosition) {
