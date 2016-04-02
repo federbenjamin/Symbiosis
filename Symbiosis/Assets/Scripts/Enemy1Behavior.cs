@@ -58,7 +58,7 @@ public class Enemy1Behavior : EnemyBehavior {
 				} else if (timer > nextHit) {
 					enemyAnimator.SetTrigger ("Stopped");
 
-					DamagePlayer(1);
+					//DamagePlayer(1);
 				} else {
 					enemyAnimator.SetTrigger ("Stopped");
 				}
@@ -92,15 +92,23 @@ public class Enemy1Behavior : EnemyBehavior {
   //       	realigningRotation = true;
   //      	}
 
-       	if (col.gameObject.tag != "Floor") {
+       	//if (col.gameObject.tag != "Floor") {
        		//Debug.Log("Colided with: " + col.gameObject.tag);
         	//realigningRotation = true;
-       	}
+       	//}
        	// if (col.gameObject.tag == "Player") {
        	// 	Debug.Log("in");
        	// 	if (timer > nextHit) {
        	// 		DamagePlayer(1);
        	// 	}
        	// }
+	}
+
+	void OnCollisionStay(Collision collision) {
+		if (collision.gameObject.tag == "Player") {
+			if (timer > nextHit) {
+				DamagePlayer(1);
+			}
+		}
 	}
 }
