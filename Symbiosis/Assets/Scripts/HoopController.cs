@@ -2,12 +2,13 @@
 using System.Collections;
 
 public class HoopController : MonoBehaviour {
-	private GameObject lookAtObject;
+	public GameObject lookAtObject;
 	private Renderer hoopRenderer;
 	private float alphaDelta;
 	private float fadeTimer = 20;
 	private int showTimer;
 	private bool stopFading = true;
+
 
 	// Use this for initialization
 	void Start () {
@@ -26,6 +27,13 @@ public class HoopController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (RoomController.playersTogether ) {
+			if (transform.parent.name == "P1") {
+				lookAtObject = GameObject.Find("SwitchP1");
+			}else {
+				lookAtObject = GameObject.Find("SwitchP2");
+			}
+		}
 		if (showTimer == 0 && !stopFading) {
 			foreach (Material mat in hoopRenderer.materials) {
 				mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, mat.color.a - alphaDelta);
