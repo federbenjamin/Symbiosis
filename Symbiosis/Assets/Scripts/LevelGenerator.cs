@@ -467,7 +467,8 @@ public class LevelGenerator : MonoBehaviour {
 		return newObj;
 	}
 
-	private void ReplaceDoorWithWall(string player, string roomNum, string direction) {
+	// Swap parameters with vertex to replace 2 doors at once
+	private void ReplaceDoorWithWall(string player, int roomNum, string direction) {
 		GameObject room = GameObject.Find("Room" + player + "-" + roomNum);
 		foreach (Transform child in room.transform) {
 			// Find the door to replace in the room object
