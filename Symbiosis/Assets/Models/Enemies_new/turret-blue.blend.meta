@@ -24,6 +24,7 @@ ModelImporter:
     7400000: Default Take
     7400002: Death_Barrels
     9500000: //RootNode
+    13700000: Turret
   materials:
     importMaterials: 1
     materialName: 0
