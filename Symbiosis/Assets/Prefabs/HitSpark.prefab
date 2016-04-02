@@ -11,6 +11,7 @@ GameObject:
   - 33: {fileID: 3300982}
   - 65: {fileID: 6514520}
   - 23: {fileID: 2397694}
+  - 114: {fileID: 11464624}
   m_Layer: 0
   m_Name: HitSpark
   m_TagString: Untagged
@@ -75,6 +76,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11464624
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 176766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62f19d6f51bec384280e9a9cdd525646, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifespan: 10
+  startSize: 0.2
+  endSize: 2
+  speed: 100
+  alphaValue: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -85,6 +102,22 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: speed
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: lifespan
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: startSize
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: endSize
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
