@@ -260,16 +260,18 @@ public class LevelGenerator : MonoBehaviour {
 		bool spawnWall;
 		GameObject newObj;
 		foreach (string direction in directions) {
+			if (direction == "West" || direction == "East") {
 
-			spawnWall = true;
-			bool rightHalfDoor = direction == "West" && (quadrant == 1 || quadrant == 3);
-			bool leftHalfDoor = direction == "East" && (quadrant == 0 || quadrant == 2);
-			if (rightHalfDoor || leftHalfDoor) {
-				spawnWall = false;
+				spawnWall = true;
+				bool rightHalfDoor = direction == "West" && (quadrant == 1 || quadrant == 3);
+				bool leftHalfDoor = direction == "East" && (quadrant == 0 || quadrant == 2);
+				if (rightHalfDoor || leftHalfDoor) {
+					spawnWall = false;
+				}
+
+				newObj = GenerateDoorOrWall(direction, player, roomNum, "Blank", offset, spawnWall);
+				newObj.transform.SetParent(finalTutorialRoom);
 			}
-
-			newObj = GenerateDoorOrWall(direction, player, roomNum, "Blank", offset, spawnWall);
-			newObj.transform.SetParent(finalTutorialRoom);
 		}
 	}
 
