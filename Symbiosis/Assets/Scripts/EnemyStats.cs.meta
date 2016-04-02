@@ -1,10 +1,13 @@
 fileFormatVersion: 2
 guid: 11e7a559fc6fc462191e9c4f74a073b0
-timeCreated: 1456809892
+timeCreated: 1459621381
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - enemyAnimator: {instanceID: 0}
+  - spawnParticles: {instanceID: 0}
+  - hitSpark: {fileID: 108434, guid: a3889eb7168bf454bae15c08cbd61b00, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -319,6 +319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyAnimator: {fileID: 0}
   bullet: {fileID: 118536, guid: 33b95e0761f9b4a75af688c0441fec7c, type: 2}
+  bulletOrigin: {fileID: 0}
   bulletOrigin1: {fileID: 158286}
   bulletOrigin2: {fileID: 153488}
   fireRate: 0
@@ -340,6 +341,7 @@ MonoBehaviour:
   elementType: ice
   enemyAnimator: {fileID: 0}
   spawnParticles: {fileID: 0}
+  hitSpark: {fileID: 176766, guid: 49626e56a25667540bc5a7eb750d40e7, type: 2}
 --- !u!136 &13659130
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -1920,6 +1922,10 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: hitSpark
+      value: 
+      objectReference: {fileID: 176766, guid: 49626e56a25667540bc5a7eb750d40e7, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 108362}

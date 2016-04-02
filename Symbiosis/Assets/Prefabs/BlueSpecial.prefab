@@ -1053,12 +1053,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e7a559fc6fc462191e9c4f74a073b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHP: 40
-  maxHP: 40
+  currentHP: 20
+  maxHP: 20
   moveSpeed: 6
   elementType: ice
   enemyAnimator: {fileID: 0}
   spawnParticles: {fileID: 0}
+  hitSpark: {fileID: 176766, guid: 49626e56a25667540bc5a7eb750d40e7, type: 2}
 --- !u!114 &11453942
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3459,11 +3460,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: maxHP
-      value: 40
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: currentHP
-      value: 40
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: elementType
@@ -3474,6 +3475,10 @@ Prefab:
       value: 
       objectReference: {fileID: 13400000, guid: 42f7df789ee7e43f29787044c8b181ae,
         type: 2}
+    - target: {fileID: 0}
+      propertyPath: hitSpark
+      value: 
+      objectReference: {fileID: 176766, guid: 49626e56a25667540bc5a7eb750d40e7, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 174620}

@@ -14,7 +14,7 @@ public class EnemyStats : MonoBehaviour {
 	public Animator enemyAnimator;
 	public GameObject spawnParticles;
 	float halfDmg, doubleDmg;
-
+	public Object hitSpark;
 
 	// Use this for initialization
 	void Start () {
@@ -62,6 +62,7 @@ public class EnemyStats : MonoBehaviour {
 			onFire = false;
 			frozen = false;
 		}
+		GameObject spark = Instantiate (hitSpark, transform.position, transform.rotation) as GameObject;
 	}
 
 	void DamageMultiplier(float incomingDamage, string damageType) {

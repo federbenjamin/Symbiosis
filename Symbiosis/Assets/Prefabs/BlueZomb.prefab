@@ -655,6 +655,7 @@ MonoBehaviour:
   elementType: ice
   enemyAnimator: {fileID: 0}
   spawnParticles: {fileID: 0}
+  hitSpark: {fileID: 176766, guid: 49626e56a25667540bc5a7eb750d40e7, type: 2}
 --- !u!114 &11467938
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2782,6 +2783,10 @@ Prefab:
       propertyPath: m_Acceleration
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: hitSpark
+      value: 
+      objectReference: {fileID: 176766, guid: 49626e56a25667540bc5a7eb750d40e7, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 152012}

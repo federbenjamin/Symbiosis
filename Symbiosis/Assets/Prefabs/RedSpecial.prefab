@@ -1669,6 +1669,7 @@ MonoBehaviour:
   elementType: fire
   enemyAnimator: {fileID: 0}
   spawnParticles: {fileID: 0}
+  hitSpark: {fileID: 176766, guid: 49626e56a25667540bc5a7eb750d40e7, type: 2}
 --- !u!136 &13623460
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -4889,6 +4890,10 @@ Prefab:
       value: 
       objectReference: {fileID: 13400000, guid: 42f7df789ee7e43f29787044c8b181ae,
         type: 2}
+    - target: {fileID: 0}
+      propertyPath: hitSpark
+      value: 
+      objectReference: {fileID: 176766, guid: 49626e56a25667540bc5a7eb750d40e7, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 132660}
