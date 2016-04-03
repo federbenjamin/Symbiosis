@@ -55,6 +55,10 @@ public class EnemyStats : MonoBehaviour {
 	}
 
 	public void TakeDamage(float incomingDamage, string damageType){
+		if (currentHP > 0) {
+			GameObject spark = Instantiate (hitSpark, transform.position, transform.rotation) as GameObject;
+		}
+
 		DamageMultiplier(incomingDamage, damageType);
 		if (!(damageType == "fire" && elementType == "ice")) {
 			StatusEffect(damageType);
@@ -62,7 +66,6 @@ public class EnemyStats : MonoBehaviour {
 			onFire = false;
 			frozen = false;
 		}
-		GameObject spark = Instantiate (hitSpark, transform.position, transform.rotation) as GameObject;
 	}
 
 	void DamageMultiplier(float incomingDamage, string damageType) {
