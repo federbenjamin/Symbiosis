@@ -2,9 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 
+public enum NodeColor {White, Grey, Black};
+
 public class LevelGraph {
 
+	// public static enum Color {White, Grey, Black};
+
 	public string player; // ???
+	public int maxDifficulty;
 
 	private Node tutorialAdjRoom;
 	public Node TutorialAdjRoom {
@@ -36,48 +41,77 @@ public class LevelGraph {
     	roomList.Add(newRoom);
     }
 
+    public Node GetRoomByNumber(int roomNumber) {
+		List<Node> nodesToSearch = new List<Node>(RoomList);
+		if (tutorialAdjRoom != null) {
+			nodesToSearch.Add(tutorialAdjRoom);
+		} else if (switchAdjRoom != null) {
+			nodesToSearch.Add(switchAdjRoom);
+		}
+		foreach (Node room in nodesToSearch) {
+			if (room.RoomNumber == roomNumber) {
+				return room;
+			}
+		}
+		return null;
+    }
+
     public void AddDoor(Edge newDoor) {
     	doorList.Add(newDoor);
     }
 
     public void Print() {
     	Debug.Log(player + ": ");
-    	Debug.Log("Tutorial Room: " + tutorialAdjRoom.roomNumber);
+		Debug.Log("Tutorial Room: " + tutorialAdjRoom.RoomNumber);
     	PrintEdges(tutorialAdjRoom);
-    	Debug.Log("Switch Room: " + switchAdjRoom.roomNumber);
+		Debug.Log("Switch Room: " + switchAdjRoom.RoomNumber);
     	PrintEdges(switchAdjRoom);
     	foreach (Node coreRoom in roomList) {
-    		Debug.Log("Room: " + coreRoom.roomNumber);
+			Debug.Log("Room: " + coreRoom.RoomNumber);
     		PrintEdges(coreRoom);
     	}
     }
-
     public void PrintEdges(Node node) {
-    	int roomNumber = node.roomNumber;
-    	foreach (Edge edge in doorList) {
-    		int door1Num = edge.door1.RoomNumber;
-    		int door2Num = edge.door2.RoomNumber;
-    		if (door1Num == roomNumber) {
-    			Debug.Log("   Door: " + door1Num + " to " + door2Num);
-    		} else if (door2Num == roomNumber) {
-    			Debug.Log("   Door: " + door2Num + " to " + door1Num);
-    		}
-    	}
+		foreach (Node adj in node.adjacentRooms) {
+			Debug.Log("    Door to: " + adj.RoomNumber);
+		}
     }
+
+    public void AddAllAdjacentRooms() {
+		foreach (Edge edge in doorList) {
+			Node room1 = edge.door1.RoomInside;
+			Node room2 = edge.door2.RoomInside;
+			room1.AddAdjacentRoom(room2);
+			room2.AddAdjacentRoom(room1);
+		}
+	}
 
 }
 
 public class Node {
 
-	public int roomNumber;
-	public int difficulty;
+	public List<Node> adjacentRooms;
 
-	public enum Color {White, Grey, Black}
-	public Color color;
+	private int roomNumber;
+	public int RoomNumber {
+		get{return roomNumber;}
+	}
+	private int difficulty;
+	public int Difficulty {
+		get{return difficulty;}
+		set{difficulty = value;}
+	}
+
+	public NodeColor color;
 
 	public Node(int roomNumber) {
-    	this.roomNumber = roomNumber;
-    	this.color = Color.White;
+		this.roomNumber = roomNumber;
+		this.color = NodeColor.White;
+		adjacentRooms = new List<Node>();
+    }
+
+	public void AddAdjacentRoom(Node newRoom) {
+		adjacentRooms.Add(newRoom);
     }
 
 }
@@ -92,8 +126,8 @@ public class Edge {
     	this.door2 = door2;
     }
 
-	public Edge(int roomNumber1, string direction1, int roomNumber2) {
-    	Door door1 = new Door(roomNumber1, direction1);
+	public Edge(Node roomNode1, string direction1, Node roomNumber2) {
+		Door door1 = new Door(roomNode1, direction1);
 
     	string direction2 = "";
     	if (direction1 == "East") {
@@ -111,9 +145,9 @@ public class Edge {
     	this.door2 = door2;
     }
 
-    public Edge(int roomNumber1, string direction1, int roomNumber2, string direction2) {
-    	Door door1 = new Door(roomNumber1, direction1);
-    	Door door2 = new Door(roomNumber2, direction2);
+    public Edge(Node roomNode1, string direction1, Node roomNode2, string direction2) {
+		Door door1 = new Door(roomNode1, direction1);
+		Door door2 = new Door(roomNode2, direction2);
     	this.door1 = door1;
     	this.door2 = door2;
     }
@@ -122,17 +156,17 @@ public class Edge {
 
 public class Door {
 
-	private int roomNumber;
-	public int RoomNumber {
-		get{return roomNumber;}
+	private Node roomInside;
+	public Node RoomInside {
+		get{return roomInside;}
 	}
 	private string direction;
 	public string Direction {
 		get{return direction;}
 	}
 
-	public Door(int roomNumber, string direction) {
-    	this.roomNumber = roomNumber;
+	public Door(Node roomInside, string direction) {
+		this.roomInside = roomInside;
     	this.direction = direction;
     }
 

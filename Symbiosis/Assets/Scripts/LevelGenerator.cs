@@ -97,8 +97,12 @@ public class LevelGenerator : MonoBehaviour {
  			GenerateInitalRooms(playerLevel, player, quadrant, xOffset, zOffset);
 		}
 
+		player1Level.AddAllAdjacentRooms();
+		player2Level.AddAllAdjacentRooms();
+
 		player1Level.Print();
 		player2Level.Print();
+
 		LoadRemainingAssets();
 	}
 
@@ -126,16 +130,16 @@ public class LevelGenerator : MonoBehaviour {
 					GameObject newRoom = GenerateRoom(roomSuffix, name, roomPosition, roomColor);
 
 					// Add room to graph
-					AddGraphNode(playerLevel, roomNumber, quadrantRooms);
+					Node newRoomNode = AddGraphNode(playerLevel, roomNumber, quadrantRooms);
 					
-					GenerateDoorsAndWalls(playerLevel, newRoom.transform, player, roomNumber, roomColor, roomPosition, quadrantRooms);
+					GenerateDoorsAndWalls(playerLevel, newRoomNode, newRoom.transform, player, roomNumber, roomColor, roomPosition, quadrantRooms);
 					SpawnEnemies(newRoom.transform, roomColor);
 				}
 			}
 		}
 	}
 
-	private void AddGraphNode(LevelGraph playerLevel, int roomNumber, int[] quadrantRooms) {
+	private Node AddGraphNode(LevelGraph playerLevel, int roomNumber, int[] quadrantRooms) {
 		Node newRoomNode = new Node(roomNumber);
 		if (roomNumber == quadrantRooms[4]) {
 			// Tutorial Adjacent Room
@@ -147,6 +151,7 @@ public class LevelGenerator : MonoBehaviour {
 			// All other core level rooms
 			playerLevel.AddRoom(newRoomNode);
 		}
+		return newRoomNode;
 	}
 
 	private void SpawnEnemies(Transform newRoom, string roomColor) {
@@ -396,7 +401,7 @@ public class LevelGenerator : MonoBehaviour {
 		}
 	}
 
-	private void GenerateDoorsAndWalls(LevelGraph playerLevel, Transform doorParent, string player, int roomNum, string roomColor, Vector3 offset, int[] quadrantRooms) {
+	private void GenerateDoorsAndWalls(LevelGraph playerLevel, Node roomNode, Transform doorParent, string player, int roomNum, string roomColor, Vector3 offset, int[] quadrantRooms) {
 		const string switchRoomNumber = "100";
 
 		int quadrant = quadrantRooms[0];
@@ -452,7 +457,14 @@ public class LevelGenerator : MonoBehaviour {
 				int connectingRoom = GetConnectingRoom(roomNum, direction);
 				// Only add doors connected to rooms with a lower number (avoid duplicates)
 				if (connectingRoom < roomNum) {
-					Edge newEdge = new Edge(roomNum, direction, connectingRoom);
+					Node adjacentNode = playerLevel.GetRoomByNumber(connectingRoom);
+
+					if (adjacentNode == null) {
+						Debug.Log(player + ": " + roomNode.RoomNumber);
+						Debug.Log("Connecting to room: " + connectingRoom);
+					}
+
+					Edge newEdge = new Edge(roomNode, direction, adjacentNode);
 					playerLevel.AddDoor(newEdge);
 				}
 			}
