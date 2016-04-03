@@ -37,6 +37,7 @@ public class LevelGraph {
 		get{return removedDoorList;}
 	}
 
+
 	public LevelGraph(string player) {
     	this.player = player;
     	roomList = new List<Node>();

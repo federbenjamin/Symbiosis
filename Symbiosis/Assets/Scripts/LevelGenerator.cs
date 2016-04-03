@@ -107,7 +107,7 @@ public class LevelGenerator : MonoBehaviour {
 			playerLevel.AddAllAdjacentRooms();
 
 			// Randomly remove 3 rooms
-			int roomsToIsolate = 3;
+			int roomsToIsolate = size - 1;
 			for (int i = 0; i < roomsToIsolate; i++) {
 				playerLevel.RandomSingleRoomIsolate(pseudoRandom);
 			}

@@ -15,16 +15,6 @@ public class LevelData : MonoBehaviour {
 		Instance = this;
 	}
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
 	public static void SetLevelSeed(int newSeed) {
 		levelSeed = newSeed;
 	}
