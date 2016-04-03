@@ -153,5 +153,24 @@ public class HealthManager : MonoBehaviour {
 		healthBar.GetComponent<Image>().sprite = BarNormal;
 		healthBar.GetComponent<RectTransform>().sizeDelta = new Vector2(500, 100);
 	}
+
+	public void TranslateHealth() {
+		StartCoroutine("EmphasizingWait");
+	}
+
+	IEnumerator EmphasizingWait() {
+		yield return new WaitForSeconds (0.75f);
+		healthBar.transform.rotation = Quaternion.Euler (0, 0, 0);
+		heart1.transform.rotation = Quaternion.Euler(0,0,0);
+		heart2.transform.rotation = Quaternion.Euler(0,0,0);
+		heart3.transform.rotation = Quaternion.Euler(0,0,0);
+		heart4.transform.rotation = Quaternion.Euler(0,0,0);
+		heart5.transform.rotation = Quaternion.Euler(0,0,0);
+
+		yield return new WaitForSeconds (0.75f);
+		transform.GetComponent<RectTransform>().anchorMin = new Vector2 (0.5f, 1);
+		transform.GetComponent<RectTransform>().anchorMax = new Vector2 (0.5f, 1);
+		transform.GetComponent<RectTransform>().pivot = new Vector2 (0.5f, 1);
+	}
 }
 

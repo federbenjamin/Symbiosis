@@ -133,6 +133,7 @@ public class RoomController : MonoBehaviour {
 				GameObject.FindWithTag("Canvas").GetComponent<GameStats>().PlayersTogether = true;
 				cameraController = GameObject.Find ("CameraParentP1").GetComponent<CameraController> ();
 				cameraController.MergeCamera ();
+				GameObject.Find("Health").GetComponent<HealthManager>().TranslateHealth ();
 			}
 
 			if (hasTriggered == false && transform.name != "Room100") {

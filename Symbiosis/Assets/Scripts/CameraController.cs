@@ -51,8 +51,8 @@ public class CameraController : MonoBehaviour {
 
 		Vector3 newRoomPos = player.GetComponent<StatsManager>().RoomIn.transform.position;
 		setMaxX(newRoomPos.x);
-		transform.position = new Vector3 (newRoomPos.x + 3f, transform.position.y, newRoomPos.z - 3.56f);
-		NewRoomCameraPos = new Vector3 (newRoomPos.x, transform.position.y, newRoomPos.z - 3.56f);
+		transform.position = new Vector3 (newRoomPos.x + 3f, transform.position.y, newRoomPos.z - 3.2f);
+		NewRoomCameraPos = new Vector3 (newRoomPos.x, transform.position.y, newRoomPos.z - 3.2f);
 	}
 	
 	// Update is called once per frame
