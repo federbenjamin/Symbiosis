@@ -35,6 +35,8 @@ public class StatsManager : MonoBehaviour {
 	private Sprite hudReq;
 	private Sprite tempSpr;
 	private static float nextAugSwap = 0.0f;
+	public GameObject playerPrompt;
+	public GameObject swapPrompt;
 
 	private bool requestAugSwap = false;
 	public bool RequestAugSwap {
@@ -139,20 +141,23 @@ public class StatsManager : MonoBehaviour {
 				swapAugTimeout--;
 			} else {
 				requestAugSwap = false;
+				otherPlayerStats.DestroySwapPrompt();
 			}
 
 			// If swap cooldown time has passed, request an aug swap when the trigger is pressed
 			// Otherwise play swap failed sound
 			AugTriggerRight = Input.GetAxisRaw (swapButtonAug + "Right");
 			AugTriggerLeft = Input.GetAxisRaw (swapButtonAug + "Left");
-			if ((AugTriggerRight > 0 || AugTriggerLeft > 0) && Time.time > nextAugSwap) {
-				requestSwapAugments();
-				nextAugSwapFailedSound = false;
-			} else if (AugTriggerRight <= 0 || AugTriggerLeft <= 0) {
-				nextAugSwapFailedSound = true;
-			} else if ((AugTriggerRight > 0 || AugTriggerLeft > 0) && nextAugSwapFailedSound) {
-				audioPlacement.PlayClip (swapCooldownSound, 0.05f);
-				nextAugSwapFailedSound = false;
+			if (!requestAugSwap) {
+				if ((AugTriggerRight > 0 || AugTriggerLeft > 0) && Time.time > nextAugSwap) {
+					requestSwapAugments();
+					nextAugSwapFailedSound = false;
+				} else if (AugTriggerRight <= 0 || AugTriggerLeft <= 0) {
+					nextAugSwapFailedSound = true;
+				} else if ((AugTriggerRight > 0 || AugTriggerLeft > 0) && nextAugSwapFailedSound) {
+					audioPlacement.PlayClip (swapCooldownSound, 0.05f);
+					nextAugSwapFailedSound = false;
+				}
 			}
 
 			// If swap request currently sent, check for a response from other player
@@ -189,6 +194,7 @@ public class StatsManager : MonoBehaviour {
 	void requestSwapAugments() {
 		requestAugSwap = true;
 		swapAugTimeout = 60;
+		otherPlayerStats.InitSwapPrompt();
 	}
 
 	void checkRequestSwapAugments() {
@@ -229,7 +235,9 @@ public class StatsManager : MonoBehaviour {
 			swapLock = true;
 
 			otherPlayerStats.RequestAugSwap = false;
+			otherPlayerStats.DestroySwapPrompt();
 			requestAugSwap = false;
+			DestroySwapPrompt();
 
 			tempAug = GetAugment();
 			tempSpr = playerAugSprite.GetComponent<Image> ().sprite;
@@ -244,5 +252,14 @@ public class StatsManager : MonoBehaviour {
 		}
 		nextAugSwap = Time.time + 2;
 		swapAugTimeout = 0;
+	}
+
+	public void InitSwapPrompt() {
+		swapPrompt = Instantiate (playerPrompt, transform.position, playerPrompt.transform.rotation) as GameObject;
+		swapPrompt.GetComponent<SwapPrompt>().FocusPlayer(playerPrefix);
+	}
+
+	public void DestroySwapPrompt() {
+		Destroy(swapPrompt);
 	}
 }
