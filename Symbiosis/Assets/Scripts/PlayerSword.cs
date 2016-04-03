@@ -11,12 +11,15 @@ public class PlayerSword : MonoBehaviour {
 	private GameObject swordTrail;
 	private Material trailColor;
 
+	private AudioPlacement AP;
 	public void setAugment(iAugment aug){
 		augment = aug;
 	}
 
 	// Use this for initialization
 	void Start () {
+
+		AP = GameObject.Find ("AudioListener").GetComponent<AudioPlacement> ();
 		swordAnimator = transform.GetComponent<Animator> ();
 		foreach (Transform child in transform) {
 			if (child.name == "Trail") {
@@ -57,7 +60,8 @@ public class PlayerSword : MonoBehaviour {
 
 	public void Swing() {
 		isSwinging = true;
-		
+
+		AP.PlayClip ("SFX/sword");
 		if (augment != null) {
 			if (augment.Element == "fire") {
 				trailColor = Resources.Load<Material>("RedTrail");

@@ -14,6 +14,9 @@ public class LevelGenerator : MonoBehaviour {
 	private string[] directions = new string[] {"West", "East", "North", "South"};
 	private string[] colors = new string[] {"Red", "Green", "Blue"};
 
+	private LevelGraph player1Level;
+	private LevelGraph player2Level;
+
 	private Transform roomParent;
 	private Vector3 gauntletPosition;
 	private float tutorialRoomDistance;
@@ -81,13 +84,25 @@ public class LevelGenerator : MonoBehaviour {
 				quadrant = quadrant + 2;
 			}
 
-			GenerateInitalRooms(player, quadrant, xOffset, zOffset);
+			// Instantiate individual player level's
+			LevelGraph playerLevel;
+			if (player == "P1") {
+				player1Level = new LevelGraph(player);
+				playerLevel = player1Level;
+			} else {
+				player2Level = new LevelGraph(player);
+				playerLevel = player2Level;
+			}
+
+ 			GenerateInitalRooms(playerLevel, player, quadrant, xOffset, zOffset);
 		}
 
+		player1Level.Print();
+		player2Level.Print();
 		LoadRemainingAssets();
 	}
 
-	private void GenerateInitalRooms(string player, int quadrant, int levelXOffset, int levelZOffset) {
+	private void GenerateInitalRooms(LevelGraph playerLevel, string player, int quadrant, int levelXOffset, int levelZOffset) {
 		int[] quadrantRooms;
 		quadrantRooms = GetRoomExceptionsByQuadrant(quadrant);
 
@@ -104,15 +119,33 @@ public class LevelGenerator : MonoBehaviour {
 					int zOffset = i * 32 + levelZOffset;
 					Vector3 roomPosition = new Vector3(xOffset, 0, zOffset);
 
+					// Create room in scene hierarchy 
 					string roomSuffix = RandomRoomPrefab();
 					string roomColor = Regex.Match(roomSuffix, @"\D+").Groups[0].Value;
 					string name = "Room" + player + "-" + roomNumber;
 					GameObject newRoom = GenerateRoom(roomSuffix, name, roomPosition, roomColor);
+
+					// Add room to graph
+					AddGraphNode(playerLevel, roomNumber, quadrantRooms);
 					
-					GenerateDoorsAndWalls(newRoom.transform, player, roomNumber, roomColor, roomPosition, quadrantRooms);
+					GenerateDoorsAndWalls(playerLevel, newRoom.transform, player, roomNumber, roomColor, roomPosition, quadrantRooms);
 					SpawnEnemies(newRoom.transform, roomColor);
 				}
 			}
+		}
+	}
+
+	private void AddGraphNode(LevelGraph playerLevel, int roomNumber, int[] quadrantRooms) {
+		Node newRoomNode = new Node(roomNumber);
+		if (roomNumber == quadrantRooms[4]) {
+			// Tutorial Adjacent Room
+			playerLevel.TutorialAdjRoom = newRoomNode;
+		} else if (roomNumber == quadrantRooms[2]) {
+			// Switch Adjacent Room
+			playerLevel.SwitchAdjRoom = newRoomNode;
+		} else {
+			// All other core level rooms
+			playerLevel.AddRoom(newRoomNode);
 		}
 	}
 
@@ -165,6 +198,7 @@ public class LevelGenerator : MonoBehaviour {
 		return enemySet;
 	}
 
+	// Unneccessary ??
 	private int SumArray(int[] array) {
 		int sum = 0;
 		for (int i = 0; i < array.Length; i++) {
@@ -362,7 +396,7 @@ public class LevelGenerator : MonoBehaviour {
 		}
 	}
 
-	private void GenerateDoorsAndWalls(Transform doorParent, string player, int roomNum, string roomColor, Vector3 offset, int[] quadrantRooms) {
+	private void GenerateDoorsAndWalls(LevelGraph playerLevel, Transform doorParent, string player, int roomNum, string roomColor, Vector3 offset, int[] quadrantRooms) {
 		const string switchRoomNumber = "100";
 
 		int quadrant = quadrantRooms[0];
@@ -392,22 +426,51 @@ public class LevelGenerator : MonoBehaviour {
 			newObj = GenerateDoorOrWall(direction, player, roomNum, roomColor, offset, spawnWall);
 			newObj.transform.SetParent(doorParent);
 
+			bool skipGraphRepresentation = false;
 			if (direction == "East") {
 				if (switchDoor && (quadrant == 0 || quadrant == 2)) {
 					newObj.GetComponent<DoorController>().nextRoomNum = switchRoomNumber;
 					GameObject.Find("DoorSwitchEnterLeft").GetComponent<DoorController>().nextRoomNum = player + "-" + roomNum;
+					skipGraphRepresentation = true;
 				} else if (tutorialDoor && (quadrant == 1 || quadrant == 3)) {
 					newObj.GetComponent<DoorController>().nextRoomNum = player + "TutorialExit";
+					skipGraphRepresentation = true;
 				} 
 			} else if (direction == "West") {
 				if (switchDoor && (quadrant == 1 || quadrant == 3)) {
 					newObj.GetComponent<DoorController>().nextRoomNum = switchRoomNumber;
 					GameObject.Find("DoorSwitchEnterRight").GetComponent<DoorController>().nextRoomNum = player + "-" + roomNum;
+					skipGraphRepresentation = true;
 				} else if (tutorialDoor && (quadrant == 0 || quadrant == 2)) {
 					newObj.GetComponent<DoorController>().nextRoomNum = player + "TutorialExit";
+					skipGraphRepresentation = true;
 				} 
 			}
+
+			// Add to graph
+			if (!spawnWall && !skipGraphRepresentation) {
+				int connectingRoom = GetConnectingRoom(roomNum, direction);
+				// Only add doors connected to rooms with a lower number (avoid duplicates)
+				if (connectingRoom < roomNum) {
+					Edge newEdge = new Edge(roomNum, direction, connectingRoom);
+					playerLevel.AddDoor(newEdge);
+				}
+			}
 		}
+	}
+
+	private int GetConnectingRoom(int roomNum, string doorDirection){
+		int nextRoomNum;
+		if (doorDirection == "East") {
+			nextRoomNum = roomNum + 1;
+		} else if (doorDirection == "West") {
+			nextRoomNum = roomNum - 1;
+		} else if (doorDirection == "North") {
+			nextRoomNum = roomNum + size;
+		} else {
+			nextRoomNum = roomNum - size;
+		}
+		return nextRoomNum;
 	}
 
 	private GameObject GenerateDoorOrWall(string direction, string player, int roomNum, string roomColor, Vector3 posOffset, bool spawnWall) {
@@ -417,34 +480,30 @@ public class LevelGenerator : MonoBehaviour {
 		Quaternion objectRot;
 		DoorController doorControl;
 
+		int nextRoomNum = GetConnectingRoom(roomNum, direction);
 		Vector3 dirOffset;
 		int yRotation;
 		char newOutDoor;
-		int nextRoomNum;
 
 		if (direction == "East") {
 			newOutDoor = 'w';
 			yRotation = -90;
 			dirOffset = new Vector3(8f, 0, 0);
-			nextRoomNum = roomNum + 1;
 		} 
 		else if (direction == "West") {
 			newOutDoor = 'e';
 			yRotation = 90;
 			dirOffset = new Vector3(-8f, 0, 0);
-			nextRoomNum = roomNum - 1;
 		} 
 		else if (direction == "North") {
 			newOutDoor = 's';
 			yRotation = -180;
 			dirOffset = new Vector3(0, 0, 4f);
-			nextRoomNum = roomNum + size;
 		} 
 		else {
 			newOutDoor = 'n';
 			yRotation = 0;
 			dirOffset = new Vector3(0, 0, -4f);
-			nextRoomNum = roomNum - size;
 		}
 
 		// Generate Door or Wall object
@@ -467,7 +526,8 @@ public class LevelGenerator : MonoBehaviour {
 		return newObj;
 	}
 
-	private void ReplaceDoorWithWall(string player, string roomNum, string direction) {
+	// Swap parameters with edge to replace 2 doors at once
+	private void ReplaceDoorWithWall(string player, int roomNum, string direction) {
 		GameObject room = GameObject.Find("Room" + player + "-" + roomNum);
 		foreach (Transform child in room.transform) {
 			// Find the door to replace in the room object
