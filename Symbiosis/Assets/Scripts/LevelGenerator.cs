@@ -137,7 +137,6 @@ public class LevelGenerator : MonoBehaviour {
 
 		// Find all rooms with no doors attached and remove them;
 		List<Node> isolatedRooms = playerLevel.GetIsolatedRooms();
-		Debug.Log(isolatedRooms);
 		foreach (Node room in isolatedRooms) {
 			Destroy(room.RoomObject);
 		}

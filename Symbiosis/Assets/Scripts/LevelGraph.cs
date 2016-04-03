@@ -62,6 +62,15 @@ public class LevelGraph {
 			room2.AddAdjacentRoom(room1);
 		}
 	}
+	
+	public void RemoveEdge(Edge edge) {
+		doorList.Remove(edge);
+		removedDoorList.Add(edge);
+		Node room1 = edge.door1.RoomInside;
+		Node room2 = edge.door2.RoomInside;
+		room1.AdjacentRooms.Remove(room2);
+		room2.AdjacentRooms.Remove(room1);
+	}
 
 	public void RandomSingleRoomIsolate(System.Random pseudoRandom) {
 		Node isolatedNode;
@@ -72,8 +81,7 @@ public class LevelGraph {
 		} while (isolatedNode == SwitchAdjRoom || isolatedNode == TutorialAdjRoom);
 
 		foreach (Edge edge in ReturnAllRoomEdges(isolatedNode)) {
-			removedDoorList.Add(edge);
-			doorList.Remove(edge);
+			RemoveEdge(edge);
 		}
 	}
 
@@ -88,26 +96,32 @@ public class LevelGraph {
 	}
 
 	public List<Node> GetIsolatedRooms() {
-		List<Node> isolatedRooms = new List<Node>();
-		foreach (Node room in roomList) {
-			bool roomConnected = false;
-			foreach (Edge edge in doorList) {
-				if (edge.door1.RoomInside == room || edge.door2.RoomInside == room) {
-					roomConnected = true;
-					break;
+		List<Node> reachableRooms = new List<Node>();
+		tutorialAdjRoom.Color = NodeColor.Black;
+
+		Queue<Node> nodeQueue = new Queue<Node>();
+		nodeQueue.Enqueue(tutorialAdjRoom);
+
+		while (nodeQueue.Count != 0) {
+			Node exploringNode = nodeQueue.Dequeue();
+			reachableRooms.Add(exploringNode);
+			foreach (Node adjNode in exploringNode.AdjacentRooms) {
+				if (adjNode.Color == NodeColor.White) {
+					adjNode.Color = NodeColor.Grey;
+					nodeQueue.Enqueue(adjNode);
 				}
 			}
-			if (!roomConnected) {
-				isolatedRooms.Add(room);
-			}
+			exploringNode.Color = NodeColor.Black;
 		}
-		return isolatedRooms;
+
+		foreach (Node node in reachableRooms) {
+			node.Color = NodeColor.White;
+		}
+
+		return roomList.Except(reachableRooms).ToList();
 	}
 
 	public void CalculateRoomDistances() {
-		List<Node> nodesToTraverse = new List<Node>(RoomList);
-		nodesToTraverse.Remove(switchAdjRoom);
-		nodesToTraverse.Add(TutorialAdjRoom);
 		switchAdjRoom.Color = NodeColor.Black;
 		switchAdjRoom.Distance = 1;
 		maxDistance = 1;
