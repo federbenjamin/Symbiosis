@@ -1419,7 +1419,7 @@ MonoBehaviour:
   animatorSlime: {fileID: 0}
   playerBody: {fileID: 0}
   cameraPointer: {fileID: 120062}
-  baseSpeed: 6
+  baseSpeed: 8
   isMoving: 0
 --- !u!114 &11459506
 MonoBehaviour:
@@ -2106,7 +2106,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: baseSpeed
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
