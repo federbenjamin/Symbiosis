@@ -1419,7 +1419,7 @@ MonoBehaviour:
   animatorSlime: {fileID: 0}
   playerBody: {fileID: 0}
   cameraPointer: {fileID: 120062}
-  baseSpeed: 5
+  baseSpeed: 6
   isMoving: 0
 --- !u!114 &11459506
 MonoBehaviour:
@@ -1448,6 +1448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00ad54e156b854f4a9d35a15fc64171d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lookAtObject: {fileID: 0}
 --- !u!114 &11490280
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2102,6 +2103,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Drag
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: baseSpeed
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
