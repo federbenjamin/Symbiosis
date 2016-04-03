@@ -105,17 +105,42 @@ public class LevelGenerator : MonoBehaviour {
 			}
 
 			playerLevel.AddAllAdjacentRooms();
-			playerLevel.CalculateRoomDistances();
-			// playerLevel.Print();
 
+			// Randomly remove 3 rooms
+			int roomsToIsolate = 3;
+			for (int i = 0; i < roomsToIsolate; i++) {
+				playerLevel.RandomSingleRoomIsolate(pseudoRandom);
+			}
+
+			// Modify in-game model of level to what the graph structure represents
+			UpdateLevelUsingGraph(playerLevel, player);
+
+			// Calculate each room's distance from the switch room and spawn enemies based on that
+			playerLevel.CalculateRoomDistances();
 			int maxDistance = playerLevel.MaxDistance;
 			foreach (Node roomNode in playerLevel.RoomList) {
 				string roomColor = roomNode.RoomObject.GetComponent<RoomController>().RoomColor;
 				SpawnEnemies(roomNode, maxDistance, roomColor);
 			}
+
+			// playerLevel.Print();
 		}
 
 		LoadRemainingAssets();
+	}
+
+	private void UpdateLevelUsingGraph(LevelGraph playerLevel, string player) {
+		// Replace doors that have been removed with walls
+		foreach (Edge edge in playerLevel.RemovedDoorList) {
+			ReplaceDoorWithWall(player, edge);
+		}
+
+		// Find all rooms with no doors attached and remove them;
+		List<Node> isolatedRooms = playerLevel.GetIsolatedRooms();
+		Debug.Log(isolatedRooms);
+		foreach (Node room in isolatedRooms) {
+			Destroy(room.RoomObject);
+		}
 	}
 
 	private void GenerateInitalRooms(LevelGraph playerLevel, string player, int quadrant, int levelXOffset, int levelZOffset) {
@@ -163,7 +188,7 @@ public class LevelGenerator : MonoBehaviour {
 		}
 
 		// All other core level rooms
-		playerLevel.AddRoom(newRoomNode);
+		playerLevel.RoomList.Add(newRoomNode);
 		return newRoomNode;
 	}
 
@@ -450,29 +475,28 @@ public class LevelGenerator : MonoBehaviour {
 			newObj = GenerateDoorOrWall(direction, player, roomNum, roomColor, offset, spawnWall);
 			newObj.transform.SetParent(doorParent);
 
-			bool skipGraphRepresentation = false;
 			if (direction == "East") {
 				if (switchDoor && (quadrant == 0 || quadrant == 2)) {
 					newObj.GetComponent<DoorController>().nextRoomNum = switchRoomNumber;
 					GameObject.Find("DoorSwitchEnterLeft").GetComponent<DoorController>().nextRoomNum = player + "-" + roomNum;
-					skipGraphRepresentation = true;
+					continue;
 				} else if (tutorialDoor && (quadrant == 1 || quadrant == 3)) {
 					newObj.GetComponent<DoorController>().nextRoomNum = player + "TutorialExit";
-					skipGraphRepresentation = true;
+					continue;
 				} 
 			} else if (direction == "West") {
 				if (switchDoor && (quadrant == 1 || quadrant == 3)) {
 					newObj.GetComponent<DoorController>().nextRoomNum = switchRoomNumber;
 					GameObject.Find("DoorSwitchEnterRight").GetComponent<DoorController>().nextRoomNum = player + "-" + roomNum;
-					skipGraphRepresentation = true;
+					continue;
 				} else if (tutorialDoor && (quadrant == 0 || quadrant == 2)) {
 					newObj.GetComponent<DoorController>().nextRoomNum = player + "TutorialExit";
-					skipGraphRepresentation = true;
+					continue;
 				} 
 			}
 
 			// Add to graph
-			if (!spawnWall && !skipGraphRepresentation) {
+			if (!spawnWall) {
 				int connectingRoom = GetConnectingRoom(roomNum, direction);
 				// Only add doors connected to rooms with a lower number (avoid duplicates)
 				if (connectingRoom < roomNum) {
@@ -484,7 +508,7 @@ public class LevelGenerator : MonoBehaviour {
 					}
 
 					Edge newEdge = new Edge(roomNode, direction, adjacentNode);
-					playerLevel.AddDoor(newEdge);
+					playerLevel.DoorList.Add(newEdge);
 				}
 			}
 		}
@@ -558,21 +582,27 @@ public class LevelGenerator : MonoBehaviour {
 	}
 
 	// Swap parameters with edge to replace 2 doors at once
-	private void ReplaceDoorWithWall(string player, int roomNum, string direction) {
-		GameObject room = GameObject.Find("Room" + player + "-" + roomNum);
-		foreach (Transform child in room.transform) {
-			// Find the door to replace in the room object
-			if (child.name == ("Door" + direction)) {
+	private void ReplaceDoorWithWall(string player, Edge connectingDoors) {
+		foreach (Door door in new Door[] {connectingDoors.door1, connectingDoors.door2}) {
+			int roomNum = door.RoomInside.RoomNumber;
+			string direction = door.Direction;
 
-				// Save the door's position/rotation/color and generate a wall in its place
-				Vector3 wallPos = new Vector3(child.position.x, 0, child.position.z);
-				Quaternion wallRot = Quaternion.Euler(-90, child.rotation.eulerAngles.y, 0);
-				string roomColor = room.GetComponent<RoomController>().RoomColor;
-				GameObject newWall = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/Wall" + roomColor), wallPos, wallRot) as GameObject;
-				newWall.name = ("Wall" + direction);
-				Destroy(child.gameObject);
-				break;
+			GameObject room = GameObject.Find("Room" + player + "-" + roomNum);
+			foreach (Transform child in room.transform) {
+				// Find the door to replace in the room object
+				if (child.name == ("Door" + direction)) {
 
+					// Save the door's position/rotation/color and generate a wall in its place
+					Vector3 wallPos = new Vector3(child.position.x, 0, child.position.z);
+					Quaternion wallRot = Quaternion.Euler(-90, child.rotation.eulerAngles.y, 0);
+					string roomColor = room.GetComponent<RoomController>().RoomColor;
+					GameObject newWall = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/Wall" + roomColor), wallPos, wallRot) as GameObject;
+					newWall.name = ("Wall" + direction);
+					newWall.transform.SetParent(room.transform);
+					Destroy(child.gameObject);
+					break;
+
+				}
 			}
 		}
 	}
@@ -600,6 +630,7 @@ public class LevelGenerator : MonoBehaviour {
 				string roomColor = room.GetComponent<RoomController>().RoomColor;
 				GameObject newDoor = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/Door" + roomColor), roomPos, roomRot) as GameObject;
 				newDoor.name = ("Door" + direction);
+				newDoor.transform.SetParent(room.transform);
 				DoorController doorController = newDoor.GetComponent<DoorController>();
 				doorController.outDoor = newOutDoor;
 				doorController.nextRoomNum = connectingRoom;

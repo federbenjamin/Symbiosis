@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public enum NodeColor {White, Grey, Black};
 
@@ -31,15 +32,16 @@ public class LevelGraph {
 	public List<Edge> DoorList {
 		get{return doorList;}
 	}
+	private List<Edge> removedDoorList;
+	public List<Edge> RemovedDoorList {
+		get{return removedDoorList;}
+	}
 
 	public LevelGraph(string player) {
     	this.player = player;
     	roomList = new List<Node>();
     	doorList = new List<Edge>();
-    }
-
-    public void AddRoom(Node newRoom) {
-    	roomList.Add(newRoom);
+		removedDoorList = new List<Edge>();
     }
 
     public Node GetRoomByNumber(int roomNumber) {
@@ -51,27 +53,6 @@ public class LevelGraph {
 		return null;
     }
 
-    public void AddDoor(Edge newDoor) {
-    	doorList.Add(newDoor);
-    }
-
-    public void Print() {
-    	Debug.Log(player + ": ");
-		Debug.Log("Farthest room is " + maxDistance + " rooms away from the switch room");
-		Debug.Log("Tutorial Room: " + tutorialAdjRoom.RoomNumber + "  (" + tutorialAdjRoom.Distance + " rooms away from switch room)");
-		Debug.Log("Switch Room: " + switchAdjRoom.RoomNumber + "  (" + switchAdjRoom.Distance + " rooms away from switch room)");
-    	foreach (Node coreRoom in roomList) {
-			Debug.Log("-- Room: " + coreRoom.RoomNumber + "  (" + coreRoom.Distance + " rooms away from switch room)");
-    		PrintEdges(coreRoom);
-    	}
-		Debug.Log("------------------------------------------------");
-    }
-    public void PrintEdges(Node node) {
-		foreach (Node adj in node.AdjacentRooms) {
-			Debug.Log("      - Door to: " + adj.RoomNumber);
-		}
-    }
-
     public void AddAllAdjacentRooms() {
 		foreach (Edge edge in doorList) {
 			Node room1 = edge.door1.RoomInside;
@@ -79,6 +60,47 @@ public class LevelGraph {
 			room1.AddAdjacentRoom(room2);
 			room2.AddAdjacentRoom(room1);
 		}
+	}
+
+	public void RandomSingleRoomIsolate(System.Random pseudoRandom) {
+		Node isolatedNode;
+		int indexToRemove;
+		do {
+			indexToRemove = pseudoRandom.Next(roomList.Count);
+			isolatedNode = roomList[indexToRemove];
+		} while (isolatedNode == SwitchAdjRoom || isolatedNode == TutorialAdjRoom);
+
+		foreach (Edge edge in ReturnAllRoomEdges(isolatedNode)) {
+			removedDoorList.Add(edge);
+			doorList.Remove(edge);
+		}
+	}
+
+	public List<Edge> ReturnAllRoomEdges(Node room) {
+		List<Edge> roomEdges = new List<Edge>();
+		foreach (Edge edge in doorList) {
+			if (edge.door1.RoomInside == room || edge.door2.RoomInside == room) {
+				roomEdges.Add(edge);
+			}
+		}
+		return roomEdges;
+	}
+
+	public List<Node> GetIsolatedRooms() {
+		List<Node> isolatedRooms = new List<Node>();
+		foreach (Node room in roomList) {
+			bool roomConnected = false;
+			foreach (Edge edge in doorList) {
+				if (edge.door1.RoomInside == room || edge.door2.RoomInside == room) {
+					roomConnected = true;
+					break;
+				}
+			}
+			if (!roomConnected) {
+				isolatedRooms.Add(room);
+			}
+		}
+		return isolatedRooms;
 	}
 
 	public void CalculateRoomDistances() {
@@ -105,6 +127,24 @@ public class LevelGraph {
 			exploringNode.Color = NodeColor.Black;
 		}
 		maxDistance++;
+	}
+
+
+	public void Print() {
+		Debug.Log(player + ": ");
+		Debug.Log("Farthest room is " + maxDistance + " rooms away from the switch room");
+		Debug.Log("Tutorial Room: " + tutorialAdjRoom.RoomNumber + "  (" + tutorialAdjRoom.Distance + " rooms away from switch room)");
+		Debug.Log("Switch Room: " + switchAdjRoom.RoomNumber + "  (" + switchAdjRoom.Distance + " rooms away from switch room)");
+		foreach (Node coreRoom in roomList) {
+			Debug.Log("-- Room: " + coreRoom.RoomNumber + "  (" + coreRoom.Distance + " rooms away from switch room)");
+			PrintEdges(coreRoom);
+		}
+		Debug.Log("------------------------------------------------");
+	}
+	public void PrintEdges(Node node) {
+		foreach (Node adj in node.AdjacentRooms) {
+			Debug.Log("      - Door to: " + adj.RoomNumber);
+		}
 	}
 }
 
@@ -138,6 +178,7 @@ public class Node {
 
 	public Node(int roomNumber) {
 		this.roomNumber = roomNumber;
+		this.distance = 0;
 		this.color = NodeColor.White;
 		adjacentRooms = new List<Node>();
     }
