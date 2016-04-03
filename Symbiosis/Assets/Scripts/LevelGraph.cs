@@ -6,10 +6,11 @@ public enum NodeColor {White, Grey, Black};
 
 public class LevelGraph {
 
-	// public static enum Color {White, Grey, Black};
-
 	public string player; // ???
-	public int maxDifficulty;
+	private int maxDistance;
+	public int MaxDistance {
+		get{return maxDistance;}
+	}
 
 	private Node tutorialAdjRoom;
 	public Node TutorialAdjRoom {
@@ -56,16 +57,17 @@ public class LevelGraph {
 
     public void Print() {
     	Debug.Log(player + ": ");
-		Debug.Log("Tutorial Room: " + tutorialAdjRoom.RoomNumber);
-		Debug.Log("Switch Room: " + switchAdjRoom.RoomNumber);
+		Debug.Log("Farthest room is " + maxDistance + " rooms away from the switch room");
+		Debug.Log("Tutorial Room: " + tutorialAdjRoom.RoomNumber + "  (" + tutorialAdjRoom.Distance + " rooms away from switch room)");
+		Debug.Log("Switch Room: " + switchAdjRoom.RoomNumber + "  (" + switchAdjRoom.Distance + " rooms away from switch room)");
     	foreach (Node coreRoom in roomList) {
-			Debug.Log("-- Room: " + coreRoom.RoomNumber);
+			Debug.Log("-- Room: " + coreRoom.RoomNumber + "  (" + coreRoom.Distance + " rooms away from switch room)");
     		PrintEdges(coreRoom);
     	}
 		Debug.Log("------------------------------------------------");
     }
     public void PrintEdges(Node node) {
-		foreach (Node adj in node.adjacentRooms) {
+		foreach (Node adj in node.AdjacentRooms) {
 			Debug.Log("      - Door to: " + adj.RoomNumber);
 		}
     }
@@ -79,23 +81,60 @@ public class LevelGraph {
 		}
 	}
 
+	public void CalculateRoomDistances() {
+		List<Node> nodesToTraverse = new List<Node>(RoomList);
+		nodesToTraverse.Remove(switchAdjRoom);
+		nodesToTraverse.Add(TutorialAdjRoom);
+		switchAdjRoom.Color = NodeColor.Black;
+		switchAdjRoom.Distance = 1;
+		maxDistance = 1;
+
+		Queue<Node> nodeQueue = new Queue<Node>();
+		nodeQueue.Enqueue(switchAdjRoom);
+
+		while (nodeQueue.Count != 0) {
+			Node exploringNode = nodeQueue.Dequeue();
+			maxDistance = (exploringNode.Distance > maxDistance ? exploringNode.Distance : maxDistance);
+			foreach (Node adjNode in exploringNode.AdjacentRooms) {
+				if (adjNode.Color == NodeColor.White) {
+					adjNode.Color = NodeColor.Grey;
+					adjNode.Distance = exploringNode.Distance + 1;
+					nodeQueue.Enqueue(adjNode);
+				}
+			}
+			exploringNode.Color = NodeColor.Black;
+		}
+		maxDistance++;
+	}
 }
 
 public class Node {
 
-	public List<Node> adjacentRooms;
+	private List<Node> adjacentRooms;
+	public List<Node> AdjacentRooms {
+		get{return adjacentRooms;}
+	}
 
+	private GameObject roomObject;
+	public GameObject RoomObject {
+		get{return roomObject;}
+		set{roomObject = value;}
+	}
 	private int roomNumber;
 	public int RoomNumber {
 		get{return roomNumber;}
 	}
-	private int difficulty;
-	public int Difficulty {
-		get{return difficulty;}
-		set{difficulty = value;}
+	private int distance;
+	public int Distance {
+		get{return distance;}
+		set{distance = value;}
 	}
 
-	public NodeColor color;
+	private NodeColor color;
+	public NodeColor Color {
+		get{return color;}
+		set{color = value;}
+	}
 
 	public Node(int roomNumber) {
 		this.roomNumber = roomNumber;

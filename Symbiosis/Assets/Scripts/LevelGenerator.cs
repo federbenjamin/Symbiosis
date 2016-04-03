@@ -8,7 +8,7 @@ public class LevelGenerator : MonoBehaviour {
 
 	private int seed;
 	private int size;
-	private int maxDifficulty;
+	// private int maxDifficulty;  // depreciated, may be used later..
 	private System.Random pseudoRandom;
 
 	private string[] directions = new string[] {"West", "East", "North", "South"};
@@ -19,7 +19,6 @@ public class LevelGenerator : MonoBehaviour {
 
 	private Transform roomParent;
 	private Vector3 gauntletPosition;
-	private float tutorialRoomDistance;
 
 	private List<string> remainingRoomColors = new List<string>();
 	// List order: Red, Green, Blue
@@ -27,7 +26,6 @@ public class LevelGenerator : MonoBehaviour {
 	private Dictionary<string, List<int>> remainingRoomPrefabs = new Dictionary<string, List<int>>();
 	private Dictionary<string, int[]> enemyTypeDifficulty = new Dictionary<string, int[]>();
 	private int tutorialCorridorLength = 4;
-	private int roomDifficultyRange = 2;
 	private int maxEnemiesPerRoom = 4;
 
 
@@ -39,7 +37,7 @@ public class LevelGenerator : MonoBehaviour {
 	void Start () {
 
 		// Get level inputs - difficulty, size, and seed
-		maxDifficulty = LevelData.levelDifficulty;
+		// maxDifficulty = LevelData.levelDifficulty;  // depreciated, may be used later..
 		size = LevelData.levelSize;
 		if (LevelData.randomLevel) {
 			LevelData.GenerateRandomSeed();
@@ -97,11 +95,25 @@ public class LevelGenerator : MonoBehaviour {
  			GenerateInitalRooms(playerLevel, player, quadrant, xOffset, zOffset);
 		}
 
-		player1Level.AddAllAdjacentRooms();
-		player2Level.AddAllAdjacentRooms();
+		// Perform graph traversal algorithms on both player's level graphs
+		foreach (string player in players) {
+			LevelGraph playerLevel;
+			if (player == "P1") {
+				playerLevel = player1Level;
+			} else {
+				playerLevel = player2Level;
+			}
 
-		player1Level.Print();
-		player2Level.Print();
+			playerLevel.AddAllAdjacentRooms();
+			playerLevel.CalculateRoomDistances();
+			// playerLevel.Print();
+
+			int maxDistance = playerLevel.MaxDistance;
+			foreach (Node roomNode in playerLevel.RoomList) {
+				string roomColor = roomNode.RoomObject.GetComponent<RoomController>().RoomColor;
+				SpawnEnemies(roomNode, maxDistance, roomColor);
+			}
+		}
 
 		LoadRemainingAssets();
 	}
@@ -130,17 +142,17 @@ public class LevelGenerator : MonoBehaviour {
 					GameObject newRoom = GenerateRoom(roomSuffix, name, roomPosition, roomColor);
 
 					// Add room to graph
-					Node newRoomNode = AddGraphNode(playerLevel, roomNumber, quadrantRooms);
+					Node newRoomNode = AddGraphNode(playerLevel, newRoom, roomNumber, quadrantRooms);
 					
 					GenerateDoorsAndWalls(playerLevel, newRoomNode, newRoom.transform, player, roomNumber, roomColor, roomPosition, quadrantRooms);
-					SpawnEnemies(newRoom.transform, roomColor);
 				}
 			}
 		}
 	}
 
-	private Node AddGraphNode(LevelGraph playerLevel, int roomNumber, int[] quadrantRooms) {
+	private Node AddGraphNode(LevelGraph playerLevel, GameObject newRoom, int roomNumber, int[] quadrantRooms) {
 		Node newRoomNode = new Node(roomNumber);
+		newRoomNode.RoomObject = newRoom;
 
 		if (roomNumber == quadrantRooms[4]) {
 			// Tutorial Adjacent Room
@@ -155,34 +167,42 @@ public class LevelGenerator : MonoBehaviour {
 		return newRoomNode;
 	}
 
-	private void SpawnEnemies(Transform newRoom, string roomColor) {
-		float roomDifficulty = GetNormalizedRoomDifficulty(newRoom.position);
+	private void SpawnEnemies(Node roomNode, int maxDistance, string roomColor) {
+		Transform room = roomNode.RoomObject.transform;
+		float roomDifficulty = GetNormalizedRoomDifficulty(roomNode.Distance, maxDistance);
+		// Debug.Log("Room " + roomNode.Distance + ": " + roomDifficulty);
 
 		// Generate a random subset of possible enemy types
 		List<Transform> spawnerTransforms = new List<Transform>();
-		foreach (Transform child in newRoom) {
+		foreach (Transform child in room) {
 			if (child.tag == "EnemySpawnerBlank") {
 				spawnerTransforms.Add(child);
 			}
 		}
 
-		int enemySpawnCountUpper = Mathf.CeilToInt(roomDifficulty * ((float)maxEnemiesPerRoom + 1f));
-		int enemySpawnCountLower = Mathf.CeilToInt((float)enemySpawnCountUpper / 2f);
-		int enemySpawnCount = Mathf.Min(pseudoRandom.Next(enemySpawnCountLower, enemySpawnCountUpper), maxEnemiesPerRoom);
-		int[] enemiesToSpawn = GenerateEnemySet(roomDifficulty, roomColor, enemySpawnCount);
+		// TODO
+		// Set spawn offset determined by size of level
+		// float spawnCountOffset = Mathf.CeilToInt((float)size / 3f);
+		// Determine max and min for enemy count per room
+		float spawnCountUpperFloat = roomDifficulty * ((float)maxEnemiesPerRoom + 2f);
+		int spawnCountUpper = Mathf.CeilToInt(spawnCountUpperFloat);
+		int spawnCountLower = Mathf.FloorToInt(spawnCountUpperFloat / 2f);
+		// Generate random number between boundaries for number of enemies to spawn
+		int spawnCount = Mathf.Min(pseudoRandom.Next(spawnCountLower, spawnCountUpper), maxEnemiesPerRoom);
+		int[] enemiesToSpawn = GenerateEnemySet(roomDifficulty, roomColor, spawnCount);
 
 		// Spawn choosen enemy types in random locations in the room
 		for (int i = 0; i < enemiesToSpawn.Length; i++) {
 			int spawnObjectIndex = pseudoRandom.Next(spawnerTransforms.Count);
 			Transform spawnObject = spawnerTransforms[spawnObjectIndex];
 			spawnerTransforms.RemoveAt(spawnObjectIndex);
-			ReplaceSpawnWithObject(spawnObject, roomColor, newRoom, enemiesToSpawn[i]);
+			ReplaceSpawnWithObject(spawnObject, roomColor, room, enemiesToSpawn[i]);
 		}
 		// Clean up the rest of the spawn objects
 		int maxHealthItems = 2;
 		foreach (Transform remainingSpawns in spawnerTransforms) {
 			if (maxHealthItems < 0) {
-				ReplaceSpawnWithObject(remainingSpawns, newRoom);
+				ReplaceSpawnWithObject(remainingSpawns, room);
 			}
 			Destroy(remainingSpawns.gameObject);
 			maxHealthItems--;
@@ -190,7 +210,7 @@ public class LevelGenerator : MonoBehaviour {
 	}
 
 	private int[] GenerateEnemySet(float roomDifficulty, string roomColor, int numOfSpawnLocations) {
-		// Replace with enemy subset generation algorithm
+		// Get random index of enemy type list with hardest enemy based on room difficulty
 		int[] enemyTypes = enemyTypeDifficulty[roomColor];
 		int enemyTypeMax = Mathf.FloorToInt(roomDifficulty * (float)enemyTypes.Length);
 
@@ -245,9 +265,8 @@ public class LevelGenerator : MonoBehaviour {
 		Destroy(spawn.gameObject);
 	}
 
-	private float GetNormalizedRoomDifficulty(Vector3 roomPosition) {
-		float roomDistance = Vector3.Distance(roomPosition, gauntletPosition);
-		float normalizedDifficulty = (1 - roomDistance / tutorialRoomDistance);
+	private float GetNormalizedRoomDifficulty(int roomDistance, int maxDistance) {
+		float normalizedDifficulty = (1f - (float)roomDistance / (float)maxDistance);
 		return normalizedDifficulty;
 	}
 
@@ -295,7 +314,6 @@ public class LevelGenerator : MonoBehaviour {
 		Transform finalTutorialRoom = GameObject.Find(roomName + "Exit").transform;
 
 		offset = new Vector3(offsetX * 40, 0, offsetZ * 32);
-		tutorialRoomDistance = Vector3.Distance(offset, gauntletPosition);
 
 		bool spawnWall;
 		GameObject newObj;
