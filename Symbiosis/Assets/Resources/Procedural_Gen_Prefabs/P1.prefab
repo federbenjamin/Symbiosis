@@ -1426,7 +1426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76bf0cb6a44f2456ab48ffa747011d1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startRoom: -3
+  startRoom: 
   augmentName: 
   invincibilityTime: 0.3
   playerPrompt: {fileID: 128286, guid: 8fd3d7b6e5ab9445bb9935a3a1fb34c6, type: 2}
