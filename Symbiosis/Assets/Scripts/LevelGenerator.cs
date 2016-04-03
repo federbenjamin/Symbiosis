@@ -29,12 +29,12 @@ public class LevelGenerator : MonoBehaviour {
 	private int maxEnemiesPerRoom = 4;
 
 
-	void Awake () {
-		roomParent = GameObject.Find("Rooms").transform;
-	}
-
 	// Use this for initialization
 	void Start () {
+		GameObject rootNode = new GameObject("Root");
+		GameObject roomsObject = new GameObject("Rooms");
+		roomParent = roomsObject.transform;
+		roomParent.SetParent(rootNode.transform);
 
 		// Get level inputs - difficulty, size, and seed
 		// maxDifficulty = LevelData.levelDifficulty;  // depreciated, may be used later..
