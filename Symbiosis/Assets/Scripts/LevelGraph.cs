@@ -42,13 +42,7 @@ public class LevelGraph {
     }
 
     public Node GetRoomByNumber(int roomNumber) {
-		List<Node> nodesToSearch = new List<Node>(RoomList);
-		if (tutorialAdjRoom != null) {
-			nodesToSearch.Add(tutorialAdjRoom);
-		} else if (switchAdjRoom != null) {
-			nodesToSearch.Add(switchAdjRoom);
-		}
-		foreach (Node room in nodesToSearch) {
+		foreach (Node room in RoomList) {
 			if (room.RoomNumber == roomNumber) {
 				return room;
 			}
@@ -63,17 +57,16 @@ public class LevelGraph {
     public void Print() {
     	Debug.Log(player + ": ");
 		Debug.Log("Tutorial Room: " + tutorialAdjRoom.RoomNumber);
-    	PrintEdges(tutorialAdjRoom);
 		Debug.Log("Switch Room: " + switchAdjRoom.RoomNumber);
-    	PrintEdges(switchAdjRoom);
     	foreach (Node coreRoom in roomList) {
-			Debug.Log("Room: " + coreRoom.RoomNumber);
+			Debug.Log("-- Room: " + coreRoom.RoomNumber);
     		PrintEdges(coreRoom);
     	}
+		Debug.Log("------------------------------------------------");
     }
     public void PrintEdges(Node node) {
 		foreach (Node adj in node.adjacentRooms) {
-			Debug.Log("    Door to: " + adj.RoomNumber);
+			Debug.Log("      - Door to: " + adj.RoomNumber);
 		}
     }
 

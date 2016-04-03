@@ -141,16 +141,17 @@ public class LevelGenerator : MonoBehaviour {
 
 	private Node AddGraphNode(LevelGraph playerLevel, int roomNumber, int[] quadrantRooms) {
 		Node newRoomNode = new Node(roomNumber);
+
 		if (roomNumber == quadrantRooms[4]) {
 			// Tutorial Adjacent Room
 			playerLevel.TutorialAdjRoom = newRoomNode;
 		} else if (roomNumber == quadrantRooms[2]) {
 			// Switch Adjacent Room
 			playerLevel.SwitchAdjRoom = newRoomNode;
-		} else {
-			// All other core level rooms
-			playerLevel.AddRoom(newRoomNode);
 		}
+
+		// All other core level rooms
+		playerLevel.AddRoom(newRoomNode);
 		return newRoomNode;
 	}
 
@@ -459,9 +460,9 @@ public class LevelGenerator : MonoBehaviour {
 				if (connectingRoom < roomNum) {
 					Node adjacentNode = playerLevel.GetRoomByNumber(connectingRoom);
 
+					// Debug to make sure no null adjacent nodes are found
 					if (adjacentNode == null) {
-						Debug.Log(player + ": " + roomNode.RoomNumber);
-						Debug.Log("Connecting to room: " + connectingRoom);
+						Debug.LogError(player + ": room #" + roomNode.RoomNumber + " returned NULL adjacent room node #" + connectingRoom);
 					}
 
 					Edge newEdge = new Edge(roomNode, direction, adjacentNode);
