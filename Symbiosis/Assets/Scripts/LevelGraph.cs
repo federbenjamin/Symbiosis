@@ -50,6 +50,7 @@ public class LevelGraph {
     }
 
     public void AddEdgeToNodes(Edge edge) {
+		removedDoorList.Remove(edge);
 		Node room1 = edge.door1.RoomInside;
 		Node room2 = edge.door2.RoomInside;
 		room1.AdjacentRooms.Add(room2);
