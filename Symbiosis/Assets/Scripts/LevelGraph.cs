@@ -12,6 +12,10 @@ public class LevelGraph {
 	public int MaxDistance {
 		get{return maxDistance;}
 	}
+	private int tutorialAdjRoomDistance;
+	public int TutorialAdjRoomDistance {
+		get{return tutorialAdjRoomDistance;}
+	}
 
 	private Node tutorialAdjRoom;
 	public Node TutorialAdjRoom {
@@ -189,7 +193,9 @@ public class LevelGraph {
 
 		ResetNodeColors();
 
-		return roomList.Except(reachableRooms).ToList();
+		List<Node> isolatedRooms = roomList.Except(reachableRooms).ToList();
+		roomList = reachableRooms;
+		return isolatedRooms;
 	}
 
 	public void ResetNodeColors() {
@@ -209,6 +215,8 @@ public class LevelGraph {
 		while (nodeQueue.Count != 0) {
 			Node exploringNode = nodeQueue.Dequeue();
 			maxDistance = (exploringNode.Distance > maxDistance ? exploringNode.Distance : maxDistance);
+			if (exploringNode == tutorialAdjRoom) tutorialAdjRoomDistance = exploringNode.Distance;
+
 			foreach (Node adjNode in exploringNode.AdjacentRooms) {
 				if (adjNode.Color == NodeColor.White) {
 					adjNode.Color = NodeColor.Grey;
@@ -219,6 +227,15 @@ public class LevelGraph {
 			exploringNode.Color = NodeColor.Black;
 		}
 		maxDistance++;
+	}
+
+	public void PruneDistantDeadends() {
+		maxDistance = Mathf.Min(maxDistance, tutorialAdjRoomDistance + 4);
+		foreach (Node room in roomList) {
+			if (room.Distance >= tutorialAdjRoomDistance + 4) {
+				SingleRoomIsolate(room);
+			}
+		}
 	}
 
 

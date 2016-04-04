@@ -108,6 +108,9 @@ public class LevelGenerator : MonoBehaviour {
 
 			playerLevel.GenerateLevel(pseudoRandom);
 
+			// Do a final level update to remove all distant deadend room chains
+			// playerLevel.PruneDistantDeadends();
+
 			// Modify in-game model of level to what the graph structure represents
 			UpdateLevelUsingGraph(playerLevel, player);
 
@@ -190,7 +193,6 @@ public class LevelGenerator : MonoBehaviour {
 	private void SpawnEnemies(Node roomNode, int maxDistance, string roomColor) {
 		Transform room = roomNode.RoomObject.transform;
 		float roomDifficulty = GetNormalizedRoomDifficulty(roomNode.Distance, maxDistance);
-		// Debug.Log("Room " + roomNode.Distance + ": " + roomDifficulty);
 
 		// Generate a random subset of possible enemy types
 		List<Transform> spawnerTransforms = new List<Transform>();
@@ -207,6 +209,7 @@ public class LevelGenerator : MonoBehaviour {
 		float spawnCountUpperFloat = roomDifficulty * ((float)maxEnemiesPerRoom + 2f);
 		int spawnCountUpper = Mathf.CeilToInt(spawnCountUpperFloat);
 		int spawnCountLower = Mathf.FloorToInt(spawnCountUpperFloat / 2f);
+		// Debug.Log(roomDifficulty + " : " + spawnCountUpperFloat + " (" + spawnCountUpper + ") : " + spawnCountLower);
 		// Generate random number between boundaries for number of enemies to spawn
 		int spawnCount = Mathf.Min(pseudoRandom.Next(spawnCountLower, spawnCountUpper), maxEnemiesPerRoom);
 		int[] enemiesToSpawn = GenerateEnemySet(roomDifficulty, roomColor, spawnCount);
