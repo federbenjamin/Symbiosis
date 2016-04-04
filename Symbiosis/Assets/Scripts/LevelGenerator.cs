@@ -53,7 +53,7 @@ public class LevelGenerator : MonoBehaviour {
 		}
 
 		// Add the number and difficulty of each enemy color
-		enemyTypeDifficulty.Add("Red", new int[] {1, 2});
+		enemyTypeDifficulty.Add("Red", new int[] {1, 2, 3});
 		enemyTypeDifficulty.Add("Green", new int[] {1, 2});
 		enemyTypeDifficulty.Add("Blue", new int[] {1, 2, 3});
 
@@ -209,7 +209,7 @@ public class LevelGenerator : MonoBehaviour {
 		// float spawnCountOffset = Mathf.CeilToInt((float)size / 3f);
 		// Determine max and min for enemy count per room
 		float spawnCountUpperFloat = roomDifficulty * ((float)maxEnemiesPerRoom + 2f);
-		int spawnCountUpper = Mathf.CeilToInt(spawnCountUpperFloat);
+		int spawnCountUpper = Mathf.Max(Mathf.CeilToInt(spawnCountUpperFloat), 2);
 		int spawnCountLower = Mathf.FloorToInt(spawnCountUpperFloat / 2f);
 		// Debug.Log(roomDifficulty + " : " + spawnCountUpperFloat + " (" + spawnCountUpper + ") : " + spawnCountLower);
 		// Generate random number between boundaries for number of enemies to spawn
