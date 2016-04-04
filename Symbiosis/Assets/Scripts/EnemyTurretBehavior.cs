@@ -16,6 +16,7 @@ public class EnemyTurretBehavior : EnemyBehavior {
 	private bool readyToWalk = false;
 	private bool freezeRotation = true;
 	private bool nearDeath = false;
+	public bool blueTurret = false;
 
 	// Update is called once per frame
 	void Update () {
@@ -24,44 +25,49 @@ public class EnemyTurretBehavior : EnemyBehavior {
 
 	void FixedUpdate () {
 		if (!enemyOriented) {
-			IgnorePlayer();
+			IgnorePlayer ();
 			enemyOriented = true;
 		}
 
-		if (IsEnemyAlive() && !HealthManager.isGameOver) {
-			UpdateTargetPlayer();
-			CheckNearDeath();
+		if (IsEnemyAlive () && !HealthManager.isGameOver) {
+			UpdateTargetPlayer ();
+			CheckNearDeath ();
 
 			if (roomController.EnemiesActive) {
 				if (!setShootingOffset) {
-					addShootingOffset(2.5f);
+					addShootingOffset (2.5f);
 					setShootingOffset = true;
 				}
 				timer++;
 
-				//rotate to look at the player
-				CheckTimeUntilRotation();
-				if (!freezeRotation) {
-					Vector3 predictedPlayerPos = targetPlayer.Transform.position + targetPlayer.PlayerObject.GetComponent<Rigidbody>().velocity * Time.deltaTime * 2;
-					Vector3 direction = predictedPlayerPos - myRigidBody.position;
-					Quaternion angleTowardsPlayer = Quaternion.Slerp(myTransform.rotation, Quaternion.LookRotation(direction), 4 * Time.deltaTime);
-					myRigidBody.MoveRotation(angleTowardsPlayer);
+				if (blueTurret) {
+					//rotate to look at the player
+					CheckTimeUntilRotation ();
+					if (!freezeRotation) {
+						Vector3 predictedPlayerPos = targetPlayer.Transform.position + targetPlayer.PlayerObject.GetComponent<Rigidbody> ().velocity * Time.deltaTime * 2;
+						Vector3 direction = predictedPlayerPos - myRigidBody.position;
+						Quaternion angleTowardsPlayer = Quaternion.Slerp (myTransform.rotation, Quaternion.LookRotation (direction), 4 * Time.deltaTime);
+						myRigidBody.MoveRotation (angleTowardsPlayer);
+					}
+				} else {
+					//rotate to look at the room center
+					Vector3 roomCenter = this.transform.parent.transform.position;
+					transform.LookAt(roomCenter);
 				}
 
 				if (Time.time > nextFire) {
-						//enemyAnimator.SetTrigger ("Shoot");
-						Shoot (myTransform.forward, bulletOrigin);
-						AlternateCannon();
+					//enemyAnimator.SetTrigger ("Shoot");
+					Shoot (myTransform.forward, bulletOrigin);
+					AlternateCannon ();
 				}
 
 			} else {
-				ActivateEnemiesOnProximity(2.5f);
+				ActivateEnemiesOnProximity (2.5f);
 			}
 			collisionPosition = Vector3.zero;
 		} else {
 			//enemyAnimator.SetTrigger ("Stopped");
 		}
-
 	}
 
 	void Shoot(Vector3 shootDir, GameObject cannon) {

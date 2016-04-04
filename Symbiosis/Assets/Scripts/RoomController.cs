@@ -20,6 +20,7 @@ public class RoomController : MonoBehaviour {
 	public GameObject blueTurret;
 	public GameObject greenSpecial;
 	public GameObject redSpecial;
+	public GameObject redTurret;
 
 	public List<GameObject> spawnpoints;
 	public List<GameObject> enemies;
@@ -179,7 +180,9 @@ public class RoomController : MonoBehaviour {
 				enemyChild = Instantiate (redZomb, spawnVector, spawnpoint.transform.rotation) as GameObject;
 			} else if (enemyType == "Red2" || enemyType == "22") {
 				enemyChild = Instantiate (redSpecial, spawnVector, spawnpoint.transform.rotation) as GameObject;
-			}  else if (enemyType == "Blue1" || enemyType == "30") {
+			} else if (enemyType == "Red3" || enemyType == "23") {
+				enemyChild = Instantiate (redTurret, spawnVector, spawnpoint.transform.rotation) as GameObject;
+			} else if (enemyType == "Blue1" || enemyType == "30") {
 				enemyChild = Instantiate (blueZomb, spawnVector, spawnpoint.transform.rotation) as GameObject;
 			} else if (enemyType == "Blue2" || enemyType == "32") {
 				enemyChild = Instantiate (blueSpecial, spawnVector, spawnpoint.transform.rotation) as GameObject;

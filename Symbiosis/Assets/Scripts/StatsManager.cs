@@ -150,6 +150,7 @@ public class StatsManager : MonoBehaviour {
 			AugTriggerLeft = Input.GetAxisRaw (swapButtonAug + "Left");
 			if (!requestAugSwap) {
 				if ((AugTriggerRight > 0 || AugTriggerLeft > 0) && Time.time > nextAugSwap) {
+					Debug.Log ("AugTrigger" + playerPrefix);
 					requestSwapAugments();
 					nextAugSwapFailedSound = false;
 				} else if (AugTriggerRight <= 0 || AugTriggerLeft <= 0) {
