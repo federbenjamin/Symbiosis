@@ -46,6 +46,7 @@ public class StatsManager : MonoBehaviour {
 
 	private int swapAugTimeout;
 	private bool nextAugSwapFailedSound = false;
+	private static bool swapCooldownSoundNotPlaying = true;
 
 	private HoopController hoopController;
 	private string pingButton;
@@ -154,9 +155,8 @@ public class StatsManager : MonoBehaviour {
 					nextAugSwapFailedSound = false;
 				} else if (AugTriggerRight <= 0 && AugTriggerLeft <= 0) {
 					nextAugSwapFailedSound = true;
-				} else if ((AugTriggerRight > 0 || AugTriggerLeft > 0) && nextAugSwapFailedSound) {
-					audioPlacement.PlayClip ("EarlySwap");
-					nextAugSwapFailedSound = false;
+				} else if ((AugTriggerRight > 0 || AugTriggerLeft > 0) && nextAugSwapFailedSound && swapCooldownSoundNotPlaying) {
+					StartCoroutine("PlaySound");
 				}
 			}
 
@@ -177,7 +177,15 @@ public class StatsManager : MonoBehaviour {
 			}
 		}
 	}
-		
+	
+	IEnumerator PlaySound() {
+		swapCooldownSoundNotPlaying = false;
+		audioPlacement.PlayClip ("EarlySwap", 0.1f);
+		nextAugSwapFailedSound = false;
+		yield return new WaitForSeconds (0.7f);
+		swapCooldownSoundNotPlaying = true;
+	}
+
 	public iAugment GetAugment() {
 		return playerAugment;
 	}
