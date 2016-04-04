@@ -1,10 +1,13 @@
 fileFormatVersion: 2
 guid: 76bf0cb6a44f2456ab48ffa747011d1d
-timeCreated: 1454183610
-licenseType: Free
+timeCreated: 1459805154
+licenseType: Pro
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - playerPrompt: {instanceID: 0}
+  - swapPrompt: {instanceID: 0}
+  - swapCooldownSound: {fileID: 8300000, guid: d020858379774e740a970578e8247ddd, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
