@@ -1,0 +1,125 @@
+fileFormatVersion: 2
+guid: bb9ed5596fcc043e0af3d031ca51ecb8
+timeCreated: 1459804936
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Grumpy_Eyebrows
+    100004: Grumpy_Eyes
+    100006: Grumpy_Mouth
+    100008: Slime_Body
+    100010: Slime_eyes
+    100012: Slime_Head
+    100014: Slime_Mouth
+    100016: Slime_Tentacle
+    100018: Slime_Tentacle_001
+    100020: Slime_Tentacle_002
+    100022: Slime_Tentacle_003
+    100024: Slime_Tentacle_004
+    100026: Slime_Tentacle_005
+    100028: Slime_Tentacle_006
+    100030: Slime_Tentacle_007
+    100032: Slime_Yellow
+    100034: //RootNode
+    400000: Armature
+    400002: Grumpy_Eyebrows
+    400004: Grumpy_Eyes
+    400006: Grumpy_Mouth
+    400008: Slime_Body
+    400010: Slime_eyes
+    400012: Slime_Head
+    400014: Slime_Mouth
+    400016: Slime_Tentacle
+    400018: Slime_Tentacle_001
+    400020: Slime_Tentacle_002
+    400022: Slime_Tentacle_003
+    400024: Slime_Tentacle_004
+    400026: Slime_Tentacle_005
+    400028: Slime_Tentacle_006
+    400030: Slime_Tentacle_007
+    400032: Slime_Yellow
+    400034: //RootNode
+    4300000: Grumpy_Mouth
+    4300002: Grumpy_Eyes
+    4300004: Grumpy_Eyebrows
+    4300006: Slime_Yellow
+    7400000: Default Take
+    7400002: Action
+    7400004: ArmatureAction
+    7400006: Player_Idle
+    7400008: Slime_Jump
+    7400010: Slime_walk
+    7400012: Slime_walk_001
+    7400014: SlimeIdle
+    7400016: SlimeIdle_001
+    9500000: //RootNode
+    13700000: Grumpy_Eyebrows
+    13700002: Grumpy_Eyes
+    13700004: Grumpy_Mouth
+    13700006: Slime_Yellow
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
