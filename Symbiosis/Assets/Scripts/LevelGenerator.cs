@@ -106,11 +106,16 @@ public class LevelGenerator : MonoBehaviour {
 
 			playerLevel.AddAllAdjacentRooms();
 
+			playerLevel.SingleRoomIsolate(1);
+			Debug.Log(playerLevel.CanReachSwitchRoom());
+
+			// playerLevel.GenerateLevel(pseudoRandom);
+
 			// Randomly remove 3 rooms
-			int roomsToIsolate = size - 1;
-			for (int i = 0; i < roomsToIsolate; i++) {
-				playerLevel.RandomSingleRoomIsolate(pseudoRandom);
-			}
+			// int roomsToIsolate = size - 1;
+			// for (int i = 0; i < roomsToIsolate; i++) {
+			// 	playerLevel.RandomSingleRoomIsolate(pseudoRandom);
+			// }
 
 			// Modify in-game model of level to what the graph structure represents
 			UpdateLevelUsingGraph(playerLevel, player);

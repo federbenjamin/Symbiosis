@@ -45,10 +45,31 @@ public class LevelGraph {
 		removedDoorList = new List<Edge>();
     }
 
+	public void RemoveEdge(Edge edge) {
+		doorList.Remove(edge);
+		removedDoorList.Add(edge);
+		Node room1 = edge.door1.RoomInside;
+		Node room2 = edge.door2.RoomInside;
+		room1.AdjacentRooms.Remove(room2);
+		room2.AdjacentRooms.Remove(room1);
+	}
+
     public Node GetRoomByNumber(int roomNumber) {
 		foreach (Node room in RoomList) {
 			if (room.RoomNumber == roomNumber) {
 				return room;
+			}
+		}
+		return null;
+    }
+
+    public Edge GetEdgeBetweenRooms(Node room1, Node room2) {
+		foreach (Edge edge in doorList) {
+			Node connectingRoom1 = edge.door1.RoomInside;
+			Node connectingRoom2 = edge.door2.RoomInside;
+			if ((connectingRoom1 == room1 && connectingRoom2 == room2) 
+					|| (connectingRoom1 == room2 && connectingRoom2 == room1)) {
+				return edge;
 			}
 		}
 		return null;
@@ -62,14 +83,81 @@ public class LevelGraph {
 			room2.AddAdjacentRoom(room1);
 		}
 	}
-	
-	public void RemoveEdge(Edge edge) {
-		doorList.Remove(edge);
-		removedDoorList.Add(edge);
-		Node room1 = edge.door1.RoomInside;
-		Node room2 = edge.door2.RoomInside;
-		room1.AdjacentRooms.Remove(room2);
-		room2.AdjacentRooms.Remove(room1);
+
+	public void OldCreateCriticalPath(System.Random pseudoRandom, bool levelOnRightSide) {
+		List<Edge> criticalEdges = new List<Edge>();
+		string restrictedDirection = "West";
+		if (levelOnRightSide) {
+			restrictedDirection = "East";
+		}
+
+		tutorialAdjRoom.Color = NodeColor.Black;
+		Queue<Node> nodeQueue = new Queue<Node>();
+		nodeQueue.Enqueue(tutorialAdjRoom);
+		while (nodeQueue.Count != 0) {
+			Node exploringNode = nodeQueue.Dequeue();
+			exploringNode.Color = NodeColor.Black;
+
+			// Switch to 2 restricted directions
+			if (false && exploringNode != switchAdjRoom) {
+				// int randomNextRoomIndex;
+				// Node randomNextRoom;
+				// Edge connectingNode;
+				// string doorDirection;
+				// do {
+				// 	randomNextRoomIndex = pseudoRandom.Next(exploringNode.AdjacentRooms.Count);
+				// 	randomNextRoom = exploringNode.AdjacentRooms[randomNextRoomIndex];
+
+				// 	connectingNode = GetEdgeBetweenRooms(exploringNode, randomNextRoom);
+				// 	doorDirection = connectingNode.GetDoorDirection(exploringNode);
+				// } while (randomNextRoom.Color == NodeColor.Black || doorDirection == restrictedDirection);
+
+				// criticalEdges.Add(connectingNode);
+				// nodeQueue.Enqueue(randomNextRoom);
+			}
+
+		}
+
+		removedDoorList = doorList.Except(criticalEdges).ToList();
+		doorList = criticalEdges;
+	}
+
+	public void GenerateLevel(System.Random pseudoRandom) {
+
+	}
+
+	public bool CanReachSwitchRoom() {
+		tutorialAdjRoom.Color = NodeColor.Grey;
+		bool reached = CanReachSwitchRoomHelper(tutorialAdjRoom);
+		ResetNodeColors();
+		return reached;
+	}
+
+	public bool CanReachSwitchRoomHelper(Node rootNode) {
+		bool reached = false;
+		rootNode.Color = NodeColor.Grey;
+		foreach (Node node in rootNode.AdjacentRooms) {
+			if (reached) break;
+			if (node.Color == NodeColor.White) {
+				if (node == switchAdjRoom) {
+					reached = true;
+				} else {
+					reached = (reached || CanReachSwitchRoomHelper(node));
+				}
+			}
+		}
+		return reached;
+	}
+
+	public void SingleRoomIsolate(int roomNum) {
+		Node room = GetRoomByNumber(roomNum);
+		SingleRoomIsolate(room);
+	}
+
+	public void SingleRoomIsolate(Node room) {
+		foreach (Edge edge in ReturnAllRoomEdges(room)) {
+			RemoveEdge(edge);
+		}
 	}
 
 	public void RandomSingleRoomIsolate(System.Random pseudoRandom) {
@@ -97,8 +185,8 @@ public class LevelGraph {
 
 	public List<Node> GetIsolatedRooms() {
 		List<Node> reachableRooms = new List<Node>();
-		tutorialAdjRoom.Color = NodeColor.Black;
 
+		tutorialAdjRoom.Color = NodeColor.Black;
 		Queue<Node> nodeQueue = new Queue<Node>();
 		nodeQueue.Enqueue(tutorialAdjRoom);
 
@@ -114,11 +202,15 @@ public class LevelGraph {
 			exploringNode.Color = NodeColor.Black;
 		}
 
-		foreach (Node node in reachableRooms) {
-			node.Color = NodeColor.White;
-		}
+		ResetNodeColors();
 
 		return roomList.Except(reachableRooms).ToList();
+	}
+
+	public void ResetNodeColors() {
+		foreach (Node node in roomList) {
+			node.Color = NodeColor.White;
+		}
 	}
 
 	public void CalculateRoomDistances() {
@@ -240,6 +332,14 @@ public class Edge {
     	this.door2 = door2;
     }
 
+	public string GetDoorDirection(Node room) {
+		if (room == door1.RoomInside) {
+			return door1.Direction;
+		} else if (room == door2.RoomInside) {
+			return door2.Direction;
+		}
+		return null;
+	}
 }
 
 public class Door {
