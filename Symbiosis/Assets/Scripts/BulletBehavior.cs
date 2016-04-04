@@ -16,7 +16,7 @@ public class BulletBehavior : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		AP = GameObject.Find ("AudioListener").GetComponent<AudioPlacement> ();
-		AP.PlayClip ("SFX/bullet_fire");
+		AP.PlayClip ("SFX/bullet_fire", 0.1f);
 	}
 	
 	// Update is called once per frame
@@ -28,7 +28,7 @@ public class BulletBehavior : MonoBehaviour {
 		GameObject other = c.gameObject;
 		//If it hits a player don't disappear
 		if (other.tag != "Player" && other.tag != "Bullet" && other.tag != "Room" && other.tag != "TutorialRoom" && other.tag != "Pickups") {
-			AP.PlayClip ("SFX/bullet_die");
+			AP.PlayClip ("SFX/bullet_die", 0.1f);
 			Destroy (gameObject);
 		}
 		if (other.tag == "Bullet" || other.tag == "Pickups") {

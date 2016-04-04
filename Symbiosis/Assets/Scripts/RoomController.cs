@@ -223,7 +223,7 @@ public class RoomController : MonoBehaviour {
 	}
 
 	IEnumerator WaitToOpenDoors() {
-		yield return new WaitForSeconds (8f);
+		yield return new WaitForSeconds (4f);
 		OpenRoomDoors();
 	}
 

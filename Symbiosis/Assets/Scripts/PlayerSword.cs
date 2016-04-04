@@ -61,7 +61,7 @@ public class PlayerSword : MonoBehaviour {
 	public void Swing() {
 		isSwinging = true;
 
-		AP.PlayClip ("SFX/sword");
+		AP.PlayClip ("SFX/sword", 0.1f);
 		if (augment != null) {
 			if (augment.Element == "fire") {
 				trailColor = Resources.Load<Material>("RedTrail");
