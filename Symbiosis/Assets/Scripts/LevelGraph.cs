@@ -45,6 +45,13 @@ public class LevelGraph {
 		removedDoorList = new List<Edge>();
     }
 
+    public void AddEdgeToNodes(Edge edge) {
+		Node room1 = edge.door1.RoomInside;
+		Node room2 = edge.door2.RoomInside;
+		room1.AdjacentRooms.Add(room2);
+		room2.AdjacentRooms.Add(room1);
+	}
+
 	public void RemoveEdge(Edge edge) {
 		doorList.Remove(edge);
 		removedDoorList.Add(edge);
@@ -84,46 +91,24 @@ public class LevelGraph {
 		}
 	}
 
-	public void OldCreateCriticalPath(System.Random pseudoRandom, bool levelOnRightSide) {
-		List<Edge> criticalEdges = new List<Edge>();
-		string restrictedDirection = "West";
-		if (levelOnRightSide) {
-			restrictedDirection = "East";
-		}
-
-		tutorialAdjRoom.Color = NodeColor.Black;
-		Queue<Node> nodeQueue = new Queue<Node>();
-		nodeQueue.Enqueue(tutorialAdjRoom);
-		while (nodeQueue.Count != 0) {
-			Node exploringNode = nodeQueue.Dequeue();
-			exploringNode.Color = NodeColor.Black;
-
-			// Switch to 2 restricted directions
-			if (false && exploringNode != switchAdjRoom) {
-				// int randomNextRoomIndex;
-				// Node randomNextRoom;
-				// Edge connectingNode;
-				// string doorDirection;
-				// do {
-				// 	randomNextRoomIndex = pseudoRandom.Next(exploringNode.AdjacentRooms.Count);
-				// 	randomNextRoom = exploringNode.AdjacentRooms[randomNextRoomIndex];
-
-				// 	connectingNode = GetEdgeBetweenRooms(exploringNode, randomNextRoom);
-				// 	doorDirection = connectingNode.GetDoorDirection(exploringNode);
-				// } while (randomNextRoom.Color == NodeColor.Black || doorDirection == restrictedDirection);
-
-				// criticalEdges.Add(connectingNode);
-				// nodeQueue.Enqueue(randomNextRoom);
-			}
-
-		}
-
-		removedDoorList = doorList.Except(criticalEdges).ToList();
-		doorList = criticalEdges;
-	}
-
 	public void GenerateLevel(System.Random pseudoRandom) {
+		List<Edge> requiredEdges = new List<Edge>();
+		int indexToRemove;
+		Edge removedEdge;
+		int edgesToRemove = doorList.Count / 2;
+		for (int i = 0; i < edgesToRemove; i++) {
+			if (doorList.Count == 0) break;
+			indexToRemove = pseudoRandom.Next(doorList.Count);
+			removedEdge = doorList[indexToRemove];
+			RemoveEdge(removedEdge);
 
+			if (!CanReachSwitchRoom()) {
+				AddEdgeToNodes(removedEdge);
+				requiredEdges.Add(removedEdge);
+				i--;
+			}
+		}
+		doorList.AddRange(requiredEdges);
 	}
 
 	public bool CanReachSwitchRoom() {
