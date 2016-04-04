@@ -19,6 +19,7 @@ public class GamePause : MonoBehaviour {
 	private Sprite[] tutorialSprites;
 	private int controlImageIndex = 0;
 	private AudioPlacement gameAudio;
+	private bool nextInput = true;
 
 
 	// Use this for initialization
@@ -57,10 +58,10 @@ public class GamePause : MonoBehaviour {
 		}
 
 		if (showControls) {
-			if (Input.GetAxisRaw("UIHorizontal") > 0) {
-				changeControlImage("next");
-			} else if (Input.GetAxisRaw("UIHorizontal") < 0) {
-				changeControlImage("previous");
+			if (Input.GetAxisRaw("UIHorizontal") > 0 && nextInput) {
+					changeControlImage ("next");
+			} else if (Input.GetAxisRaw("UIHorizontal") < 0 && nextInput) {
+					changeControlImage ("previous");
 			}
 		}
 	}
@@ -107,6 +108,7 @@ public class GamePause : MonoBehaviour {
 	}
 
 	public void changeControlImage(string targetImage) {
+		nextInput = false;
 		if (targetImage == "next") {
 			if (controlImageIndex != tutorialSprites.Length - 1) {
 				controlImageIndex++;
@@ -122,5 +124,15 @@ public class GamePause : MonoBehaviour {
 
 			}
 		}
+		StartCoroutine("WaitForNewInput");
+	}
+
+	IEnumerator WaitForNewInput() {
+		float start = Time.realtimeSinceStartup;
+		while (Time.realtimeSinceStartup < start + 0.75f) {
+			yield return null;
+		}
+		Debug.Log (nextInput);
+		nextInput = true;
 	}
 }
