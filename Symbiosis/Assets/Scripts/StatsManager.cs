@@ -156,7 +156,7 @@ public class StatsManager : MonoBehaviour {
 				} else if (AugTriggerRight <= 0 || AugTriggerLeft <= 0) {
 					nextAugSwapFailedSound = true;
 				} else if ((AugTriggerRight > 0 || AugTriggerLeft > 0) && nextAugSwapFailedSound) {
-					audioPlacement.PlayClip ("SFX/EarlySwap", 1f);
+					audioPlacement.PlayClip (swapCooldownSound, 0.1f);
 					nextAugSwapFailedSound = false;
 				}
 			}

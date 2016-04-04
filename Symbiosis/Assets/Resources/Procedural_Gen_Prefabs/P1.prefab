@@ -1431,7 +1431,7 @@ MonoBehaviour:
   invincibilityTime: 0.3
   playerPrompt: {fileID: 128286, guid: 8fd3d7b6e5ab9445bb9935a3a1fb34c6, type: 2}
   swapPrompt: {fileID: 0}
-  swapCooldownSound: {fileID: 8300000, guid: eaa112e928c2641e88acbfd230189a80, type: 3}
+  swapCooldownSound: {fileID: 8300000, guid: d020858379774e740a970578e8247ddd, type: 3}
   inGeneratedLevel: 1
 --- !u!114 &11497590
 MonoBehaviour:
