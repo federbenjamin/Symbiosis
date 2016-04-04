@@ -11525,6 +11525,7 @@ MonoBehaviour:
   blueTurret: {fileID: 108362, guid: db5718c754faa4d0fb8b8e9e0d51c2fa, type: 2}
   greenSpecial: {fileID: 190850, guid: c84a82c423785490db5bcde257a564d9, type: 2}
   redSpecial: {fileID: 132660, guid: bade84023a4fd4c6392b4d83f07d1559, type: 2}
+  redTurret: {fileID: 0}
   spawnpoints: []
   enemies: []
   doors: []

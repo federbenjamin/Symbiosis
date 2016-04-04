@@ -22,7 +22,7 @@ public class EnemyBulletBehavior : MonoBehaviour {
 	void OnTriggerEnter(Collider c) {
 		GameObject other = c.gameObject;
 		//If it hits a player don't disappear
-		if (other.tag != "Enemy" && other.tag != "Bullet" && other.tag != "Room") {
+		if (other.tag != "Enemy" && other.tag != "Bullet" && other.tag != "Room" && other.tag != "Pipe") {
 			Destroy (gameObject);
 		}
 		if (other.tag == "Bullet") {
