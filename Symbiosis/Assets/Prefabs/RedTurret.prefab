@@ -388,8 +388,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e7a559fc6fc462191e9c4f74a073b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHP: 10
-  maxHP: 10
+  currentHP: 30
+  maxHP: 30
   moveSpeed: 4
   elementType: fire
   enemyAnimator: {fileID: 0}

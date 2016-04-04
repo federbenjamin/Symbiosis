@@ -883,7 +883,7 @@ Animator:
   m_GameObject: {fileID: 139360}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 4a97ebb21e74140889a4d38ba0fe9d77, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 361c6e9dfa7b247808fc0b9101d97cb3, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -921,8 +921,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e7a559fc6fc462191e9c4f74a073b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHP: 40
-  maxHP: 40
+  currentHP: 30
+  maxHP: 30
   moveSpeed: 4
   elementType: ice
   enemyAnimator: {fileID: 0}
@@ -2778,6 +2778,10 @@ Prefab:
       propertyPath: hitSpark
       value: 
       objectReference: {fileID: 176766, guid: 49626e56a25667540bc5a7eb750d40e7, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 361c6e9dfa7b247808fc0b9101d97cb3, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 108362}
