@@ -108,14 +108,15 @@ public class LevelGenerator : MonoBehaviour {
 
 			playerLevel.GenerateLevel(pseudoRandom);
 
+			// Calculate each room's distance from the switch room and spawn enemies based on that
+			playerLevel.CalculateRoomDistances();
+
 			// Do a final level update to remove all distant deadend room chains
-			// playerLevel.PruneDistantDeadends();
+			playerLevel.PruneDistantDeadends();
 
 			// Modify in-game model of level to what the graph structure represents
 			UpdateLevelUsingGraph(playerLevel, player);
 
-			// Calculate each room's distance from the switch room and spawn enemies based on that
-			playerLevel.CalculateRoomDistances();
 			int maxDistance = playerLevel.MaxDistance;
 			foreach (Node roomNode in playerLevel.RoomList) {
 				string roomColor = roomNode.RoomObject.GetComponent<RoomController>().RoomColor;
@@ -133,6 +134,7 @@ public class LevelGenerator : MonoBehaviour {
 		foreach (Edge edge in playerLevel.RemovedDoorList) {
 			ReplaceDoorWithWall(player, edge);
 		}
+		playerLevel.ClearRemovedDoors();
 
 		// Find all rooms with no doors attached and remove them;
 		List<Node> isolatedRooms = playerLevel.GetIsolatedRooms();

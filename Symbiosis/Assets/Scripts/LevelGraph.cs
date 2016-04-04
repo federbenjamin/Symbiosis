@@ -49,6 +49,10 @@ public class LevelGraph {
 		removedDoorList = new List<Edge>();
     }
 
+    public void ClearRemovedDoors() {
+		removedDoorList = new List<Edge>();
+    }
+
     public void AddEdgeToNodes(Edge edge) {
 		removedDoorList.Remove(edge);
 		Node room1 = edge.door1.RoomInside;
@@ -228,12 +232,15 @@ public class LevelGraph {
 			exploringNode.Color = NodeColor.Black;
 		}
 		maxDistance++;
+
+		ResetNodeColors();
 	}
 
 	public void PruneDistantDeadends() {
-		maxDistance = Mathf.Min(maxDistance, tutorialAdjRoomDistance + 4);
+		int farthestAcceptableDistance = tutorialAdjRoomDistance + 2;
+		maxDistance = Mathf.Min(maxDistance, farthestAcceptableDistance);
 		foreach (Node room in roomList) {
-			if (room.Distance >= tutorialAdjRoomDistance + 4) {
+			if (room.Distance >= farthestAcceptableDistance) {
 				SingleRoomIsolate(room);
 			}
 		}
