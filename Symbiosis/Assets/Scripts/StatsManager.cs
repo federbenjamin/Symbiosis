@@ -45,7 +45,6 @@ public class StatsManager : MonoBehaviour {
 	}
 
 	private int swapAugTimeout;
-	public AudioClip swapCooldownSound;
 	private bool nextAugSwapFailedSound = false;
 
 	private HoopController hoopController;
@@ -153,10 +152,10 @@ public class StatsManager : MonoBehaviour {
 					Debug.Log ("AugTrigger" + playerPrefix);
 					requestSwapAugments();
 					nextAugSwapFailedSound = false;
-				} else if (AugTriggerRight <= 0 || AugTriggerLeft <= 0) {
+				} else if (AugTriggerRight <= 0 && AugTriggerLeft <= 0) {
 					nextAugSwapFailedSound = true;
 				} else if ((AugTriggerRight > 0 || AugTriggerLeft > 0) && nextAugSwapFailedSound) {
-					audioPlacement.PlayClip (swapCooldownSound, 0.1f);
+					audioPlacement.PlayClip ("EarlySwap");
 					nextAugSwapFailedSound = false;
 				}
 			}
