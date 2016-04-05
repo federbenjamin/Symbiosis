@@ -532,8 +532,7 @@ GameObject:
   - 54: {fileID: 5489308}
   - 136: {fileID: 13681282}
   - 114: {fileID: 11435086}
-  - 114: {fileID: 11485378}
-  - 195: {fileID: 19516400}
+  - 114: {fileID: 11462906}
   m_Layer: 0
   m_Name: GreenSpecial
   m_TagString: Enemy
@@ -1126,12 +1125,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHP: 40
   maxHP: 40
-  moveSpeed: 4
+  moveSpeed: 2
   elementType: earth
   enemyAnimator: {fileID: 0}
   spawnParticles: {fileID: 0}
   hitSpark: {fileID: 176766, guid: 49626e56a25667540bc5a7eb750d40e7, type: 2}
---- !u!114 &11485378
+--- !u!114 &11462906
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1139,12 +1138,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 190850}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42b89ba0795454d74b30c91163b3982b, type: 3}
+  m_Script: {fileID: 11500000, guid: 1080c1a4995a84d6e9c23e398ff9a2a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyAnimator: {fileID: 0}
-  slowMoveSpeed: 2
-  fastMoveSpeed: 8
+  slime: {fileID: 116444, guid: d250b43ca38a043f3a595c94679fdadc, type: 2}
   stoppingDistance: 0.7
 --- !u!136 &13681282
 CapsuleCollider:
@@ -1785,26 +1783,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.44773126, y: 2.1138127, z: -0.3976735}
     m_Extent: {x: 0.12558423, y: 0.27000594, z: 0.27000582}
   m_DirtyAABB: 0
---- !u!195 &19516400
-NavMeshAgent:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190850}
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 60
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!198 &19875734
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -3358,7 +3336,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: stoppingDistance
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Material
@@ -3367,7 +3345,7 @@ Prefab:
         type: 2}
     - target: {fileID: 0}
       propertyPath: moveSpeed
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Acceleration
@@ -3377,6 +3355,10 @@ Prefab:
       propertyPath: hitSpark
       value: 
       objectReference: {fileID: 176766, guid: 49626e56a25667540bc5a7eb750d40e7, type: 2}
+    - target: {fileID: 0}
+      propertyPath: slime
+      value: 
+      objectReference: {fileID: 116444, guid: d250b43ca38a043f3a595c94679fdadc, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 190850}
