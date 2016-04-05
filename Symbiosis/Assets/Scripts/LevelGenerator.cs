@@ -123,10 +123,73 @@ public class LevelGenerator : MonoBehaviour {
 				SpawnEnemies(roomNode, maxDistance, roomColor);
 			}
 
+			SetAllDoorLightColors(playerLevel, player);
+
 			// playerLevel.Print();
 		}
 
 		LoadRemainingAssets();
+	}
+
+	private void SetAllDoorLightColors(LevelGraph playerLevel, string player) {
+		// Set tutorial room light
+		GameObject tutorialRoom = GameObject.Find("Room" + player + "TutorialExit");
+		string roomColor = playerLevel.TutorialAdjRoom.RoomColor;
+		int tutorialAdjRoomNumber = playerLevel.TutorialAdjRoom.RoomNumber;
+		string doorName = "DoorWest";
+		if (tutorialAdjRoomNumber == 0 || tutorialAdjRoomNumber == size * (size - 1)) {
+			doorName = "DoorEast";
+		}
+		ChangeDoorColor(tutorialRoom, doorName, roomColor);
+
+		// Set switch room light
+		GameObject switchRoom = GameObject.Find("Room100");
+		roomColor = playerLevel.SwitchAdjRoom.RoomColor;
+		int switchAdjRoomNumber = playerLevel.SwitchAdjRoom.RoomNumber;
+		doorName = "DoorSwitchEnterLeft";
+		if (switchAdjRoomNumber == 1 || switchAdjRoomNumber == size - 2) {
+			doorName = "DoorSwitchEnterRight";
+		}
+		ChangeDoorColor(switchRoom, doorName, roomColor);
+
+		// Set core dungeon lights
+		foreach (Edge edge in playerLevel.DoorList) {
+			GameObject roomObject1 = edge.door1.RoomInside.RoomObject;
+			GameObject roomObject2 = edge.door2.RoomInside.RoomObject;
+			string roomColor1 = edge.door1.RoomInside.RoomColor;
+			string roomColor2 = edge.door2.RoomInside.RoomColor;
+			string doorName1 = "Door" + edge.door1.Direction;
+			string doorName2 = "Door" + edge.door2.Direction;
+
+			ChangeDoorColor(roomObject1, doorName1, roomColor2);
+			ChangeDoorColor(roomObject2, doorName2, roomColor1);
+		}
+	}
+
+	private void ChangeDoorColor(GameObject roomObject, string doorName, string newDoorColor) {
+		Color colorObject = GetColorObject(newDoorColor);
+		foreach (Transform child in roomObject.transform) {
+			if (child.name == doorName) {
+				foreach (Transform doorChild in child) {
+					if (doorChild.name == "NextRoomLight") {
+						Light doorLight = doorChild.gameObject.GetComponent<Light>();
+						doorLight.color = colorObject;
+						break;
+					}
+				}
+				break;
+			}
+		}
+	}
+
+	private Color GetColorObject(string roomColor) {
+		if (roomColor == "Red") {
+			return Color.red;
+		} else if (roomColor == "Green") {
+			return Color.green;
+		} else {
+			return Color.blue;
+		}
 	}
 
 	private void UpdateLevelUsingGraph(LevelGraph playerLevel, string player) {
@@ -167,7 +230,7 @@ public class LevelGenerator : MonoBehaviour {
 					GameObject newRoom = GenerateRoom(roomSuffix, name, roomPosition, roomColor);
 
 					// Add room to graph
-					Node newRoomNode = AddGraphNode(playerLevel, newRoom, roomNumber, quadrantRooms);
+					Node newRoomNode = AddGraphNode(playerLevel, newRoom, roomNumber, quadrantRooms, roomColor);
 					
 					GenerateDoorsAndWalls(playerLevel, newRoomNode, newRoom.transform, player, roomNumber, roomColor, roomPosition, quadrantRooms);
 				}
@@ -175,9 +238,8 @@ public class LevelGenerator : MonoBehaviour {
 		}
 	}
 
-	private Node AddGraphNode(LevelGraph playerLevel, GameObject newRoom, int roomNumber, int[] quadrantRooms) {
-		Node newRoomNode = new Node(roomNumber);
-		newRoomNode.RoomObject = newRoom;
+	private Node AddGraphNode(LevelGraph playerLevel, GameObject newRoom, int roomNumber, int[] quadrantRooms, string roomColor) {
+		Node newRoomNode = new Node(newRoom, roomNumber, roomColor);
 
 		if (roomNumber == quadrantRooms[4]) {
 			// Tutorial Adjacent Room

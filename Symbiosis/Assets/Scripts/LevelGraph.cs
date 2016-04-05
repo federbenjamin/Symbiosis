@@ -287,14 +287,22 @@ public class Node {
 		set{distance = value;}
 	}
 
+	private string roomColor;
+	public string RoomColor {
+		get{return roomColor;}
+		set{roomColor = value;}
+	}
+
 	private NodeColor color;
 	public NodeColor Color {
 		get{return color;}
 		set{color = value;}
 	}
 
-	public Node(int roomNumber) {
+	public Node(GameObject roomObject, int roomNumber, string roomColor) {
+		this.roomObject = roomObject;
 		this.roomNumber = roomNumber;
+		this.roomColor = roomColor;
 		this.distance = 0;
 		this.color = NodeColor.White;
 		adjacentRooms = new List<Node>();
