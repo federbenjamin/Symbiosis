@@ -27,8 +27,8 @@ public class BulletBehavior : MonoBehaviour {
 	void OnTriggerEnter(Collider c) {
 		GameObject other = c.gameObject;
 		//If it hits a player don't disappear
-		if (other.tag != "Player" && other.tag != "Bullet" && other.tag != "Room" && other.tag != "TutorialRoom" && other.tag != "Pickups") {
-			AP.PlayClip ("SFX/bullet_die", 0.1f);
+		if (other.tag != "Player" && other.tag != "Bullet" && other.tag != "Room" && other.tag != "TutorialRoom" && other.tag != "Pickups" && other.tag != "Pipe") {
+			AP.PlayClip ("SFX/bullet_die", 0.05f);
 			Destroy (gameObject);
 		}
 		if (other.tag == "Bullet" || other.tag == "Pickups") {

@@ -143,7 +143,7 @@ GameObject:
   - 95: {fileID: 9551160}
   m_Layer: 0
   m_Name: pipe-bend (4)
-  m_TagString: Pipe
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -305,7 +305,7 @@ GameObject:
   - 95: {fileID: 9575120}
   m_Layer: 0
   m_Name: pipe-straight (10)
-  m_TagString: Pipe
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -523,7 +523,7 @@ GameObject:
   - 95: {fileID: 9552656}
   m_Layer: 0
   m_Name: pipe-bend (5)
-  m_TagString: Pipe
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -7733,15 +7733,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cd3e97e598354c489796446e8afbfbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boss: {fileID: 0}
-  greenZomb: {fileID: 153214, guid: f12a0cc9eae224901b5552f54c515036, type: 2}
-  redZomb: {fileID: 156500, guid: c2dc0b28ef434463a80b2fc059674cf3, type: 2}
-  blueZomb: {fileID: 152012, guid: bc42400eb5a4d421590601d7b6677ce9, type: 2}
-  blueSpecial: {fileID: 174620, guid: bdc6f8944f0404921bf486bf24110123, type: 2}
-  blueTurret: {fileID: 108362, guid: db5718c754faa4d0fb8b8e9e0d51c2fa, type: 2}
-  greenSpecial: {fileID: 190850, guid: c84a82c423785490db5bcde257a564d9, type: 2}
-  redSpecial: {fileID: 132660, guid: bade84023a4fd4c6392b4d83f07d1559, type: 2}
-  redTurret: {fileID: 0}
   spawnpoints: []
   enemies: []
   doors: []
