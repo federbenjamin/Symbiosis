@@ -171,6 +171,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &128408
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 447424}
+  m_Layer: 0
+  m_Name: Cannon1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &134752
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,6 +561,21 @@ GameObject:
   - 137: {fileID: 13786834}
   m_Layer: 0
   m_Name: Cylinder_003
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &164856
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 422488}
+  m_Layer: 0
+  m_Name: Cannon2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1016,6 +1046,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 447746}
   m_RootOrder: 11
+--- !u!4 &422488
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164856}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.3, y: 1.915, z: 7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 483886}
+  m_RootOrder: 0
 --- !u!4 &423386
 Transform:
   m_ObjectHideFlags: 1
@@ -1119,6 +1161,18 @@ Transform:
   - {fileID: 471450}
   m_Father: {fileID: 447746}
   m_RootOrder: 2
+--- !u!4 &447424
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128408}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2, y: -1.884, z: 3.128}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 452780}
+  m_RootOrder: 0
 --- !u!4 &447746
 Transform:
   m_ObjectHideFlags: 1
@@ -1126,7 +1180,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 159952}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2281.1074, y: 3840.3179, z: -3868.0522}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 475908}
@@ -1263,7 +1317,8 @@ Transform:
   m_LocalRotation: {x: 0.50000006, y: -0.49999994, z: 0.5, w: 0.49999997}
   m_LocalPosition: {x: -1.0927579, y: 8.059332, z: 1.9564785}
   m_LocalScale: {x: 1.5783688, y: 1.5783688, z: 1.5783689}
-  m_Children: []
+  m_Children:
+  - {fileID: 447424}
   m_Father: {fileID: 447746}
   m_RootOrder: 21
 --- !u!4 &454206
@@ -1464,7 +1519,8 @@ Transform:
   m_LocalRotation: {x: -0.50000006, y: -0.5, z: -0.49999997, w: 0.5000001}
   m_LocalPosition: {x: -1.1837311, y: -7.9417224, z: 1.9564787}
   m_LocalScale: {x: 1.5783688, y: 1.5783688, z: 1.5783688}
-  m_Children: []
+  m_Children:
+  - {fileID: 422488}
   m_Father: {fileID: 447746}
   m_RootOrder: 24
 --- !u!4 &483952
@@ -1680,8 +1736,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyAnimator: {fileID: 0}
-  bullet: {fileID: 0}
-  bulletOrigin: {fileID: 0}
+  bullet: {fileID: 164192, guid: 4fab93891b8314d22b69a530070fa9f2, type: 2}
+  bulletOrigin: {fileID: 128408}
   fireRate: 1
   bulletVelocity: 0
 --- !u!136 &13663790

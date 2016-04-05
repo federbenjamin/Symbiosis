@@ -3083,6 +3083,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!1 &131140
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 460880}
+  - 108: {fileID: 10860188}
+  m_Layer: 0
+  m_Name: NextRoomLight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &131268
 GameObject:
   m_ObjectHideFlags: 1
@@ -4628,6 +4644,22 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!1 &148384
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 474880}
+  - 108: {fileID: 10894146}
+  m_Layer: 0
+  m_Name: NextRoomLight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &148434
 GameObject:
@@ -11495,6 +11527,7 @@ Transform:
   - {fileID: 418056}
   - {fileID: 488878}
   - {fileID: 409662}
+  - {fileID: 474880}
   m_Father: {fileID: 452332}
   m_RootOrder: 9
 --- !u!4 &436478
@@ -13139,6 +13172,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 484370}
   m_RootOrder: 4
+--- !u!4 &460880
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 131140}
+  m_LocalRotation: {x: 0.4771588, y: 0, z: 0, w: 0.87881714}
+  m_LocalPosition: {x: 0, y: 1.2, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 470678}
+  m_RootOrder: 4
 --- !u!4 &460946
 Transform:
   m_ObjectHideFlags: 1
@@ -13820,6 +13865,7 @@ Transform:
   - {fileID: 463540}
   - {fileID: 477100}
   - {fileID: 472986}
+  - {fileID: 460880}
   m_Father: {fileID: 452332}
   m_RootOrder: 8
 --- !u!4 &470748
@@ -14357,6 +14403,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 455656}
   m_RootOrder: 41
+--- !u!4 &474880
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 148384}
+  m_LocalRotation: {x: 0.4771588, y: 0, z: 0, w: 0.87881714}
+  m_LocalPosition: {x: 0, y: 1.2, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 436304}
+  m_RootOrder: 4
 --- !u!4 &475250
 Transform:
   m_ObjectHideFlags: 1
@@ -14745,7 +14803,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 184536}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1159.5433, y: 52.024147, z: 137.05792}
+  m_LocalPosition: {x: 3.152196, y: 0.9275069, z: -0.42928767}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 444824}
@@ -37588,6 +37646,39 @@ Light:
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
+--- !u!108 &10860188
+Light:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 131140}
+  m_Enabled: 1
+  serializedVersion: 6
+  m_Type: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 2
+  m_Range: 10
+  m_SpotAngle: 100
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_BounceIntensity: 2
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+  m_AreaSize: {x: 1, y: 1}
 --- !u!108 &10862748
 Light:
   m_ObjectHideFlags: 1
@@ -37885,6 +37976,39 @@ Light:
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
+--- !u!108 &10894146
+Light:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 148384}
+  m_Enabled: 1
+  serializedVersion: 6
+  m_Type: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 2
+  m_Range: 10
+  m_SpotAngle: 100
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_BounceIntensity: 2
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+  m_AreaSize: {x: 1, y: 1}
 --- !u!108 &10895938
 Light:
   m_ObjectHideFlags: 1
@@ -37929,15 +38053,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cd3e97e598354c489796446e8afbfbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boss: {fileID: 159952, guid: 63da3483cad7d5b458414b391ed19d7d, type: 2}
-  greenZomb: {fileID: 153214, guid: f12a0cc9eae224901b5552f54c515036, type: 2}
-  redZomb: {fileID: 156500, guid: c2dc0b28ef434463a80b2fc059674cf3, type: 2}
-  blueZomb: {fileID: 152012, guid: bc42400eb5a4d421590601d7b6677ce9, type: 2}
-  blueSpecial: {fileID: 174620, guid: bdc6f8944f0404921bf486bf24110123, type: 2}
-  blueTurret: {fileID: 108362, guid: db5718c754faa4d0fb8b8e9e0d51c2fa, type: 2}
-  greenSpecial: {fileID: 190850, guid: c84a82c423785490db5bcde257a564d9, type: 2}
-  redSpecial: {fileID: 132660, guid: bade84023a4fd4c6392b4d83f07d1559, type: 2}
-  redTurret: {fileID: 0}
   spawnpoints: []
   enemies: []
   doors: []
@@ -37955,15 +38070,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cd3e97e598354c489796446e8afbfbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boss: {fileID: 0}
-  greenZomb: {fileID: 153214, guid: f12a0cc9eae224901b5552f54c515036, type: 2}
-  redZomb: {fileID: 156500, guid: c2dc0b28ef434463a80b2fc059674cf3, type: 2}
-  blueZomb: {fileID: 152012, guid: bc42400eb5a4d421590601d7b6677ce9, type: 2}
-  blueSpecial: {fileID: 174620, guid: bdc6f8944f0404921bf486bf24110123, type: 2}
-  blueTurret: {fileID: 108362, guid: db5718c754faa4d0fb8b8e9e0d51c2fa, type: 2}
-  greenSpecial: {fileID: 190850, guid: c84a82c423785490db5bcde257a564d9, type: 2}
-  redSpecial: {fileID: 132660, guid: bade84023a4fd4c6392b4d83f07d1559, type: 2}
-  redTurret: {fileID: 0}
   spawnpoints: []
   enemies: []
   doors: []
@@ -38119,15 +38225,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cd3e97e598354c489796446e8afbfbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boss: {fileID: 0}
-  greenZomb: {fileID: 153214, guid: f12a0cc9eae224901b5552f54c515036, type: 2}
-  redZomb: {fileID: 156500, guid: c2dc0b28ef434463a80b2fc059674cf3, type: 2}
-  blueZomb: {fileID: 152012, guid: bc42400eb5a4d421590601d7b6677ce9, type: 2}
-  blueSpecial: {fileID: 174620, guid: bdc6f8944f0404921bf486bf24110123, type: 2}
-  blueTurret: {fileID: 108362, guid: db5718c754faa4d0fb8b8e9e0d51c2fa, type: 2}
-  greenSpecial: {fileID: 190850, guid: c84a82c423785490db5bcde257a564d9, type: 2}
-  redSpecial: {fileID: 132660, guid: bade84023a4fd4c6392b4d83f07d1559, type: 2}
-  redTurret: {fileID: 0}
   spawnpoints: []
   enemies: []
   doors: []
@@ -38295,15 +38392,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cd3e97e598354c489796446e8afbfbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boss: {fileID: 0}
-  greenZomb: {fileID: 153214, guid: f12a0cc9eae224901b5552f54c515036, type: 2}
-  redZomb: {fileID: 156500, guid: c2dc0b28ef434463a80b2fc059674cf3, type: 2}
-  blueZomb: {fileID: 152012, guid: bc42400eb5a4d421590601d7b6677ce9, type: 2}
-  blueSpecial: {fileID: 174620, guid: bdc6f8944f0404921bf486bf24110123, type: 2}
-  blueTurret: {fileID: 108362, guid: db5718c754faa4d0fb8b8e9e0d51c2fa, type: 2}
-  greenSpecial: {fileID: 190850, guid: c84a82c423785490db5bcde257a564d9, type: 2}
-  redSpecial: {fileID: 132660, guid: bade84023a4fd4c6392b4d83f07d1559, type: 2}
-  redTurret: {fileID: 0}
   spawnpoints: []
   enemies: []
   doors: []
@@ -38321,15 +38409,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cd3e97e598354c489796446e8afbfbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boss: {fileID: 0}
-  greenZomb: {fileID: 153214, guid: f12a0cc9eae224901b5552f54c515036, type: 2}
-  redZomb: {fileID: 156500, guid: c2dc0b28ef434463a80b2fc059674cf3, type: 2}
-  blueZomb: {fileID: 152012, guid: bc42400eb5a4d421590601d7b6677ce9, type: 2}
-  blueSpecial: {fileID: 174620, guid: bdc6f8944f0404921bf486bf24110123, type: 2}
-  blueTurret: {fileID: 108362, guid: db5718c754faa4d0fb8b8e9e0d51c2fa, type: 2}
-  greenSpecial: {fileID: 190850, guid: c84a82c423785490db5bcde257a564d9, type: 2}
-  redSpecial: {fileID: 132660, guid: bade84023a4fd4c6392b4d83f07d1559, type: 2}
-  redTurret: {fileID: 0}
   spawnpoints: []
   enemies: []
   doors: []
