@@ -214,7 +214,1127 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Default Take
+      takeName: Default Take
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arm_True_L
+        weight: 1
+      - path: Arm_True_R
+        weight: 1
+      - path: Armature_001
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_l
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_l/boss_leg_l
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_l/boss_leg_l/boss_leg_2_l
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_l/boss_leg_l/boss_leg_2_l/boss_foot_l
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_r
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_r/boss_leg_r
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_r/boss_leg_r/boss_leg_2_r
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_r/boss_leg_r/boss_leg_2_r/boss_foot_r
+        weight: 1
+      - path: Armature_001/torso_scientist
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_l
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_l/boss_arm_l
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_l/boss_arm_l/boss_arm_2_l
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_l/boss_arm_l/boss_arm_2_l/boss_hand_1_l
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_l/boss_arm_l/boss_arm_2_l/boss_hand_2_l
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_r
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_r/boss_arm_r
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_r/boss_arm_r/boss_arm_2_r
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_r/boss_arm_r/boss_arm_2_r/boss_hand_1_r
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_r/boss_arm_r/boss_arm_2_r/boss_hand_2_r
+        weight: 1
+      - path: Armature_001/torso_scientist/bosshead
+        weight: 1
+      - path: Body
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Cube_001
+        weight: 1
+      - path: Cube_002
+        weight: 1
+      - path: Cube_003
+        weight: 1
+      - path: Cube_004
+        weight: 1
+      - path: Cube_005
+        weight: 1
+      - path: Cube_008
+        weight: 1
+      - path: Cube_009
+        weight: 1
+      - path: Cube_010
+        weight: 1
+      - path: Cube_011
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Cylinder_001
+        weight: 1
+      - path: Cylinder_002
+        weight: 1
+      - path: Cylinder_003
+        weight: 1
+      - path: Cylinder_004
+        weight: 1
+      - path: Cylinder_006
+        weight: 1
+      - path: Cylinder_009
+        weight: 1
+      - path: Cylinder_012
+        weight: 1
+      - path: Cylinder_013
+        weight: 1
+      - path: Cylinder_014
+        weight: 1
+      - path: Cylinder_015
+        weight: 1
+      - path: Cylinder_016
+        weight: 1
+      - path: Eyes
+        weight: 1
+      - path: Head
+        weight: 1
+      - path: Jacket1
+        weight: 1
+      - path: Leg_L
+        weight: 1
+      - path: Leg_R
+        weight: 1
+      - path: Mouth
+        weight: 1
+      - path: Mouth_001
+        weight: 1
+      - path: Mouth_002
+        weight: 1
+      - path: TrueJacket
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Bullethell
+      takeName: Bullethell
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arm_True_L
+        weight: 1
+      - path: Arm_True_R
+        weight: 1
+      - path: Armature_001
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_l
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_l/boss_leg_l
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_l/boss_leg_l/boss_leg_2_l
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_l/boss_leg_l/boss_leg_2_l/boss_foot_l
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_r
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_r/boss_leg_r
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_r/boss_leg_r/boss_leg_2_r
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_r/boss_leg_r/boss_leg_2_r/boss_foot_r
+        weight: 1
+      - path: Armature_001/torso_scientist
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_l
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_l/boss_arm_l
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_l/boss_arm_l/boss_arm_2_l
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_l/boss_arm_l/boss_arm_2_l/boss_hand_1_l
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_l/boss_arm_l/boss_arm_2_l/boss_hand_2_l
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_r
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_r/boss_arm_r
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_r/boss_arm_r/boss_arm_2_r
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_r/boss_arm_r/boss_arm_2_r/boss_hand_1_r
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_r/boss_arm_r/boss_arm_2_r/boss_hand_2_r
+        weight: 1
+      - path: Armature_001/torso_scientist/bosshead
+        weight: 1
+      - path: Body
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Cube_001
+        weight: 1
+      - path: Cube_002
+        weight: 1
+      - path: Cube_003
+        weight: 1
+      - path: Cube_004
+        weight: 1
+      - path: Cube_005
+        weight: 1
+      - path: Cube_008
+        weight: 1
+      - path: Cube_009
+        weight: 1
+      - path: Cube_010
+        weight: 1
+      - path: Cube_011
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Cylinder_001
+        weight: 1
+      - path: Cylinder_002
+        weight: 1
+      - path: Cylinder_003
+        weight: 1
+      - path: Cylinder_004
+        weight: 1
+      - path: Cylinder_006
+        weight: 1
+      - path: Cylinder_009
+        weight: 1
+      - path: Cylinder_012
+        weight: 1
+      - path: Cylinder_013
+        weight: 1
+      - path: Cylinder_014
+        weight: 1
+      - path: Cylinder_015
+        weight: 1
+      - path: Cylinder_016
+        weight: 1
+      - path: Eyes
+        weight: 1
+      - path: Head
+        weight: 1
+      - path: Jacket1
+        weight: 1
+      - path: Leg_L
+        weight: 1
+      - path: Leg_R
+        weight: 1
+      - path: Mouth
+        weight: 1
+      - path: Mouth_001
+        weight: 1
+      - path: Mouth_002
+        weight: 1
+      - path: TrueJacket
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Shoot
+      takeName: Player_Shoot
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arm_True_L
+        weight: 1
+      - path: Arm_True_R
+        weight: 1
+      - path: Armature_001
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_l
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_l/boss_leg_l
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_l/boss_leg_l/boss_leg_2_l
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_l/boss_leg_l/boss_leg_2_l/boss_foot_l
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_r
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_r/boss_leg_r
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_r/boss_leg_r/boss_leg_2_r
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_r/boss_leg_r/boss_leg_2_r/boss_foot_r
+        weight: 1
+      - path: Armature_001/torso_scientist
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_l
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_l/boss_arm_l
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_l/boss_arm_l/boss_arm_2_l
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_l/boss_arm_l/boss_arm_2_l/boss_hand_1_l
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_l/boss_arm_l/boss_arm_2_l/boss_hand_2_l
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_r
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_r/boss_arm_r
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_r/boss_arm_r/boss_arm_2_r
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_r/boss_arm_r/boss_arm_2_r/boss_hand_1_r
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_r/boss_arm_r/boss_arm_2_r/boss_hand_2_r
+        weight: 1
+      - path: Armature_001/torso_scientist/bosshead
+        weight: 1
+      - path: Body
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Cube_001
+        weight: 1
+      - path: Cube_002
+        weight: 1
+      - path: Cube_003
+        weight: 1
+      - path: Cube_004
+        weight: 1
+      - path: Cube_005
+        weight: 1
+      - path: Cube_008
+        weight: 1
+      - path: Cube_009
+        weight: 1
+      - path: Cube_010
+        weight: 1
+      - path: Cube_011
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Cylinder_001
+        weight: 1
+      - path: Cylinder_002
+        weight: 1
+      - path: Cylinder_003
+        weight: 1
+      - path: Cylinder_004
+        weight: 1
+      - path: Cylinder_006
+        weight: 1
+      - path: Cylinder_009
+        weight: 1
+      - path: Cylinder_012
+        weight: 1
+      - path: Cylinder_013
+        weight: 1
+      - path: Cylinder_014
+        weight: 1
+      - path: Cylinder_015
+        weight: 1
+      - path: Cylinder_016
+        weight: 1
+      - path: Eyes
+        weight: 1
+      - path: Head
+        weight: 1
+      - path: Jacket1
+        weight: 1
+      - path: Leg_L
+        weight: 1
+      - path: Leg_R
+        weight: 1
+      - path: Mouth
+        weight: 1
+      - path: Mouth_001
+        weight: 1
+      - path: Mouth_002
+        weight: 1
+      - path: TrueJacket
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Walk
+      takeName: Player_Walk
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arm_True_L
+        weight: 1
+      - path: Arm_True_R
+        weight: 1
+      - path: Armature_001
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_l
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_l/boss_leg_l
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_l/boss_leg_l/boss_leg_2_l
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_l/boss_leg_l/boss_leg_2_l/boss_foot_l
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_r
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_r/boss_leg_r
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_r/boss_leg_r/boss_leg_2_r
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_r/boss_leg_r/boss_leg_2_r/boss_foot_r
+        weight: 1
+      - path: Armature_001/torso_scientist
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_l
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_l/boss_arm_l
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_l/boss_arm_l/boss_arm_2_l
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_l/boss_arm_l/boss_arm_2_l/boss_hand_1_l
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_l/boss_arm_l/boss_arm_2_l/boss_hand_2_l
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_r
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_r/boss_arm_r
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_r/boss_arm_r/boss_arm_2_r
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_r/boss_arm_r/boss_arm_2_r/boss_hand_1_r
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_r/boss_arm_r/boss_arm_2_r/boss_hand_2_r
+        weight: 1
+      - path: Armature_001/torso_scientist/bosshead
+        weight: 1
+      - path: Body
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Cube_001
+        weight: 1
+      - path: Cube_002
+        weight: 1
+      - path: Cube_003
+        weight: 1
+      - path: Cube_004
+        weight: 1
+      - path: Cube_005
+        weight: 1
+      - path: Cube_008
+        weight: 1
+      - path: Cube_009
+        weight: 1
+      - path: Cube_010
+        weight: 1
+      - path: Cube_011
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Cylinder_001
+        weight: 1
+      - path: Cylinder_002
+        weight: 1
+      - path: Cylinder_003
+        weight: 1
+      - path: Cylinder_004
+        weight: 1
+      - path: Cylinder_006
+        weight: 1
+      - path: Cylinder_009
+        weight: 1
+      - path: Cylinder_012
+        weight: 1
+      - path: Cylinder_013
+        weight: 1
+      - path: Cylinder_014
+        weight: 1
+      - path: Cylinder_015
+        weight: 1
+      - path: Cylinder_016
+        weight: 1
+      - path: Eyes
+        weight: 1
+      - path: Head
+        weight: 1
+      - path: Jacket1
+        weight: 1
+      - path: Leg_L
+        weight: 1
+      - path: Leg_R
+        weight: 1
+      - path: Mouth
+        weight: 1
+      - path: Mouth_001
+        weight: 1
+      - path: Mouth_002
+        weight: 1
+      - path: TrueJacket
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Walk2
+      takeName: Player_Walk2
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arm_True_L
+        weight: 1
+      - path: Arm_True_R
+        weight: 1
+      - path: Armature_001
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_l
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_l/boss_leg_l
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_l/boss_leg_l/boss_leg_2_l
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_l/boss_leg_l/boss_leg_2_l/boss_foot_l
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_r
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_r/boss_leg_r
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_r/boss_leg_r/boss_leg_2_r
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_r/boss_leg_r/boss_leg_2_r/boss_foot_r
+        weight: 1
+      - path: Armature_001/torso_scientist
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_l
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_l/boss_arm_l
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_l/boss_arm_l/boss_arm_2_l
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_l/boss_arm_l/boss_arm_2_l/boss_hand_1_l
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_l/boss_arm_l/boss_arm_2_l/boss_hand_2_l
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_r
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_r/boss_arm_r
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_r/boss_arm_r/boss_arm_2_r
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_r/boss_arm_r/boss_arm_2_r/boss_hand_1_r
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_r/boss_arm_r/boss_arm_2_r/boss_hand_2_r
+        weight: 1
+      - path: Armature_001/torso_scientist/bosshead
+        weight: 1
+      - path: Body
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Cube_001
+        weight: 1
+      - path: Cube_002
+        weight: 1
+      - path: Cube_003
+        weight: 1
+      - path: Cube_004
+        weight: 1
+      - path: Cube_005
+        weight: 1
+      - path: Cube_008
+        weight: 1
+      - path: Cube_009
+        weight: 1
+      - path: Cube_010
+        weight: 1
+      - path: Cube_011
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Cylinder_001
+        weight: 1
+      - path: Cylinder_002
+        weight: 1
+      - path: Cylinder_003
+        weight: 1
+      - path: Cylinder_004
+        weight: 1
+      - path: Cylinder_006
+        weight: 1
+      - path: Cylinder_009
+        weight: 1
+      - path: Cylinder_012
+        weight: 1
+      - path: Cylinder_013
+        weight: 1
+      - path: Cylinder_014
+        weight: 1
+      - path: Cylinder_015
+        weight: 1
+      - path: Cylinder_016
+        weight: 1
+      - path: Eyes
+        weight: 1
+      - path: Head
+        weight: 1
+      - path: Jacket1
+        weight: 1
+      - path: Leg_L
+        weight: 1
+      - path: Leg_R
+        weight: 1
+      - path: Mouth
+        weight: 1
+      - path: Mouth_001
+        weight: 1
+      - path: Mouth_002
+        weight: 1
+      - path: TrueJacket
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: PoseAWESOME
+      takeName: PoseAWESOME
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arm_True_L
+        weight: 1
+      - path: Arm_True_R
+        weight: 1
+      - path: Armature_001
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_l
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_l/boss_leg_l
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_l/boss_leg_l/boss_leg_2_l
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_l/boss_leg_l/boss_leg_2_l/boss_foot_l
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_r
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_r/boss_leg_r
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_r/boss_leg_r/boss_leg_2_r
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_r/boss_leg_r/boss_leg_2_r/boss_foot_r
+        weight: 1
+      - path: Armature_001/torso_scientist
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_l
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_l/boss_arm_l
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_l/boss_arm_l/boss_arm_2_l
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_l/boss_arm_l/boss_arm_2_l/boss_hand_1_l
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_l/boss_arm_l/boss_arm_2_l/boss_hand_2_l
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_r
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_r/boss_arm_r
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_r/boss_arm_r/boss_arm_2_r
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_r/boss_arm_r/boss_arm_2_r/boss_hand_1_r
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_r/boss_arm_r/boss_arm_2_r/boss_hand_2_r
+        weight: 1
+      - path: Armature_001/torso_scientist/bosshead
+        weight: 1
+      - path: Body
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Cube_001
+        weight: 1
+      - path: Cube_002
+        weight: 1
+      - path: Cube_003
+        weight: 1
+      - path: Cube_004
+        weight: 1
+      - path: Cube_005
+        weight: 1
+      - path: Cube_008
+        weight: 1
+      - path: Cube_009
+        weight: 1
+      - path: Cube_010
+        weight: 1
+      - path: Cube_011
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Cylinder_001
+        weight: 1
+      - path: Cylinder_002
+        weight: 1
+      - path: Cylinder_003
+        weight: 1
+      - path: Cylinder_004
+        weight: 1
+      - path: Cylinder_006
+        weight: 1
+      - path: Cylinder_009
+        weight: 1
+      - path: Cylinder_012
+        weight: 1
+      - path: Cylinder_013
+        weight: 1
+      - path: Cylinder_014
+        weight: 1
+      - path: Cylinder_015
+        weight: 1
+      - path: Cylinder_016
+        weight: 1
+      - path: Eyes
+        weight: 1
+      - path: Head
+        weight: 1
+      - path: Jacket1
+        weight: 1
+      - path: Leg_L
+        weight: 1
+      - path: Leg_R
+        weight: 1
+      - path: Mouth
+        weight: 1
+      - path: Mouth_001
+        weight: 1
+      - path: Mouth_002
+        weight: 1
+      - path: TrueJacket
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Walk
+      takeName: Walk
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arm_True_L
+        weight: 1
+      - path: Arm_True_R
+        weight: 1
+      - path: Armature_001
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_l
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_l/boss_leg_l
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_l/boss_leg_l/boss_leg_2_l
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_l/boss_leg_l/boss_leg_2_l/boss_foot_l
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_r
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_r/boss_leg_r
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_r/boss_leg_r/boss_leg_2_r
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_r/boss_leg_r/boss_leg_2_r/boss_foot_r
+        weight: 1
+      - path: Armature_001/torso_scientist
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_l
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_l/boss_arm_l
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_l/boss_arm_l/boss_arm_2_l
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_l/boss_arm_l/boss_arm_2_l/boss_hand_1_l
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_l/boss_arm_l/boss_arm_2_l/boss_hand_2_l
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_r
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_r/boss_arm_r
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_r/boss_arm_r/boss_arm_2_r
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_r/boss_arm_r/boss_arm_2_r/boss_hand_1_r
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_r/boss_arm_r/boss_arm_2_r/boss_hand_2_r
+        weight: 1
+      - path: Armature_001/torso_scientist/bosshead
+        weight: 1
+      - path: Body
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Cube_001
+        weight: 1
+      - path: Cube_002
+        weight: 1
+      - path: Cube_003
+        weight: 1
+      - path: Cube_004
+        weight: 1
+      - path: Cube_005
+        weight: 1
+      - path: Cube_008
+        weight: 1
+      - path: Cube_009
+        weight: 1
+      - path: Cube_010
+        weight: 1
+      - path: Cube_011
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Cylinder_001
+        weight: 1
+      - path: Cylinder_002
+        weight: 1
+      - path: Cylinder_003
+        weight: 1
+      - path: Cylinder_004
+        weight: 1
+      - path: Cylinder_006
+        weight: 1
+      - path: Cylinder_009
+        weight: 1
+      - path: Cylinder_012
+        weight: 1
+      - path: Cylinder_013
+        weight: 1
+      - path: Cylinder_014
+        weight: 1
+      - path: Cylinder_015
+        weight: 1
+      - path: Cylinder_016
+        weight: 1
+      - path: Eyes
+        weight: 1
+      - path: Head
+        weight: 1
+      - path: Jacket1
+        weight: 1
+      - path: Leg_L
+        weight: 1
+      - path: Leg_R
+        weight: 1
+      - path: Mouth
+        weight: 1
+      - path: Mouth_001
+        weight: 1
+      - path: Mouth_002
+        weight: 1
+      - path: TrueJacket
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: WalkCLAWS
+      takeName: WalkCLAWS
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arm_True_L
+        weight: 1
+      - path: Arm_True_R
+        weight: 1
+      - path: Armature_001
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_l
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_l/boss_leg_l
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_l/boss_leg_l/boss_leg_2_l
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_l/boss_leg_l/boss_leg_2_l/boss_foot_l
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_r
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_r/boss_leg_r
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_r/boss_leg_r/boss_leg_2_r
+        weight: 1
+      - path: Armature_001/boss_scientist_leg_r/boss_leg_r/boss_leg_2_r/boss_foot_r
+        weight: 1
+      - path: Armature_001/torso_scientist
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_l
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_l/boss_arm_l
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_l/boss_arm_l/boss_arm_2_l
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_l/boss_arm_l/boss_arm_2_l/boss_hand_1_l
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_l/boss_arm_l/boss_arm_2_l/boss_hand_2_l
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_r
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_r/boss_arm_r
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_r/boss_arm_r/boss_arm_2_r
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_r/boss_arm_r/boss_arm_2_r/boss_hand_1_r
+        weight: 1
+      - path: Armature_001/torso_scientist/boss_arm_scientist_r/boss_arm_r/boss_arm_2_r/boss_hand_2_r
+        weight: 1
+      - path: Armature_001/torso_scientist/bosshead
+        weight: 1
+      - path: Body
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Cube_001
+        weight: 1
+      - path: Cube_002
+        weight: 1
+      - path: Cube_003
+        weight: 1
+      - path: Cube_004
+        weight: 1
+      - path: Cube_005
+        weight: 1
+      - path: Cube_008
+        weight: 1
+      - path: Cube_009
+        weight: 1
+      - path: Cube_010
+        weight: 1
+      - path: Cube_011
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Cylinder_001
+        weight: 1
+      - path: Cylinder_002
+        weight: 1
+      - path: Cylinder_003
+        weight: 1
+      - path: Cylinder_004
+        weight: 1
+      - path: Cylinder_006
+        weight: 1
+      - path: Cylinder_009
+        weight: 1
+      - path: Cylinder_012
+        weight: 1
+      - path: Cylinder_013
+        weight: 1
+      - path: Cylinder_014
+        weight: 1
+      - path: Cylinder_015
+        weight: 1
+      - path: Cylinder_016
+        weight: 1
+      - path: Eyes
+        weight: 1
+      - path: Head
+        weight: 1
+      - path: Jacket1
+        weight: 1
+      - path: Leg_L
+        weight: 1
+      - path: Leg_R
+        weight: 1
+      - path: Mouth
+        weight: 1
+      - path: Mouth_001
+        weight: 1
+      - path: Mouth_002
+        weight: 1
+      - path: TrueJacket
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
