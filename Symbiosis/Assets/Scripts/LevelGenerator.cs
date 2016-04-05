@@ -54,7 +54,7 @@ public class LevelGenerator : MonoBehaviour {
 
 		// Add the number and difficulty of each enemy color
 		enemyTypeDifficulty.Add("Red", new int[] {1, 2, 3});
-		enemyTypeDifficulty.Add("Green", new int[] {1, 2});
+		enemyTypeDifficulty.Add("Green", new int[] {1, 2, 4});
 		enemyTypeDifficulty.Add("Blue", new int[] {1, 2, 3});
 
 		// Randomize level positioning
@@ -248,12 +248,15 @@ public class LevelGenerator : MonoBehaviour {
 	private int[] GenerateEnemySet(float roomDifficulty, string roomColor, int numOfSpawnLocations) {
 		// Get random index of enemy type list with hardest enemy based on room difficulty
 		int[] enemyTypes = enemyTypeDifficulty[roomColor];
-		int enemyTypeMax = Mathf.FloorToInt(roomDifficulty * (float)enemyTypes.Length);
+		int enemyTypeMax = enemyTypes.Length - 1;
+		if (roomDifficulty < 0.5f) {
+			enemyTypeMax = 1;
+		}
 
 		// Initialize enemy set to random enemies
 		int[] enemySet = new int[numOfSpawnLocations];
 		for (int i = 0; i < numOfSpawnLocations; i++) {
-			int randomEnemyIndex = Mathf.Min(pseudoRandom.Next(enemyTypeMax + 1), enemyTypes.Length - 1);
+			int randomEnemyIndex = pseudoRandom.Next(enemyTypeMax + 1);
 			enemySet[i] = enemyTypes[randomEnemyIndex];
 		}
 
