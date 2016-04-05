@@ -16,6 +16,11 @@ public class EnemyStats : MonoBehaviour {
 	float halfDmg, doubleDmg;
 	public Object hitSpark;
 
+	public bool isSplitter = false;
+	public int splitNum = 0;
+	public GameObject spawnChild;
+	private bool enemyFirstDeath = true;
+
 	// Use this for initialization
 	void Start () {
 		onFire = false;
@@ -50,8 +55,13 @@ public class EnemyStats : MonoBehaviour {
 	void Die(){
 		//Play dying animation, and destroy
 		// enemyAnimator.SetTrigger("Dead");
-		enemyAnimator.Play("Player_Death");
-		StartCoroutine ("Wait");
+		if (splitNum != 2 && enemyFirstDeath) {
+			enemyFirstDeath = false;
+			SpawnChildren (splitNum);
+		} else {
+			enemyAnimator.Play ("Player_Death");
+			StartCoroutine ("WaitBeforeDeath");
+		}
 	}
 
 	public void TakeDamage(float incomingDamage, string damageType){
@@ -123,8 +133,35 @@ public class EnemyStats : MonoBehaviour {
 	}
 
 
-	IEnumerator Wait() {
+	IEnumerator WaitBeforeDeath() {
 		yield return new WaitForSeconds (0.75f);
+		Destroy (gameObject);
+	}
+
+	void SpawnChildren(int parentSplitNum) {
+		int childSplitNum = parentSplitNum + 1;
+		float childChange = Mathf.Pow (0.5f, childSplitNum);
+
+		GameObject newEnemy1 = Instantiate (spawnChild, transform.position, transform.rotation) as GameObject;
+		GameObject newEnemy2 = Instantiate (spawnChild, transform.position, transform.rotation) as GameObject;
+	
+		newEnemy1.transform.parent = transform.parent;
+		newEnemy2.transform.parent = transform.parent;
+
+		newEnemy1.GetComponent<EnemyStats> ().splitNum = childSplitNum;
+		newEnemy2.GetComponent<EnemyStats> ().splitNum = childSplitNum;
+
+		newEnemy1.GetComponent<EnemyStats> ().currentHP = maxHP * childChange;
+		newEnemy1.GetComponent<EnemyStats> ().maxHP = maxHP * childChange;
+		newEnemy2.GetComponent<EnemyStats> ().currentHP = maxHP * childChange;
+		newEnemy2.GetComponent<EnemyStats> ().maxHP = maxHP * childChange;
+
+		newEnemy1.GetComponent<EnemySplitterBehavior> ().setChildSpeed (childSplitNum);
+		newEnemy2.GetComponent<EnemySplitterBehavior> ().setChildSpeed (childSplitNum);
+
+		newEnemy1.transform.localScale = new Vector3 (childChange, childChange, childChange);
+		newEnemy2.transform.localScale = new Vector3 (childChange, childChange, childChange);
+
 		Destroy (gameObject);
 	}
 }

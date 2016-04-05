@@ -166,6 +166,8 @@ public class RoomController : MonoBehaviour {
 				enemyName = "GreenZomb";
 			} else if (enemyType == "Green2" || enemyType == "12") {
 				enemyName = "GreenSpecial";
+			} else if (enemyType == "Green4" || enemyType == "14") {
+				enemyName = "GreenSplitter";
 			} else if (enemyType == "Red1" || enemyType == "20") {
 				enemyName = "RedZomb";
 			} else if (enemyType == "Red2" || enemyType == "22") {

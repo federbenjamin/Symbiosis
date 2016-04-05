@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: bb9ed5596fcc043e0af3d031ca51ecb8
+guid: 4dbcf15b5782ba34186802b7345a558a
 timeCreated: 1459804936
 licenseType: Pro
 ModelImporter:
@@ -54,6 +54,7 @@ ModelImporter:
     7400012: Slime_walk_001
     7400014: SlimeIdle
     7400016: SlimeIdle_001
+    7400018: Slime_walk0
     9500000: //RootNode
     13700000: Grumpy_Eyebrows
     13700002: Grumpy_Eyes
@@ -79,7 +80,583 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Slime_walk0
+      takeName: Slime_walk
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Slime_Body
+        weight: 1
+      - path: Armature/Slime_eyes
+        weight: 1
+      - path: Armature/Slime_Head
+        weight: 1
+      - path: Armature/Slime_Mouth
+        weight: 1
+      - path: Armature/Slime_Tentacle
+        weight: 1
+      - path: Armature/Slime_Tentacle_001
+        weight: 1
+      - path: Armature/Slime_Tentacle_002
+        weight: 1
+      - path: Armature/Slime_Tentacle_003
+        weight: 1
+      - path: Armature/Slime_Tentacle_004
+        weight: 1
+      - path: Armature/Slime_Tentacle_005
+        weight: 1
+      - path: Armature/Slime_Tentacle_006
+        weight: 1
+      - path: Armature/Slime_Tentacle_007
+        weight: 1
+      - path: Grumpy_Eyebrows
+        weight: 1
+      - path: Grumpy_Eyes
+        weight: 1
+      - path: Grumpy_Mouth
+        weight: 1
+      - path: Slime_Yellow
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Action
+      takeName: Action
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Slime_Body
+        weight: 1
+      - path: Armature/Slime_eyes
+        weight: 1
+      - path: Armature/Slime_Head
+        weight: 1
+      - path: Armature/Slime_Mouth
+        weight: 1
+      - path: Armature/Slime_Tentacle
+        weight: 1
+      - path: Armature/Slime_Tentacle_001
+        weight: 1
+      - path: Armature/Slime_Tentacle_002
+        weight: 1
+      - path: Armature/Slime_Tentacle_003
+        weight: 1
+      - path: Armature/Slime_Tentacle_004
+        weight: 1
+      - path: Armature/Slime_Tentacle_005
+        weight: 1
+      - path: Armature/Slime_Tentacle_006
+        weight: 1
+      - path: Armature/Slime_Tentacle_007
+        weight: 1
+      - path: Grumpy_Eyebrows
+        weight: 1
+      - path: Grumpy_Eyes
+        weight: 1
+      - path: Grumpy_Mouth
+        weight: 1
+      - path: Slime_Yellow
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: ArmatureAction
+      takeName: ArmatureAction
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Slime_Body
+        weight: 1
+      - path: Armature/Slime_eyes
+        weight: 1
+      - path: Armature/Slime_Head
+        weight: 1
+      - path: Armature/Slime_Mouth
+        weight: 1
+      - path: Armature/Slime_Tentacle
+        weight: 1
+      - path: Armature/Slime_Tentacle_001
+        weight: 1
+      - path: Armature/Slime_Tentacle_002
+        weight: 1
+      - path: Armature/Slime_Tentacle_003
+        weight: 1
+      - path: Armature/Slime_Tentacle_004
+        weight: 1
+      - path: Armature/Slime_Tentacle_005
+        weight: 1
+      - path: Armature/Slime_Tentacle_006
+        weight: 1
+      - path: Armature/Slime_Tentacle_007
+        weight: 1
+      - path: Grumpy_Eyebrows
+        weight: 1
+      - path: Grumpy_Eyes
+        weight: 1
+      - path: Grumpy_Mouth
+        weight: 1
+      - path: Slime_Yellow
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Idle
+      takeName: Player_Idle
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Slime_Body
+        weight: 1
+      - path: Armature/Slime_eyes
+        weight: 1
+      - path: Armature/Slime_Head
+        weight: 1
+      - path: Armature/Slime_Mouth
+        weight: 1
+      - path: Armature/Slime_Tentacle
+        weight: 1
+      - path: Armature/Slime_Tentacle_001
+        weight: 1
+      - path: Armature/Slime_Tentacle_002
+        weight: 1
+      - path: Armature/Slime_Tentacle_003
+        weight: 1
+      - path: Armature/Slime_Tentacle_004
+        weight: 1
+      - path: Armature/Slime_Tentacle_005
+        weight: 1
+      - path: Armature/Slime_Tentacle_006
+        weight: 1
+      - path: Armature/Slime_Tentacle_007
+        weight: 1
+      - path: Grumpy_Eyebrows
+        weight: 1
+      - path: Grumpy_Eyes
+        weight: 1
+      - path: Grumpy_Mouth
+        weight: 1
+      - path: Slime_Yellow
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Slime_Jump
+      takeName: Slime_Jump
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Slime_Body
+        weight: 1
+      - path: Armature/Slime_eyes
+        weight: 1
+      - path: Armature/Slime_Head
+        weight: 1
+      - path: Armature/Slime_Mouth
+        weight: 1
+      - path: Armature/Slime_Tentacle
+        weight: 1
+      - path: Armature/Slime_Tentacle_001
+        weight: 1
+      - path: Armature/Slime_Tentacle_002
+        weight: 1
+      - path: Armature/Slime_Tentacle_003
+        weight: 1
+      - path: Armature/Slime_Tentacle_004
+        weight: 1
+      - path: Armature/Slime_Tentacle_005
+        weight: 1
+      - path: Armature/Slime_Tentacle_006
+        weight: 1
+      - path: Armature/Slime_Tentacle_007
+        weight: 1
+      - path: Grumpy_Eyebrows
+        weight: 1
+      - path: Grumpy_Eyes
+        weight: 1
+      - path: Grumpy_Mouth
+        weight: 1
+      - path: Slime_Yellow
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Slime_walk
+      takeName: Slime_walk
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Slime_Body
+        weight: 1
+      - path: Armature/Slime_eyes
+        weight: 1
+      - path: Armature/Slime_Head
+        weight: 1
+      - path: Armature/Slime_Mouth
+        weight: 1
+      - path: Armature/Slime_Tentacle
+        weight: 1
+      - path: Armature/Slime_Tentacle_001
+        weight: 1
+      - path: Armature/Slime_Tentacle_002
+        weight: 1
+      - path: Armature/Slime_Tentacle_003
+        weight: 1
+      - path: Armature/Slime_Tentacle_004
+        weight: 1
+      - path: Armature/Slime_Tentacle_005
+        weight: 1
+      - path: Armature/Slime_Tentacle_006
+        weight: 1
+      - path: Armature/Slime_Tentacle_007
+        weight: 1
+      - path: Grumpy_Eyebrows
+        weight: 1
+      - path: Grumpy_Eyes
+        weight: 1
+      - path: Grumpy_Mouth
+        weight: 1
+      - path: Slime_Yellow
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Slime_walk_001
+      takeName: Slime_walk_001
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Slime_Body
+        weight: 1
+      - path: Armature/Slime_eyes
+        weight: 1
+      - path: Armature/Slime_Head
+        weight: 1
+      - path: Armature/Slime_Mouth
+        weight: 1
+      - path: Armature/Slime_Tentacle
+        weight: 1
+      - path: Armature/Slime_Tentacle_001
+        weight: 1
+      - path: Armature/Slime_Tentacle_002
+        weight: 1
+      - path: Armature/Slime_Tentacle_003
+        weight: 1
+      - path: Armature/Slime_Tentacle_004
+        weight: 1
+      - path: Armature/Slime_Tentacle_005
+        weight: 1
+      - path: Armature/Slime_Tentacle_006
+        weight: 1
+      - path: Armature/Slime_Tentacle_007
+        weight: 1
+      - path: Grumpy_Eyebrows
+        weight: 1
+      - path: Grumpy_Eyes
+        weight: 1
+      - path: Grumpy_Mouth
+        weight: 1
+      - path: Slime_Yellow
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: SlimeIdle
+      takeName: SlimeIdle
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Slime_Body
+        weight: 1
+      - path: Armature/Slime_eyes
+        weight: 1
+      - path: Armature/Slime_Head
+        weight: 1
+      - path: Armature/Slime_Mouth
+        weight: 1
+      - path: Armature/Slime_Tentacle
+        weight: 1
+      - path: Armature/Slime_Tentacle_001
+        weight: 1
+      - path: Armature/Slime_Tentacle_002
+        weight: 1
+      - path: Armature/Slime_Tentacle_003
+        weight: 1
+      - path: Armature/Slime_Tentacle_004
+        weight: 1
+      - path: Armature/Slime_Tentacle_005
+        weight: 1
+      - path: Armature/Slime_Tentacle_006
+        weight: 1
+      - path: Armature/Slime_Tentacle_007
+        weight: 1
+      - path: Grumpy_Eyebrows
+        weight: 1
+      - path: Grumpy_Eyes
+        weight: 1
+      - path: Grumpy_Mouth
+        weight: 1
+      - path: Slime_Yellow
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: SlimeIdle_001
+      takeName: SlimeIdle_001
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Slime_Body
+        weight: 1
+      - path: Armature/Slime_eyes
+        weight: 1
+      - path: Armature/Slime_Head
+        weight: 1
+      - path: Armature/Slime_Mouth
+        weight: 1
+      - path: Armature/Slime_Tentacle
+        weight: 1
+      - path: Armature/Slime_Tentacle_001
+        weight: 1
+      - path: Armature/Slime_Tentacle_002
+        weight: 1
+      - path: Armature/Slime_Tentacle_003
+        weight: 1
+      - path: Armature/Slime_Tentacle_004
+        weight: 1
+      - path: Armature/Slime_Tentacle_005
+        weight: 1
+      - path: Armature/Slime_Tentacle_006
+        weight: 1
+      - path: Armature/Slime_Tentacle_007
+        weight: 1
+      - path: Grumpy_Eyebrows
+        weight: 1
+      - path: Grumpy_Eyes
+        weight: 1
+      - path: Grumpy_Mouth
+        weight: 1
+      - path: Slime_Yellow
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
