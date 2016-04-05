@@ -12,16 +12,6 @@ public class RoomController : MonoBehaviour {
 		set{roomColor = value;}
 	}
 
-	public GameObject boss;
-	public GameObject greenZomb;
-	public GameObject redZomb;
-	public GameObject blueZomb;
-	public GameObject blueSpecial;
-	public GameObject blueTurret;
-	public GameObject greenSpecial;
-	public GameObject redSpecial;
-	public GameObject redTurret;
-
 	public List<GameObject> spawnpoints;
 	public List<GameObject> enemies;
 	public List<GameObject> doors;
@@ -167,31 +157,33 @@ public class RoomController : MonoBehaviour {
 		foreach (GameObject spawnpoint in spawnpoints) {
 			string enemyType = spawnpoint.name.Substring(10);
 			enemyType = Regex.Match(enemyType, @"\D+\d+").Groups[0].Value;
-			GameObject enemyChild;
 
+			string enemyName = "";
 			Vector3 spawnVector = spawnpoint.transform.position;
 			spawnVector.y = 0.055f;
 
 			if (enemyType == "Green1" || enemyType == "10") {
-				enemyChild = Instantiate (greenZomb, spawnVector, spawnpoint.transform.rotation) as GameObject;
+				enemyName = "GreenZomb";
 			} else if (enemyType == "Green2" || enemyType == "12") {
-				enemyChild = Instantiate (greenSpecial, spawnVector, spawnpoint.transform.rotation) as GameObject;
+				enemyName = "GreenSpecial";
 			} else if (enemyType == "Red1" || enemyType == "20") {
-				enemyChild = Instantiate (redZomb, spawnVector, spawnpoint.transform.rotation) as GameObject;
+				enemyName = "RedZomb";
 			} else if (enemyType == "Red2" || enemyType == "22") {
-				enemyChild = Instantiate (redSpecial, spawnVector, spawnpoint.transform.rotation) as GameObject;
+				enemyName = "RedTurret";
 			} else if (enemyType == "Red3" || enemyType == "23") {
-				enemyChild = Instantiate (redTurret, spawnVector, spawnpoint.transform.rotation) as GameObject;
+				enemyName = "RedSpecial";
 			} else if (enemyType == "Blue1" || enemyType == "30") {
-				enemyChild = Instantiate (blueZomb, spawnVector, spawnpoint.transform.rotation) as GameObject;
+				enemyName = "BlueZomb";
 			} else if (enemyType == "Blue2" || enemyType == "32") {
-				enemyChild = Instantiate (blueSpecial, spawnVector, spawnpoint.transform.rotation) as GameObject;
+				enemyName = "BlueTurret";
 			} else if (enemyType == "Blue3" || enemyType == "33") {
-				enemyChild = Instantiate (blueTurret, spawnVector, spawnpoint.transform.rotation) as GameObject;
+				enemyName = "BlueSpecial";
 			} else {
 				spawnVector.y = 0.74f;
-				enemyChild = Instantiate (boss, spawnVector, spawnpoint.transform.rotation) as GameObject;
+				enemyName = "Boss";
 			}
+
+			GameObject enemyChild = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/Enemies/" + enemyName), spawnVector, spawnpoint.transform.rotation) as GameObject;
 			enemyChild.transform.parent = transform;
 		}
 	}
