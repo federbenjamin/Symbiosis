@@ -226,8 +226,8 @@ public class LevelGenerator : MonoBehaviour {
 		// Clean up the rest of the spawn objects
 		int maxHealthItems = 2;
 		foreach (Transform remainingSpawns in spawnerTransforms) {
-			if (maxHealthItems < 0) {
-				ReplaceSpawnWithObject(remainingSpawns, room);
+			if (maxHealthItems > 0) {
+				ReplaceSpawnWithHeart(remainingSpawns, room);
 			}
 			Destroy(remainingSpawns.gameObject);
 			maxHealthItems--;
@@ -258,7 +258,7 @@ public class LevelGenerator : MonoBehaviour {
 		return sum;
 	}
 
-	private void ReplaceSpawnWithObject(Transform spawn, Transform newRoom) {
+	private void ReplaceSpawnWithHeart(Transform spawn, Transform newRoom) {
 		string objectSpawnFile = "";
 		int objectToSpawn = pseudoRandom.Next(100);
 
@@ -266,14 +266,16 @@ public class LevelGenerator : MonoBehaviour {
 		if (objectToSpawn >= 98) {
 			objectSpawnFile = "FullHeart";
 		}
-		else if (objectToSpawn >= 94) {
+		else if (objectToSpawn >= 95) {
 			objectSpawnFile = "HalfHeart";
 		}
 
 		if (objectSpawnFile != "") {
 			GameObject newObj = Instantiate (Resources.Load ("Procedural_Gen_Prefabs/" + objectSpawnFile)) as GameObject;
 			newObj.transform.SetParent(newRoom);
-			newObj.transform.position = spawn.position;
+			Vector3 heartPosition = spawn.position;
+			heartPosition.y = 0.48f;
+			newObj.transform.position = heartPosition;
 		}
 		Destroy(spawn.gameObject);
 	}
