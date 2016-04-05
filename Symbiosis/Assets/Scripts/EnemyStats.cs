@@ -55,7 +55,7 @@ public class EnemyStats : MonoBehaviour {
 	void Die(){
 		//Play dying animation, and destroy
 		// enemyAnimator.SetTrigger("Dead");
-		if (splitNum != 2 && enemyFirstDeath) {
+		if (splitNum != 2 && enemyFirstDeath && isSplitter) {
 			enemyFirstDeath = false;
 			SpawnChildren (splitNum);
 		} else {
