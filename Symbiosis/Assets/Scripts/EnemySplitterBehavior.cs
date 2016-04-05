@@ -88,6 +88,7 @@ public class EnemySplitterBehavior : EnemyBehavior {
 		if (collision.gameObject.tag == "Player") {
 			if (timer > nextHit) {
 				DamagePlayer(1);
+				enemyAnimator.SetTrigger("Attack");
 			}
 		}
 	}

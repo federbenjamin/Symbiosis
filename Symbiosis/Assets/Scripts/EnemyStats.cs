@@ -20,6 +20,7 @@ public class EnemyStats : MonoBehaviour {
 	public int splitNum = 0;
 	public GameObject spawnChild;
 	private bool enemyFirstDeath = true;
+	public float divideBy = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -58,6 +59,7 @@ public class EnemyStats : MonoBehaviour {
 		if (splitNum != 2 && enemyFirstDeath && isSplitter) {
 			enemyFirstDeath = false;
 			SpawnChildren (splitNum);
+			enemyAnimator.Play("Player_Death");
 		} else {
 			enemyAnimator.Play ("Player_Death");
 			StartCoroutine ("WaitBeforeDeath");
@@ -140,7 +142,7 @@ public class EnemyStats : MonoBehaviour {
 
 	void SpawnChildren(int parentSplitNum) {
 		int childSplitNum = parentSplitNum + 1;
-		float childChange = Mathf.Pow (0.5f, childSplitNum);
+		float childChange = Mathf.Pow (divideBy, childSplitNum);
 
 		GameObject newEnemy1 = Instantiate (spawnChild, transform.position, transform.rotation) as GameObject;
 		GameObject newEnemy2 = Instantiate (spawnChild, transform.position, transform.rotation) as GameObject;

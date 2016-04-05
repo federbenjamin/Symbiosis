@@ -180,6 +180,8 @@ public class RoomController : MonoBehaviour {
 				enemyName = "BlueTurret";
 			} else if (enemyType == "Blue3" || enemyType == "33") {
 				enemyName = "BlueSpecial";
+			} else if (enemyType == "Blue4" || enemyType == "34") {
+				enemyName = "BlueSplitter";
 			} else {
 				spawnVector.y = 0.74f;
 				enemyName = "Boss";
