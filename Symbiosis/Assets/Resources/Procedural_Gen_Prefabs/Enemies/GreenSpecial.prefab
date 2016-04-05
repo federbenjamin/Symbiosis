@@ -1125,11 +1125,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHP: 40
   maxHP: 40
-  moveSpeed: 2
+  moveSpeed: 1
   elementType: earth
   enemyAnimator: {fileID: 0}
   spawnParticles: {fileID: 0}
   hitSpark: {fileID: 176766, guid: 49626e56a25667540bc5a7eb750d40e7, type: 2}
+  isSplitter: 0
+  splitNum: 0
+  spawnChild: {fileID: 0}
 --- !u!114 &11462906
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3345,7 +3348,7 @@ Prefab:
         type: 2}
     - target: {fileID: 0}
       propertyPath: moveSpeed
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Acceleration

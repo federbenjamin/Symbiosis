@@ -5,7 +5,7 @@ public class EnemyStats : MonoBehaviour {
 
 	public float currentHP;
 	public float maxHP;
-	public int moveSpeed;
+	public float moveSpeed;
 	public string elementType;
 	private bool onFire;
 	private bool frozen;

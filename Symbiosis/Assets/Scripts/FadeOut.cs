@@ -17,7 +17,7 @@ public class FadeOut : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		if (startFadeOut) {
-			alphaValue = alphaValue - 0.02f;
+			alphaValue = alphaValue - 0.005f;
 			Color newColor = renderer.material.color;
 			newColor.a = alphaValue;
 			renderer.material.SetColor("_Color", newColor);
@@ -29,7 +29,7 @@ public class FadeOut : MonoBehaviour {
 	}
 
 	IEnumerator WaitForFadeOut() {
-		yield return new WaitForSeconds (3f);
+		yield return new WaitForSeconds (4f);
 		startFadeOut = true;
 	}
 }
