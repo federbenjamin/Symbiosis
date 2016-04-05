@@ -249,7 +249,9 @@ public class LevelGenerator : MonoBehaviour {
 		// Get random index of enemy type list with hardest enemy based on room difficulty
 		int[] enemyTypes = enemyTypeDifficulty[roomColor];
 		int enemyTypeMax = enemyTypes.Length - 1;
-		if (roomDifficulty < 0.5f) {
+		if (roomDifficulty < 0.2f) {
+			enemyTypeMax = 0;
+		} else if (roomDifficulty < 0.5f) {
 			enemyTypeMax = 1;
 		}
 

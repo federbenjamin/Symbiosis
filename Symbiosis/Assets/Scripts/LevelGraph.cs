@@ -104,7 +104,7 @@ public class LevelGraph {
 		List<Edge> requiredEdges = new List<Edge>();
 		int indexToRemove;
 		Edge removedEdge;
-		int edgesToRemove = doorList.Count / 2;
+		int edgesToRemove = (int)(3f * (float)doorList.Count / 5f);
 		for (int i = 0; i < edgesToRemove; i++) {
 			if (doorList.Count == 0) break;
 			indexToRemove = pseudoRandom.Next(doorList.Count);
