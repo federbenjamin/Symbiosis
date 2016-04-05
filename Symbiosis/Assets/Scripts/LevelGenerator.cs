@@ -204,16 +204,27 @@ public class LevelGenerator : MonoBehaviour {
 			}
 		}
 
-		// TODO
-		// Set spawn offset determined by size of level
-		// float spawnCountOffset = Mathf.CeilToInt((float)size / 3f);
-		// Determine max and min for enemy count per room
-		float spawnCountUpperFloat = roomDifficulty * ((float)maxEnemiesPerRoom + 2f);
-		int spawnCountUpper = Mathf.Max(Mathf.CeilToInt(spawnCountUpperFloat), 2);
-		int spawnCountLower = Mathf.FloorToInt(spawnCountUpperFloat / 2f);
-		// Debug.Log(roomDifficulty + " : " + spawnCountUpperFloat + " (" + spawnCountUpper + ") : " + spawnCountLower);
+		// Establish upper and lower enemy count limits
+		int spawnCountUpper, spawnCountLower;
+		if (roomDifficulty <= 0.15f) {
+			spawnCountLower = 0;
+			spawnCountUpper = 1;
+		} else if (roomDifficulty >= 0.96f) {
+			spawnCountLower = 4;
+			spawnCountUpper = 4;
+		} else if (roomDifficulty <= 0.55f) {
+			spawnCountLower = 1;
+			spawnCountUpper = 2;
+		} else if (roomDifficulty >= 0.85f) {
+			spawnCountLower = 3;
+			spawnCountUpper = 4;
+		} else {
+			spawnCountLower = 2;
+			spawnCountUpper = 3;
+		}
+
 		// Generate random number between boundaries for number of enemies to spawn
-		int spawnCount = Mathf.Min(pseudoRandom.Next(spawnCountLower, spawnCountUpper), maxEnemiesPerRoom);
+		int spawnCount = pseudoRandom.Next(spawnCountLower, spawnCountUpper + 1);
 		int[] enemiesToSpawn = GenerateEnemySet(roomDifficulty, roomColor, spawnCount);
 
 		// Spawn choosen enemy types in random locations in the room

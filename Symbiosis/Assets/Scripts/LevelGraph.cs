@@ -211,7 +211,7 @@ public class LevelGraph {
 
 	public void CalculateRoomDistances() {
 		switchAdjRoom.Color = NodeColor.Black;
-		switchAdjRoom.Distance = 1;
+		switchAdjRoom.Distance = 0;
 		maxDistance = 1;
 
 		Queue<Node> nodeQueue = new Queue<Node>();
