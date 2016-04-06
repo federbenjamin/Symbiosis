@@ -159,6 +159,7 @@ ModelImporter:
     7400010: PoseAWESOME
     7400012: Walk
     7400014: WalkCLAWS
+    7400016: Death
     9500000: //RootNode
     13700000: Arm_True_L
     13700002: Arm_True_R
@@ -636,8 +637,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Player_Walk
-      takeName: Player_Walk
+      name: Death
+      takeName: Boss-Death
       firstFrame: 0
       lastFrame: 59
       wrapMode: 0
