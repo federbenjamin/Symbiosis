@@ -114,7 +114,9 @@ public class EnemyStats : MonoBehaviour {
 		halfDmg = incomingDamage / 2f;
 		halfDmg = (halfDmg == 0f) ? 0.5f : halfDmg;
 
-		if (damageType == elementType) {
+		if (elementType == "black") {
+			// Do nothing, invincibility
+		} else if (damageType == elementType) {
 			currentHP = currentHP - incomingDamage;
 		} else if (damageType == "fire") {
 			if (elementType == "ice") {
