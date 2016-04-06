@@ -92,12 +92,12 @@ public class PlayerSword : MonoBehaviour {
 
 		if (other.tag == "Enemy") {
 			string damageType = "none";
-			float force = 10;
+			float force = 5;
 			if (augment != null) {
 				augment.onHitEffect (other);
 				damageType = augment.Element;
 				if (augment.Element == "earth") {
-					force = 35;
+					force = 20;
 				}
 			}
 

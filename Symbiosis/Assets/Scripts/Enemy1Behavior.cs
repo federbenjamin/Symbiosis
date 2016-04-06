@@ -73,6 +73,8 @@ public class Enemy1Behavior : EnemyBehavior {
 		if (!realigningRotation) {
 			turnSpeed = 4;
 			moveSpeed = baseMoveSpeed;
+			//gameObject.GetComponent<EnemyStats>().moveSpeed;
+			Debug.Log(moveSpeed);
 		} else {
 			// Debug.Log("realign");
 			if (!realignTimerSet) {

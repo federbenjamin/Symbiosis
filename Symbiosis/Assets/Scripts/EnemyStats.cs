@@ -156,7 +156,7 @@ public class EnemyStats : MonoBehaviour {
 		em.enabled = true;
 		EnemyBehavior mover = GetComponent<EnemyBehavior> ();
 		mover.setMoveSpeed(moveSpeed / 2f);
-		freezeTimer = Time.time + 3f;
+		freezeTimer = Time.time + 3.5f;
 	}
 
 	void Ignite(){
@@ -178,9 +178,12 @@ public class EnemyStats : MonoBehaviour {
 	void SpawnChildren(int parentSplitNum) {
 		int childSplitNum = parentSplitNum + 1;
 		float childChange = Mathf.Pow (divideBy, childSplitNum);
+		float newHP;
 		if (elementType == "ice") {
+			newHP = maxHP / 2f;
 			numChildren = 4;
 		} else {
+			newHP = maxHP;
 			numChildren = 2;
 		}
 
@@ -188,8 +191,8 @@ public class EnemyStats : MonoBehaviour {
 			GameObject newEnemy = Instantiate (spawnChild, transform.position, transform.rotation) as GameObject;
 			newEnemy.transform.parent = transform.parent;
 			newEnemy.GetComponent<EnemyStats> ().splitNum = childSplitNum;
-			newEnemy.GetComponent<EnemyStats> ().currentHP = maxHP * childChange;
-			newEnemy.GetComponent<EnemyStats> ().maxHP = maxHP * childChange;
+			newEnemy.GetComponent<EnemyStats> ().currentHP = newHP * childChange;
+			newEnemy.GetComponent<EnemyStats> ().maxHP = newHP * childChange;
 			newEnemy.GetComponent<EnemySplitterBehavior> ().setChildSpeed (childSplitNum);
 			newEnemy.transform.localScale = new Vector3 (childChange, childChange, childChange);
 		}

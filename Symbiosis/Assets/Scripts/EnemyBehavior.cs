@@ -62,11 +62,11 @@ public class EnemyBehavior : MonoBehaviour {
 	}
 
 	public float getMoveSpeed () {
-		return moveSpeed;
+		return baseMoveSpeed;
 	}
 
 	public void setMoveSpeed (float newSpeed) {
-		moveSpeed = newSpeed;
+		baseMoveSpeed = newSpeed;
 	}
 	
 	void OnCollisionEnter (Collision col) {
