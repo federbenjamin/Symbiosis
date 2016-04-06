@@ -44,7 +44,7 @@ public class BulletBehavior : MonoBehaviour {
 				augment.onHitEffect (other);
 				damageType = augment.Element;
 				if (augment.Element == "earth") {
-					force = 400;
+					force = 1000;
 				}
 			}
 
