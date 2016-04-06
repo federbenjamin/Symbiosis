@@ -30,11 +30,14 @@ public class Pickups : MonoBehaviour {
 	static float nextPickupP1 = 0.0f;
 	static float nextPickupP2 = 0.0f;
 
+	private AudioPlacement audioPlacement;
+
 	// Use this for initialization
 	void Start () {
 		notUsed = false;
 		oldWeapon = null;
 		oldAugment = null;
+		audioPlacement = GameObject.Find("AudioListener").GetComponent<AudioPlacement> ();
 	}
 	
 	// Update is called once per frame
@@ -99,6 +102,7 @@ public class Pickups : MonoBehaviour {
 					Debug.Log (f);
 					playerStats.SetAugment (f);
 					playerAugSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Interface/Augment-Red-Blank");
+					audioPlacement.PlayClip("AugmentPickUp", 1f);
 
 					Debug.Log (playerStats.GetAugment());
 
@@ -111,6 +115,7 @@ public class Pickups : MonoBehaviour {
 					Debug.Log (i);
 					playerStats.SetAugment (i);
 					playerAugSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Interface/Augment-Blue-Blank");
+					audioPlacement.PlayClip("AugmentPickUp", 1f);
 
 					Debug.Log (playerStats.GetAugment());
 
@@ -123,6 +128,7 @@ public class Pickups : MonoBehaviour {
 					Debug.Log (e);
 					playerStats.SetAugment (e);
 					playerAugSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Interface/Augment-Green-Blank");
+					audioPlacement.PlayClip("AugmentPickUp", 1f);
 
 					Debug.Log (playerStats.GetAugment ());
 
@@ -131,23 +137,27 @@ public class Pickups : MonoBehaviour {
 				case "Pistol":
 					oldWeapon = playerShooting.curWeap;
 					playerShooting.ChangeWeapon(powerupType);
+					audioPlacement.PlayClip("WeaponPickUp", 1f);
 					break;
 
 				case "RayGun":
 					oldWeapon = playerShooting.curWeap;
 					playerShooting.ChangeWeapon(powerupType);
 					//playerWeapSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("raygunsprite");
+					audioPlacement.PlayClip("WeaponPickUp", 1f);
 					break;
 
 				case "Sword":
 					oldWeapon = playerShooting.curWeap;
 					playerShooting.ChangeWeapon (powerupType);
 					//playerWeapSprite.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("swordsprite");
+					audioPlacement.PlayClip("WeaponPickUp", 1f);
 					break;
 
 				case "FullHealth":
 					if (HealthManager.currentHealth < 10) {
 						HealthManager.HealHealth (2);
+						audioPlacement.PlayClip("ItemPickUp", 1f);
 					} else {
 						notUsed = true;
 					}
@@ -156,6 +166,7 @@ public class Pickups : MonoBehaviour {
 				case "HalfHealth":
 					if (HealthManager.currentHealth < 10) {
 						HealthManager.HealHealth (1);
+						audioPlacement.PlayClip("ItemPickUp", 1f);
 					} else {
 						notUsed = true;
 					}
