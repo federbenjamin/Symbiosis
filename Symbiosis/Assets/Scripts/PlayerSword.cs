@@ -11,6 +11,7 @@ public class PlayerSword : MonoBehaviour {
 	private GameObject swordTrail;
 	private Material trailColor;
 
+	private Vector3 setTransform;
 	private AudioPlacement AP;
 	public void setAugment(iAugment aug){
 		augment = aug;
@@ -18,7 +19,7 @@ public class PlayerSword : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+		setTransform = transform.localPosition;
 		AP = GameObject.Find ("AudioListener").GetComponent<AudioPlacement> ();
 		swordAnimator = transform.GetComponent<Animator> ();
 		foreach (Transform child in transform) {
@@ -30,6 +31,7 @@ public class PlayerSword : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		transform.localPosition = setTransform;
 		Color newColor = new Color ();
 
 		if (augment != null) {
