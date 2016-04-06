@@ -18,7 +18,7 @@ public class PlayerShooting : MonoBehaviour {
 	public Object earthEffect;
 
 	public float baseBulletSpeed = 11f;
-	public float baseFireRate = 0.5f;
+	public float baseFireRate = 0.4f;
 
 	public iAugment aug = null;
 
@@ -172,11 +172,7 @@ public class PlayerShooting : MonoBehaviour {
 		}
 
 		//Set when the next bullet can be fired
-		if (curWeap == "Sword") {
-			nextFire = Time.time + 0.32f;
-		} else {
-			nextFire = Time.time + baseFireRate;
-		}
+		nextFire = Time.time + baseFireRate;
 	}
 
 	public void ChangeWeapon(string weapon) {
@@ -189,7 +185,7 @@ public class PlayerShooting : MonoBehaviour {
 
 		case "Pistol":
 			baseBulletSpeed = 11f;
-			baseFireRate = 0.5f;
+			baseFireRate = 0.4f;
 			cur_bullet = Reg_bullet;
 			GameObject pistol = Instantiate (Pistol, hand.transform.position, hand.transform.rotation) as GameObject;
 			pistol.transform.parent = hand.transform;
@@ -208,7 +204,7 @@ public class PlayerShooting : MonoBehaviour {
 			break;
 
 		case "Sword":
-			baseFireRate = 0.6f;
+			baseFireRate = 0.4f;
 			cur_bullet = null;
 			sword = Instantiate (Sword, hand.transform.position, Sword.transform.rotation) as GameObject;
 			sword.transform.parent = hand.transform;
@@ -234,7 +230,7 @@ public class PlayerShooting : MonoBehaviour {
 
 		while (playerShooting) 
 		{
-			audioPlacement.PlayClip("beep/beep_2", 0.05f);
+			audioPlacement.PlayClip("beep/beep_2", 0.04f);
 			Ray ray = new Ray (rayGunTip.transform.position, transform.forward * -1);
 			RaycastHit hit;
 
@@ -244,7 +240,7 @@ public class PlayerShooting : MonoBehaviour {
 				line.SetPosition(1, hit.point);
 				if (hit.transform.tag == "Enemy") {
 					string damageType = "none";
-					float force = 10;
+					float force = 0;
 
 					if (aug != null) {
 						aug.onHitEffect (hit.transform.gameObject);
@@ -259,7 +255,7 @@ public class PlayerShooting : MonoBehaviour {
 					//Add force to enemy
 					hit.rigidbody.AddForceAtPosition(transform.forward * force * -1, hit.point);
 					EnemyStats enemyHP = hit.transform.GetComponent<EnemyStats> ();
-					enemyHP.TakeDamage (1f, damageType);
+					enemyHP.TakeDamage (0.14f, damageType);
 				}
 			} else {
 				line.SetPosition (1, ray.GetPoint (50));

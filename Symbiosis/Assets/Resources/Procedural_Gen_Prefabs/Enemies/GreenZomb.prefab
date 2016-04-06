@@ -650,7 +650,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 84
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!95 &9528946
 Animator:
   serializedVersion: 3
@@ -686,6 +686,10 @@ MonoBehaviour:
   enemyAnimator: {fileID: 0}
   spawnParticles: {fileID: 0}
   hitSpark: {fileID: 176766, guid: 49626e56a25667540bc5a7eb750d40e7, type: 2}
+  isSplitter: 0
+  splitNum: 0
+  spawnChild: {fileID: 0}
+  divideBy: 0
 --- !u!114 &11479274
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2855,6 +2859,10 @@ Prefab:
       propertyPath: hitSpark
       value: 
       objectReference: {fileID: 176766, guid: 49626e56a25667540bc5a7eb750d40e7, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 153214}

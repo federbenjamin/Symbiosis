@@ -37,7 +37,7 @@ public class BulletBehavior : MonoBehaviour {
 
 		if (other.tag == "Enemy") {
 			string damageType = "none";
-			float force = 100;
+			float force = 50;
 			if (augment != null) {
 				Debug.Log ("");
 				//Destroy (collision.gameObject);

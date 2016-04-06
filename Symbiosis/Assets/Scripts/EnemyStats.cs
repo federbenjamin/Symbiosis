@@ -82,9 +82,9 @@ public class EnemyStats : MonoBehaviour {
 	}
 
 	void DamageMultiplier(float incomingDamage, string damageType) {
-		doubleDmg = (incomingDamage * 2);
-		halfDmg = Mathf.Floor(incomingDamage / 2);
-		halfDmg = (halfDmg == 0) ? 0.5f : halfDmg;
+		doubleDmg = (incomingDamage * 2f);
+		halfDmg = incomingDamage / 2f;
+		halfDmg = (halfDmg == 0f) ? 0.5f : halfDmg;
 
 		if (damageType == elementType) {
 			currentHP = currentHP - incomingDamage;
