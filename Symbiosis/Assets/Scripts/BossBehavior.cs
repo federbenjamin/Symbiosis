@@ -220,7 +220,9 @@ public class BossBehavior : EnemyBehavior {
 		if (transform.GetComponent<EnemyStats>().currentHP > 0) {
 			Vector3 slimeRotation = transform.rotation.eulerAngles;
 			Quaternion quatRotation = Quaternion.Euler(270f, slimeRotation.y, slimeRotation.z);
-			GameObject clone = Instantiate (slime, transform.position, quatRotation) as GameObject;
+			Vector3 slimeDropPos = transform.position;
+			slimeDropPos.y = 0;
+			GameObject clone = Instantiate (slime, slimeDropPos, quatRotation) as GameObject;
 			nextFire = Time.time + Random.Range(0.8f, 1.2f);
 		}
 	}
