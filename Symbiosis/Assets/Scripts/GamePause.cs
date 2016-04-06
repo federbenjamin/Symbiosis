@@ -20,6 +20,7 @@ public class GamePause : MonoBehaviour {
 	private int controlImageIndex = 0;
 	private AudioPlacement gameAudio;
 	private bool nextInput = true;
+	private float unpausedSpeed = 1.0f;
 
 
 	// Use this for initialization
@@ -70,13 +71,14 @@ public class GamePause : MonoBehaviour {
 		isPaused = !isPaused;
 
 		if (isPaused) {
+			unpausedSpeed = Time.timeScale;
 			Time.timeScale = 0.0f;
 			pausePanel.SetActive(true);
 			EventSystem.current.SetSelectedGameObject(firstSelected, null);
 			gameAudio.changeMainSongVolume(0.07f);
 			gameAudio.changeMainSongPitch(0.9f);
 		} else {
-			Time.timeScale = 1.0f;
+			Time.timeScale = unpausedSpeed;
 			pausePanel.SetActive(false);
 			gameAudio.changeMainSongVolume(0.264f);
 			gameAudio.changeMainSongPitch(1f);

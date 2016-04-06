@@ -10,7 +10,9 @@ public class BossBehavior : EnemyBehavior {
 	private bool enemyActive = true;
 	private bool enemyOriented = false;
 	private float turnSpeed = 4;
-	private int phase = 0;
+	private string phase;
+	private float nextFire = 0;
+	public GameObject slime;
 
 	private List<string> remainingAugments = new List<string>();
 	private string[] augList = new string[] {"fire", "ice", "earth"};
@@ -29,15 +31,21 @@ public class BossBehavior : EnemyBehavior {
 		if (!enemyOriented) {
 			IgnorePlayer();
 			enemyOriented = true;
-			timer = 400;
+			timer = 1000;
 		}
 
 		if (IsEnemyAlive() && !HealthManager.isGameOver) {
 			UpdateTargetPlayer();
 			enemyStarted = true;
-		} else {
-			enemyAnimator.SetTrigger ("Stopped");
+		// } else if (!IsEnemyAlive()) {
+		// 	enemyStarted = false;
+			// StartCoroutine("GameWin");
+		} else if (IsEnemyAlive() && HealthManager.isGameOver) {
+			enemyAnimator.SetTrigger ("Win");
 			enemyStarted = false;
+		} else if (!IsEnemyAlive()) {
+			enemyStarted = false;
+			// StartCoroutine("GameWin");
 		}
 
 	}
@@ -46,12 +54,12 @@ public class BossBehavior : EnemyBehavior {
 		if (enemyStarted && roomController.EnemiesActive) {
 			timer++;
 
-			if (timer >= 400) {
+			if (timer >= 1000) {
 				StartCoroutine("RandomAugmentSwap");
 				timer = 0;
 			}
 
-			if (phase == 0 && enemyActive) {
+			if (phase == "ice" && enemyActive) {
 
 				// rotate to look at the player
 				Vector3 direction = targetPlayer.Transform.position - myRigidBody.position;
@@ -59,30 +67,43 @@ public class BossBehavior : EnemyBehavior {
 				Quaternion angleTowardsPlayer = Quaternion.Slerp(myTransform.rotation, Quaternion.LookRotation(direction), turnSpeed * Time.deltaTime);
 				myRigidBody.MoveRotation(angleTowardsPlayer);
 
-				if (targetPlayer.Distance > stoppingDistance && enemyActive) {
+				if (targetPlayer.Distance > stoppingDistance + 2) {
 					enemyAnimator.SetTrigger ("Walking");
-					Debug.Log(Time.time + " : walking");
+					Vector3 moveDirection = myTransform.forward;
+					moveDirection.y = 0;
+					//move towards the player
+					myRigidBody.AddForce (moveDirection * (moveSpeed * 10) * Time.deltaTime, ForceMode.VelocityChange);
+					myTransform.position += moveDirection * moveSpeed * Time.deltaTime;
+				} else if (targetPlayer.Distance > stoppingDistance + 1) {
+					enemyAnimator.SetTrigger ("Walking_Claws");
 					Vector3 moveDirection = myTransform.forward;
 					moveDirection.y = 0;
 					//move towards the player
 					myRigidBody.AddForce (moveDirection * (moveSpeed * 10) * Time.deltaTime, ForceMode.VelocityChange);
 					myTransform.position += moveDirection * moveSpeed * Time.deltaTime;
 				} else if (Time.time > nextHit) {
-					enemyAnimator.SetTrigger ("Stopped");
+
+					enemyAnimator.SetTrigger ("Walking_Claws");
 
 					DamagePlayer(1);
 				} else {
-					enemyAnimator.SetTrigger ("Stopped");
+					enemyAnimator.SetTrigger ("Walking");
 				}
 			}
 
-			else if (phase == 1 && enemyActive) {
+			else if (phase == "earth" && enemyActive) {
 
+				// Drop Slime
+				if (Time.time > nextFire) {
+					DropSlime();
+				}
 			} 
 
-			else if (phase == 2 && enemyActive) {
+			else if (phase == "fire" && enemyActive) {
 				
-			} else {
+			}
+
+			else {
 				enemyAnimator.SetTrigger ("Stopped");
 			}
 
@@ -95,10 +116,18 @@ public class BossBehavior : EnemyBehavior {
 		}
 	}
 
+	void DropSlime() {
+		if (transform.GetComponent<EnemyStats>().currentHP > 0) {
+			Vector3 slimeRotation = transform.rotation.eulerAngles;
+			Quaternion quatRotation = Quaternion.Euler(270f, slimeRotation.y, slimeRotation.z);
+			GameObject clone = Instantiate (slime, transform.position, quatRotation) as GameObject;
+			nextFire = Time.time + 1.5f;
+		}
+	}
+
 	IEnumerator RandomAugmentSwap() {
 		enemyActive = false;
 		enemyAnimator.SetTrigger ("Stopped");
-		Debug.Log(Time.time + " : stopped");
 
 		EnemyStats enemyStats = gameObject.GetComponent<EnemyStats>();
 		enemyStats.elementType = "black";
@@ -118,6 +147,7 @@ public class BossBehavior : EnemyBehavior {
 
 		yield return new WaitForSeconds (2f);
 		enemyStats.elementType = nextAug;
+		phase = nextAug;
 		enemyActive = true;
 	}
 
@@ -138,7 +168,7 @@ public class BossBehavior : EnemyBehavior {
 			}
 			if (transform.GetComponent<EnemyStats>().currentHP > 0) {
 				HealthManager.DamageHealth(damage);
-				nextHit = Time.time + 60f;
+				nextHit = Time.time + 1f;
 			}
     	}
 	}
@@ -152,10 +182,10 @@ public class BossBehavior : EnemyBehavior {
 	}
 
 	void OnCollisionStay(Collision collision) {
-		if (collision.gameObject.tag == "Player") {
-			if (timer > nextHit) {
-				DamagePlayer(1);
-			}
-		}
+		// if (collision.gameObject.tag == "Player") {
+		// 	if (timer > nextHit) {
+		// 		DamagePlayer(1);
+		// 	}
+		// }
 	}
 }

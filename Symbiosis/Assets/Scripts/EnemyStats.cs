@@ -26,6 +26,7 @@ public class EnemyStats : MonoBehaviour {
 	private float numChildren;
 	private float fireTimer = 0;
 	private float freezeTimer = 0;
+	public bool isBoss;
 
 	// Use this for initialization
 	void Start () {
@@ -85,7 +86,9 @@ public class EnemyStats : MonoBehaviour {
 	void Die(){
 		//Play dying animation, and destroy
 		// enemyAnimator.SetTrigger("Dead");
-		if (splitNum != 2 && enemyFirstDeath && isSplitter) {
+		if (isBoss) {
+			StartCoroutine("GameWin");
+		} else if (splitNum != 2 && enemyFirstDeath && isSplitter) {
 			enemyFirstDeath = false;
 			SpawnChildren (splitNum);
 			enemyAnimator.Play("Player_Death");
@@ -95,17 +98,29 @@ public class EnemyStats : MonoBehaviour {
 		}
 	}
 
-	public void TakeDamage(float incomingDamage, string damageType){
-		if (currentHP > 0) {
-			GameObject spark = Instantiate (hitSpark, transform.position, transform.rotation) as GameObject;
-		}
+	IEnumerator GameWin() {
+		// enemyAnimator.SetTrigger ("Dead");
+		enemyAnimator.Play ("Player_Death");
+		Time.timeScale = 0.4f;
+		gameObject.GetComponent<Collider>().enabled = false;
 
-		DamageMultiplier(incomingDamage, damageType);
-		if (!(damageType == "fire" && elementType == "ice")) {
-			StatusEffect(damageType);
-		} else {
-			fireTimer = Time.time - 1f;
-			freezeTimer = Time.time - 1f;
+		yield return new WaitForSeconds (2.5f);
+		Time.timeScale = 1.0f;
+	}
+
+	public void TakeDamage(float incomingDamage, string damageType){
+		if (elementType != "black") {
+			if (currentHP > 0) {
+				GameObject spark = Instantiate (hitSpark, transform.position, transform.rotation) as GameObject;
+			}
+
+			DamageMultiplier(incomingDamage, damageType);
+			if (!(damageType == "fire" && elementType == "ice")) {
+				StatusEffect(damageType);
+			} else {
+				fireTimer = Time.time - 1f;
+				freezeTimer = Time.time - 1f;
+			}
 		}
 	}
 
@@ -114,9 +129,7 @@ public class EnemyStats : MonoBehaviour {
 		halfDmg = incomingDamage / 2f;
 		halfDmg = (halfDmg == 0f) ? 0.5f : halfDmg;
 
-		if (elementType == "black") {
-			// Do nothing, invincibility
-		} else if (damageType == elementType) {
+		if (damageType == elementType) {
 			currentHP = currentHP - incomingDamage;
 		} else if (damageType == "fire") {
 			if (elementType == "ice") {
@@ -173,7 +186,7 @@ public class EnemyStats : MonoBehaviour {
 
 
 	IEnumerator WaitBeforeDeath() {
-		yield return new WaitForSeconds (0.75f);
+		yield return new WaitForSeconds (1f);
 		Destroy (gameObject);
 	}
 
