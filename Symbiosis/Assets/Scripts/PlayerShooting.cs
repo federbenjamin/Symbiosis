@@ -247,7 +247,7 @@ public class PlayerShooting : MonoBehaviour {
 						damageType = aug.Element;
 
 						if (aug.Element == "earth") {
-							force = 50;
+							force = 70;
 
 						}
 					}
