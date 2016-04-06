@@ -41,7 +41,7 @@ GameObject:
   - 137: {fileID: 13729016}
   m_Layer: 0
   m_Name: Cube_005
-  m_TagString: Untagged
+  m_TagString: BossMech
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,7 +72,7 @@ GameObject:
   - 137: {fileID: 13770966}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: BossMech
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -88,7 +88,7 @@ GameObject:
   - 137: {fileID: 13774964}
   m_Layer: 0
   m_Name: Cube_008
-  m_TagString: Untagged
+  m_TagString: BossMech
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -151,7 +151,7 @@ GameObject:
   - 137: {fileID: 13728446}
   m_Layer: 0
   m_Name: Cylinder_014
-  m_TagString: Untagged
+  m_TagString: BossMech
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,7 +167,7 @@ GameObject:
   - 137: {fileID: 13751140}
   m_Layer: 0
   m_Name: Cylinder_003
-  m_TagString: Untagged
+  m_TagString: BossMech
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -183,7 +183,7 @@ GameObject:
   - 137: {fileID: 13719400}
   m_Layer: 0
   m_Name: Cylinder_006
-  m_TagString: Untagged
+  m_TagString: BossMech
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -244,7 +244,7 @@ GameObject:
   - 137: {fileID: 13765504}
   m_Layer: 0
   m_Name: Cylinder_004
-  m_TagString: Untagged
+  m_TagString: BossMech
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -260,7 +260,7 @@ GameObject:
   - 137: {fileID: 13742812}
   m_Layer: 0
   m_Name: Cylinder_016
-  m_TagString: Untagged
+  m_TagString: BossMech
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -276,7 +276,7 @@ GameObject:
   - 137: {fileID: 13707944}
   m_Layer: 0
   m_Name: Cylinder_009
-  m_TagString: Untagged
+  m_TagString: BossMech
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -338,7 +338,7 @@ GameObject:
   - 137: {fileID: 13711804}
   m_Layer: 0
   m_Name: Cube_010
-  m_TagString: Untagged
+  m_TagString: BossMech
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -446,7 +446,7 @@ GameObject:
   - 137: {fileID: 13713996}
   m_Layer: 0
   m_Name: Cube_009
-  m_TagString: Untagged
+  m_TagString: BossMech
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -494,7 +494,7 @@ GameObject:
   - 137: {fileID: 13706508}
   m_Layer: 0
   m_Name: Cylinder_012
-  m_TagString: Untagged
+  m_TagString: BossMech
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -510,7 +510,7 @@ GameObject:
   - 137: {fileID: 13735930}
   m_Layer: 0
   m_Name: Cylinder_013
-  m_TagString: Untagged
+  m_TagString: BossMech
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -526,7 +526,7 @@ GameObject:
   - 137: {fileID: 13787596}
   m_Layer: 0
   m_Name: Cylinder_015
-  m_TagString: Untagged
+  m_TagString: BossMech
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -542,7 +542,7 @@ GameObject:
   - 137: {fileID: 13729666}
   m_Layer: 0
   m_Name: Cube_003
-  m_TagString: Untagged
+  m_TagString: BossMech
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -574,7 +574,7 @@ GameObject:
   - 137: {fileID: 13732438}
   m_Layer: 0
   m_Name: Cylinder_002
-  m_TagString: Untagged
+  m_TagString: BossMech
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -698,7 +698,7 @@ GameObject:
   - 137: {fileID: 13730290}
   m_Layer: 0
   m_Name: Cube_002
-  m_TagString: Untagged
+  m_TagString: BossMech
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -760,7 +760,7 @@ GameObject:
   - 137: {fileID: 13706332}
   m_Layer: 0
   m_Name: Cylinder_001
-  m_TagString: Untagged
+  m_TagString: BossMech
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -808,7 +808,7 @@ GameObject:
   - 137: {fileID: 13765982}
   m_Layer: 0
   m_Name: Cube_004
-  m_TagString: Untagged
+  m_TagString: BossMech
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -838,11 +838,12 @@ GameObject:
   - 4: {fileID: 478046}
   - 54: {fileID: 5465256}
   - 136: {fileID: 13602082}
-  - 114: {fileID: 11489970}
   - 114: {fileID: 11424072}
+  - 114: {fileID: 11426152}
+  - 114: {fileID: 11434884}
   m_Layer: 0
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -888,7 +889,7 @@ GameObject:
   - 137: {fileID: 13784792}
   m_Layer: 0
   m_Name: Cube_011
-  m_TagString: Untagged
+  m_TagString: BossMech
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1519,7 +1520,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 194752}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -5.1900024, y: 0, z: -0.17001343}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 452640}
@@ -1707,8 +1708,8 @@ Rigidbody:
   m_GameObject: {fileID: 194752}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 20
+  m_AngularDrag: 10
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
@@ -1752,7 +1753,7 @@ MonoBehaviour:
   isSplitter: 0
   splitNum: 0
   spawnChild: {fileID: 0}
---- !u!114 &11489970
+--- !u!114 &11426152
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1760,14 +1761,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 194752}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2997c7f17e52743ca8d81e785a72c28f, type: 3}
+  m_Script: {fileID: 11500000, guid: ac8b5b14045a941cfa1ecde581222933, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyAnimator: {fileID: 0}
-  bullet: {fileID: 164192, guid: 4fab93891b8314d22b69a530070fa9f2, type: 2}
-  bulletOrigin: {fileID: 104328}
-  fireRate: 1
-  bulletVelocity: 0
+  stoppingDistance: 1
+--- !u!114 &11434884
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ea2a27da19dd4e6793e346d7e5b1fed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorMaterial: {fileID: 2100000, guid: e8799a0d7ea9e4adbb4705805ae29f1b, type: 2}
 --- !u!136 &13602082
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -1777,10 +1787,10 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: 42f7df789ee7e43f29787044c8b181ae, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 1.5
-  m_Height: 5
+  m_Radius: 1.2
+  m_Height: 4
   m_Direction: 1
-  m_Center: {x: 0, y: 2.5, z: 0}
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!137 &13702316
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -3767,6 +3777,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalScale.z
       value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Drag
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_AngularDrag
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
