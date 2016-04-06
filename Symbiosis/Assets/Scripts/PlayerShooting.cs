@@ -255,7 +255,7 @@ public class PlayerShooting : MonoBehaviour {
 					//Add force to enemy
 					hit.rigidbody.AddForceAtPosition(transform.forward * force * -1, hit.point);
 					EnemyStats enemyHP = hit.transform.GetComponent<EnemyStats> ();
-					enemyHP.TakeDamage (0.14f, damageType);
+					enemyHP.TakeDamage (0.18f, damageType);
 				}
 			} else {
 				line.SetPosition (1, ray.GetPoint (50));
