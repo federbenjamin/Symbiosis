@@ -22,7 +22,6 @@ public class BossBehavior : EnemyBehavior {
 		foreach (string augment in augList) {
 			remainingAugments.Add(augment);
 		}
-		timer = 400;
 	}
 
 	// Update is called once per frame
@@ -30,6 +29,7 @@ public class BossBehavior : EnemyBehavior {
 		if (!enemyOriented) {
 			IgnorePlayer();
 			enemyOriented = true;
+			timer = 400;
 		}
 
 		if (IsEnemyAlive() && !HealthManager.isGameOver) {
@@ -43,7 +43,7 @@ public class BossBehavior : EnemyBehavior {
 	}
 
 	void FixedUpdate () {
-		if (enemyStarted && enemyActive && roomController.EnemiesActive) {
+		if (enemyStarted && roomController.EnemiesActive) {
 			timer++;
 
 			if (timer >= 400) {
@@ -51,7 +51,7 @@ public class BossBehavior : EnemyBehavior {
 				timer = 0;
 			}
 
-			if (phase == 0) {
+			if (phase == 0 && enemyActive) {
 
 				// rotate to look at the player
 				Vector3 direction = targetPlayer.Transform.position - myRigidBody.position;
@@ -59,9 +59,9 @@ public class BossBehavior : EnemyBehavior {
 				Quaternion angleTowardsPlayer = Quaternion.Slerp(myTransform.rotation, Quaternion.LookRotation(direction), turnSpeed * Time.deltaTime);
 				myRigidBody.MoveRotation(angleTowardsPlayer);
 
-				if (targetPlayer.Distance > stoppingDistance) {
+				if (targetPlayer.Distance > stoppingDistance && enemyActive) {
 					enemyAnimator.SetTrigger ("Walking");
-					Debug.Log("walking");
+					Debug.Log(Time.time + " : walking");
 					Vector3 moveDirection = myTransform.forward;
 					moveDirection.y = 0;
 					//move towards the player
@@ -76,18 +76,21 @@ public class BossBehavior : EnemyBehavior {
 				}
 			}
 
-			else if (phase == 1) {
+			else if (phase == 1 && enemyActive) {
 
 			} 
 
-			else if (phase == 2) {
+			else if (phase == 2 && enemyActive) {
 				
+			} else {
+				enemyAnimator.SetTrigger ("Stopped");
 			}
 
 		
 			
 
 		} else {
+			enemyAnimator.SetTrigger ("Stopped");
 			ActivateEnemiesOnProximity(2f);
 		}
 	}
@@ -95,7 +98,7 @@ public class BossBehavior : EnemyBehavior {
 	IEnumerator RandomAugmentSwap() {
 		enemyActive = false;
 		enemyAnimator.SetTrigger ("Stopped");
-		Debug.Log("stopped");
+		Debug.Log(Time.time + " : stopped");
 
 		EnemyStats enemyStats = gameObject.GetComponent<EnemyStats>();
 		enemyStats.elementType = "black";
@@ -113,7 +116,7 @@ public class BossBehavior : EnemyBehavior {
 
 		gameObject.GetComponent<FadeColor>().SetColor(nextAug);
 
-		yield return new WaitForSeconds (3f);
+		yield return new WaitForSeconds (2f);
 		enemyStats.elementType = nextAug;
 		enemyActive = true;
 	}

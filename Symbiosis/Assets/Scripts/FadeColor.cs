@@ -19,8 +19,8 @@ public class FadeColor : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-	    t += 0.008f;
 	    if (currentColour != materialColour) {
+	    	t += 0.02f;
 			Color newColor = Color.Lerp(currentColour, materialColour, t);
 			colorMaterial.SetColor("_Color", newColor);
 	    }
