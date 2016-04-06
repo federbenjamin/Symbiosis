@@ -73,7 +73,7 @@ public class EnemyStats : MonoBehaviour {
 			}
 		}
 
-		if (onFire && frozen) {
+		if ((elementType == "black") || (onFire && frozen)) {
 			fireTimer = Time.time - 1f;
 			freezeTimer = Time.time - 1f;
 		}

@@ -1271,7 +1271,7 @@ Transform:
   m_GameObject: {fileID: 160662}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071067}
   m_LocalPosition: {x: 0, y: 0.1, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children:
   - {fileID: 486822}
   - {fileID: 463230}
@@ -1520,7 +1520,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 194752}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.1900024, y: 0, z: -0.17001343}
+  m_LocalPosition: {x: 0.4, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 452640}
@@ -1707,7 +1707,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 194752}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 5
   m_Drag: 20
   m_AngularDrag: 10
   m_UseGravity: 1
@@ -1746,7 +1746,7 @@ MonoBehaviour:
   currentHP: 150
   maxHP: 150
   moveSpeed: 2
-  elementType: ice
+  elementType: black
   enemyAnimator: {fileID: 0}
   spawnParticles: {fileID: 0}
   hitSpark: {fileID: 176766, guid: 49626e56a25667540bc5a7eb750d40e7, type: 2}
@@ -1754,6 +1754,7 @@ MonoBehaviour:
   splitNum: 0
   spawnChild: {fileID: 0}
   divideBy: 0
+  isBoss: 1
 --- !u!114 &11426152
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1766,7 +1767,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyAnimator: {fileID: 0}
-  stoppingDistance: 1
+  slime: {fileID: 116444, guid: d250b43ca38a043f3a595c94679fdadc, type: 2}
+  stoppingDistance: 0.2
 --- !u!114 &11434884
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1788,10 +1790,10 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: 42f7df789ee7e43f29787044c8b181ae, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 1.2
-  m_Height: 4
+  m_Radius: 0.6
+  m_Height: 3
   m_Direction: 1
-  m_Center: {x: 0, y: 2, z: 0}
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!137 &13702316
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -3807,6 +3809,10 @@ Prefab:
       propertyPath: maxHP
       value: 150
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: slime
+      value: 
+      objectReference: {fileID: 116444, guid: d250b43ca38a043f3a595c94679fdadc, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 194752}

@@ -23,6 +23,7 @@ TagManager:
   - EnemySpawnerBlank
   - TutorialRoom
   - Pipe
+  - BossMech
   layers:
   - Default
   - TransparentFX
@@ -32,7 +33,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Wall
   - 
   - 
   - 

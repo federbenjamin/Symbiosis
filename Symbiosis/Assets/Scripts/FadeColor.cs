@@ -20,7 +20,7 @@ public class FadeColor : MonoBehaviour {
 	void Update () {
 
 	    if (currentColour != materialColour) {
-	    	t += 0.02f;
+	    	t += 0.05f;
 			Color newColor = Color.Lerp(currentColour, materialColour, t);
 			colorMaterial.SetColor("_Color", newColor);
 	    }
