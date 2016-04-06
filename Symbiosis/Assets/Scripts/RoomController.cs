@@ -90,6 +90,7 @@ public class RoomController : MonoBehaviour {
 							roomCleared = true;
 
 							if (transform.name == "Room200") {
+								transform.GetChild(0).GetComponent<Animator>().SetTrigger("Explode");
 								StartCoroutine ("WaitToWin");
 							} else if (transform.tag == "TutorialRoom") {
 								StartCoroutine("WaitToOpenDoors");
