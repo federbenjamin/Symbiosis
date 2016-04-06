@@ -85,7 +85,7 @@ GameObject:
   - 64: {fileID: 6465076}
   m_Layer: 8
   m_Name: Wall_009
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -171,7 +171,7 @@ GameObject:
   - 64: {fileID: 6421890}
   m_Layer: 8
   m_Name: Wall-Explode_002_cell_016
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -189,7 +189,7 @@ GameObject:
   - 64: {fileID: 6413204}
   m_Layer: 8
   m_Name: Wall-Explode_002_cell_012
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -418,7 +418,7 @@ GameObject:
   - 64: {fileID: 6455668}
   m_Layer: 8
   m_Name: Wall-Explode_002_cell_021
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -906,7 +906,7 @@ GameObject:
   - 64: {fileID: 6464842}
   m_Layer: 8
   m_Name: Wall-Explode_002_cell
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1583,7 +1583,7 @@ GameObject:
   - 64: {fileID: 6476756}
   m_Layer: 8
   m_Name: Wall_005
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1933,7 +1933,7 @@ GameObject:
   - 64: {fileID: 6471742}
   m_Layer: 8
   m_Name: Wall-Explode_002_cell_004
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2023,7 +2023,7 @@ GameObject:
   - 64: {fileID: 6458408}
   m_Layer: 8
   m_Name: Wall-Explode_002_cell_003
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2113,7 +2113,7 @@ GameObject:
   - 64: {fileID: 6442006}
   m_Layer: 8
   m_Name: Wall-Explode_002_cell_005
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2418,7 +2418,7 @@ GameObject:
   - 64: {fileID: 6450630}
   m_Layer: 8
   m_Name: Corner_001
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2601,7 +2601,7 @@ GameObject:
   - 64: {fileID: 6494050}
   m_Layer: 8
   m_Name: Wall-Explode_002_cell_017
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2885,7 +2885,7 @@ GameObject:
   - 64: {fileID: 6472814}
   m_Layer: 8
   m_Name: Wall-Explode_002_cell_014
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3438,7 +3438,7 @@ GameObject:
   - 64: {fileID: 6402290}
   m_Layer: 8
   m_Name: Wall_002
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3456,7 +3456,7 @@ GameObject:
   - 64: {fileID: 6438736}
   m_Layer: 8
   m_Name: Wall-Explode_002_cell_008
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3871,7 +3871,7 @@ GameObject:
   - 64: {fileID: 6455174}
   m_Layer: 8
   m_Name: Wall_001
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3925,7 +3925,7 @@ GameObject:
   - 64: {fileID: 6428034}
   m_Layer: 8
   m_Name: Wall-Explode_002_cell_018
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4521,7 +4521,7 @@ GameObject:
   - 64: {fileID: 6477308}
   m_Layer: 8
   m_Name: Wall-Explode_002_cell_001
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4558,7 +4558,7 @@ GameObject:
   - 64: {fileID: 6430866}
   m_Layer: 8
   m_Name: Wall_008
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5079,7 +5079,7 @@ GameObject:
   - 64: {fileID: 6466800}
   m_Layer: 8
   m_Name: Wall-Explode_002_cell_010
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5188,7 +5188,7 @@ GameObject:
   - 64: {fileID: 6494980}
   m_Layer: 8
   m_Name: Wall_003
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5385,7 +5385,7 @@ GameObject:
   - 64: {fileID: 6408510}
   m_Layer: 8
   m_Name: Corner_002
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5796,7 +5796,7 @@ GameObject:
   - 64: {fileID: 6470228}
   m_Layer: 8
   m_Name: Wall_010
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5814,7 +5814,7 @@ GameObject:
   - 64: {fileID: 6447074}
   m_Layer: 8
   m_Name: Wall-Explodable_001
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5956,7 +5956,7 @@ GameObject:
   - 64: {fileID: 6426526}
   m_Layer: 8
   m_Name: Wall-Explode_002_cell_007
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6615,7 +6615,7 @@ GameObject:
   - 64: {fileID: 6441442}
   m_Layer: 8
   m_Name: Wall-Explode_002_cell_006
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6740,7 +6740,7 @@ GameObject:
   - 64: {fileID: 6403106}
   m_Layer: 8
   m_Name: Corner_004
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6902,7 +6902,7 @@ GameObject:
   - 64: {fileID: 6423218}
   m_Layer: 8
   m_Name: Wall-Explode_002_cell_013
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7009,7 +7009,7 @@ GameObject:
   - 64: {fileID: 6403772}
   m_Layer: 8
   m_Name: Corner_003
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7634,7 +7634,7 @@ GameObject:
   - 64: {fileID: 6427880}
   m_Layer: 8
   m_Name: Wall-Explode_002_cell_015
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7670,7 +7670,7 @@ GameObject:
   - 64: {fileID: 6428598}
   m_Layer: 8
   m_Name: Wall-Explode_002_cell_011
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7814,7 +7814,7 @@ GameObject:
   - 64: {fileID: 6420540}
   m_Layer: 8
   m_Name: Wall_004
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8164,7 +8164,7 @@ GameObject:
   - 64: {fileID: 6437698}
   m_Layer: 8
   m_Name: Wall-Explode_002_cell_009
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8320,7 +8320,7 @@ GameObject:
   - 64: {fileID: 6482810}
   m_Layer: 8
   m_Name: Wall-Explode_002_cell_002
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8422,7 +8422,7 @@ GameObject:
   - 64: {fileID: 6482746}
   m_Layer: 8
   m_Name: Wall-Explode_002_cell_022
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8635,7 +8635,7 @@ GameObject:
   - 64: {fileID: 6419476}
   m_Layer: 8
   m_Name: Wall-Explode_002_cell_019
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9753,7 +9753,7 @@ GameObject:
   - 64: {fileID: 6423124}
   m_Layer: 8
   m_Name: Wall-Explode_002_cell_020
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
