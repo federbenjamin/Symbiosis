@@ -9,7 +9,7 @@ public class HitSpark : MonoBehaviour {
 	public float speed;
 	private float time;
 
-	public float alphaValue = 0.7f;
+	public float alphaValue = 1f;
 	// Use this for initialization
 	void Start () {
 		time = 0;
