@@ -1006,8 +1006,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e7a559fc6fc462191e9c4f74a073b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHP: 30
-  maxHP: 30
+  currentHP: 20
+  maxHP: 20
   moveSpeed: 2
   elementType: ice
   enemyAnimator: {fileID: 0}
@@ -1017,6 +1017,7 @@ MonoBehaviour:
   splitNum: 1
   spawnChild: {fileID: 180402}
   divideBy: 0.7
+  isBoss: 0
 --- !u!136 &13690308
 CapsuleCollider:
   m_ObjectHideFlags: 1
