@@ -201,7 +201,7 @@ public class StatsManager : MonoBehaviour {
 
 	void requestSwapAugments() {
 		requestAugSwap = true;
-		swapAugTimeout = 60;
+		swapAugTimeout = 100;
 		otherPlayerStats.InitSwapPrompt();
 	}
 
@@ -258,7 +258,7 @@ public class StatsManager : MonoBehaviour {
 
 			swapLock = false;
 		}
-		nextAugSwap = Time.time + 2;
+		nextAugSwap = Time.time + 4;
 		swapAugTimeout = 0;
 	}
 
