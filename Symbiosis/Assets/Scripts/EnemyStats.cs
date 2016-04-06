@@ -21,6 +21,7 @@ public class EnemyStats : MonoBehaviour {
 	public GameObject spawnChild;
 	private bool enemyFirstDeath = true;
 	public float divideBy = 0;
+	private float numChildren;
 
 	// Use this for initialization
 	void Start () {
@@ -143,26 +144,21 @@ public class EnemyStats : MonoBehaviour {
 	void SpawnChildren(int parentSplitNum) {
 		int childSplitNum = parentSplitNum + 1;
 		float childChange = Mathf.Pow (divideBy, childSplitNum);
+		if (elementType == "ice") {
+			numChildren = 4;
+		} else {
+			numChildren = 2;
+		}
 
-		GameObject newEnemy1 = Instantiate (spawnChild, transform.position, transform.rotation) as GameObject;
-		GameObject newEnemy2 = Instantiate (spawnChild, transform.position, transform.rotation) as GameObject;
-	
-		newEnemy1.transform.parent = transform.parent;
-		newEnemy2.transform.parent = transform.parent;
-
-		newEnemy1.GetComponent<EnemyStats> ().splitNum = childSplitNum;
-		newEnemy2.GetComponent<EnemyStats> ().splitNum = childSplitNum;
-
-		newEnemy1.GetComponent<EnemyStats> ().currentHP = maxHP * childChange;
-		newEnemy1.GetComponent<EnemyStats> ().maxHP = maxHP * childChange;
-		newEnemy2.GetComponent<EnemyStats> ().currentHP = maxHP * childChange;
-		newEnemy2.GetComponent<EnemyStats> ().maxHP = maxHP * childChange;
-
-		newEnemy1.GetComponent<EnemySplitterBehavior> ().setChildSpeed (childSplitNum);
-		newEnemy2.GetComponent<EnemySplitterBehavior> ().setChildSpeed (childSplitNum);
-
-		newEnemy1.transform.localScale = new Vector3 (childChange, childChange, childChange);
-		newEnemy2.transform.localScale = new Vector3 (childChange, childChange, childChange);
+		for (int i = 0; i < numChildren; i++) {
+			GameObject newEnemy = Instantiate (spawnChild, transform.position, transform.rotation) as GameObject;
+			newEnemy.transform.parent = transform.parent;
+			newEnemy.GetComponent<EnemyStats> ().splitNum = childSplitNum;
+			newEnemy.GetComponent<EnemyStats> ().currentHP = maxHP * childChange;
+			newEnemy.GetComponent<EnemyStats> ().maxHP = maxHP * childChange;
+			newEnemy.GetComponent<EnemySplitterBehavior> ().setChildSpeed (childSplitNum);
+			newEnemy.transform.localScale = new Vector3 (childChange, childChange, childChange);
+		}
 
 		Destroy (gameObject);
 	}

@@ -1014,7 +1014,7 @@ MonoBehaviour:
   spawnParticles: {fileID: 0}
   hitSpark: {fileID: 176766, guid: 49626e56a25667540bc5a7eb750d40e7, type: 2}
   isSplitter: 1
-  splitNum: 0
+  splitNum: 1
   spawnChild: {fileID: 180402}
   divideBy: 0.7
 --- !u!136 &13690308
@@ -3411,6 +3411,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: divideBy
       value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: splitNum
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
