@@ -11,6 +11,7 @@ public class EnemyBehavior : MonoBehaviour {
 	protected int switchTargetTimer;
 
 	protected float moveSpeed;
+	protected float baseMoveSpeed;
 	protected int timer = 0;
 	protected float nextHit = 0;
 	protected Transform myTransform;
@@ -28,6 +29,7 @@ public class EnemyBehavior : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		setStartVariables();
+		baseMoveSpeed = moveSpeed;
 	}
 
 	protected void setStartVariables() {

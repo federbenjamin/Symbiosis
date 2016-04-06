@@ -5,8 +5,6 @@ public class Enemy1Behavior : EnemyBehavior {
 
 	private bool enemyOriented = false;
 	private float turnSpeed = 4;
-	public float slowMoveSpeed = 2;
-	public float fastMoveSpeed = 6;
 	private bool realigningRotation = false;
 	private bool realignTimerSet = false;
 
@@ -14,7 +12,6 @@ public class Enemy1Behavior : EnemyBehavior {
 	// private NavMeshAgent _navMeshAgent;
 
 	void Awake () {
-		// _navMeshAgent = transform.GetComponent<NavMeshAgent>();
 	}
 
 	// Update is called once per frame
@@ -29,10 +26,11 @@ public class Enemy1Behavior : EnemyBehavior {
 
 		if (IsEnemyAlive() && !HealthManager.isGameOver) {
 			UpdateTargetPlayer();
-			//UpdateTurnSpeed();
+			UpdateTurnSpeed();
 
 			if (timer >= 30) {
 				realigningRotation = false;
+				realignTimerSet = false;
 			}
 
 			if (roomController.EnemiesActive) {
@@ -73,8 +71,8 @@ public class Enemy1Behavior : EnemyBehavior {
 
 	void UpdateTurnSpeed() {
 		if (!realigningRotation) {
-			turnSpeed = 5;
-			moveSpeed = fastMoveSpeed;
+			turnSpeed = 4;
+			moveSpeed = baseMoveSpeed;
 		} else {
 			// Debug.Log("realign");
 			if (!realignTimerSet) {
@@ -83,11 +81,11 @@ public class Enemy1Behavior : EnemyBehavior {
 				myRigidBody.velocity = Vector3.zero;
 			}
 			turnSpeed = 0;
-			moveSpeed = 0;
+			moveSpeed = -1;
 		}
 	}
 
-	void OnTriggerEnter (Collider col) {
+	void OnCollisionEnter (Collision col) {
 		// if (col.gameObject.tag == "Wall" || col.gameObject.tag == "Door" || col.gameObject.tag == "Enemy" || col.gameObject.tag == "RoomObject") {
   //       	realigningRotation = true;
   //      	}
@@ -96,19 +94,19 @@ public class Enemy1Behavior : EnemyBehavior {
        		//Debug.Log("Colided with: " + col.gameObject.tag);
         	//realigningRotation = true;
        	//}
-       	// if (col.gameObject.tag == "Player") {
-       	// 	Debug.Log("in");
-       	// 	if (timer > nextHit) {
-       	// 		DamagePlayer(1);
-       	// 	}
-       	// }
+       	if (col.gameObject.tag == "Player") {
+       		realigningRotation = true;
+       		if (timer > nextHit) {
+				DamagePlayer(1);
+			}
+       	}
 	}
 
 	void OnCollisionStay(Collision collision) {
-		if (collision.gameObject.tag == "Player") {
-			if (timer > nextHit) {
-				DamagePlayer(1);
-			}
-		}
+		// if (collision.gameObject.tag == "Player") {
+		// 	if (timer > nextHit) {
+		// 		DamagePlayer(1);
+		// 	}
+		// }
 	}
 }
