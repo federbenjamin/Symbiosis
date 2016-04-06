@@ -13,6 +13,10 @@ public class EnemySplitterBehavior : EnemyBehavior {
 
 	private EnemyStats enemyStats;
 	public int splitNum = 0;
+	private float timerToRotate = 0;
+	private Vector3 direction;
+	private float nextRotate = 0;
+	private bool checkCollider;
 
 	public float stoppingDistance;
 
@@ -34,28 +38,30 @@ public class EnemySplitterBehavior : EnemyBehavior {
 			UpdateTargetPlayer();
 			//UpdateTurnSpeed();
 
-			if (timer >= 30) {
-				realigningRotation = false;
-			}
-
 			if (roomController.EnemiesActive) {
 				timer++;
+				timerToRotate++;
 
-				// rotate to look at the player
-				Vector3 direction = targetPlayer.Transform.position - myRigidBody.position;
+				if (timerToRotate >= nextRotate) {
+					direction = Random.insideUnitSphere;
+					timerToRotate = 0;
+					nextRotate = Random.Range(90f, 150f);
+				}
+
+				if (timerToRotate >= 2) {
+					checkCollider = true;
+				}
+
+				// rotate in random direction
 				direction.y = 0;
-				Quaternion angleTowardsPlayer = Quaternion.Slerp(myTransform.rotation, Quaternion.LookRotation(direction), turnSpeed * Time.deltaTime);
-				myRigidBody.MoveRotation(angleTowardsPlayer);
+				myRigidBody.MoveRotation(Quaternion.LookRotation(direction));
 
 				if (targetPlayer.Distance > stoppingDistance) {
 					enemyAnimator.SetTrigger ("Walking");
 					Vector3 moveDirection = myTransform.forward;
 					moveDirection.y = 0;
-					//move towards the player
+					//move forwards
 					myRigidBody.AddForce (moveDirection * (moveSpeed * 10) * Time.deltaTime, ForceMode.VelocityChange);
-					myTransform.position += moveDirection * moveSpeed * Time.deltaTime;
-				} else if (timer > nextHit) {
-					enemyAnimator.SetTrigger ("Stopped");
 				} else {
 					enemyAnimator.SetTrigger ("Stopped");
 				}
@@ -90,6 +96,13 @@ public class EnemySplitterBehavior : EnemyBehavior {
 				DamagePlayer(1);
 				enemyAnimator.SetTrigger("Attack");
 			}
+		}
+	}
+
+	void OnCollisionEnter(Collision collision) {
+		if ((collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Enemy") && checkCollider) {
+			timerToRotate = 200f;
+			checkCollider = false;
 		}
 	}
 
