@@ -41,6 +41,7 @@ public class EnemyStats : MonoBehaviour {
 		foreach (Transform child in transform) {
 			if (child.name == "SpawnParticles") {
 				spawnParticles = child.gameObject;
+			} else if (child.tag == "Hitspark") {
 			} else {
 				enemyAnimator = child.GetComponent<Animator> ();
 			}

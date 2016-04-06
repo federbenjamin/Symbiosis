@@ -24,6 +24,7 @@ TagManager:
   - TutorialRoom
   - Pipe
   - BossMech
+  - Hitspark
   layers:
   - Default
   - TransparentFX

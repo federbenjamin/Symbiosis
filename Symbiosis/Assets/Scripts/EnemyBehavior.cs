@@ -43,7 +43,7 @@ public class EnemyBehavior : MonoBehaviour {
 		timer = Random.Range(1, 50);
 
 		foreach (Transform child in transform) {
-			if (child.name != "SpawnParticles") {
+			if (child.name != "SpawnParticles" && child.tag != "Hitspark") {
 				enemyAnimator = child.GetComponent<Animator> ();
 			}
 		}
