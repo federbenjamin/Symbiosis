@@ -915,6 +915,7 @@ MonoBehaviour:
   splitNum: 0
   spawnChild: {fileID: 0}
   divideBy: 0
+  isBoss: 0
 --- !u!114 &11470804
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -927,8 +928,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyAnimator: {fileID: 0}
-  slowMoveSpeed: 2
-  fastMoveSpeed: 8
   stoppingDistance: 0.7
 --- !u!136 &13695216
 CapsuleCollider:

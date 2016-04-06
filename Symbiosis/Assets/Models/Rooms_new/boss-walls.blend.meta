@@ -187,6 +187,42 @@ ModelImporter:
     4300066: Wall-Explodable_001
     4300068: Wall_009
     4300070: Wall_010
+    6400000: Corner_001
+    6400002: Corner_002
+    6400004: Corner_003
+    6400006: Corner_004
+    6400008: Wall-Explodable_001
+    6400010: Wall-Explode_002_cell
+    6400012: Wall-Explode_002_cell_001
+    6400014: Wall-Explode_002_cell_002
+    6400016: Wall-Explode_002_cell_003
+    6400018: Wall-Explode_002_cell_004
+    6400020: Wall-Explode_002_cell_005
+    6400022: Wall-Explode_002_cell_006
+    6400024: Wall-Explode_002_cell_007
+    6400026: Wall-Explode_002_cell_008
+    6400028: Wall-Explode_002_cell_009
+    6400030: Wall-Explode_002_cell_010
+    6400032: Wall-Explode_002_cell_011
+    6400034: Wall-Explode_002_cell_012
+    6400036: Wall-Explode_002_cell_013
+    6400038: Wall-Explode_002_cell_014
+    6400040: Wall-Explode_002_cell_015
+    6400042: Wall-Explode_002_cell_016
+    6400044: Wall-Explode_002_cell_017
+    6400046: Wall-Explode_002_cell_018
+    6400048: Wall-Explode_002_cell_019
+    6400050: Wall-Explode_002_cell_020
+    6400052: Wall-Explode_002_cell_021
+    6400054: Wall-Explode_002_cell_022
+    6400056: Wall_001
+    6400058: Wall_002
+    6400060: Wall_003
+    6400062: Wall_004
+    6400064: Wall_005
+    6400066: Wall_008
+    6400068: Wall_009
+    6400070: Wall_010
     7400000: Boom
     9500000: //RootNode
   materials:
@@ -317,7 +353,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0

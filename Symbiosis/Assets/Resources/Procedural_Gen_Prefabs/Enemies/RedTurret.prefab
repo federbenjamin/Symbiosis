@@ -399,6 +399,7 @@ MonoBehaviour:
   splitNum: 0
   spawnChild: {fileID: 0}
   divideBy: 0
+  isBoss: 0
 --- !u!114 &11494248
 MonoBehaviour:
   m_ObjectHideFlags: 1

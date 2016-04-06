@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class EnemyStats : MonoBehaviour {
 
@@ -27,6 +28,7 @@ public class EnemyStats : MonoBehaviour {
 	private float fireTimer = 0;
 	private float freezeTimer = 0;
 	public bool isBoss;
+	private GameObject bossWalls;
 
 	// Use this for initialization
 	void Start () {
@@ -103,9 +105,13 @@ public class EnemyStats : MonoBehaviour {
 		enemyAnimator.Play ("Player_Death");
 		Time.timeScale = 0.4f;
 		gameObject.GetComponent<Collider>().enabled = false;
+		bossWalls = GameObject.Find ("boss-walls");
+		bossWalls.GetComponent<Animator>().SetTrigger("Explode");
+		Destroy (GameObject.Find("Wall-Explodable_001"));
 
 		yield return new WaitForSeconds (2.5f);
 		Time.timeScale = 1.0f;
+		SceneManager.LoadScene ("WinScreen");
 	}
 
 	public void TakeDamage(float incomingDamage, string damageType){
