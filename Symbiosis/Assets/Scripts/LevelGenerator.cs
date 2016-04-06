@@ -55,7 +55,7 @@ public class LevelGenerator : MonoBehaviour {
 		// Add the number and difficulty of each enemy color
 		enemyTypeDifficulty.Add("Red", new int[] {1, 2, 3});
 		enemyTypeDifficulty.Add("Green", new int[] {1, 2, 4});
-		enemyTypeDifficulty.Add("Blue", new int[] {1, 2, 3});
+		enemyTypeDifficulty.Add("Blue", new int[] {1, 2, 3, 4});
 
 		// Randomize level positioning
 		int rightSidePlayer = pseudoRandom.Next(2);
