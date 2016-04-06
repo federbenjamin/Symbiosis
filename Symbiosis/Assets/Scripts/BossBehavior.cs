@@ -18,6 +18,16 @@ public class BossBehavior : EnemyBehavior {
 	private Vector3 direction;
 	private float nextRotate = 0;
 	private int layersToIgnore = 1 << 8;
+	private bool notInCenter = true;
+	public GameObject bullet;
+	public GameObject bulletOrigin1;
+	public GameObject bulletOrigin2;
+	public GameObject bulletAwayTarget1;
+	public GameObject bulletAwayTarget2;
+	public GameObject cannon1;
+	public GameObject cannon2;
+	private int bulletVelocity = 20;
+	private bool shooting = false;
 
 	private List<string> remainingAugments = new List<string>();
 	private string[] augList = new string[] {"fire", "ice", "earth"};
@@ -49,6 +59,9 @@ public class BossBehavior : EnemyBehavior {
 			enemyStarted = false;
 		}
 
+		cannon1.transform.position = bulletOrigin1.transform.position;//bulletOrigin1.GetComponent<Renderer>().bounds.center;
+		cannon2.transform.position = bulletOrigin2.transform.position;//bulletOrigin2.GetComponent<Renderer>().bounds.center;
+
 	}
 
 	void FixedUpdate () {
@@ -64,7 +77,7 @@ public class BossBehavior : EnemyBehavior {
 				moveSpeed = 1.5f;
 
 				// rotate to look at the player
-				Vector3 direction = targetPlayer.Transform.position - myRigidBody.position;
+				direction = targetPlayer.Transform.position - myRigidBody.position;
 				direction.y = 0;
 				Quaternion angleTowardsPlayer = Quaternion.Slerp(myTransform.rotation, Quaternion.LookRotation(direction), turnSpeed * Time.deltaTime);
 				myRigidBody.MoveRotation(angleTowardsPlayer);
@@ -142,7 +155,26 @@ public class BossBehavior : EnemyBehavior {
 			} 
 
 			else if (phase == "fire" && enemyActive) {
-				
+				moveSpeed = 1f;
+				if (notInCenter) {
+					enemyAnimator.SetTrigger ("Walking");
+
+					direction = transform.parent.position - myRigidBody.position;
+					direction.y = 0;
+					Quaternion angleTowardsCenter = Quaternion.Slerp(myTransform.rotation, Quaternion.LookRotation(direction), turnSpeed * Time.deltaTime);
+					myRigidBody.MoveRotation(angleTowardsCenter);
+
+					float step = moveSpeed * Time.deltaTime;
+        			transform.position = Vector3.MoveTowards(transform.position, transform.parent.position, step);
+        			if (Vector3.Distance(transform.position, transform.parent.position) < 0.2f) {
+        				notInCenter = false;
+        			}
+				} else {
+					StartCoroutine("GetInShootingPosition");
+					if (shooting && Time.time > nextFire) {
+						Shoot (myTransform.forward);
+					}
+				}
 			}
 
 			else {
@@ -153,6 +185,34 @@ public class BossBehavior : EnemyBehavior {
 		} else {
 			enemyAnimator.SetTrigger ("Stopped");
 			ActivateEnemiesOnProximity(2f);
+		}
+	}
+
+	IEnumerator GetInShootingPosition() {
+		enemyAnimator.SetTrigger ("Shoot");
+		yield return new WaitForSeconds (0.4f);
+		shooting = true;
+	}
+
+	void Shoot(Vector3 shootDir) {
+		if (transform.GetComponent<EnemyStats>().currentHP > 0) {
+			Vector3 center = bulletOrigin1.GetComponent<Renderer>().bounds.center;
+			Vector3 centerOffset = bulletAwayTarget1.GetComponent<Renderer>().bounds.center;
+			Vector3 bulletDirection = center - centerOffset;
+			GameObject clone = Instantiate (bullet, centerOffset, Quaternion.Euler(bulletDirection)) as GameObject;
+			clone.transform.SetParent(bulletAwayTarget1.transform);
+			Physics.IgnoreCollision (clone.GetComponent<Collider> (), GetComponent<Collider> ());
+			clone.GetComponent<Rigidbody> ().velocity = (bulletDirection * bulletVelocity);
+
+			center = bulletOrigin2.GetComponent<Renderer>().bounds.center;
+			centerOffset = bulletAwayTarget2.GetComponent<Renderer>().bounds.center;
+			bulletDirection = center - centerOffset;
+			clone = Instantiate (bullet, centerOffset, Quaternion.Euler(bulletDirection)) as GameObject;
+			clone.transform.SetParent(bulletAwayTarget2.transform);
+			Physics.IgnoreCollision (clone.GetComponent<Collider> (), GetComponent<Collider> ());
+			clone.GetComponent<Rigidbody> ().velocity = (bulletDirection * bulletVelocity);
+
+			nextFire = Time.time + 0.15f;
 		}
 	}
 
@@ -192,6 +252,8 @@ public class BossBehavior : EnemyBehavior {
 		phase = nextAug;
 		// phase = "fire";
 		myRigidBody.mass = backupMass;
+		notInCenter = true;
+		shooting = false;
 		enemyActive = true;
 	}
 

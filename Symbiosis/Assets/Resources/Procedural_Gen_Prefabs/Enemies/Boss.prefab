@@ -1727,7 +1727,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 32bbae8c7d76b42fa82686031ece3e64, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -1768,6 +1768,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyAnimator: {fileID: 0}
   slime: {fileID: 116444, guid: d250b43ca38a043f3a595c94679fdadc, type: 2}
+  bullet: {fileID: 164192, guid: 4fab93891b8314d22b69a530070fa9f2, type: 2}
+  bulletOrigin1: {fileID: 188644}
+  bulletOrigin2: {fileID: 146354}
+  bulletAwayTarget1: {fileID: 114814}
+  bulletAwayTarget2: {fileID: 197976}
+  cannon1: {fileID: 104328}
+  cannon2: {fileID: 117226}
   stoppingDistance: 0.2
 --- !u!114 &11434884
 MonoBehaviour:
