@@ -992,7 +992,7 @@ MonoBehaviour:
   enemyAnimator: {fileID: 0}
   slowMoveSpeed: 2
   mediumMoveSpeed: 3
-  fastMoveSpeed: 6
+  fastMoveSpeed: 10
   splitNum: 0
   stoppingDistance: 0.7
 --- !u!114 &11470386
@@ -3419,6 +3419,8 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_CollisionDetection
       value: 1
+      propertyPath: fastMoveSpeed
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
