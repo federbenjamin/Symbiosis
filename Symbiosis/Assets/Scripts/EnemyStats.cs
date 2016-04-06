@@ -118,6 +118,7 @@ public class EnemyStats : MonoBehaviour {
 		if (elementType != "black") {
 			if (currentHP > 0) {
 				GameObject spark = Instantiate (hitSpark, transform.position, transform.rotation) as GameObject;
+				spark.transform.SetParent(transform);
 			}
 
 			DamageMultiplier(incomingDamage, damageType);

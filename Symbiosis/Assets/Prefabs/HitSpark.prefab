@@ -88,8 +88,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifespan: 10
-  startSize: 0.2
-  endSize: 2
+  startSize: 0.05
+  endSize: 0.5
   speed: 100
   alphaValue: 1
 --- !u!1001 &100100000
@@ -113,11 +113,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: startSize
-      value: 0.2
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: endSize
-      value: 2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Materials.Array.data[0]
