@@ -7,33 +7,34 @@ public class FadeColor : MonoBehaviour {
 	private Color materialColour;
 	private Color currentColour;
 	private Color lastMaterialColour;
-	private float t;
+	private float t = 0;
 
 	// Use this for initialization
 	void Start () {
+		colorMaterial.color = Color.black;
+		currentColour = Color.black;
 		materialColour = Color.black;
-		currentColour = colorMaterial.color;
-		lastMaterialColour = colorMaterial.color;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (lastMaterialColour != materialColour) {
-	       t = 0; 
-	       lastMaterialColour = materialColour;
-	    }
 
-	    t += 0.03f;
-	    //renderer.material.color = currentColour;
+	    t += 0.008f;
 	    if (currentColour != materialColour) {
-	    	colorMaterial.color = Color.Lerp(currentColour, materialColour, t);
-	    	currentColour = materialColour;
+			Color newColor = Color.Lerp(currentColour, materialColour, t);
+			colorMaterial.SetColor("_Color", newColor);
 	    }
 
+	    if (t >= 1) {
+			currentColour = materialColour;
+			t = 0;
+	    }
 	}
 
 	public void SetColor(string augType) {
-		if (augType == "fire") {
+		if (augType == "black") {
+			materialColour = Color.black;
+		} else if (augType == "fire") {
 			ColorUtility.TryParseHtmlString ("#C70A09", out materialColour);
 		} else if (augType == "ice") {
 			ColorUtility.TryParseHtmlString ("#033EC7", out materialColour);

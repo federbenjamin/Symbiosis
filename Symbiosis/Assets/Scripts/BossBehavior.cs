@@ -22,6 +22,7 @@ public class BossBehavior : EnemyBehavior {
 		foreach (string augment in augList) {
 			remainingAugments.Add(augment);
 		}
+		timer = 400;
 	}
 
 	// Update is called once per frame
@@ -44,8 +45,8 @@ public class BossBehavior : EnemyBehavior {
 	void FixedUpdate () {
 		if (enemyStarted && enemyActive && roomController.EnemiesActive) {
 			timer++;
-			if (timer == 30) {
-				// SwitchAugment();
+
+			if (timer >= 400) {
 				StartCoroutine("RandomAugmentSwap");
 				timer = 0;
 			}
@@ -60,6 +61,7 @@ public class BossBehavior : EnemyBehavior {
 
 				if (targetPlayer.Distance > stoppingDistance) {
 					enemyAnimator.SetTrigger ("Walking");
+					Debug.Log("walking");
 					Vector3 moveDirection = myTransform.forward;
 					moveDirection.y = 0;
 					//move towards the player
@@ -90,15 +92,17 @@ public class BossBehavior : EnemyBehavior {
 		}
 	}
 
-	protected void SwitchAugment() {
-		StartCoroutine("RandomAugmentSwap");
-	}
-
 	IEnumerator RandomAugmentSwap() {
 		enemyActive = false;
 		enemyAnimator.SetTrigger ("Stopped");
+		Debug.Log("stopped");
 
 		EnemyStats enemyStats = gameObject.GetComponent<EnemyStats>();
+		enemyStats.elementType = "black";
+
+		gameObject.GetComponent<FadeColor>().SetColor("black");
+		yield return new WaitForSeconds (2f);
+
 		if (remainingAugments.Count == 0) {
 			FillEmptyPhaseColorsList(enemyStats.elementType);
 		}
@@ -109,7 +113,7 @@ public class BossBehavior : EnemyBehavior {
 
 		gameObject.GetComponent<FadeColor>().SetColor(nextAug);
 
-		yield return new WaitForSeconds (1f);
+		yield return new WaitForSeconds (3f);
 		enemyStats.elementType = nextAug;
 		enemyActive = true;
 	}
