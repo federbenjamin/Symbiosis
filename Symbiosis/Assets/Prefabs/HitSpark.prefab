@@ -89,9 +89,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifespan: 10
   startSize: 0.05
-  endSize: 1.2
+  endSize: 1.5
   speed: 100
-  alphaValue: 0.7
+  alphaValue: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -117,7 +117,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: endSize
-      value: 1.2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Materials.Array.data[0]
@@ -125,7 +125,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 4f614810dbbb34f3e9109720b0d16651, type: 2}
     - target: {fileID: 0}
       propertyPath: alphaValue
-      value: 0.7
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
