@@ -6,6 +6,7 @@ public class EnemyStats : MonoBehaviour {
 	public float currentHP;
 	public float maxHP;
 	public float moveSpeed;
+	private float baseMoveSpeed;
 	public string elementType;
 	private bool onFire;
 	private bool frozen;
@@ -13,6 +14,7 @@ public class EnemyStats : MonoBehaviour {
 	private int ongoingTimer;
 	public Animator enemyAnimator;
 	public GameObject spawnParticles;
+	private ParticleSystem particleSystem;
 	float halfDmg, doubleDmg;
 	public Object hitSpark;
 
@@ -22,6 +24,8 @@ public class EnemyStats : MonoBehaviour {
 	private bool enemyFirstDeath = true;
 	public float divideBy = 0;
 	private float numChildren;
+	private float fireTimer = 0;
+	private float freezeTimer = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -29,6 +33,7 @@ public class EnemyStats : MonoBehaviour {
 		frozen = false;
 		currentHP = maxHP;
 		ongoingTimer = 30;
+		baseMoveSpeed = moveSpeed;
 
 		foreach (Transform child in transform) {
 			if (child.name == "SpawnParticles") {
@@ -37,6 +42,9 @@ public class EnemyStats : MonoBehaviour {
 				enemyAnimator = child.GetComponent<Animator> ();
 			}
 		}
+		particleSystem = spawnParticles.GetComponent<ParticleSystem>();
+		ParticleSystem.EmissionModule em = particleSystem.emission;
+		em.enabled = false;
 	}
 	
 	// Update is called once per frame
@@ -48,7 +56,27 @@ public class EnemyStats : MonoBehaviour {
 			} else {
 				ongoingTimer = ongoingTimer - 1;
 			}
+			if (fireTimer < Time.time) {
+				ParticleSystem.EmissionModule em = particleSystem.emission;
+				em.enabled = false;
+				onFire = false;
+			}
 		}
+		if (frozen) {
+			if (freezeTimer < Time.time) {
+				ParticleSystem.EmissionModule em = particleSystem.emission;
+				em.enabled = false;
+				EnemyBehavior mover = GetComponent<EnemyBehavior> ();
+				mover.setMoveSpeed(baseMoveSpeed);
+				frozen = false;
+			}
+		}
+
+		if (onFire && frozen) {
+			fireTimer = Time.time - 1f;
+			freezeTimer = Time.time - 1f;
+		}
+
 		if (currentHP <= 0) {
 			Die ();
 		}
@@ -76,8 +104,8 @@ public class EnemyStats : MonoBehaviour {
 		if (!(damageType == "fire" && elementType == "ice")) {
 			StatusEffect(damageType);
 		} else {
-			onFire = false;
-			frozen = false;
+			fireTimer = Time.time - 1f;
+			freezeTimer = Time.time - 1f;
 		}
 	}
 
@@ -112,10 +140,10 @@ public class EnemyStats : MonoBehaviour {
 	}
 
 	void StatusEffect(string damageType) {
-		if (damageType == "fire" && elementType != "fire" && !onFire) {
+		if (damageType == "fire" && elementType != "fire") {
 			Ignite ();
 		}
-		if (damageType == "ice" && elementType != "ice" && !frozen) {
+		if (damageType == "ice" && elementType != "ice") {
 			Freeze ();
 		}
 	}
@@ -124,15 +152,21 @@ public class EnemyStats : MonoBehaviour {
 		frozen = true;
 		spawnParticles.SetActive(true);
 		spawnParticles.GetComponent<Renderer>().material.mainTexture = Resources.Load<Texture>("particle-blue");
+		ParticleSystem.EmissionModule em = particleSystem.emission;
+		em.enabled = true;
 		EnemyBehavior mover = GetComponent<EnemyBehavior> ();
-		mover.setMoveSpeed(moveSpeed / 2);
+		mover.setMoveSpeed(moveSpeed / 2f);
+		freezeTimer = Time.time + 3f;
 	}
 
 	void Ignite(){
 		onFire = true;
 		spawnParticles.SetActive(true);
 		spawnParticles.GetComponent<Renderer>().material.mainTexture = Resources.Load<Texture>("particle-red");
+		ParticleSystem.EmissionModule em = particleSystem.emission;
+		em.enabled = true;
 		ongoingDamage = 0.25f;
+		fireTimer = Time.time + 2f;
 	}
 
 
